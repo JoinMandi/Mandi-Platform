@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Carmos";
+  src: url("/fonts/Carmos.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ─── Mandi brand tokens ─────────────────────────────────── */
+  --cream:        #FDF6EC;
+  --cream-soft:   #FFFCF6;
+  --cream-deep:   #EADFD1;
+  --golden:       #F2C14E;
+  --sun:          #F5A623;
+  --coral:        #F07B54;
+  --flame:        #E8632A;
+  --pink-mandi:   #E66C84;
+  --terra:        #C94A2B;
+  --terra-dark:   #A83A20;
+  --brown:        #2C1810;
+  --brown-deep:   #4A2A23;
+  --mandi-grain:  rgba(44, 24, 16, 0.04);
+
+  /* ─── Warm shadows ───────────────────────────────────────── */
+  --shadow-warm:   0 4px 24px rgba(201, 74, 43, 0.08);
+  --shadow-warm-lg:0 12px 40px rgba(201, 74, 43, 0.14);
+  --shadow-warm-xl:0 24px 60px rgba(44, 24, 16, 0.22);
+}
+
+html,
+body {
+  background-color: var(--cream);
+  color: var(--brown);
+  font-family: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: "Carmos", "Montserrat", ui-serif, serif;
+  color: var(--brown);
+  letter-spacing: -0.005em;
+}
+
+* { box-sizing: border-box; }
+
+/* ─── Gradient utilities (Mandi Blanket palette) ──────────── */
+.bg-mandi-gradient {
+  background:
+    radial-gradient(ellipse 120% 80% at 10% 10%, rgba(245, 166, 35, 0.55) 0%, transparent 55%),
+    radial-gradient(ellipse 110% 75% at 92% 25%, rgba(230, 108, 132, 0.65) 0%, transparent 58%),
+    radial-gradient(ellipse 130% 90% at 50% 105%, rgba(201, 74, 43, 0.85) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 70% at 95% 90%, rgba(242, 193, 78, 0.55) 0%, transparent 55%),
+    linear-gradient(135deg, #F2C14E 0%, #F07B54 40%, #E66C84 75%, #C94A2B 100%);
+}
+
+.bg-mandi-gradient-soft {
+  background:
+    radial-gradient(ellipse 140% 90% at 20% 0%, rgba(242, 193, 78, 0.5) 0%, transparent 60%),
+    radial-gradient(ellipse 120% 80% at 85% 30%, rgba(230, 108, 132, 0.5) 0%, transparent 60%),
+    radial-gradient(ellipse 110% 85% at 60% 110%, rgba(240, 123, 84, 0.65) 0%, transparent 65%),
+    linear-gradient(160deg, #FDF6EC 0%, #FBE4C6 40%, #F2C3AE 70%, #E6A69A 100%);
+}
+
+.bg-mandi-gradient-dusk {
+  background:
+    radial-gradient(ellipse 120% 80% at 10% 100%, rgba(44, 24, 16, 0.9) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 70% at 90% 10%, rgba(242, 193, 78, 0.5) 0%, transparent 65%),
+    linear-gradient(165deg, #F07B54 0%, #C94A2B 40%, #8A3220 75%, #4A2A23 100%);
+}
+
+/* ─── Warm shadow utility ──────────────────────────────────── */
+.shadow-warm    { box-shadow: var(--shadow-warm); }
+.shadow-warm-lg { box-shadow: var(--shadow-warm-lg); }
+.shadow-warm-xl { box-shadow: var(--shadow-warm-xl); }
+
+/* ─── Subtle grain overlay for dark sections (Honour Mothers) */
+.bg-grain::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: radial-gradient(var(--mandi-grain) 1px, transparent 1px);
+  background-size: 3px 3px;
+  pointer-events: none;
+  opacity: 0.6;
+  mix-blend-mode: overlay;
+}
+
+/* ─── Gentle underline for primary anchors ─────────────────── */
+.link-warm {
+  position: relative;
+  color: var(--terra);
+  font-weight: 600;
+}
+.link-warm::after {
+  content: "";
+  position: absolute; left: 0; bottom: -2px;
+  width: 100%; height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.link-warm:hover::after { transform: scaleX(1); }
+
+/* ─── Reduced motion respect ───────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Selection color ──────────────────────────────────────── */
+::selection {
+  background: var(--golden);
+  color: var(--brown);
+}
+
+/* ─── Custom scrollbar (subtle) ────────────────────────────── */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb {
+  background: var(--cream-deep);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--coral); }
+
+/* ─── Form resets ──────────────────────────────────────────── */
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+input:focus, textarea:focus, select:focus { outline: none; }

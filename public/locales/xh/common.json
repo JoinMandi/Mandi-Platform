@@ -1,0 +1,48 @@
+{
+  "landing": {
+    "headline1": "Siyabulela ngokufikа kwakho.",
+    "headline2": "Uhambo lwakho lwempilo luqala apha.",
+    "cta": "Qala uhambo lwam"
+  },
+  "language": {
+    "prompt": "Khetha ulwimi oluziwa ngalo kakuhle.",
+    "english": "Talk to Mandi",
+    "zulu": "Khuluma noMandi",
+    "xhosa": "Thetha noMandi",
+    "afrikaans": "Praat met Mandi"
+  },
+  "consent": {
+    "title": "Ngaphambi kokuba siqale — izinto ezimbalwa ekufuneka uzazi.",
+    "body": "Imibuzo elandelayo malunga nempilo yakho nokuziva kwakho. Sisebenzisa iimpendulo zakho kuphela ukukunika indlela yakho yomntu ngamnye. Asithengisi ulwazi lwakho. Asabelani naye nabani ngaphandle kwemvume yakho. Unokucima idatha yakho nangaliphi na ixesha. Le platform iyahambelana noMthetho Wokukhuselwa Kolwazi Lomntu (POPIA).",
+    "checkbox": "Ndiyaqonda kwaye ndiyavuma ukuqhubeka.",
+    "cta": "Ndikulungele — masiqale",
+    "control": "Uhlala unelawulo phezu kolwazi lwakho."
+  },
+  "questionnaire": {
+    "progress": "Umbuzo {{current}} kwe {{total}}",
+    "back": "Emva",
+    "time": "Oku kuthatha imizuzu eyi-10.",
+    "scale": {
+      "0": "Hayi konke",
+      "1": "Kancinci",
+      "2": "Kakhulu",
+      "3": "Kakhulu kunene"
+    }
+  },
+  "transition": {
+    "message": "UMandi ulungiselela indlela yakho."
+  },
+  "nav": {
+    "about": "Malunga noMandi",
+    "hrt": "Inyaniso Nge-HRT",
+    "resources": "Izixhobo",
+    "doctor": "Fumana Ugqirha",
+    "mothers": "Hlonipha Oomama",
+    "events": "Iziganeko zaMandi",
+    "gather": "Hlangana",
+    "journey": "Uhambo Lwam",
+    "book": "Bhukha ukubonana",
+    "login": "Ngena",
+    "signup": "Bhalisa"
+  }
+}

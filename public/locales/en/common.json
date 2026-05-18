@@ -1,0 +1,396 @@
+{
+  "brand": {
+    "name": "Mandi",
+    "tagline": "Your health journey home.",
+    "wordmark": "JoinMandi.com"
+  },
+  "landing": {
+    "eyebrow": "Talk to Mandi · Khuluma noMandi · Thetha noMandi · Praat met Mandi",
+    "headline1": "Thank you for arriving.",
+    "headline2": "Your health journey home starts here.",
+    "subhead": "A warm, private, ten-minute conversation about how you are feeling — in your language.",
+    "cta": "Start my journey",
+    "browse": "Just browse the platform",
+    "reassurance": "POPIA compliant · Private · Free to use"
+  },
+  "language": {
+    "prompt": "Choose the language you feel most at home in.",
+    "english": "Talk to Mandi",
+    "zulu": "Khuluma noMandi",
+    "xhosa": "Thetha noMandi",
+    "afrikaans": "Praat met Mandi",
+    "englishSub": "English",
+    "zuluSub": "isiZulu",
+    "xhosaSub": "isiXhosa",
+    "afrikaansSub": "Afrikaans"
+  },
+  "consent": {
+    "title": "Before we begin — a few things you should know.",
+    "body": "The questions that follow are about your health and how you are feeling. We use your answers only to give you a personalised roadmap — articles, resources, and a doctor-ready summary tailored to you.",
+    "body2": "We do not sell your information. We do not share it with anyone without your permission. You can delete your data at any time. This platform is compliant with the Protection of Personal Information Act (POPIA).",
+    "control": "You are in control of your information. Always.",
+    "checkbox": "I understand and I agree to continue.",
+    "cta": "I'm ready — let's begin"
+  },
+  "questionnaire": {
+    "progress": "Question {{current}} of {{total}}",
+    "back": "Back",
+    "next": "Next",
+    "finish": "See my roadmap",
+    "time": "This takes about 10 minutes.",
+    "scale": {
+      "0": "Not at all",
+      "1": "A little",
+      "2": "Quite a bit",
+      "3": "Extremely"
+    },
+    "yes": "Yes",
+    "no": "No",
+    "notSure": "Not sure",
+    "notApplicable": "Not applicable",
+    "multiSelectHint": "Choose all that apply.",
+    "domain": {
+      "context": {
+        "title": "A few things about you",
+        "description": "Just enough for Mandi to understand where you are."
+      },
+      "mind-cognition": {
+        "title": "How your thinking feels",
+        "description": "Your memory, focus, and clarity."
+      },
+      "mood": {
+        "title": "How you feel inside",
+        "description": "Your emotions, your sense of self."
+      },
+      "nervous-system": {
+        "title": "Heat, sleep, and sensation",
+        "description": "The physical signals your body is sending."
+      },
+      "body": {
+        "title": "Muscles, joints, skin, and energy",
+        "description": "How your body feels from the outside in."
+      },
+      "urogenital": {
+        "title": "Your cycle and intimate health",
+        "description": "Changes that are rarely talked about but deeply important."
+      },
+      "other": {
+        "title": "A few surprising ones",
+        "description": "Symptoms most women never connect to hormones."
+      },
+      "quality-of-life": {
+        "title": "How this is affecting your life",
+        "description": "Work, relationships, and the things you love."
+      },
+      "mindset": {
+        "title": "How you think and feel about this",
+        "description": "The last few questions — about you, not your symptoms."
+      }
+    },
+    "q1": {
+      "text": "How old are you?",
+      "placeholder": "Your age in years"
+    },
+    "q2": {
+      "text": "What is your height?"
+    },
+    "q3": {
+      "text": "What is your weight?",
+      "hint": "Used with your height to calculate BMI for your doctor download."
+    },
+    "q4": {
+      "text": "When did your periods last change or stop?",
+      "stillRegular": "Still regular",
+      "becomingIrregular": "Becoming irregular",
+      "stoppedLess2": "Stopped less than 2 years ago",
+      "stoppedMore2": "Stopped more than 2 years ago",
+      "hysterectomy": "I had a hysterectomy",
+      "notSure": "Not sure"
+    },
+    "q5": {
+      "text": "Has a doctor ever spoken to you about menopause or hormones?"
+    },
+    "q6": { "text": "Difficulty concentrating" },
+    "q7": {
+      "text": "Memory problems — forgetting names, words, or where you put things"
+    },
+    "q8": {
+      "text": "Word-finding difficulty — knowing what you want to say but not being able to find the word"
+    },
+    "q9": {
+      "text": "Reduced ability to multitask — struggling to manage more than one thing at a time"
+    },
+    "q10": { "text": "Mood swings — feeling up and down for no clear reason" },
+    "q11": {
+      "text": "Irritability — snapping or getting frustrated more easily than usual"
+    },
+    "q12": { "text": "Feeling anxious or worried more than usual" },
+    "q13": { "text": "Feeling low, flat, or depressed" },
+    "q14": {
+      "text": "Low motivation — struggling to find the energy or desire to do things you used to enjoy"
+    },
+    "q15": {
+      "text": "Low self-worth — feeling less confident or less valuable than before"
+    },
+    "q16": {
+      "text": "Not feeling like yourself — not recognising the person you have become",
+      "hint": "This question catches many women for the first time. Trust what you feel."
+    },
+    "q17": {
+      "text": "Thoughts of self-harm or suicide",
+      "hint": "You can answer honestly. If you're struggling, Mandi will put support on your roadmap right away."
+    },
+    "q18": { "text": "Hot flushes — sudden waves of heat through your body" },
+    "q19": { "text": "Night sweats — waking drenched or overheated" },
+    "q20": { "text": "Sleep problems — difficulty falling or staying asleep" },
+    "q21": {
+      "text": "Heart palpitations — your heart racing or beating irregularly"
+    },
+    "q22": {
+      "text": "Headaches or migraines — more frequent or more severe than before"
+    },
+    "q23": { "text": "Dizziness or feeling faint" },
+    "q24": {
+      "text": "Restless legs — an uncomfortable urge to move your legs, especially at night"
+    },
+    "q25": { "text": "Tinnitus — ringing or buzzing in the ears" },
+    "q26": { "text": "Joint pain — aching, stiffness, or swelling in joints" },
+    "q27": { "text": "Muscle pain — generalised aching in muscles" },
+    "q28": {
+      "text": "Frozen shoulder — pain or restricted movement in the shoulder",
+      "hint": "An under-recognised menopause symptom. If this is you, you are not imagining it."
+    },
+    "q29": { "text": "Fatigue and low energy — exhausted even after rest" },
+    "q30": { "text": "Weight gain — especially around the middle" },
+    "q31": { "text": "Bloating or digestive discomfort" },
+    "q32": { "text": "Skin changes — dryness, itchiness, or texture changes" },
+    "q33": { "text": "Hair loss or thinning" },
+    "q34": { "text": "Dry eyes — persistent dryness, irritation, or blurry vision" },
+    "q35": {
+      "text": "Changes in your period — heavier, lighter, longer, shorter, or more irregular than before"
+    },
+    "q36": { "text": "Vaginal dryness or discomfort" },
+    "q37": { "text": "Painful sex" },
+    "q38": {
+      "text": "Bladder issues — urgency, leaking, or needing to go more often, including at night"
+    },
+    "q39": { "text": "Recurrent urinary tract infections" },
+    "q40": { "text": "Loss of interest in sex" },
+    "q41": {
+      "text": "Reduced alcohol tolerance — two glasses that used to be fine now feel like four",
+      "hint": "This is the question that makes women say: 'wait — that is menopause?'"
+    },
+    "q42": {
+      "text": "New or worsening allergies — hay fever, food intolerances, or sensitivities you never had before"
+    },
+    "q43": {
+      "text": "Worsening of a long-term health condition — asthma, migraine, autoimmune condition, or similar",
+      "hint": "If this is a strong yes, Mandi will route you to specialist-led care."
+    },
+    "q44": {
+      "text": "Impact on your ability to work — concentration, productivity, or confidence at work"
+    },
+    "q45": {
+      "text": "Impact on your relationship with your partner"
+    },
+    "q46": {
+      "text": "Impact on your relationships with family — children, parents, close relatives"
+    },
+    "q47": {
+      "text": "Impact on your social life — withdrawing, not wanting to go out"
+    },
+    "q48": { "text": "Impact on your ability to stay active and exercise" },
+    "q49": {
+      "text": "When you think about what you have been experiencing — what is your gut feeling?",
+      "a": "Something is wrong and I need help now.",
+      "b": "It is probably just ageing — I will manage.",
+      "c": "I have tried everything. Nothing works for me.",
+      "d": "I have done my research — I know what is happening."
+    },
+    "q50": {
+      "text": "How do you feel about hormone therapy (HRT)?",
+      "a": "Open to it if a doctor recommends it.",
+      "b": "I prefer natural approaches — herbs, lifestyle, supplements.",
+      "c": "I am nervous — I have heard it can be risky.",
+      "d": "I am already on HRT, or I have already tried it."
+    },
+    "q51": {
+      "text": "How do you feel about the medical system when it comes to your health?",
+      "a": "I trust my doctor — I just need the right referral.",
+      "b": "My symptoms have been dismissed. I feel unseen.",
+      "c": "I prefer to research first before going to a doctor.",
+      "d": "I honestly do not know where to start."
+    },
+    "q52": {
+      "text": "Have you ever felt embarrassed or ashamed about what you have been experiencing?",
+      "a": "Yes, often.",
+      "b": "Sometimes.",
+      "c": "No.",
+      "d": "I had not thought about it."
+    },
+    "q53": {
+      "text": "Do you ever feel like it might be too late to get help — that you missed the window?"
+    },
+    "q54": {
+      "text": "Do you have any existing health conditions that make you worry about hormone treatment?",
+      "hint": "Choose all that apply. Your answer helps Mandi route you to the right care.",
+      "none": "None that I know of",
+      "cancer": "History of cancer",
+      "autoimmune": "Autoimmune condition",
+      "cardiovascular": "Diabetes or heart condition",
+      "psychiatric": "Psychiatric condition",
+      "notSure": "Not sure — I would like guidance"
+    },
+    "q55": {
+      "text": "What would feel most useful to you today?",
+      "a": "Understand what is happening in my body.",
+      "b": "Know if what I am feeling is normal.",
+      "c": "Learn my options — HRT and alternatives.",
+      "d": "Find a doctor who speaks my language and understands hormones.",
+      "e": "Something to take to my existing doctor."
+    },
+    "q56": {
+      "text": "How did you find Mandi today?",
+      "hint": "This helps us understand how women are hearing about the platform.",
+      "friend": "A friend told me",
+      "kyknet": "The kykNET documentary",
+      "social": "Social media",
+      "search": "Google search",
+      "doctor": "A doctor recommended it",
+      "other": "Other"
+    }
+  },
+  "units": {
+    "cm": "cm",
+    "ftin": "ft / in",
+    "kg": "kg",
+    "lbs": "lbs"
+  },
+  "transition": {
+    "message": "Mandi is putting your roadmap together.",
+    "submessage": "Reading what you shared — with care.",
+    "done": "Your roadmap is ready."
+  },
+  "roadmap": {
+    "title": "Your Mandi Roadmap",
+    "menoScore": "MenoScore",
+    "outOf": "out of 100",
+    "band": {
+      "mild": {
+        "label": "Early signals",
+        "line": "Your symptoms are present but manageable. This is a good time to get informed and take gentle steps."
+      },
+      "moderate": {
+        "label": "Active hormonal change",
+        "line": "Your symptoms are affecting your daily life. You deserve proper support — not to be told to push through."
+      },
+      "significant": {
+        "label": "Significant impact",
+        "line": "Your symptoms are having a meaningful impact on your daily life. You deserve support now — and you can get it."
+      }
+    },
+    "persona": {
+      "sally": {
+        "headline": "You have been searching. Here are your answers.",
+        "body": "What you are feeling is real. It has a name. And there is support available to you — starting today."
+      },
+      "olga": {
+        "headline": "You may have more going on than you realised.",
+        "body": "Many of the things you have been putting down to stress or ageing are recognised symptoms of hormonal change."
+      },
+      "vicky": {
+        "headline": "You deserve to be heard — and helped.",
+        "body": "If you have been dismissed before, that was not okay. Mandi will walk with you to the right care."
+      },
+      "nelly": {
+        "headline": "You know a lot. Here is what the latest evidence says.",
+        "body": "Your research has served you well. Mandi will make sure your next consultation is as informed as possible."
+      },
+      "nina": {
+        "headline": "Your instincts about your body are valid.",
+        "body": "There is a place for lifestyle and a place for medicine. Your roadmap respects both, side by side."
+      },
+      "retha": {
+        "headline": "It is never too late to feel better.",
+        "body": "The evidence on late intervention is more positive than you may have heard. There are options worth exploring."
+      },
+      "colleen": {
+        "headline": "Your situation deserves specialist input.",
+        "body": "With a complex history, the right care means the right doctor — one who understands both your conditions and your hormones."
+      }
+    },
+    "safety": {
+      "selfHarm": {
+        "title": "What you shared takes courage.",
+        "body": "You are not alone in this — and you do not have to face it alone. Please reach out. The South African Depression and Anxiety Group is available 24/7.",
+        "sadag": "SADAG Helpline: 0800 567 567",
+        "sadagLink": "tel:0800567567"
+      },
+      "colleen": {
+        "title": "Specialist-led care recommended.",
+        "body": "Given your medical history, your roadmap prioritises connecting you with a specialist who can manage your hormonal health alongside your existing conditions. General HRT guidance is secondary here — your safety comes first."
+      }
+    },
+    "steps": {
+      "book-first": {
+        "title": "Book a consultation",
+        "body": "Based on what you shared, speaking to an HRT-informed doctor is the most important next step. Find one who speaks your language and understands hormones.",
+        "cta": "Find a doctor"
+      },
+      "education-first": {
+        "title": "Understand what is happening",
+        "body": "Start with the basics — what hormonal change actually looks like, and why your symptoms make sense.",
+        "cta": "Read: the truth about HRT"
+      },
+      "normalise-first": {
+        "title": "You are not alone in this",
+        "body": "Hear from other South African women who have been exactly where you are — and found their way through.",
+        "cta": "Read real stories"
+      },
+      "options-first": {
+        "title": "Know your options",
+        "body": "Body-identical HRT, lifestyle approaches, integrative care — understand what is available and what the evidence says.",
+        "cta": "Explore resources"
+      },
+      "clinic-first": {
+        "title": "Find care near you",
+        "body": "Search our directory of HRT-friendly practitioners — filtered by your language and location, including telemedicine.",
+        "cta": "Find a doctor"
+      },
+      "download-first": {
+        "title": "Take it to your doctor",
+        "body": "Download a one-page summary of your symptom profile, MenoScore, and questions to ask — the document that changes your consultation.",
+        "cta": "Download your summary"
+      }
+    },
+    "retake": "Your symptoms may change over time.",
+    "retakeCta": "Retake the questionnaire",
+    "feedback": {
+      "title": "Does this roadmap feel right for you?",
+      "yes": "Yes",
+      "mostly": "Mostly",
+      "notQuite": "Not quite",
+      "missing": "Is there anything you expected to see that is missing?",
+      "submit": "Send feedback",
+      "thanks": "Thank you — that helps us build something better for the next woman who arrives."
+    }
+  },
+  "nav": {
+    "about": "About Mandi",
+    "hrt": "The Truth About HRT",
+    "resources": "Resources",
+    "doctor": "Find a Doctor",
+    "mothers": "Honour the Mothers",
+    "events": "Mandi Events",
+    "gather": "Gather",
+    "journey": "My Journey",
+    "book": "Book a consult",
+    "login": "Login",
+    "signup": "Sign up"
+  },
+  "footer": {
+    "privacy": "Your privacy — how we use your data",
+    "terms": "Terms",
+    "contact": "Contact"
+  }
+}

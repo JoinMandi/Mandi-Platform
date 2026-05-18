@@ -1,0 +1,48 @@
+{
+  "landing": {
+    "headline1": "Dankie dat jy hier is.",
+    "headline2": "Jou gesondheidsreis begin hier.",
+    "cta": "Begin my reis"
+  },
+  "language": {
+    "prompt": "Kies die taal waarin jy jou tuis voel.",
+    "english": "Talk to Mandi",
+    "zulu": "Khuluma noMandi",
+    "xhosa": "Thetha noMandi",
+    "afrikaans": "Praat met Mandi"
+  },
+  "consent": {
+    "title": "Voordat ons begin — 'n paar dinge wat jy moet weet.",
+    "body": "Die vrae wat volg handel oor jou gesondheid en hoe jy voel. Ons gebruik jou antwoorde slegs om 'n persoonlike padkaart vir jou te skep. Ons verkoop nie jou inligting nie. Ons deel dit nie sonder jou toestemming nie. Jy kan jou data te eniger tyd uitvee. Hierdie platform voldoen aan die Wet op Beskerming van Persoonlike Inligting (POPIA).",
+    "checkbox": "Ek verstaan en stem in om voort te gaan.",
+    "cta": "Ek is gereed — kom ons begin",
+    "control": "Jy het altyd beheer oor jou inligting."
+  },
+  "questionnaire": {
+    "progress": "Vraag {{current}} van {{total}}",
+    "back": "Terug",
+    "time": "Dit neem ongeveer 10 minute.",
+    "scale": {
+      "0": "Glad nie",
+      "1": "'n Bietjie",
+      "2": "Redelik baie",
+      "3": "Uiters"
+    }
+  },
+  "transition": {
+    "message": "Mandi stel jou padkaart saam."
+  },
+  "nav": {
+    "about": "Oor Mandi",
+    "hrt": "Die Waarheid Oor HRT",
+    "resources": "Hulpbronne",
+    "doctor": "Vind 'n Dokter",
+    "mothers": "Eer die Moeders",
+    "events": "Mandi Byeenkomste",
+    "gather": "Kom Saam",
+    "journey": "My Reis",
+    "book": "Bespreek 'n konsultasie",
+    "login": "Teken in",
+    "signup": "Registreer"
+  }
+}

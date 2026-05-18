@@ -1,0 +1,48 @@
+{
+  "landing": {
+    "headline1": "Siyabonga ngokufikа kwakho.",
+    "headline2": "Uhambo lwakho lwezempilo luqala lapha.",
+    "cta": "Qala uhambo lwami"
+  },
+  "language": {
+    "prompt": "Khetha ulimi owaziwa ngalo kahle.",
+    "english": "Talk to Mandi",
+    "zulu": "Khuluma noMandi",
+    "xhosa": "Thetha noMandi",
+    "afrikaans": "Praat met Mandi"
+  },
+  "consent": {
+    "title": "Ngaphambi kokuba siqale — izinto ezimbalwa okufanele uzazi.",
+    "body": "Imibuzo elandelayo iphathelene nempilo yakho nokuzizwa kwakho. Sisebenzisa izimpendulo zakho kuphela ukukunikeza indlela yakho yomuntu siqu. Asithengisi ulwazi lwakho. Asiklabelani nakubani ngaphandle kwemvume yakho. Ungasusa idatha yakho nganoma inini. Le nkundla iyahambisana noMthetho Wokuvikelwa Kolwazi Lomuntu (POPIA).",
+    "checkbox": "Ngiyaqonda futhi ngiyavuma ukuqhubeka.",
+    "cta": "Ngisemuncu — asiqale",
+    "control": "Uhlale unamandla phezu kolwazi lwakho."
+  },
+  "questionnaire": {
+    "progress": "Umbuzo {{current}} ku {{total}}",
+    "back": "Emuva",
+    "time": "Lokhu kuthabatha imizuzu engu-10.",
+    "scale": {
+      "0": "Nhlobo cha",
+      "1": "Kancane",
+      "2": "Kakhulu",
+      "3": "Kakhulu kakhulu"
+    }
+  },
+  "transition": {
+    "message": "UMandi ulungiselela indlela yakho."
+  },
+  "nav": {
+    "about": "Mayelana noMandi",
+    "hrt": "Iqiniso Nge-HRT",
+    "resources": "Izinsiza",
+    "doctor": "Thola Udokotela",
+    "mothers": "Hlonipha Omama",
+    "events": "Imicimbi yaMandi",
+    "gather": "Hlangana",
+    "journey": "Uhambo Lwami",
+    "book": "Bhuka ukubonana",
+    "login": "Ngena",
+    "signup": "Bhalisa"
+  }
+}
