@@ -1,5 +1,11 @@
 [build]
   command = "npm run build"
 
+[build.environment]
+  # Pin Node to 20 — required by the current build-time deps
+  # (Vite v2 deprecates Node 18 noisily, and Next 14.2 + @netlify/plugin-nextjs
+  # is tested against 20). Phase 22 added this when first deploying to Netlify.
+  NODE_VERSION = "20"
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"

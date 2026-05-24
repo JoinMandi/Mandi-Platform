@@ -36,7 +36,7 @@ export default function ConsentCheckbox({
         >
           {checked && (
             <svg
-              className="w-4 h-4 text-cream"
+              className="w-4 h-4 text-cream animate-stitch-in"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

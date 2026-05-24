@@ -52,3 +52,48 @@ export async function logSymptom(
     score,
   });
 }
+
+/** Phase 21 — data for the /my-journey/doctor-summary print page.
+ *
+ *  Returns the signed-in user's email + latest questionnaire response
+ *  (including the raw `answers` JSON so the page can join against
+ *  `questions.ts` to render question text + her answer) + the last 30
+ *  days of symptom logs aggregated per `domain` (avg score + count).
+ *  Aggregation is done here (server-side) rather than the data layer
+ *  so the data helpers stay reusable. */
+export async function fetchDoctorSummary(): Promise<{
+  email: string | null;
+  latest: QuestionnaireResponseRow | null;
+  symptomSummary: { domain: string; average: number; count: number }[];
+} | null> {
+  const db = createActionClient();
+  const user = await getSessionUser(db);
+  if (!user) return null;
+  const [latest, logs] = await Promise.all([
+    latestResponseForUser(db, user.id),
+    recentLogsForUser(db, user.id, isoDaysAgo(29)),
+  ]);
+  // Group logs by symptom, average the score.
+  const byDomain = new Map<string, { sum: number; count: number }>();
+  for (const log of logs) {
+    if (!log.domain || log.score == null) continue;
+    const slot = byDomain.get(log.domain) ?? { sum: 0, count: 0 };
+    slot.sum += log.score;
+    slot.count += 1;
+    byDomain.set(log.domain, slot);
+  }
+  const symptomSummary: { domain: string; average: number; count: number }[] = [];
+  byDomain.forEach((v, domain) => {
+    symptomSummary.push({
+      domain,
+      average: Number((v.sum / v.count).toFixed(2)),
+      count: v.count,
+    });
+  });
+  symptomSummary.sort((a, b) => b.average - a.average);
+  return {
+    email: user.email ?? null,
+    latest,
+    symptomSummary,
+  };
+}

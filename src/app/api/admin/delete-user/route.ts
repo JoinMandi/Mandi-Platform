@@ -3,11 +3,12 @@ import { createRouteClient } from "@/server/supabase/server";
 import { createServiceClient } from "@/server/supabase/service";
 import { getUserAccount } from "@/server/data/users";
 import { insertDeletionLog } from "@/server/data/deletion-log";
+import { insertAuditLog } from "@/server/data/audit";
 
 export const runtime = "nodejs";
 
 export async function POST(req: Request) {
-  // 1. Confirm the caller is a signed-in admin (cookie-based auth).
+  // 1. Confirm the caller is a signed-in admin who has completed MFA (AAL2).
   const supabase = createRouteClient();
   const {
     data: { session },
@@ -18,6 +19,10 @@ export async function POST(req: Request) {
   const me = await getUserAccount(supabase, session.user.id);
   if (me?.role !== "admin") {
     return NextResponse.json({ error: "Admin only" }, { status: 403 });
+  }
+  const { data: aal } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
+  if (aal?.currentLevel !== "aal2") {
+    return NextResponse.json({ error: "MFA required (AAL2)" }, { status: 403 });
   }
 
   // 2. Read request body.
@@ -44,11 +49,20 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: delErr.message }, { status: 500 });
   }
 
-  // 4. POPIA audit log.
-  await insertDeletionLog(service, {
-    user_email: body.userEmail ?? null,
-    deleted_by: session.user.id,
-  });
+  // 4. POPIA audit log (long-term legal record) + admin audit log (operational).
+  await Promise.all([
+    insertDeletionLog(service, {
+      user_email: body.userEmail ?? null,
+      deleted_by: session.user.id,
+    }),
+    insertAuditLog(service, {
+      action: "user_delete",
+      actorId: session.user.id,
+      actorEmail: me?.email ?? null,
+      targetId: body.userId,
+      meta: { target_email: body.userEmail ?? null },
+    }),
+  ]);
 
   return NextResponse.json({ ok: true });
 }

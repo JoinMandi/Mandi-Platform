@@ -1,36 +1,520 @@
 {
+  "brand": {
+    "name": "Mandi",
+    "tagline": "Uhambo lwakho lwezempilo lubuyela ekhaya.",
+    "wordmark": "JoinMandi.com"
+  },
   "landing": {
+    "eyebrow": "Talk to Mandi · Khuluma noMandi · Thetha noMandi · Praat met Mandi",
     "headline1": "Siyabonga ngokufikа kwakho.",
     "headline2": "Uhambo lwakho lwezempilo luqala lapha.",
-    "cta": "Qala uhambo lwami"
+    "subhead": "Ingxoxo efudumele, eyimfihlo, yemizuzu eyishumi mayelana nokuthi uzizwa kanjani — ngolimi lwakho.",
+    "cta": "Qala uhambo lwami",
+    "browseCta": "Bheka inkundla",
+    "browse": "Bheka nje inkundla",
+    "reassurance": "Ihambisana noPOPIA · Eyimfihlo · Mahhala ukusebenzisa",
+    "how": {
+      "eyebrow": "Indlela esebenza ngayo",
+      "title": "Izinyathelo ezintathu ukuya ohlelweni olukufaneleyo.",
+      "step1": {
+        "title": "Phendula",
+        "body": "Chitha imizuzu eyishumi noMandi. Imibuzo emihle eyamashumi amahlanu nesithupha mayelana nokuthi uzizwa kanjani — ngolimi lwakho."
+      },
+      "step2": {
+        "title": "Thunga ingubo yakho",
+        "body": "Impendulo ngayinye iyisitebhe. Ndawonye ziba yiMandi Blanket yakho — imephu ebonakalayo yalapho ukhona."
+      },
+      "step3": {
+        "title": "Thola uhlelo lwakho",
+        "body": "Izindatshana, izinsiza, nodokotela abakhuluma ulimi lwakho — kwenziwe ngokwalokho okwabelene nathi."
+      }
+    },
+    "peek": {
+      "eyebrow": "IMandi Blanket Yakho",
+      "title": "Yakhiwe ngezimpendulo zakho.",
+      "caption": "Lokhu kuyikhonkco lokuqedwa — isitebhe ngasinye siyingxenye yendaba yakho."
+    },
+    "inside": {
+      "eyebrow": "Okuphakathi kweMandi",
+      "title": "Okudlula umphenyo nje.",
+      "read": {
+        "title": "Iqiniso Nge-HRT",
+        "body": "Imfundo elula. Iminyaka engamashumi amabili nantathu yokungaqondi, kulungisiwe."
+      },
+      "find": {
+        "title": "Thola udokotela",
+        "body": "Odokotela abafundisiwe nge-HRT abakhuluma ulimi lwakho — kuyo yonke iNingizimu Afrika."
+      },
+      "gather": {
+        "title": "Imicimbi yaMandi",
+        "body": "Imibukiso, ii-Q&A, neeMandi Cafés. I-menopause yayiyimfihlo — lokhu kuyahlanganisa."
+      },
+      "honour": {
+        "title": "Hlonipha Omama",
+        "body": "Inkonzo ephilayo. Abesifazane imizimba yabo eyabumba imithi esinayo namuhla."
+      }
+    },
+    "voices": {
+      "eyebrow": "Kubesifazane abafana nawe",
+      "title": "Lokho abesifazane abakushoyo kuMandi."
+    },
+    "built": {
+      "eyebrow": "Yakhiwe ngokunakekela",
+      "line1": "Iphrojekthi yeMrsKing Productions, esungulwe nguHermi King.",
+      "line2": "Iseluleko sezempilo sivela kuDr Funeka Bango.",
+      "line3": "Iqaliswa kanye nedokhumentari yekykNET ethi Meer as Warm Gloede ngo-Agasti 2026.",
+      "line4": "Ihambisana noPOPIA. Mahhala ukusebenzisa. Njalo."
+    },
+    "close": {
+      "title": "Uma usulungile.",
+      "cta": "Khuluma noMandi"
+    }
   },
   "language": {
     "prompt": "Khetha ulimi owaziwa ngalo kahle.",
     "english": "Talk to Mandi",
     "zulu": "Khuluma noMandi",
     "xhosa": "Thetha noMandi",
-    "afrikaans": "Praat met Mandi"
+    "afrikaans": "Praat met Mandi",
+    "englishSub": "IsiNgisi",
+    "zuluSub": "IsiZulu",
+    "xhosaSub": "IsiXhosa",
+    "afrikaansSub": "IsiBhunu"
   },
   "consent": {
     "title": "Ngaphambi kokuba siqale — izinto ezimbalwa okufanele uzazi.",
     "body": "Imibuzo elandelayo iphathelene nempilo yakho nokuzizwa kwakho. Sisebenzisa izimpendulo zakho kuphela ukukunikeza indlela yakho yomuntu siqu. Asithengisi ulwazi lwakho. Asiklabelani nakubani ngaphandle kwemvume yakho. Ungasusa idatha yakho nganoma inini. Le nkundla iyahambisana noMthetho Wokuvikelwa Kolwazi Lomuntu (POPIA).",
+    "body2": "Asithengisi ulwazi lwakho. Asiklabelani nakubani ngaphandle kwemvume yakho. Ungasusa idatha yakho nganoma inini. Le nkundla iyahambisana noMthetho Wokuvikelwa Kolwazi Lomuntu (POPIA).",
+    "control": "Uhlale unamandla phezu kolwazi lwakho.",
     "checkbox": "Ngiyaqonda futhi ngiyavuma ukuqhubeka.",
-    "cta": "Ngisemuncu — asiqale",
-    "control": "Uhlale unamandla phezu kolwazi lwakho."
+    "cta": "Ngisemuncu — asiqale"
   },
   "questionnaire": {
     "progress": "Umbuzo {{current}} ku {{total}}",
     "back": "Emuva",
+    "next": "Okulandelayo",
+    "finish": "Ngibonise uhlelo lwami",
     "time": "Lokhu kuthabatha imizuzu engu-10.",
     "scale": {
       "0": "Nhlobo cha",
       "1": "Kancane",
       "2": "Kakhulu",
       "3": "Kakhulu kakhulu"
+    },
+    "yes": "Yebo",
+    "no": "Cha",
+    "notSure": "Angiqinisekile",
+    "notApplicable": "Akusebenzi",
+    "multiSelectHint": "Khetha konke okusebenzayo.",
+    "domain": {
+      "context": {
+        "title": "Izinto ezimbalwa ngawe",
+        "description": "Okwanele kuMandi ukuqonda lapho ukhona."
+      },
+      "mind-cognition": {
+        "title": "Indlela okucabanga kwakho okuzwakala ngayo",
+        "description": "Inkumbulo yakho, ukugxila, nokucaca."
+      },
+      "mood": {
+        "title": "Indlela ozizwa ngayo ngaphakathi",
+        "description": "Imizwa yakho, umuzwa wakho wokuba nguwe."
+      },
+      "nervous-system": {
+        "title": "Ukushisa, ukulala, nemizwa",
+        "description": "Izimpawu zenyama umzimba wakho oziphathayo."
+      },
+      "body": {
+        "title": "Imisipha, amalunga, isikhumba, namandla",
+        "description": "Indlela umzimba wakho ozwakala ngayo kusuka phandle ukuya phakathi."
+      },
+      "urogenital": {
+        "title": "Umjikelezo wakho nempilo yangasese",
+        "description": "Izinguquko ezingakhulunyiswa kakhulu kodwa ezibalulekile."
+      },
+      "other": {
+        "title": "Ezimbalwa ezimangalisayo",
+        "description": "Izimpawu iningi labesifazane abazihlanganisi namahomoni."
+      },
+      "quality-of-life": {
+        "title": "Indlela lokhu kuthinta impilo yakho",
+        "description": "Umsebenzi, ubudlelwane, nezinto ozithandayo."
+      },
+      "mindset": {
+        "title": "Indlela ocabanga nezimizwa ngakho",
+        "description": "Imibuzo embalwa yokugcina — ngawe, hhayi izimpawu zakho."
+      }
+    },
+    "q1": {
+      "text": "Mingaki iminyaka yakho?",
+      "placeholder": "Iminyaka yakho"
+    },
+    "q2": {
+      "text": "Bukhulu kangakanani ubude bakho?"
+    },
+    "q3": {
+      "text": "Bungakanani isisindo sakho?",
+      "hint": "Kusetshenziswa nobude bakho ukubala i-BMI yokudawunilodi yodokotela wakho."
+    },
+    "q4": {
+      "text": "Izinkathi zakho ziguquke noma zaphela nini?",
+      "stillRegular": "Ziseza njalo",
+      "becomingIrregular": "Aziseza njalo",
+      "stoppedLess2": "Zaphela ngaphansi kweminyaka emi-2 edlule",
+      "stoppedMore2": "Zaphela ngaphezu kweminyaka emi-2 edlule",
+      "hysterectomy": "Ngaba ne-hysterectomy",
+      "notSure": "Angiqinisekile"
+    },
+    "q5": {
+      "text": "Ingabe udokotela wake wakhuluma nawe nge-menopause noma amahomoni?"
+    },
+    "q6": {
+      "text": "Ukungakwazi ukugxila"
+    },
+    "q7": {
+      "text": "Izinkinga zenkumbulo — ukukhohlwa amagama, amagama, noma lapho ubeka khona izinto"
+    },
+    "q8": {
+      "text": "Ukungatholi amagama — uyakwazi ofuna ukukusho kodwa awulitholi igama"
+    },
+    "q9": {
+      "text": "Ukunciphisa amandla okwenza imisebenzi eminingi — kunzima ukuphatha okudlula okukodwa kanye"
+    },
+    "q10": {
+      "text": "Ukuphazama kwemizwa — ukuzizwa uphakeme nophansi ngaphandle kwesizathu"
+    },
+    "q11": {
+      "text": "Ukucasuka — ukuzwa ulaka noma ukucasuka kalula kunesijwayelekile"
+    },
+    "q12": {
+      "text": "Ukuzizwa ukhathazekile noma uthukile ngaphezu kokujwayelekile"
+    },
+    "q13": {
+      "text": "Ukuzizwa uphansi, ulingene nje, noma udangele"
+    },
+    "q14": {
+      "text": "Ukungabi nesisusa — kunzima ukuthola amandla noma isifiso sokwenza izinto obhihla uzizajzelelisa ngazo"
+    },
+    "q15": {
+      "text": "Ukungazethembi — ukuzizwa ungenakuzethemba noma uyinto encane kunangaphambili"
+    },
+    "q16": {
+      "text": "Ukungazwa unjengawe — ukungamboni umuntu obube nguye",
+      "hint": "Lo mbuzo uthinta abesifazane abaningi okokuqala. Themba lokho okuzwayo."
+    },
+    "q17": {
+      "text": "Imicabango yokuzilimaza noma ukuzibulala",
+      "hint": "Ungaphendula ngokweqiniso. Uma uzwa ubunzima, uMandi uzobeka usizo ohlelweni lwakho ngokushesha."
+    },
+    "q18": {
+      "text": "Ukushisa kwesiquphe — amagagasi okushisa ngomzimba wakho"
+    },
+    "q19": {
+      "text": "Ukujuluka ebusuku — ukuvuka umanzi noma ushisa kakhulu"
+    },
+    "q20": {
+      "text": "Izinkinga zokulala — kunzima ukuwa ebuthongweni noma ukuhlala ulele"
+    },
+    "q21": {
+      "text": "Ukugxuma kwenhliziyo — inhliziyo yakho egijimayo noma engashayi kahle"
+    },
+    "q22": {
+      "text": "Amakhanda abuhlungu noma i-migraine — njalo noma kanzima kunangaphambili"
+    },
+    "q23": {
+      "text": "Isiyezi noma ukuzwa uzochithula"
+    },
+    "q24": {
+      "text": "Imilenze engaphumuli — isifiso esingakhululekile sokushintsha imilenze, ikakhulukazi ebusuku"
+    },
+    "q25": {
+      "text": "I-tinnitus — ukukhala noma ukuduma ezindlebeni"
+    },
+    "q26": {
+      "text": "Ubuhlungu emalungeni — ubuhlungu, ukuqina, noma ukuvuvuka emalungeni"
+    },
+    "q27": {
+      "text": "Ubuhlungu emisipheni — ubuhlungu obujwayelekile emisipheni"
+    },
+    "q28": {
+      "text": "Ihlombe elingahambi — ubuhlungu noma ukunqunyezelwa kokuhamba ehlombeni",
+      "hint": "Uphawu lwe-menopause olungaqondwa ngempela. Uma kunjalo, awucabangi."
+    },
+    "q29": {
+      "text": "Ukukhathala namandla aphansi — ukhathele ngisho nasemva kokuphumula"
+    },
+    "q30": {
+      "text": "Ukukhula komzimba — ikakhulukazi ekhaleni"
+    },
+    "q31": {
+      "text": "Ukuvuvuka noma ukungazwa kahle kwesisu"
+    },
+    "q32": {
+      "text": "Izinguquko esikhumbeni — ukuoma, ukuluma, noma ukushintsha kwesithombe"
+    },
+    "q33": {
+      "text": "Ukulahlekelwa izinwele noma ukunciphisa"
+    },
+    "q34": {
+      "text": "Amehlo omile — ukuoma okuqhubekayo, ukucasuka, noma ukubona okufiphele"
+    },
+    "q35": {
+      "text": "Izinguquko ezinkathini zakho — zinzima, zilula, zide, zifushane, noma azifiki njalo kunangaphambili"
+    },
+    "q36": {
+      "text": "Ukuoma kwesithako noma ukungazwakala kahle"
+    },
+    "q37": {
+      "text": "Ucansi olubuhlungu"
+    },
+    "q38": {
+      "text": "Izinkinga zesinye — ushisekela, ukuvuza, noma ukuhamba njalo, kuhlanganise nasebusuku"
+    },
+    "q39": {
+      "text": "Izifo zomgudu womchamo eziphindelelayo"
+    },
+    "q40": {
+      "text": "Ukulahla isithakazelo kucansi"
+    },
+    "q41": {
+      "text": "Ukunciphisa ukubekezelela utshwala — izingilazi ezimbili ezazingafanele zizwakala njengezine",
+      "hint": "Lo umbuzo owenza abesifazane bathi: 'mawu — yi-menopause leyo?'"
+    },
+    "q42": {
+      "text": "Izimpushane ezintsha noma ezimbi kakhulu — i-hay fever, ukungabekezeleli ukudla, noma izimpushane obungazikholwa"
+    },
+    "q43": {
+      "text": "Ukwenziwa kakhulu kwesimo sempilo esivamile — i-asthma, i-migraine, isimo se-autoimmune, noma okufanayo",
+      "hint": "Uma kungumpyo onamandla, uMandi uzokuyisa kunakekelo lwezohlobo."
+    },
+    "q44": {
+      "text": "Umphumela kwekhono lakho lokusebenza — ukugxila, ukuvelisa, noma ukuzethemba emsebenzini"
+    },
+    "q45": {
+      "text": "Umphumela kubudlelwane bakho nesithandwa sakho"
+    },
+    "q46": {
+      "text": "Umphumela kubudlelwane bakho nomndeni — izingane, abazali, izihlobo eziseduze"
+    },
+    "q47": {
+      "text": "Umphumela kwimpilo yakho yokuhlalisana — ukuhoxa, ukungafuni ukuphuma"
+    },
+    "q48": {
+      "text": "Umphumela kwekhono lakho lokuhlala uhambisana ne-exercise"
+    },
+    "q49": {
+      "text": "Uma ucabanga ngalokho obukubhukuda — yini umuzwa wakho?",
+      "a": "Kukhona okungalungile ngifuna usizo manje.",
+      "b": "Mhlawumbe yikuguga nje — ngizoyenza ngehlule.",
+      "c": "Ngizamile konke. Akukho okusebenzayo kimi.",
+      "d": "Ngenze ucwaningo lwami — ngiyazi okwenzekayo."
+    },
+    "q50": {
+      "text": "Uzizwa kanjani nge-hormone therapy (HRT)?",
+      "a": "Ngivuma uma udokotela engincomayo.",
+      "b": "Ngithanda izindlela zemvelo — amakhambi, indlela yokuphila, izenezelelo.",
+      "c": "Ngingathukile — ngizwile ukuthi ingaba yingozi.",
+      "d": "Sengivele ngise-HRT, noma sengilikhuzile."
+    },
+    "q51": {
+      "text": "Uzizwa kanjani ngohlelo lwezempilo lapho kufika empilweni yakho?",
+      "a": "Ngithemba udokotela wami — ngidinga nje ukuthunyelwa okufanele.",
+      "b": "Izimpawu zami ziye zachitha. Ngizizwa ngingabonwa.",
+      "c": "Ngithanda ukucwaninga kuqala ngaphambi kokuya kudokotela.",
+      "d": "Ngokweqiniso angazi lapho ngiqala khona."
+    },
+    "q52": {
+      "text": "Uke wazizwa unamahloni noma unesithombe ngalokho okubhukudayo?",
+      "a": "Yebo, kaningi.",
+      "b": "Ngezinye izikhathi.",
+      "c": "Cha.",
+      "d": "Angicabanganga ngakho."
+    },
+    "q53": {
+      "text": "Uke wazizwa ukuthi mhlawumbe sekuhlangabezele ukuthola usizo — ukuthi uphuthelwe yithuba?"
+    },
+    "q54": {
+      "text": "Unazo izimo zempilo ezikhona ezikwenza ukhathazeke ngokwelashwa kwamahomoni?",
+      "hint": "Khetha konke okusebenzayo. Impendulo yakho isiza uMandi akuyise kunakekelo olufanele.",
+      "none": "Akukho engikwaziyo",
+      "cancer": "Umlando we-cancer",
+      "autoimmune": "Isimo se-autoimmune",
+      "cardiovascular": "I-diabetes noma isimo senhliziyo",
+      "psychiatric": "Isimo se-psychiatric",
+      "notSure": "Angiqinisekile — ngingathanda isikhokelo"
+    },
+    "q55": {
+      "text": "Yini okuzobakuhle kakhulu kuwe namuhla?",
+      "a": "Qonda okwenzekayo emzimbeni wami.",
+      "b": "Yazi ukuthi lokho engikuzwayo kuyajwayeleka.",
+      "c": "Funda izindlela zami — i-HRT nezinye.",
+      "d": "Thola udokotela okhuluma ulimi lwami noqonda amahomoni.",
+      "e": "Okuthize engingakuyisa kudokotela wami osekhona."
+    },
+    "q56": {
+      "text": "Umtholile kanjani uMandi namuhla?",
+      "hint": "Lokhu kusisiza siqonde indlela abesifazane abezwa ngayo ngale nkundla.",
+      "friend": "Umngani ungitshelile",
+      "kyknet": "Idokhumentari yekykNET",
+      "social": "Amasocial media",
+      "search": "Ukusesha kwiGoogle",
+      "doctor": "Udokotela uyincomile",
+      "other": "Okunye"
+    },
+    "didYouKnow": "Ubuvele uyazi?",
+    "areaProgress": "Indawo {{current}} kwezi-{{total}}",
+    "patchesStitched": "{{done}} kwezi-{{total}} zithungiwe · thepha ukubona",
+    "continue": "Qhubeka",
+    "bandComplete": "{{area}} — kuthungiwe",
+    "bandHeadline": "Enye ingxenye yengubo yakho.",
+    "nextArea": "Okulandelayo — {{area}}.",
+    "quiltHeading": "Ingubo yakho kuze kube manje",
+    "quiltClose": "Vala",
+    "blanketComplete": "Useyithungile ingubo yakho.",
+    "blanketCompleteBody": "Isitebhe ngasinye yinto oyabelwene nathi. Le ngubo ngeyakho — ingxenye yale eyethungwa ngabo bonke abesifazane baseNingizimu Afrika ndawonye.",
+    "resumeTitle": "Wamukelekile futhi.",
+    "resumeBody": "Ingubo yakho ilindile — {{progress}} sekuthungiwe. Ungaqhubeka kanye lapho ushiya khona.",
+    "resumeContinue": "Qhubeka ukuthunga",
+    "resumeFresh": "Qala kabusha esikhundleni salokho",
+    "facts": {
+      "context": "I-perimenopause — iminyaka yotshintsho ngaphambi kokuthi izinkathi zime — ingathatha kuphi nakuphi kusuka eminyakeni emi-4 kuya kweyi-10. I-menopause uqobo lwayo lusuku olulodwa kuphela.",
+      "mind-cognition": "Inkungu yengqondo iyenye yezimpawu ezivame kakhulu ze-menopause — ibangelwa ukushintsha kwe-oestrogen, hhayi ngokuthi ulahlekelwa ububanzi bakho. Eningini labesifazane, iyaphakama.",
+      "mood": "Izinguquko zemizwa ku-menopause ezomzimba, hhayi ukungaphumeleli komuntu siqu. I-oestrogen isiza ukulawula i-serotonin, ikhemikhali yemizwa yengqondo — uma yehla, imizwa iyalandela.",
+      "nervous-system": "Ukushisa kwesiquphe kungaqala iminyaka ngaphambi kwezinkathi zakho zokugcina. Kuya kuma-8 kwabesifazane abali-10 abakubhekana nakho — noma yini oyizwayo, awuwedwa.",
+      "body": "Ubuhlungu bamalungu nemisipha kuyimpawu enye ye-menopause engaqondwa kahle — i-oestrogen isiza ukugcina amalunga azwakala kahle. Ngisho nehlombe elingahambi kuxhumene nale guquko.",
+      "urogenital": "Ngokungafani nokushisa kwesiquphe, izimpawu zangaphakathi nezesinye azidlebi kahle ngazo — kodwa ziphendula kahle elashweni. Akukho lutho okufanele uneze namahloni ngalo.",
+      "other": "Ngokuzumayo awukwazi ukubekezelela utshwala njengakuqala? Izimpushane ezintsha? Lowo mzuzu wokuthi 'mawu — yi-menopause leyo?' uyiqiniso, futhi uvame kakhulu kunalokho abantu abacabanga.",
+      "quality-of-life": "Izimpawu ze-menopause zifika emsebenzini, ekulaleni, nasebudlelwaneni. Ukuqamba lowo mphumela akukhona ukukhala — kuyisinyathelo sokuqala sokuthola usekelo olufanele.",
+      "mindset": "Akukho lubende. Abesifazane abafuna usizo ngisho nasemuva kweminyaka emva kwe-menopause baphucula okusebenzayo, kohlala."
+    },
+    "loadingStages": {
+      "1": "Lalela konke okwabelene nathi…",
+      "2": "Thunga izitebhe zokugcina zengubo yakho…",
+      "3": "Thola okubaluleke kakhulu kuwe…",
+      "4": "Uhlelo lwakho luselula."
+    },
+    "affirmations": {
+      "1": "Isitebhe ngasinye siyingxenye yendaba yakho.",
+      "2": "Ukuvela wena uqobo yisibindi.",
+      "3": "Awuwedwa kulokhu.",
+      "4": "Lokho okuzwayo kuyiqiniso — futhi kubalulekile."
     }
   },
+  "units": {
+    "cm": "cm",
+    "ftin": "ft / in",
+    "kg": "kg",
+    "lbs": "lbs"
+  },
   "transition": {
-    "message": "UMandi ulungiselela indlela yakho."
+    "message": "UMandi ulungiselela indlela yakho.",
+    "submessage": "Ifunda lokho okwabelene nathi — ngokunakekela.",
+    "done": "Uhlelo lwakho selulungile."
+  },
+  "roadmap": {
+    "title": "Uhlelo lwakho lweMandi",
+    "menoScore": "MenoScore",
+    "outOf": "kwi-100",
+    "blanketLabel": "Ingubo oyithungile",
+    "blanketCaption": "Isitebhe ngasinye yinto oyabelwene nathi namuhla — indaba yakho, ibanjwe ndawonye.",
+    "band": {
+      "mild": {
+        "label": "Izimpawu zokuqala",
+        "line": "Izimpawu zakho zikhona kodwa zingaphathwa. Lesi yisikhathi esihle sokwazi nokuthatha izinyathelo ezimnene."
+      },
+      "moderate": {
+        "label": "Ushintsho lwehomoni oluqhubekayo",
+        "line": "Izimpawu zakho zithinta impilo yakho yansuku zonke. Uyafanelekile ukuthola usekelo olufanele — hhayi ukuxoshelwa ukuqhubeka nje."
+      },
+      "significant": {
+        "label": "Umphumela omkhulu",
+        "line": "Izimpawu zakho zinomphumela obalulekile empilweni yakho yansuku zonke. Uyafanele usekelo manje — futhi ungalithola."
+      }
+    },
+    "persona": {
+      "sally": {
+        "headline": "Ubufuna. Nazi izimpendulo zakho.",
+        "body": "Lokho okuzwayo kuyiqiniso. Kunigama. Futhi kunousizo otholakalayo — okuqala namuhla."
+      },
+      "olga": {
+        "headline": "Kungahle kube nesikhulu ngaphezu kokucabanga kwakho.",
+        "body": "Eziningi zezinto obuzicabangela ukucindezeleka noma ukuguga ziyimpawu eziqondwayo zoshintsho lwamahomoni."
+      },
+      "vicky": {
+        "headline": "Uyafanele ukuzwiwa — nokusizwa.",
+        "body": "Uma uchithwe ngaphambili, lokho kwakungafanele. UMandi uzohamba nawe ukuya kunakekelo olufanele."
+      },
+      "nelly": {
+        "headline": "Wazi okuningi. Nazi okushiwo ubufakazi obutsha.",
+        "body": "Ucwaningo lwakho lukukhonzile kahle. UMandi uzoqinisekisa ukuthi ingxoxo yakho elandelayo iyaziswe ngokupheleleyo."
+      },
+      "nina": {
+        "headline": "Imizwa yakho ngomzimba wakho ikhona.",
+        "body": "Kunendawo yendlela yokuphila nendawo yemithi. Uhlelo lwakho lwehlonipha kokubili, ndawonye."
+      },
+      "retha": {
+        "headline": "Akukho lubende ukuzwakala kangcono.",
+        "body": "Ubufakazi mayelana nokungenelela kwakamuva luncomekile kakhulu kunalokho ongahle ukuzwe. Zikhona izindlela ezifanele ukubhekiswa."
+      },
+      "colleen": {
+        "headline": "Isimo sakho sifanele ukufakwa kwezehlobo.",
+        "body": "Ngomlando ofanayo, ukunakekelwa okufanele kusho udokotela ofanele — oqonda zombili izimo zakho namahomoni akho."
+      }
+    },
+    "safety": {
+      "selfHarm": {
+        "title": "Lokho okwabelene nathi kufanele isibindi.",
+        "body": "Awuwedwa kulokhu — futhi akudingi ubhekane nakho wedwa. Sicela uxhumane. ISouth African Depression and Anxiety Group itholakala usuku lonke, isonto lonke.",
+        "sadag": "I-SADAG Helpline: 0800 567 567",
+        "sadagLink": "tel:0800567567"
+      },
+      "colleen": {
+        "title": "Kunconywa ukunakekelwa okuhlobile.",
+        "body": "Ngenxa yomlando wakho wezempilo, uhlelo lwakho lubeka phambili ukukuhlanganisa nesisebenzi esikwazi ukuphatha impilo yakho yamahomoni kanye nezimo zakho ezikhona. Iseluleko se-HRT esivamile silandelayo lapha — ukuphepha kwakho kuqala."
+      }
+    },
+    "steps": {
+      "book-first": {
+        "title": "Bhuka isikhathi sokucebisana",
+        "body": "Ngokususelwa kulokho okwabelene nathi, ukukhuluma nedokotela ofunde nge-HRT yisinyathelo esibaluleke kakhulu esilandelayo. Thola lo okhuluma ulimi lwakho oqonda amahomoni.",
+        "cta": "Thola udokotela"
+      },
+      "education-first": {
+        "title": "Qonda okwenzekayo",
+        "body": "Qala ngokuyisisekelo — indlela ukushintsha kwamahomoni okubonakala ngayo, nokuthi izimpawu zakho zinengqondo.",
+        "cta": "Funda: iqiniso nge-HRT"
+      },
+      "normalise-first": {
+        "title": "Awuwedwa kulokhu",
+        "body": "Zwa kwabanye abesifazane baseNingizimu Afrika ababekhona kahle lapho ukhona — futhi bathola indlela yokuphuma.",
+        "cta": "Funda izindaba zoqobo"
+      },
+      "options-first": {
+        "title": "Yazi izindlela zakho",
+        "body": "I-HRT efana nomzimba, izindlela zempilo, ukunakekelwa okuhlanganisiwe — qonda okutholakalayo nokushiwo ubufakazi.",
+        "cta": "Hlolisa izinsiza"
+      },
+      "clinic-first": {
+        "title": "Thola usizo eduze nawe",
+        "body": "Sesha kwincwadi yethu yokukhokela yabasebenzi abafanele i-HRT — okuhlukaniswe ngolimi lwakho nendawo, kuhlanganise i-telemedicine.",
+        "cta": "Thola udokotela"
+      },
+      "download-first": {
+        "title": "Kuthathe uye kudokotela wakho",
+        "body": "Dawunilodi isifinyezo sephepha elilodwa sephrofayela yakho yezimpawu, iMenoScore, nemibuzo yokubuza — idokhumenti eshintsha ingxoxo yakho.",
+        "cta": "Dawunilodi isifinyezo sakho"
+      }
+    },
+    "retake": "Izimpawu zakho zingashintsha ngokuhamba kwesikhathi.",
+    "retakeCta": "Phinda umphenyo",
+    "feedback": {
+      "title": "Lolu hlelo lulungile kuwe?",
+      "yes": "Yebo",
+      "mostly": "Kakhulu",
+      "notQuite": "Akusilo",
+      "missing": "Ikhona into obulindele ukuyibona engekho?",
+      "submit": "Thumela impendulo",
+      "thanks": "Siyabonga — kusisiza ukwakha okungcono komunye wesifazane ozofika."
+    }
   },
   "nav": {
     "about": "Mayelana noMandi",
@@ -44,5 +528,396 @@
     "book": "Bhuka ukubonana",
     "login": "Ngena",
     "signup": "Bhalisa"
+  },
+  "auth": {
+    "login": {
+      "title": "Wamukelekile futhi.",
+      "subtitle": "Ngena ukubona uhlelo lwakho, irekhodi lezimpawu, nokuzihlangana.",
+      "submit": "Wamukelekile futhi",
+      "submitPending": "Sikungenisa…",
+      "newPrompt": "Umusha kuMandi?",
+      "newCta": "Joyina iMandi"
+    },
+    "signup": {
+      "title": "Joyina iMandi.",
+      "subtitle": "Gcina uhlelo lwakho, landela izimpawu zakho, futhi ubone indlela oguqulayo ngokuhamba kwesikhathi.",
+      "submit": "Joyina iMandi",
+      "submitPending": "Sidala i-akhawunti yakho…",
+      "havePrompt": "Sewunayo i-akhawunti?",
+      "haveCta": "Ngena",
+      "confirmTitle": "Hlola e-inbox yakho.",
+      "confirmBody": "Sithumele i-imeyili yokuqinisekisa ku-{{email}}. Chofoza isixhumanisi ngaphakathi ukuqedela ukusetha i-akhawunti yakho.",
+      "confirmBack": "Buyela ekungeneni"
+    },
+    "field": {
+      "email": "I-imeyili",
+      "password": "Igama lokungena",
+      "confirmPassword": "Qinisekisa igama lokungena"
+    },
+    "strength": {
+      "weak": "Buthakathaka",
+      "fair": "Iya khona",
+      "strong": "Inamandla"
+    },
+    "error": {
+      "passwordMismatch": "Amagama akho okungena awahambisani okwamanje.",
+      "passwordTooShort": "Khetha igama lokungena elinezinhlamvu okungenani ezi-8.",
+      "invalidLogin": "Leyo imeyili negama lokungena akuhambisani. Zama futhi.",
+      "emailNotConfirmed": "Sicela uqinisekise i-imeyili yakho — hlola i-inbox yakho.",
+      "rateLimit": "Imizamo eminingi kakhulu. Linda umzuzu uzame futhi.",
+      "alreadyRegistered": "Leyo imeyili sevele inayo i-akhawunti. Zama ukungena esikhundleni salokho.",
+      "invalidEmail": "Leyo imeyili ayibonakali ilungile.",
+      "weakPassword": "Igama lakho lokungena alihambisani nezidingo. Zama okunezinhlamvu okungenani ezi-8.",
+      "generic": "Kukhona okuhambe kabi. Sicela uzame futhi."
+    }
+  },
+  "about": {
+    "eyebrow": "Mayelana noMandi",
+    "title": "Igama elingelethu sonke.",
+    "name": {
+      "eyebrow": "Igama",
+      "heading": "UMandi uyintambo evamile edabula kithi sonke.",
+      "p1": "NgesiBhunu, sisifushane sika-Amanda. NgesiXhosa, sicholwe kuMandisa. Izilimi ezahlukene, imiphakathi ehlukene, izinhlangenwa zempilo ezihlukene — kanti nathi sikhona lapha, abesifazane abafanayo, sihamba imizimba efanayo, sifanelekile ukunakekelwa okufanayo.",
+      "p2": "Sakhetha igama eliqala ngo-M ukubeka le phrojekthi ku-Menopause — isigaba sempilo esivuse lo mthwalo. Kodwa uMandi wahlala ehlosiwe ukukhula ngaphandle kwesahluko sokuqala. Ngoba impilo yamahomoni ayiqali ipheli nge-menopause. Uhambo lwempilo yonke, futhi umuntu wesifazane ngamunye ufanelekile umngani othembekile kulo lonke.",
+      "p3": "UMandi umngani lowo. Kuthi sonke."
+    },
+    "story": {
+      "eyebrow": "Lapho Lokhu Kuqala Khona",
+      "heading": "Le nkundla yazalwa endabeni yobuqu.",
+      "p1": "Eminyakeni yami yokugcina engama-40, ngakhuluma ngokugxuma kwenhliziyo nabasebenzi bami ababili abadala emini. Omunye ngokushesha wancomela ukuthi ngibone uchwepheshe wenhliziyo. Omunye wathi yingxenye nje yokuguga. Akekho owakhuluma nge-menopause. Akekho owathi ukugxuma kwenhliziyo yingxenye yezimpawu eziphezu kwe-100 eziqondwayo zoshintsho lwamahomoni. Bengingenanto.",
+      "p2": "Ngemuva kwesikhathi ngathuthela eKapa eneminyaka engama-50, ngilungele izinhlangano ezintsha ezimnandi. Esikhundleni salokho, ngagcina esibhedlela ngomkhuhlane omkhulu wezinso obangelwe yi-bladder infection. Ngabona udokotela wezesinye. UGP wami. Udokotela wabesifazane. Akekho oyedwa kubo owabuza ukuthi ngise-HRT yini. Akekho oyedwa owahlanganisa izifo zami eziphindelelayo namahomoni ami — noma ukuxhumana kuyaziwa kahle. Belingelapha izimpawu zami, hhayi imbangela.",
+      "p3": "Ngabhekana iminyaka nobuhlungu bamalunga, inkungu yengqondo, izinguquko zemizwa, ama-UTI, ucansi olubuhlungu, ukushisa kwesiquphe, amehlo omile, nezimpawu eziningi.",
+      "p4": "Ngabe-ke ngangena ku-inthanethi. Ngathola uDr Louise Newson. UDr Mary Claire Haver. UDr Lisa Mosconi. Nabaningi. Ngaqala ukutshela bonke abangani bami ukuthola usizo. Umyeni wami uthi ngiyi-menopause evangelist.",
+      "quote": "Uma usuwazi kangcono, ungakwenza kangcono.",
+      "quoteAuthor": "Maya Angelou",
+      "p5": "Lokhu kungiqhubile ukuthi ngithulele ikykNET uchungechunge lwedokhumentari olubizwa nge-Meer As Warm Gloede — uchungechunge lwezindawo ezine oluqala ngo-Agasti 2026. Lwephula ukuthula ngokuzungeza i-menopause emiphakathini ekhuluma isiBhunu, lukhuluma izindaba zoqobo zabesifazane bokwenene, futhi linika ababukeli ulwazi nesibindi sokuthatha impilo yabo ezandleni zabo.",
+      "p6": "Idokhumentari yavula iminyango. Ucwaningo olwengeziwe lwangihola ukuthola iMIDI eUnited States — inkundla esithole isimo se-unicorn maduzane, isebenzela amakhulu ezinkulungwane zabesifazane kuyo yonke iminyaka eyi-50. Lokho kuqonda kwabeka into iqala.",
+      "p7": "Manje sengiqala lolu hambo nabanye abesifazane abamangalisayo ukwakha okwethu kweNingizimu Afrika: JoinMandi.com."
+    },
+    "vision": {
+      "eyebrow": "Umbono",
+      "heading": "I-JoinMandi.com ingaphezu kwewebhusayithi. Ingumzabalazo.",
+      "p1": "Yinkolelo yokuthi wonke umuntu wesifazane waseNingizimu Afrika — eParow noma ePolokwane, eSoweto noma eStellenbosch, noma akhuluma isiBhunu, isiZulu, isiXhosa, noma noma yiziphi ezinye izilimi ezenza leli lizwe libe ngelimangalisayo — kufanele aqonde okwenzekayo emzimbeni wakhe, ngolimi oluzwakala lulekhaya.",
+      "p2": "INingizimu Afrika inezilimi eziyi-11 ezisemthethweni. Iningi lezinkundla zempilo zedijithali zisebenzisa olulodwa: isiNgisi. Lokho akukho ngokwanele. UMandi wakhiwe ukukhula nezwe — emphakathini ngamunye lapho abesifazane bashiywe ngaphandle kwezimpendulo eziqondwayo nokunakekelwa kwezempilo okufanele."
+    },
+    "alone": {
+      "headline": "Akekho owesifazane okufanele azizwe eyedwa, engenalwazi, noma engesekelwe phakathi nokuphela kwe-menopause nangaphesheya.",
+      "credit": "Iphrojekthi yeThe Yolk! · MrsKing Productions"
+    },
+    "blanket": {
+      "eyebrow": "IMandi Blanket",
+      "body": "Isikhokelo esikhulu sika-Mandi yingubo — ingubo eyenziwe ngezindwangu ezahlukene, izinhlanganisela ezahlukene, amasiko ahlukene, athungelwe ndawonye ukuba into ephelele, efudumele, futhi enhle. NjengoMandi. NjengeNingizimu Afrika."
+    },
+    "cta": {
+      "heading": "Usulungile ukuqala uhambo lwakho?",
+      "button": "Khuluma noMandi"
+    }
+  },
+  "resources": {
+    "eyebrow": "Izinsiza",
+    "title": "Ulwazi ongaluthemba.",
+    "subhead": "Konke lapha kususelwe kubufakazi, kuhloliwe ngokunemba, futhi kubhalwe ngolimi olulula. Akukho jargon. Akukho ukwahlulela. Akukho ukuthengisa.",
+    "intro": "Konke lapha kususelwe kubufakazi, kuhloliwe ngokunemba, futhi kubhalwe ngolimi olulula. Akukho jargon. Akukho ukwahlulela. Akukho ukukuthengisela okuthize. Yi-information nje ofanele ube nayo.",
+    "category": {
+      "understanding": "Ukuqonda i-Menopause",
+      "hrt": "I-HRT noKwelashwa",
+      "mental": "Impilo Yengqondo",
+      "nutrition": "Ukudla neNdlela Yempilo",
+      "research": "Ucwaningo noBufakazi"
+    },
+    "type": {
+      "article": "Indatshana",
+      "guide": "Umhlahlandlela",
+      "research": "Isifinyezo Sucwaningo"
+    },
+    "source": {
+      "editorial": "IMandi Editorial",
+      "mosconi": "Kususelwe kucwaningo lukaDr Lisa Mosconi"
+    },
+    "items": {
+      "perimenopause": {
+        "title": "Yini i-perimenopause?",
+        "description": "Isingeniso esicacile, esekelwe ebufakazini eminyakeni ngaphambi kwe-menopause — okwenzekayo emzimbeni wakho nokuthi kungani kubalulekile."
+      },
+      "symptoms": {
+        "title": "Izimpawu ezingaphezu kwe-100 zoshintsho lwamahomoni",
+        "description": "Ukugxuma kwenhliziyo. Ubuhlungu bamalunga. Inkungu yengqondo. Amehlo omile. Lo mhlahlandlela ufihla isithombe esiphelele — ukuze kungaphazwa lutho."
+      },
+      "bodyIdentical": {
+        "title": "I-HRT efana nomzimba ichaziwe",
+        "description": "Yini amahomoni afana nomzimba, ahluka njani nezindlela zakuqala ze-synthetic, nokuthi kushwoni ubufakazi bamanje."
+      },
+      "routes": {
+        "title": "Izindlela zokufaka i-HRT",
+        "description": "Iziqephu, amagels, amaphilisi, amaspray, ukulungiselelwa kwesithako — umhlahlandlela olula wezindlela zakho."
+      },
+      "mood": {
+        "title": "Amahomoni nemizwa yakho",
+        "description": "Ukukhathazeka, imizwa ephansi, nentukuthelo evela kungekho ndawo. Qonda ukuxhumana kwamahomoni — nokusiza."
+      },
+      "nutrition": {
+        "title": "Ukudla ngezempilo yamahomoni",
+        "description": "Isikhokelo sokudla esisebenzayo ku-perimenopause nangaphesheya — okushiwo yiqiniso ngokudla namahomoni."
+      },
+      "whi": {
+        "title": "Ucwaningo lwe-WHI — okwenzeka ngempela",
+        "description": "Ucwaningo lwango-2002 olushintshe yonke into — nokuthi kungani iziphetho zichazwe kabi. Isifinyezo esisesilula."
+      },
+      "brain": {
+        "title": "I-Oestrogen nempilo yengqondo",
+        "description": "Ucwaningo olusha lwendima ye-oestrogen ekusebenzeni kwengqondo nokubaluleka 'kwesikhathi esibalulekile' sokwelashwa."
+      }
+    },
+    "notice1": "Izinsiza ezengeziwe zongezelelwa njalo. Konke okuqukethwe kuhlolwa umlingani wezempilo uDr Funeka Bango ngaphambi kokushicilelwa.",
+    "notice2": "Izinsiza zesiZulu nesiXhosa ziyathuthukiswa. Uma ungasiza ngokuhumusha, sithinte."
+  },
+  "events": {
+    "eyebrow": "Gather · Hlangana · Kom Saam",
+    "title": "Imicimbi yaMandi",
+    "subhead": "Lapho umphakathi weJoinMandi uba ngowoqobo. I-menopause yayiyimfihlo — lapha iba yomphakathi.",
+    "format": {
+      "online": "Ku-inthanethi",
+      "inperson": "Ubuso nobuso"
+    },
+    "free": "Mahhala",
+    "hostedBy": "Ihlelwe ngu-{{host}}",
+    "items": {
+      "screening": {
+        "title": "Meer as Warm Gloede — Umboniso Womphakathi",
+        "description": "Idokhumentari yekykNET kwiskrini esikhulu. Imibukiso yomphakathi ilandelwa yingxoxo eqondiswayo — endaweni eseduze nawe.",
+        "host": "MrsKing Productions"
+      },
+      "askspecialist": {
+        "title": "Buza Uchwepheshe we-Menopause — Bukhona Ku-inthanethi",
+        "description": "I-Q&A ephilayo nedokotela ohlanganisayo. Letha imibuzo yakho nge-HRT, amahomoni afana nomzimba, nezinyathelo ezisebenzayo ezilandelayo.",
+        "host": "Dr Funeka Bango"
+      },
+      "cafe": {
+        "title": "IMandi Café — I-Menopause Phezu Kwekofi",
+        "description": "Akukho jelo, akukho ukucindezeleka. Abesifazane nje bekhuluma ngokweqiniso ngemizimba yabo phezu kwekofi. Ngena nganoma yisiphi isikhathi.",
+        "host": "Umphakathi weMandi"
+      },
+      "isizulu": {
+        "title": "Impilo Yamahomoni ngesiZulu",
+        "description": "Ingxoxo yempilo yomphakathi yabesifazane baseKZN, ngesiZulu, ehlanganisa izisekelo ze-perimenopause ne-menopause.",
+        "host": "Umlingani womphakathi"
+      }
+    },
+    "host": {
+      "heading": "Hlela umcimbi kuMandi.",
+      "body": "Noma uyidokotela wabesifazane owenza i-Q&A yanyanga ngayinye, i-NGO ehlela imorningi yomphakathi, noma indawo yokusebenza esekela abasebenzi bakho — imicimbi yaMandi yiplatfomu yakho futhi. Mahhala ukufaka.",
+      "cta": "Thumela umcimbi"
+    },
+    "principle": {
+      "eyebrow": "Imigomo yethu",
+      "line": "Umphakathi uhlala umahhala. Ubungoti bungaba nentela."
+    }
+  },
+  "doctor": {
+    "eyebrow": "Thola Udokotela",
+    "title": "Ukunakekelwa okukhuluma ulimi lwakho.",
+    "subhead": "Abasebenzi abafundisiwe nge-HRT kuyo yonke iNingizimu Afrika — abomtholampilo, abomphakathi, naba ku-inthanethi. Hlukanisa ngesifundazwe, ulimi, nefomethi.",
+    "filter": {
+      "province": "Isifundazwe",
+      "language": "Ulimi",
+      "format": "Ifomethi",
+      "all": "Konke",
+      "inperson": "Ubuso nobuso",
+      "online": "Ku-inthanethi",
+      "both": "Kokubili"
+    },
+    "empty": "Akukho mitholampilo etholakele ngokukhetha kwakho. Ezengeziwe zongezelelwa njalo.",
+    "bookConsult": "Bhuka isikhathi",
+    "clinics": {
+      "newson": {
+        "practice": "GP wangasese",
+        "note": "Uchwepheshe we-HRT. Ukwelashwa kwamahomoni afana nomzimba."
+      },
+      "hormonal": {
+        "practice": "Indawo yokwelapha kwabesifazane",
+        "note": "Uchwepheshe we-menopause. Izixhumano ku-inthanethi nabuso nobuso."
+      },
+      "community": {
+        "practice": "Impilo yomphakathi",
+        "note": "Ukunakekelwa kwamahhala noma okuxhasiwe. Indlela yokuthunyelwa iyatholakala."
+      }
+    },
+    "meetEyebrow": "Hlangana Nodokotela",
+    "meetTitle": "Ubuso ongathenga.",
+    "doctors": {
+      "bango": {
+        "practice": "Imithi Ehlanganisiwe",
+        "blurb": "Umeluleki wezempilo eJoinMandi. Umsebenzi ofudumele, oqonda ubufakazi, ogxile empilweni yamahomoni yabesifazane base-Afrika."
+      },
+      "vandyk": {
+        "practice": "Abesifazane ne-Menopause",
+        "blurb": "GP ofundisiwe nge-HRT osebenza eStellenbosch. Uchwepheshe we-HRT efana nomzimba ene-telehealth kuyo yonke iNingizimu Afrika."
+      }
+    },
+    "bookWith": "Bhuka no-{{name}}"
+  },
+  "hrt": {
+    "eyebrow": "Imfundo",
+    "title": "Iqiniso Nge-HRT",
+    "subhead": "Ukwesaba kuhambe umhlaba ngamahora angama-24 ngo-2002. Ukulungiswa kuthathe iminyaka engama-23. Naku okufanele wonke umuntu wesifazane akwazi — ngesiNgisi esilula.",
+    "compare": {
+      "heading": "I-Synthetic kanye nefana nomzimba",
+      "intro": "Into ebaluleke kakhulu abesifazane abangayazi ukuthi akusilo lonke i-HRT lifana. Lo mehluko uyisihluthu sayo yonke into elandelayo.",
+      "synthetic": {
+        "label": "I-HRT esynthetic / engesilo elabantu",
+        "name": "Premarin · Provera",
+        "body": "I-Premarin — eyenziwe ngomchamo wamahhashi — iqukethe ama-estrogens umzimba womuntu ongasenzelwe ngokwemvelo. I-Provera (MPA) — i-progestin esynthetic. Akusiyo i-molecule efana ne-progesterone yomuntu.",
+        "note": "Yilona lolu olwacwanyangwa ucwaningo lwe-WHI lwango-2002."
+      },
+      "bodyIdentical": {
+        "label": "I-HRT efana nomzimba",
+        "name": "Estradiol · Micronised Progesterone",
+        "body": "I-Estradiol (17β-estradiol) — eyenziwe ezitshalweni. Iyafana ngokwekhemikhali ne-oestrogen yomuntu. I-Micronised progesterone (Prometrium / Utrogestan) — iyafana ne-progesterone yomuntu.",
+        "note": "Le yindlela enconywayo namuhla."
+      }
+    },
+    "timeline": {
+      "heading": "1992 — Namuhla",
+      "intro": "Iresha yalokho okwenzeka ngempela — nokushintshayo manje.",
+      "t1992": {
+        "headline": "I-Premarin ifika engqungqutheleni.",
+        "body": "I-Premarin — eyenziwe ngomchamo wamahhashi anethumbu — iba ngumuthi obhalelwe kakhulu eMelika. Ucwaningo lwe-WHI luqala, luhlola iPremarin neProvera kubesifazane abayizi-160,000."
+      },
+      "t2002": {
+        "headline": "Ucwaningo olwashintsha konke — ngezizathu ezingalungile.",
+        "body": "Uhlolo lwe-WHI luyamiswa kusenesikhathi. Izihloko zomhlaba zithi i-HRT ibangela umdlavuza wamabele. Ukusebenzisa kwehla ngama-80%. Ingozi yobuqu — izehlakalo ezi-4 kubesifazane abayi-1,000 ngeminyaka emihlanu — ayikhulunyiswa njalo. Imiphumela isetshenziswa kuyo yonke i-HRT, kuhlanganise amahomoni afana nomzimba angazange ahlolisiswe."
+      },
+      "t2003": {
+        "headline": "Izixwayiso ezimnyama zifakwa.",
+        "body": "I-FDA isebenzisa izixwayiso zekilasi lonke kuwo wonke amaphilisi e-HRT — kuhlanganise amahomoni afana nomzimba angenabo ubufakazi obunjalo bomonakalo. Isizukulwane sabesifazane sicashiselwe ukwelashwa ngokususelwa kuziphumo ezingasebenzi kubo."
+      },
+      "t2008": {
+        "headline": "Isifumaniso esibalulekile saseFrance.",
+        "body": "Ucwaningo lwe-E3N luthola ukuthi i-progesterone efana nomzimba ayikhuphuli ingozi yomdlavuza wamabele — ngokungafani ne-progestin esynthetic eyasetshenziswa kwi-WHI. Inkinga ngo-2002 yayingeyona i-oestrogen — yayiyi-synthetic ethile eyasetshenziswa."
+      },
+      "t2013": {
+        "headline": "I-Oestrogen yodwa inciphisa ingozi yomdlavuza wamabele.",
+        "body": "Ishumi leminyaka yokulandela kwe-WHI luqinisekisa ukuthi i-HRT ye-estrogen-kuphela inciphisa kakhulu izigameko zomdlavuza wamabele nokufa. Lokhu kuphikisa ngqo umyalezo wango-2002 — kodwa kuthatha iminyaka eyishumi ukufika kuwo wonke umphakathi."
+      },
+      "t2015": {
+        "headline": "I-NICE yase-UK iyincoma i-HRT efana nomzimba.",
+        "body": "I-HRT efana nomzimba — iziqephu ze-estradiol noma igel kanye ne-progesterone emicronised — iba yindlela enconywayo. Iziphakamiso ze-HRT eNgilandi ziqala ukuphakama kusukela kuleli phuzu."
+      },
+      "t2025": {
+        "headline": "I-FDA isusa izixwayiso.",
+        "body": "I-HHS yaseMelika ne-FDA bamemezela ukususwa kwezixwayiso ezibanzi ezimnyama. I-FDA ithi: abesifazane abaqala i-HRT eminyakeni eyi-10 ngemuva kwe-menopause bangaba kunciphise ingozi yenhliziyo ukuya kuma-50%, ingozi ye-Alzheimer ngama-35%, nengozi yokuphuka kwamathambo ngama-50–60%."
+      },
+      "t2026": {
+        "headline": "Meer as Warm Gloede iyadlala. I-JoinMandi.com iyaqaliswa.",
+        "body": "Wonke umuntu wesifazane waseNingizimu Afrika ufanelekile lo mlando — ngolimi lwakhe."
+      }
+    },
+    "sources": {
+      "heading": "Imithombo",
+      "disclaimer": "Ulwazi lwemfundo kuphela — hhayi iseluleko sezempilo. Xoxa ngezimo zakho zomuntu siqu nomhlanganisi wezempilo onesifundazwe."
+    },
+    "cta": {
+      "heading": "Kusala kuphi lokhu?",
+      "body": "Ufanelekile izimpendulo ezineqiniso ngolimi lwakho zivela kubasebenzi abaqonda impilo yamahomoni.",
+      "questionnaire": "Yenza umphenyo",
+      "doctor": "Thola udokotela"
+    }
+  },
+  "mothers": {
+    "eyebrow": "Inkonzo Ephilayo",
+    "title": "Hlonipha Omama",
+    "subhead": "Indawo yokokoba yeMandi. Ukuhlonipha okuthuleyo, okuzimiseleyo, kobuntu obudidekile ukuthi inkundla abesifazane abayisebenzisa namuhla ime esisekelweni esingahlonipanga njalo imizimba, amazwi, noma ukukhetha kwabesifazane.",
+    "historical": {
+      "baartman": {
+        "years": "c. 1789 – 1815 · Mpumalanga Koloni, Ningizimu Afrika",
+        "body": "Owayengowesifazane waseKhoikhoi owathathwa eNingizimu Afrika ngo-1810 wabukiswa eYurophu njengomboniso womphakathi. Wafa eParis ngo-1815, eneminyaka engama-26. Umzimba wakhe wahlala uboniswa eFrance kwaze kwaba ngu-1974. UNelson Mandela wacela ngokusemthethweni ukubuyiselwa kwakhe ngo-1994. Ngomhla ka-9 Agasti 2002 — Usuku Lukazwelonke Lwabesifazane — ekugcineni wangcwatshwa eduze nendawo yokuzalwa kwakhe. Wabuya ekhaya. Ungowethu sonke."
+      },
+      "anarcha": {
+        "years": "Montgomery, Alabama · iminyaka yoo-1840",
+        "body": "Abesifazane abathathu abamnyama abagqilelweyo amagama abo siyawazi. Phakathi kuka-1845 no-1849 babhanjwa kunyongulwa ngokuvavanyo — uAnarcha wenze okungenani izinyongulwa eziyi-30 ngaphandle kwe-anaesthesia — njengoba isisekelo segynaecology yesimanje sakhiwa phezu kwezinhlungu zabo. Ngo-2021, isikhumbuzo se-15-feet sakhiwa ngokuhlonipha kwabo. Amagama abo akhulunywa namuhla."
+      }
+    },
+    "finding": {
+      "heading": "Abesifazane esisengabathola.",
+      "body": "Imizimba yabesifazane base-Afrika ibe izindawo zocwaningo lwezempilo, ukuvavanyo kweminyaka yobukoloniyali, nokunganakwa kwesistim phakathi nezinkulungwane ezehlukene zezwekazi. Izindaba ezithile zisathokozelwa. Njengoba sizithola, sizozonezela lapha. Uma wazi indaba ekufanele ibe kuleli khasi, sifuna ukuyizwa."
+    },
+    "wall": {
+      "eyebrow": "Udonga Olophilayo",
+      "heading": "Uke wachithwa? Awuwedwa.",
+      "intro": "Izindaba ezimfushane ezisetshenziswa ngabasebenzisi beMandi. Imisho emithathu noma ngaphansi. Akakhethwa uma befuna. Ndawonye baba into enamandla.",
+      "thandi": "Iminyaka emithathu bengicabanga ukuthi ngilahlekelwa yingqondo. Udokotela wami uthi ngiyikhathaze. Akekho omunye owayethi i-menopause.",
+      "mariette": "Ek het vyf jaar simptome gehad en nie geweet nie. Ek was nie besig om gek te word nie — my hormoon het verander.",
+      "nomsa": "Umama wami akakaze akhulume ngalokhu. Umama wakhe akakaze akhulume ngakho. Ngifuna indodakazi yami ibe nalo lonke olunye uhambo."
+    },
+    "closing": {
+      "names": "Sarah Baartman. Anarcha. Betsey. Lucy. Nawo wonke owesifazane igama lakhe alikaze libhalwe phansi.",
+      "body": "Imizimba yabo yathwala umthwalo we-sayensi eyayingakaqondi ukubaphatha njengabantu. UMandi wakhiwa ngokuhlonipha kubo. Leli khasi liyoqhubeka likhula — ngoba kunamagama amaningi okufanele atholwe, nabesifazane abaningi okufanele bezwiwe.",
+      "cta": "Yabelana ngendaba noMandi"
+    },
+    "founder": {
+      "quote": "Le nkundla yazalwa endabeni yami — iminyaka yezimpawu lapho akekho owayexhumanise namahomoni ami. Uma usuwazi kangcono, ungakwenza kangcono. Futhi ungasiza abanye benze okufanayo.",
+      "role": "Umsunguli · MrsKing Productions"
+    }
+  },
+  "journey": {
+    "loading": "Ifaka uhambo lwakho…",
+    "signedOutTitle": "Ngena ukubona uhambo lwakho.",
+    "signedOutCta": "Ngena",
+    "eyebrow": "Uhambo Lwami",
+    "greeting": "Wamukelekile futhi, {{name}}.",
+    "intro": "Lapha lapho uMandi ekhumbula okubaluleke kuwe.",
+    "roadmap": {
+      "emptyEyebrow": "Uhlelo",
+      "emptyTitle": "Awukenzanga umphenyo.",
+      "emptyBody": "Chitha imizuzu eyishumi noMandi futhi uthole uhlelo lobuqu — izindatshana, izinsiza, nesifinyezo esilungele udokotela esenzelwe wena.",
+      "emptyCta": "Yenza umphenyo",
+      "eyebrow": "Uhlelo lwakho lokugcina",
+      "completed": "Iphelelisiwe {{date}}",
+      "viewFull": "Buka uhlelo lonke",
+      "redo": "Phinda umphenyo"
+    },
+    "tracker": {
+      "eyebrow": "Umlandeli wezimpawu",
+      "title": "Indlela obukhona ngayo kuleli sonto.",
+      "intro": "Thepha idot ukugcina iqophelo (0 = akukho, 3 = ngokweqile).",
+      "domain": {
+        "mind-cognition": "Ingqondo",
+        "mood": "Imizwa",
+        "nervous-system": "Imithambo",
+        "body": "Umzimba",
+        "urogenital": "Umjikelo",
+        "other": "Okunye",
+        "quality-of-life": "Impilo"
+      }
+    },
+    "checkins": {
+      "eyebrow": "Izixhumeneko",
+      "title": "Indlela uhambo lwakho oluhamba ngayo.",
+      "intro": "Izikhathi ezimbili ezimnene zokubuyela emuva — nokubheka phambili.",
+      "sixWeek": "Isixhumeneko samasonto ayi-6",
+      "sixWeekSub": "Izinguquko zokuqala, izinyathelo zokuqala ezithathiwe.",
+      "threeMonth": "Isixhumeneko sezinyanga ezi-3",
+      "threeMonthSub": "Ukubuyekezwa okuphelele. Kufana nesibonelo se-NHS / NICE.",
+      "stateAvailable": "Iyatholakala manje",
+      "stateCompleted": "Iphelelisiwe",
+      "stateUpcoming": "Ezayo",
+      "start": "Qala isixhumeneko",
+      "upcomingNote": "UMandi uzokuvelela uma isikhathi sifanele.",
+      "completedNote": "Iqale ku-{{score}} — kuhle ngokuzibonisa."
+    },
+    "persona": {
+      "sally": "Searching Sally",
+      "olga": "Oblivious Olga",
+      "vicky": "Victim Vicky",
+      "nelly": "Know-it-all Nelly",
+      "nina": "Natural Nina",
+      "retha": "Regretting Retha",
+      "colleen": "Comorbid Colleen"
+    }
+  },
+  "footer": {
+    "privacy": "Ubumfihlo bakho — indlela esisebenzisa idatha yakho",
+    "terms": "Imibandela",
+    "contact": "Xhumana"
   }
 }

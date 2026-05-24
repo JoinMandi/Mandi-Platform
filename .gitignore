@@ -35,4 +35,11 @@ yarn-error.log*
 next-env.d.ts
 
 # local tooling
-.claude/settings.local.json
+.claude/
+
+# generated translation export (npm run translations:export → moderator sheet)
+translations.csv
+
+# Generated team Word docs — Phase 22 starting templates the team edits
+# locally. Regenerate with: node scripts/generate-team-docs.mjs
+docs/team/

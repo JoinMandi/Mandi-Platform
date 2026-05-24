@@ -1,80 +1,81 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-
-const GRADIENT_CLASSES = [
-  "bg-mandi-gradient",
-  "bg-mandi-gradient-soft",
-  "bg-mandi-gradient-dusk",
-  "bg-mandi-gradient",
-  "bg-mandi-gradient-soft",
-];
+import Quilt from "./Quilt";
+import type { QuiltPatch } from "@/lib/domain/quilt";
 
 interface TransitionScreenProps {
+  patches: QuiltPatch[];
   onDone: () => void;
-  durationMs?: number;
 }
 
-export default function TransitionScreen({
-  onDone,
-  durationMs = 3600,
-}: TransitionScreenProps) {
+const STAGE_MS = 1100;
+const STAGE_KEYS = ["1", "2", "3", "4"];
+const PETAL_COLORS = ["#F2C14E", "#F07B54", "#E66C84", "#F5A623", "#C94A2B"];
+
+function Bloom() {
+  return (
+    <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+      {Array.from({ length: 14 }).map((_, i) => {
+        const angle = (i / 14) * Math.PI * 2;
+        return (
+          <span
+            key={i}
+            className="absolute"
+            style={{
+              left: `calc(50% + ${Math.cos(angle) * 12}px)`,
+              top: `calc(44% + ${Math.sin(angle) * 12}px)`,
+              animation: `bloom 2.4s ease-out ${i * 90}ms forwards`,
+            }}
+          >
+            {/* a petal — three rounded corners, one point — echoing the floral weave */}
+            <span
+              className="block h-3.5 w-3.5"
+              style={{
+                background: PETAL_COLORS[i % PETAL_COLORS.length],
+                borderRadius: "50% 50% 50% 0",
+                transform: `rotate(${angle + Math.PI / 4}rad)`,
+              }}
+            />
+          </span>
+        );
+      })}
+    </div>
+  );
+}
+
+export default function TransitionScreen({ patches, onDone }: TransitionScreenProps) {
   const { t } = useTranslation("common");
-  const [gradientIdx, setGradientIdx] = useState(0);
+  const [stage, setStage] = useState(0);
 
   useEffect(() => {
-    const cycle = window.setInterval(() => {
-      setGradientIdx((i) => (i + 1) % GRADIENT_CLASSES.length);
-    }, 1200);
-    const finish = window.setTimeout(onDone, durationMs);
-    return () => {
-      window.clearInterval(cycle);
-      window.clearTimeout(finish);
-    };
-  }, [onDone, durationMs]);
+    if (stage >= STAGE_KEYS.length - 1) {
+      const timer = window.setTimeout(onDone, STAGE_MS + 400);
+      return () => window.clearTimeout(timer);
+    }
+    const timer = window.setTimeout(() => setStage((s) => s + 1), STAGE_MS);
+    return () => window.clearTimeout(timer);
+  }, [stage, onDone]);
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden">
-      <AnimatePresence>
-        <motion.div
-          key={gradientIdx}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-          className={`absolute inset-0 ${GRADIENT_CLASSES[gradientIdx]}`}
-        />
-      </AnimatePresence>
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden bg-mandi-gradient px-5 py-12">
+      <div className="pointer-events-none absolute inset-0 bg-brown/20" />
+      <Bloom />
 
-      <div className="relative z-10 flex min-h-screen items-center justify-center px-6">
-        <div className="text-center max-w-md">
-          <motion.div
-            aria-hidden
-            initial={{ scale: 0.8, opacity: 0.6 }}
-            animate={{ scale: [0.9, 1.1, 0.95], opacity: [0.4, 0.75, 0.5] }}
-            transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-            className="mx-auto mb-8 w-20 h-20 rounded-full bg-cream/40 backdrop-blur-sm flex items-center justify-center"
-          >
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-              className="w-12 h-12 rounded-full bg-gradient-to-br from-golden via-pink-mandi to-terra"
-            />
-          </motion.div>
-
-          <motion.p
-            animate={{ opacity: [0.75, 1, 0.75] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="font-display text-2xl sm:text-3xl text-cream drop-shadow-md leading-snug"
-          >
-            {t("transition.message")}
-          </motion.p>
-          <p className="mt-3 text-sm text-cream/80 font-medium">
-            {t("transition.submessage")}
-          </p>
+      <div className="relative z-10 w-full max-w-md text-center">
+        <div className="mx-auto rounded-5xl border border-cream/25 bg-cream-soft/95 p-6 shadow-warm-xl">
+          <Quilt patches={patches} answered={patches.length} variant="full" reveal className="mx-auto" />
         </div>
+        <p
+          key={stage}
+          className="mt-7 animate-fade-in font-display text-2xl text-cream drop-shadow-md sm:text-3xl"
+        >
+          {t(`questionnaire.loadingStages.${STAGE_KEYS[stage]}`)}
+        </p>
+        <p className="mt-2 text-sm font-medium text-cream/85">
+          {t("questionnaire.blanketComplete")}
+        </p>
       </div>
     </div>
   );

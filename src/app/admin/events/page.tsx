@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { fetchEvents, updateEventStatus } from "@/server/actions/events";
+import CreateEventModal from "@/components/admin/CreateEventModal";
+import Button from "@/components/ui/Button";
 import type { EventStatus, EventFormat } from "@/lib/types/database";
 import type { EventWithTranslations } from "@/lib/types/models";
 
@@ -29,6 +31,8 @@ export default function AdminEventsPage() {
   const [province, setProvince] = useState<string>("all");
   const [format, setFormat] = useState<"all" | EventFormat>("all");
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [createOpen, setCreateOpen] = useState(false);
+  const [toast, setToast] = useState<string | null>(null);
 
   const load = async () => {
     setEvents(await fetchEvents());
@@ -37,6 +41,13 @@ export default function AdminEventsPage() {
   useEffect(() => {
     void load();
   }, []);
+
+  // Auto-dismiss toast after 5s.
+  useEffect(() => {
+    if (!toast) return;
+    const t = setTimeout(() => setToast(null), 5000);
+    return () => clearTimeout(t);
+  }, [toast]);
 
   const filtered = useMemo(() => {
     if (!events) return null;
@@ -55,13 +66,18 @@ export default function AdminEventsPage() {
 
   return (
     <div className="px-6 sm:px-10 py-10 max-w-6xl mx-auto">
-      <header className="mb-8">
-        <p className="text-[11px] uppercase tracking-[0.25em] text-terra font-semibold mb-2">Moderation</p>
-        <h1 className="font-display text-4xl text-brown">Events</h1>
-        <p className="text-brown/65 mt-2 max-w-xl">
-          Review submitted events. Approved events become published automatically on the Gathering page.
-        </p>
-      </header>
+      <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
+        <header>
+          <p className="text-[11px] uppercase tracking-[0.25em] text-terra font-semibold mb-2">Moderation</p>
+          <h1 className="font-display text-4xl text-brown">Events</h1>
+          <p className="text-brown/65 mt-2 max-w-xl">
+            Review submitted events. Approved events become published automatically on the Gathering page.
+          </p>
+        </header>
+        <Button onClick={() => setCreateOpen(true)} className="bg-terra">
+          + New event
+        </Button>
+      </div>
 
       <div className="space-y-3 mb-6">
         <FilterRow label="Status" value={status} onChange={(v) => setStatus(v as typeof status)}
@@ -105,6 +121,31 @@ export default function AdminEventsPage() {
           </table>
         )}
       </div>
+
+      {/* Create event modal */}
+      <CreateEventModal
+        open={createOpen}
+        onClose={() => setCreateOpen(false)}
+        onCreated={() => {
+          setCreateOpen(false);
+          setToast("Event added to the pending queue.");
+          void load();
+        }}
+      />
+
+      {/* Toast */}
+      <AnimatePresence>
+        {toast && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className="fixed bottom-6 right-6 z-50 bg-brown text-cream rounded-2xl shadow-warm-xl px-5 py-3 text-sm font-medium max-w-sm"
+          >
+            {toast}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

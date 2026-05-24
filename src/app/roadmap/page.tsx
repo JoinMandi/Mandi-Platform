@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import NavBar from "@/components/NavBar";
 import CountUp from "@/components/ui/CountUp";
+import Quilt from "@/components/ui/Quilt";
+import { questions } from "@/lib/domain/questions";
+import { buildQuilt } from "@/lib/domain/quilt";
 import type { ScoreBand, Persona, RoadmapSlot } from "@/lib/domain/scoring";
 
 interface RoadmapData {
@@ -48,6 +51,7 @@ export default function RoadmapPage() {
   const router = useRouter();
   const { t } = useTranslation("common");
   const [data, setData] = useState<RoadmapData | null>(null);
+  const [answers, setAnswers] = useState<Record<number, unknown> | null>(null);
 
   useEffect(() => {
     const stored =
@@ -60,8 +64,25 @@ export default function RoadmapPage() {
       setData(JSON.parse(stored) as RoadmapData);
     } catch {
       router.replace("/questionnaire");
+      return;
+    }
+    const storedAnswers = localStorage.getItem("mandi-answers");
+    if (storedAnswers) {
+      try {
+        setAnswers(JSON.parse(storedAnswers) as Record<number, unknown>);
+      } catch {
+        /* the quilt motif is optional — skip it if answers are unreadable */
+      }
     }
   }, [router]);
+
+  const patches = useMemo(() => {
+    if (!answers) return [];
+    const visible = questions.filter(
+      (q) => !q.skipCondition || !q.skipCondition(answers),
+    );
+    return buildQuilt(visible);
+  }, [answers]);
 
   if (!data) {
     return (
@@ -140,6 +161,32 @@ export default function RoadmapPage() {
               </div>
             </div>
           </motion.div>
+
+          {/* The blanket she stitched */}
+          {patches.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="mt-6 bg-cream-soft rounded-4xl shadow-warm p-7 sm:p-9 text-center"
+            >
+              <p className="text-[11px] uppercase tracking-[0.22em] text-terra font-semibold">
+                {t("roadmap.blanketLabel")}
+              </p>
+              <div className="mt-5">
+                <Quilt
+                  patches={patches}
+                  answered={patches.length}
+                  variant="full"
+                  reveal
+                  className="mx-auto"
+                />
+              </div>
+              <p className="mt-5 text-sm text-brown/65 max-w-sm mx-auto leading-relaxed">
+                {t("roadmap.blanketCaption")}
+              </p>
+            </motion.div>
+          )}
 
           {/* Safety flags */}
           {data.selfHarmFlag && (

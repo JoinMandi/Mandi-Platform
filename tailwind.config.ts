@@ -52,11 +52,38 @@ const config: Config = {
           "0%":   { backgroundPosition: "-200% 0" },
           "100%": { backgroundPosition: "200% 0" },
         },
+        stitchIn: {
+          "0%":   { opacity: "0", transform: "scale(0.55) rotate(-8deg)" },
+          "60%":  { opacity: "1", transform: "scale(1.08) rotate(2deg)" },
+          "100%": { opacity: "1", transform: "scale(1) rotate(0deg)" },
+        },
+        riseIn: {
+          from: { opacity: "0", transform: "translateY(16px)" },
+          to:   { opacity: "1", transform: "translateY(0)" },
+        },
+        fadeIn: {
+          from: { opacity: "0" },
+          to:   { opacity: "1" },
+        },
+        bloom: {
+          "0%":   { opacity: "0", transform: "scale(0.3) translateY(0)" },
+          "30%":  { opacity: "0.9" },
+          "100%": { opacity: "0", transform: "scale(1.6) translateY(-60px)" },
+        },
+        patchShimmer: {
+          "0%, 100%": { filter: "brightness(1)", transform: "scale(1)" },
+          "50%":      { filter: "brightness(1.18)", transform: "scale(1.04)" },
+        },
       },
       animation: {
         "pulse-warm": "pulseWarm 2s ease-in-out infinite",
         drift:        "drift 8s ease-in-out infinite",
         shimmer:      "shimmer 3s linear infinite",
+        "stitch-in":  "stitchIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both",
+        "rise-in":    "riseIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both",
+        "fade-in":    "fadeIn 0.4s ease-out both",
+        bloom:        "bloom 2.4s ease-out forwards",
+        "patch-shimmer": "patchShimmer 2.4s ease-in-out infinite",
       },
     },
   },

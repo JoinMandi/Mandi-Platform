@@ -10,15 +10,32 @@
  */
 
 // ── Enum-like string unions (mirror CHECK constraints) ───────────
-export type UserRole = "member" | "clinician" | "admin";
+export type UserRole = "member" | "clinician" | "admin" | "superadmin";
 export type ContentType = "article" | "video" | "podcast";
 export type ReviewStatus = "draft" | "in_review" | "approved";
 export type ScoreBand = "mild" | "moderate" | "significant";
 export type Persona =
   | "sally" | "olga" | "vicky" | "nelly" | "nina" | "retha" | "colleen";
+/** Legacy questionnaire-derived symptom domains. Used by Phase 1–20 logs
+ *  AND by per-user analytics (admin EngagementHeatmap). Kept for backward
+ *  compatibility so existing rows still type-check. */
 export type SymptomDomain =
   | "mind-cognition" | "mood" | "nervous-system" | "body"
   | "urogenital" | "other" | "quality-of-life";
+
+/** Phase 21: the concrete day-to-day symptoms /my-journey logs against
+ *  the same `symptom_logs.domain` column. The column has had its CHECK
+ *  constraint dropped (see supabase/schema.sql), so both old and new
+ *  values coexist on the same column. */
+export type TrackerSymptom =
+  | "hot-flushes"
+  | "sleep"
+  | "mood"
+  | "brain-fog"
+  | "vaginal-discomfort"
+  | "joint-pain"
+  | "anxiety"
+  | "energy";
 export type EventFormat = "inperson" | "online";
 export type ClinicFormat = "online" | "inperson" | "both";
 export type StoryStatus = "pending" | "approved" | "rejected";
@@ -182,7 +199,10 @@ export interface SymptomLogRow {
   id: string;
   user_id: string | null;
   logged_date: string;
-  domain: SymptomDomain | null;
+  /** Phase 21: was `SymptomDomain | null`. Loosened to `string | null`
+   *  to accept both the legacy `SymptomDomain` values and the new
+   *  `TrackerSymptom` values now that /my-journey writes the new ones. */
+  domain: string | null;
   score: number | null;
   created_at: string;
 }
@@ -206,4 +226,50 @@ export interface PopiaDeletionLogRow {
   deleted_at: string;
   user_email: string | null;
   deleted_by: string | null;
+}
+
+export type EngagementEventType =
+  | "doctor_view"
+  | "doctor_book_click"
+  | "content_view"
+  | "content_link_click"
+  | "event_view"
+  | "event_rsvp_click";
+
+export interface EngagementEventRow {
+  id: number;
+  created_at: string;
+  event_type: EngagementEventType;
+  user_id: string | null;
+  session_id: string | null;
+  target_id: string | null;
+  meta: Record<string, unknown> | null;
+}
+
+/** Admin-action audit log. Service-role inserts only; superadmin (AAL2)
+ *  reads. `user_view` is the high-volume POPIA-trail action — fires on
+ *  every /admin/users/[id] open. `story_create` / `event_create` fire
+ *  when an admin authors content directly (Phase 20). */
+export type AdminAuditAction =
+  | "role_change"
+  | "user_invite"
+  | "user_delete"
+  | "user_view"
+  | "story_create"
+  | "story_status"
+  | "event_create"
+  | "event_status"
+  | "content_publish"
+  | "content_translation_upsert"
+  | "clinic_save"
+  | "doctor_save";
+
+export interface AdminAuditLogRow {
+  id: number;
+  created_at: string;
+  actor_id: string | null;
+  actor_email: string | null;
+  action: AdminAuditAction;
+  target_id: string | null;
+  meta: Record<string, unknown> | null;
 }

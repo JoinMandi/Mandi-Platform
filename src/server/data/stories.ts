@@ -33,3 +33,37 @@ export async function countPendingStories(db: SupabaseClient): Promise<number> {
     .eq("status", "pending");
   return count ?? 0;
 }
+
+export interface InsertStoryInput {
+  content: string;
+  authorName: string | null;
+  languageCode: string | null;
+  symptomTags: string[] | null;
+  consent: boolean;
+  /** Defaults to 'pending' — admin-created stories still flow through the
+   *  moderation queue per the Phase-20 user decision. */
+  status?: StoryStatus;
+}
+
+/** Insert a new story. Used by both anonymous public submissions (when
+ *  we eventually replace the mailto flow) and admin-authored creation
+ *  via /admin/stories. Returns the new row's id. */
+export async function insertStory(
+  db: SupabaseClient,
+  input: InsertStoryInput,
+): Promise<{ ok: true; id: string } | { ok: false; error: string }> {
+  const { data, error } = await db
+    .from("stories")
+    .insert({
+      content: input.content,
+      author_name: input.authorName,
+      language_code: input.languageCode,
+      symptom_tags: input.symptomTags,
+      consent: input.consent,
+      status: input.status ?? "pending",
+    })
+    .select("id")
+    .single();
+  if (error) return { ok: false, error: error.message };
+  return { ok: true, id: (data as { id: string }).id };
+}

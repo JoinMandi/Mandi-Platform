@@ -20,10 +20,16 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // If already logged in, keep users out of login/signup pages
+  // If already logged in, keep users out of login/signup pages — but
+  // honour `?next=` so a redirect chain like /admin → /auth/login → … lands
+  // back on /admin instead of dumping the user on /my-journey.
   if (session && (path === "/auth/login" || path === "/auth/signup")) {
     const url = req.nextUrl.clone();
-    url.pathname = "/my-journey";
+    const next = req.nextUrl.searchParams.get("next");
+    const safeNext =
+      next && next.startsWith("/") && !next.startsWith("//") ? next : "/my-journey";
+    url.pathname = safeNext;
+    url.search = ""; // strip `?next=` so we don't loop
     return NextResponse.redirect(url);
   }
 

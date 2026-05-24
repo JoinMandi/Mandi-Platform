@@ -1,25 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 import NavBar from "@/components/NavBar";
+import Reveal from "@/components/ui/Reveal";
+import StitchDivider from "@/components/ui/StitchDivider";
 
-const TIMELINE: Array<{ year: string; headline: string; body: string; tone: "neutral" | "warning" | "turning" | "today" }> = [
-  { year: "1992", tone: "neutral",  headline: "Premarin peaks.",
-    body: "Premarin — made from the urine of pregnant mares — becomes the most prescribed drug in the US. The WHI study begins, testing Premarin plus Provera on 160,000 women." },
-  { year: "2002", tone: "warning",  headline: "The study that changed everything — for the wrong reasons.",
-    body: "The WHI trial is stopped early. Global headlines declare HRT causes breast cancer. Use collapses by 80%. The absolute risk — 4 cases per 1,000 women over 5 years — is rarely mentioned. Results are applied to all HRT, including body-identical hormones that were never studied." },
-  { year: "2003", tone: "warning",  headline: "Black-box warnings applied.",
-    body: "The FDA applies class-wide black-box warnings to all HRT products — including body-identical hormones that carry no such evidence of harm. A generation of women is denied treatment based on findings that do not apply to them." },
-  { year: "2008", tone: "turning",  headline: "The pivotal French finding.",
-    body: "The E3N cohort study finds that body-identical progesterone does not increase breast cancer risk — unlike the synthetic progestin used in WHI. The problem in 2002 was never oestrogen — it was the specific synthetic used." },
-  { year: "2013", tone: "turning",  headline: "Oestrogen alone reduces breast cancer risk.",
-    body: "A decade of WHI follow-up confirms estrogen-only HRT significantly reduces breast cancer incidence and mortality. This directly contradicts the 2002 message — but it takes ten years to reach the public." },
-  { year: "2015", tone: "turning",  headline: "UK NICE recommends body-identical HRT.",
-    body: "Body-identical HRT — estradiol patches or gel with micronised progesterone — becomes the recommended approach. HRT prescriptions in England begin rising from this point." },
-  { year: "Nov 2025", tone: "today", headline: "FDA removes the warnings.",
-    body: "The US HHS and FDA announce the removal of broad black-box warnings. The FDA states: women who start HRT within 10 years of menopause may reduce cardiovascular risk by up to 50%, Alzheimer's risk by 35%, and fracture risk by 50–60%." },
-  { year: "Aug 2026", tone: "today", headline: "Meer as Warm Gloede airs. JoinMandi.com launches.",
-    body: "Every South African woman deserves this history — in her language." },
+const TIMELINE: Array<{ id: string; year: string; tone: "neutral" | "warning" | "turning" | "today" }> = [
+  { id: "t1992", year: "1992",     tone: "neutral" },
+  { id: "t2002", year: "2002",     tone: "warning" },
+  { id: "t2003", year: "2003",     tone: "warning" },
+  { id: "t2008", year: "2008",     tone: "turning" },
+  { id: "t2013", year: "2013",     tone: "turning" },
+  { id: "t2015", year: "2015",     tone: "turning" },
+  { id: "t2025", year: "Nov 2025", tone: "today" },
+  { id: "t2026", year: "Aug 2026", tone: "today" },
 ];
 
 const SOURCES = [
@@ -40,6 +35,8 @@ const toneStyles: Record<typeof TIMELINE[number]["tone"], string> = {
 };
 
 export default function TruthAboutHRTPage() {
+  const { t } = useTranslation("common");
+
   return (
     <>
       <NavBar />
@@ -47,79 +44,96 @@ export default function TruthAboutHRTPage() {
         {/* Hero */}
         <section className="relative overflow-hidden bg-mandi-gradient-dusk">
           <div className="max-w-4xl mx-auto px-6 py-20 relative z-10 text-center">
-            <p className="text-golden text-[11px] uppercase tracking-[0.25em] font-semibold mb-4">
-              Education
-            </p>
-            <h1 className="font-display text-5xl sm:text-6xl text-cream leading-[1.05]">
-              The Truth About HRT
-            </h1>
-            <p className="text-cream/90 text-lg mt-6 max-w-2xl mx-auto leading-relaxed">
-              Fear travelled the world in 24 hours in 2002. The correction has taken 23 years.
-              Here is what every woman deserves to know — in plain English.
-            </p>
+            <Reveal>
+              <p className="text-golden text-[11px] uppercase tracking-[0.25em] font-semibold mb-4">
+                {t("hrt.eyebrow")}
+              </p>
+            </Reveal>
+            <Reveal delay={110}>
+              <h1 className="font-display text-5xl sm:text-6xl text-cream leading-[1.05]">
+                {t("hrt.title")}
+              </h1>
+            </Reveal>
+            <Reveal delay={210}>
+              <p className="text-cream/90 text-lg mt-6 max-w-2xl mx-auto leading-relaxed">
+                {t("hrt.subhead")}
+              </p>
+            </Reveal>
           </div>
         </section>
 
         {/* Synthetic vs Body-identical */}
         <section className="max-w-4xl mx-auto px-6 py-16">
-          <h2 className="font-display text-3xl text-brown text-center mb-4">
-            Synthetic vs Body-identical
-          </h2>
-          <p className="text-brown/70 text-center max-w-xl mx-auto mb-10 leading-relaxed">
-            The most important thing women do not know is that not all HRT is the same. This distinction is
-            the key to everything that follows.
-          </p>
+          <Reveal>
+            <h2 className="font-display text-3xl text-brown text-center mb-4">
+              {t("hrt.compare.heading")}
+            </h2>
+            <p className="text-brown/70 text-center max-w-xl mx-auto mb-10 leading-relaxed">
+              {t("hrt.compare.intro")}
+            </p>
+          </Reveal>
           <div className="grid md:grid-cols-2 gap-5">
-            <div className="bg-brown text-cream rounded-3xl p-7 shadow-warm-lg">
-              <p className="text-golden text-[11px] uppercase tracking-[0.2em] font-semibold mb-3">
-                Synthetic / non-human HRT
-              </p>
-              <h3 className="font-display text-2xl mb-4">Premarin · Provera</h3>
-              <p className="text-cream/85 text-sm leading-relaxed mb-3">
-                Premarin — made from horse urine — contains estrogens the human body does not naturally produce.
-                Provera (MPA) — a synthetic progestin. Not the same molecule as human progesterone.
-              </p>
-              <p className="text-golden text-sm font-semibold">
-                This is what the 2002 WHI study tested.
-              </p>
-            </div>
-            <div className="bg-golden text-brown rounded-3xl p-7 shadow-warm-lg">
-              <p className="text-terra text-[11px] uppercase tracking-[0.2em] font-semibold mb-3">
-                Body-identical HRT
-              </p>
-              <h3 className="font-display text-2xl mb-4">Estradiol · Micronised Progesterone</h3>
-              <p className="text-brown/85 text-sm leading-relaxed mb-3">
-                Estradiol (17β-estradiol) — derived from plants. Chemically identical to human oestrogen.
-                Micronised progesterone (Prometrium / Utrogestan) — identical to human progesterone.
-              </p>
-              <p className="text-terra text-sm font-semibold">
-                This is the recommended approach today.
-              </p>
-            </div>
+            <Reveal>
+              <div className="h-full bg-brown text-cream rounded-3xl p-7 shadow-warm-lg transition-transform duration-300 hover:-translate-y-1">
+                <p className="text-golden text-[11px] uppercase tracking-[0.2em] font-semibold mb-3">
+                  {t("hrt.compare.synthetic.label")}
+                </p>
+                <h3 className="font-display text-2xl mb-4">{t("hrt.compare.synthetic.name")}</h3>
+                <p className="text-cream/85 text-sm leading-relaxed mb-3">
+                  {t("hrt.compare.synthetic.body")}
+                </p>
+                <p className="text-golden text-sm font-semibold">
+                  {t("hrt.compare.synthetic.note")}
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={130}>
+              <div className="h-full bg-golden text-brown rounded-3xl p-7 shadow-warm-lg transition-transform duration-300 hover:-translate-y-1">
+                <p className="text-terra text-[11px] uppercase tracking-[0.2em] font-semibold mb-3">
+                  {t("hrt.compare.bodyIdentical.label")}
+                </p>
+                <h3 className="font-display text-2xl mb-4">{t("hrt.compare.bodyIdentical.name")}</h3>
+                <p className="text-brown/85 text-sm leading-relaxed mb-3">
+                  {t("hrt.compare.bodyIdentical.body")}
+                </p>
+                <p className="text-terra text-sm font-semibold">
+                  {t("hrt.compare.bodyIdentical.note")}
+                </p>
+              </div>
+            </Reveal>
           </div>
         </section>
 
         {/* Timeline */}
         <section className="bg-cream-deep/40 py-20">
           <div className="max-w-3xl mx-auto px-6">
-            <h2 className="font-display text-3xl text-brown text-center mb-3">
-              1992 — Today
-            </h2>
-            <p className="text-brown/70 text-center mb-12 max-w-xl mx-auto">
-              A timeline of what actually happened — and what is changing now.
-            </p>
+            <Reveal>
+              <h2 className="font-display text-3xl text-brown text-center mb-3">
+                {t("hrt.timeline.heading")}
+              </h2>
+              <p className="text-brown/70 text-center mb-12 max-w-xl mx-auto">
+                {t("hrt.timeline.intro")}
+              </p>
+            </Reveal>
             <div className="space-y-4">
               {TIMELINE.map((e, i) => (
-                <article
-                  key={e.year + i}
-                  className={`rounded-3xl border-l-4 border-coral px-7 py-6 shadow-warm ${toneStyles[e.tone]}`}
+                <Reveal
+                  as="article"
+                  key={e.id}
+                  variant="stitch"
+                  delay={Math.min(i, 6) * 70}
+                  className={`rounded-3xl border-l-4 border-dashed border-coral px-7 py-6 shadow-warm ${toneStyles[e.tone]}`}
                 >
                   <div className="flex items-baseline gap-5 mb-2 flex-wrap">
                     <span className="font-display text-3xl text-terra">{e.year}</span>
-                    <h3 className="font-semibold text-brown text-base leading-snug">{e.headline}</h3>
+                    <h3 className="font-semibold text-brown text-base leading-snug">
+                      {t(`hrt.timeline.${e.id}.headline`)}
+                    </h3>
                   </div>
-                  <p className="text-brown/80 text-sm leading-relaxed">{e.body}</p>
-                </article>
+                  <p className="text-brown/80 text-sm leading-relaxed">
+                    {t(`hrt.timeline.${e.id}.body`)}
+                  </p>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -127,42 +141,47 @@ export default function TruthAboutHRTPage() {
 
         {/* Sources */}
         <section className="max-w-3xl mx-auto px-6 py-16">
-          <h2 className="font-display text-2xl text-brown mb-4">Sources</h2>
-          <ul className="space-y-2 text-sm text-brown/70 list-none border-l-2 border-coral/40 pl-5">
-            {SOURCES.map((s, i) => (
-              <li key={i}>
-                <span className="text-terra font-semibold mr-2">[{i + 1}]</span>
-                {s}
-              </li>
-            ))}
-          </ul>
-          <p className="text-xs text-brown/50 italic mt-6 leading-relaxed">
-            Educational information only — not medical advice. Discuss your individual circumstances with a qualified
-            healthcare provider.
-          </p>
+          <Reveal>
+            <h2 className="font-display text-2xl text-brown mb-4">{t("hrt.sources.heading")}</h2>
+            <ul className="space-y-2 text-sm text-brown/70 list-none border-l-2 border-dashed border-coral/40 pl-5">
+              {SOURCES.map((s, i) => (
+                <li key={i}>
+                  <span className="text-terra font-semibold mr-2">[{i + 1}]</span>
+                  {s}
+                </li>
+              ))}
+            </ul>
+            <p className="text-xs text-brown/50 italic mt-6 leading-relaxed">
+              {t("hrt.sources.disclaimer")}
+            </p>
+          </Reveal>
         </section>
+
+        <div className="max-w-3xl mx-auto px-6">
+          <StitchDivider tone="gold" />
+        </div>
 
         {/* CTA */}
         <section className="bg-mandi-gradient py-16">
           <div className="max-w-2xl mx-auto px-6 text-center">
-            <h2 className="font-display text-3xl text-cream mb-4">Where does this leave you?</h2>
-            <p className="text-cream/90 mb-8 max-w-xl mx-auto">
-              You deserve honest answers in your own language from practitioners who understand hormonal health.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link
-                href="/questionnaire"
-                className="bg-cream text-terra font-semibold rounded-full px-7 py-4 hover:bg-golden transition-colors shadow-warm-lg"
-              >
-                Take the questionnaire →
-              </Link>
-              <Link
-                href="/find-a-doctor"
-                className="bg-transparent border-2 border-cream text-cream font-semibold rounded-full px-7 py-4 hover:bg-cream hover:text-terra transition-colors"
-              >
-                Find a doctor
-              </Link>
-            </div>
+            <Reveal>
+              <h2 className="font-display text-3xl text-cream mb-4">{t("hrt.cta.heading")}</h2>
+              <p className="text-cream/90 mb-8 max-w-xl mx-auto">{t("hrt.cta.body")}</p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Link
+                  href="/questionnaire"
+                  className="bg-cream text-terra font-semibold rounded-full px-7 py-4 hover:bg-golden transition-colors shadow-warm-lg"
+                >
+                  {t("hrt.cta.questionnaire")} →
+                </Link>
+                <Link
+                  href="/find-a-doctor"
+                  className="bg-transparent border-2 border-cream text-cream font-semibold rounded-full px-7 py-4 hover:bg-cream hover:text-terra transition-colors"
+                >
+                  {t("hrt.cta.doctor")}
+                </Link>
+              </div>
+            </Reveal>
           </div>
         </section>
       </main>

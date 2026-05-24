@@ -36,16 +36,26 @@ create table if not exists sessions (
   popia_consent_at   timestamptz
 );
 
--- users — mirror of auth.users with role + language preference
+-- users — mirror of auth.users with role + language preference.
+-- 'superadmin' is the top tier — only superadmins can mint/demote admins
+-- or other superadmins. is_admin() (below) treats superadmin as a
+-- superset of admin so every admin-gated RLS policy applies automatically.
 create table if not exists users (
   id             uuid primary key references auth.users(id) on delete cascade,
   email          text,
   language_code  text references languages(code),
   role           text not null default 'member'
-                   check (role in ('member','clinician','admin')),
+                   check (role in ('member','clinician','admin','superadmin')),
   created_at     timestamptz default now(),
   updated_at     timestamptz default now()
 );
+-- If you previously ran an earlier version of this schema, drop the old
+-- check constraint and re-add the wider one (idempotent / safe to re-run):
+do $$ begin
+  alter table public.users drop constraint if exists users_role_check;
+  alter table public.users add constraint users_role_check
+    check (role in ('member','clinician','admin','superadmin'));
+end $$;
 
 -- questionnaire_responses — the 56-question consumer symptom questionnaire
 create table if not exists questionnaire_responses (
@@ -185,18 +195,27 @@ create table if not exists checkins (
   completed_at          timestamptz
 );
 
--- symptom_logs — My Journey daily tracker
+-- symptom_logs — My Journey daily tracker.
+-- Phase 21: dropped the CHECK constraint on `domain`. The column now
+-- accepts both legacy questionnaire-domain values (mind-cognition,
+-- mood, nervous-system, body, urogenital, other, quality-of-life) AND
+-- the new /my-journey tracker symptom values (hot-flushes, sleep,
+-- mood, brain-fog, vaginal-discomfort, joint-pain, anxiety, energy).
+-- App-layer validates; no enum constraint needed.
 create table if not exists symptom_logs (
   id           uuid primary key default gen_random_uuid(),
   user_id      uuid references auth.users(id) on delete cascade,
   logged_date  date not null,
-  domain       text check (domain in (
-                  'mind-cognition','mood','nervous-system','body',
-                  'urogenital','other','quality-of-life')),
+  domain       text,
   score        integer check (score between 0 and 3),
   created_at   timestamptz default now(),
   unique (user_id, logged_date, domain)
 );
+-- Drop the legacy CHECK constraint from earlier schema versions
+-- (idempotent — safe to re-run).
+do $$ begin
+  alter table public.symptom_logs drop constraint if exists symptom_logs_domain_check;
+end $$;
 
 -- clinical_screenings — MenoScreen by Mandi (clinician-administered).
 -- POPIA: stores NO patient PII. `patient_reference` is an opaque clinician label.
@@ -238,14 +257,33 @@ end;
 $$;
 
 -- Role helpers — used by RLS. is_admin keeps its name so existing policy
--- references stay valid; its body now checks the role column.
+-- references stay valid; its body checks for BOTH admin and superadmin so
+-- superadmin is a strict superset of admin and inherits every admin RLS
+-- grant automatically (no policy rewrites needed).
 create or replace function public.is_admin()
 returns boolean
 language sql
 security definer
 set search_path = public
 as $$
-  select coalesce((select role = 'admin' from public.users where id = auth.uid()), false);
+  select coalesce(
+    (select role in ('admin','superadmin') from public.users where id = auth.uid()),
+    false
+  );
+$$;
+
+-- Strict superadmin check — used by the role-protection trigger and the
+-- app-layer requireSuperadmin guard for privileged-tier mutations.
+create or replace function public.is_superadmin()
+returns boolean
+language sql
+security definer
+set search_path = public
+as $$
+  select coalesce(
+    (select role = 'superadmin' from public.users where id = auth.uid()),
+    false
+  );
 $$;
 
 create or replace function public.is_clinician()
@@ -257,13 +295,19 @@ as $$
   select coalesce((select role = 'clinician' from public.users where id = auth.uid()), false);
 $$;
 
-grant execute on function public.is_admin()     to anon, authenticated;
-grant execute on function public.is_clinician() to anon, authenticated;
+grant execute on function public.is_admin()      to anon, authenticated;
+grant execute on function public.is_superadmin() to anon, authenticated;
+grant execute on function public.is_clinician()  to anon, authenticated;
 
--- Prevents privilege escalation: an authenticated non-admin cannot change
--- their own `role` (the users_update_own policy otherwise would allow it).
--- A null auth.uid() (SQL editor / service_role) is allowed, so the admin
--- bootstrap UPDATE still works.
+-- Prevents privilege escalation, three layers:
+--  1) Authenticated non-admin sessions cannot change role at all.
+--  2) Setting role TO admin or superadmin requires a superadmin session
+--     (i.e. admins cannot mint admins or superadmins).
+--  3) Demoting AWAY from superadmin requires a superadmin session, AND
+--     refuses to demote the LAST remaining superadmin (last-line lock-out
+--     safeguard).
+-- A null auth.uid() (SQL editor / service_role) bypasses all three — the
+-- bootstrap UPDATE and the service-role invite path must keep working.
 create or replace function public.protect_user_role()
 returns trigger
 language plpgsql
@@ -271,14 +315,39 @@ security definer
 set search_path = public
 as $$
 begin
-  if new.role is distinct from old.role
-     and auth.uid() is not null
-     and not public.is_admin() then
-    new.role := old.role;
+  if new.role is distinct from old.role and auth.uid() is not null then
+    -- (1) Non-admin sessions: revert any role change.
+    if not public.is_admin() then
+      new.role := old.role;
+      return new;
+    end if;
+    -- (2) Only superadmin can mint admin or superadmin.
+    if new.role in ('admin','superadmin') and not public.is_superadmin() then
+      new.role := old.role;
+      return new;
+    end if;
+    -- (3a) Only superadmin can demote a superadmin.
+    if old.role = 'superadmin' and not public.is_superadmin() then
+      new.role := old.role;
+      return new;
+    end if;
+    -- (3b) Refuse to demote the last superadmin.
+    if old.role = 'superadmin' and new.role <> 'superadmin'
+       and (select count(*) from public.users where role = 'superadmin') <= 1 then
+      new.role := old.role;
+      return new;
+    end if;
   end if;
   return new;
 end;
 $$;
+
+-- Bootstrap (one-time, in the Supabase SQL editor — null auth.uid() in the
+-- editor bypasses the trigger above):
+--   update public.users set role = 'superadmin'
+--   where email = 'you@example.com';
+-- Then reload /admin/users — the Superadmin badge appears and the role
+-- dropdown for other users surfaces admin + superadmin options.
 
 -- ═════════════════════════════════════════════════════════════
 -- 4. Triggers
@@ -509,6 +578,121 @@ create policy "doctor_photos_admin_write" on storage.objects
   with check (bucket_id = 'doctor-photos' and public.is_admin());
 create policy "doctor_photos_public_read" on storage.objects
   for select using (bucket_id = 'doctor-photos');
+
+-- ═════════════════════════════════════════════════════════════
+-- 9. engagement_events (Phase 8 — internal CRM)
+--
+-- Tracks UI interactions for the admin CRM dashboard's funnel/top-content/
+-- top-events views. Anonymous + signed-in supported.
+--
+-- POPIA design:
+--   • user_id is ON DELETE SET NULL — user deletion preserves aggregate
+--     counts without preserving identity.
+--   • meta jsonb is restricted at the application layer to a non-PII
+--     whitelist (lang, score_band, persona, format, province, source) —
+--     never emails / names / addresses.
+--   • RLS gates SELECT to admins only; INSERT is open (anonymous tracking).
+-- ═════════════════════════════════════════════════════════════
+
+create table if not exists engagement_events (
+  id          bigserial primary key,
+  created_at  timestamptz not null default now(),
+  event_type  text not null check (event_type in (
+    'doctor_view',  'doctor_book_click',
+    'content_view', 'content_link_click',
+    'event_view',   'event_rsvp_click'
+  )),
+  user_id     uuid references auth.users(id) on delete set null,
+  session_id  text,
+  target_id   text,
+  meta        jsonb default '{}'::jsonb
+);
+
+create index if not exists engagement_events_type_created_idx
+  on engagement_events (event_type, created_at desc);
+create index if not exists engagement_events_user_created_idx
+  on engagement_events (user_id, created_at desc);
+create index if not exists engagement_events_target_idx
+  on engagement_events (target_id);
+
+alter table engagement_events enable row level security;
+
+drop policy if exists "engagement_insert_any" on engagement_events;
+create policy "engagement_insert_any" on engagement_events
+  for insert with check (true);
+
+drop policy if exists "engagement_admin_read" on engagement_events;
+create policy "engagement_admin_read" on engagement_events
+  for select using (public.is_admin());
+
+-- ═════════════════════════════════════════════════════════════
+-- 10. admin_audit_log + is_admin_aal2 (Phase 9 — admin auth hardening)
+--
+-- AAL2 = the JWT's `aal` claim is 'aal2', i.e. the admin completed an MFA
+-- challenge in the current session. Used to gate the most sensitive admin
+-- paths (role changes, user deletion, audit-log read).
+--
+-- Insert path is service-role only (no INSERT policy on admin_audit_log) —
+-- server actions write via the service client after the app-layer guard.
+-- ═════════════════════════════════════════════════════════════
+
+create or replace function public.is_admin_aal2()
+returns boolean
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select coalesce(
+    (select role in ('admin','superadmin') from public.users where id = auth.uid())
+    and coalesce(auth.jwt() ->> 'aal', 'aal1') = 'aal2',
+    false
+  );
+$$;
+grant execute on function public.is_admin_aal2() to anon, authenticated;
+
+-- Strict superadmin + AAL2 gate. Used by RLS on the audit log (Phase 13):
+-- only superadmins (who have ALSO stepped up via TOTP, when MFA is on at
+-- the project level) can read the audit trail. Defence in depth alongside
+-- the requireSuperadmin app-layer guard.
+create or replace function public.is_superadmin_aal2()
+returns boolean
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select coalesce(
+    (select role = 'superadmin' from public.users where id = auth.uid())
+    and coalesce(auth.jwt() ->> 'aal', 'aal1') = 'aal2',
+    false
+  );
+$$;
+grant execute on function public.is_superadmin_aal2() to anon, authenticated;
+
+create table if not exists admin_audit_log (
+  id          bigserial primary key,
+  created_at  timestamptz not null default now(),
+  actor_id    uuid references auth.users(id) on delete set null,
+  actor_email text,
+  action      text not null,
+  target_id   text,
+  meta        jsonb default '{}'::jsonb
+);
+create index if not exists admin_audit_log_created_idx
+  on admin_audit_log (created_at desc);
+create index if not exists admin_audit_log_actor_idx
+  on admin_audit_log (actor_id);
+
+alter table admin_audit_log enable row level security;
+
+-- Phase 13: audit log is superadmin-only. Drop the older admin-tier policy
+-- (idempotent re-run safe) and re-grant SELECT through is_superadmin_aal2.
+drop policy if exists "audit_admin_read" on admin_audit_log;
+drop policy if exists "audit_superadmin_read" on admin_audit_log;
+create policy "audit_superadmin_read" on admin_audit_log
+  for select using (public.is_superadmin_aal2());
+-- No insert policy — only service-role writes (via server actions).
 
 -- ═════════════════════════════════════════════════════════════
 -- End of schema.

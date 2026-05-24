@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { fetchStories, updateStoryStatus } from "@/server/actions/stories";
+import CreateStoryModal from "@/components/admin/CreateStoryModal";
+import Button from "@/components/ui/Button";
 import type { StoryRow as Story, StoryStatus } from "@/lib/types/database";
 
 const STATUS_LABEL: Record<StoryStatus, string> = {
@@ -22,10 +24,19 @@ export default function AdminStoriesPage() {
   const [status, setStatus] = useState<"all" | StoryStatus>("pending");
   const [lang, setLang] = useState<string>("all");
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [createOpen, setCreateOpen] = useState(false);
+  const [toast, setToast] = useState<string | null>(null);
 
   const load = async () => {
     setStories(await fetchStories());
   };
+
+  // Auto-dismiss the toast after 5s.
+  useEffect(() => {
+    if (!toast) return;
+    const t = setTimeout(() => setToast(null), 5000);
+    return () => clearTimeout(t);
+  }, [toast]);
 
   useEffect(() => {
     void load();
@@ -47,7 +58,12 @@ export default function AdminStoriesPage() {
 
   return (
     <div className="px-6 sm:px-10 py-10 max-w-6xl mx-auto">
-      <Header />
+      <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
+        <Header />
+        <Button onClick={() => setCreateOpen(true)} className="bg-terra">
+          + New story
+        </Button>
+      </div>
 
       {/* Filters */}
       <div className="flex flex-wrap gap-3 mb-6">
@@ -90,13 +106,38 @@ export default function AdminStoriesPage() {
           </table>
         )}
       </div>
+
+      {/* Create story modal */}
+      <CreateStoryModal
+        open={createOpen}
+        onClose={() => setCreateOpen(false)}
+        onCreated={() => {
+          setCreateOpen(false);
+          setToast("Story added to the pending queue.");
+          void load();
+        }}
+      />
+
+      {/* Toast */}
+      <AnimatePresence>
+        {toast && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className="fixed bottom-6 right-6 z-50 bg-brown text-cream rounded-2xl shadow-warm-xl px-5 py-3 text-sm font-medium max-w-sm"
+          >
+            {toast}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
 
 function Header() {
   return (
-    <header className="mb-8">
+    <header>
       <p className="text-[11px] uppercase tracking-[0.25em] text-terra font-semibold mb-2">Moderation</p>
       <h1 className="font-display text-4xl text-brown">Stories</h1>
       <p className="text-brown/65 mt-2 max-w-xl">

@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import {
   questions,
@@ -10,19 +10,41 @@ import {
   type QuestionDomain,
 } from "@/lib/domain/questions";
 import { calculateScore } from "@/lib/domain/scoring";
+import { buildQuilt } from "@/lib/domain/quilt";
 import { submitQuestionnaire } from "@/server/actions/questionnaire";
+import { loadProgress, saveProgress, clearProgress } from "@/lib/questionnaire-progress";
 import QuestionScreen from "@/components/ui/QuestionScreen";
 import ScaleInput from "@/components/ui/ScaleInput";
 import DomainTransition from "@/components/ui/DomainTransition";
 import TransitionScreen from "@/components/ui/TransitionScreen";
+import Quilt from "@/components/ui/Quilt";
 import Button from "@/components/ui/Button";
 
 const NA_SENTINEL = "__na__";
+
+const SINGLE_SELECT = new Set<string>([
+  "scale",
+  "scale-optional",
+  "multiple-choice",
+  "select",
+  "yes-no",
+  "yes-no-notsure",
+]);
 
 type MeasurementAnswer = { value: number; unit: string };
 
 function isMeasurement(v: unknown): v is MeasurementAnswer {
   return !!v && typeof v === "object" && "value" in v && "unit" in v;
+}
+
+function isAnsweredFor(q: Question, v: unknown): boolean {
+  if (v === undefined || v === null) return false;
+  if (q.type === "measurement") return isMeasurement(v) && v.value > 0;
+  if (q.type === "multi-select") return Array.isArray(v) && v.length > 0;
+  if (q.type === "scale-optional") return typeof v === "number" || v === NA_SENTINEL;
+  if (q.type === "scale") return typeof v === "number";
+  if (q.type === "number") return typeof v === "number" && v > 0;
+  return true;
 }
 
 async function persistResponse(
@@ -44,110 +66,181 @@ async function persistResponse(
   }
 }
 
+type Phase = "loading" | "resume" | "question" | "final";
+
 export default function QuestionnairePage() {
   const router = useRouter();
   const { t } = useTranslation("common");
+
+  const [phase, setPhase] = useState<Phase>("loading");
   const [answers, setAnswers] = useState<Record<number, unknown>>({});
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState<1 | -1>(1);
-  const [domainTransitionFrom, setDomainTransitionFrom] =
-    useState<QuestionDomain | null>(null);
-  const [showFinalTransition, setShowFinalTransition] = useState(false);
+  const [domainTransition, setDomainTransition] = useState<{
+    completedDomain: QuestionDomain;
+    nextDomain: QuestionDomain;
+  } | null>(null);
+  const [expanded, setExpanded] = useState(false);
+  const [affirmation, setAffirmation] = useState<string | null>(null);
+  const savedRef = useRef<ReturnType<typeof loadProgress>>(null);
 
   const visibleQuestions = useMemo<Question[]>(
     () => questions.filter((q) => !q.skipCondition || !q.skipCondition(answers)),
     [answers],
   );
+  const patches = useMemo(() => buildQuilt(visibleQuestions), [visibleQuestions]);
+  const goldenId = useMemo(() => patches.find((p) => p.isGolden)?.questionId, [patches]);
 
   const total = visibleQuestions.length;
-  const current = visibleQuestions[currentIndex];
+  const current = visibleQuestions[Math.min(currentIndex, total - 1)];
   const nextQuestion = visibleQuestions[currentIndex + 1];
+  const answeredCount = visibleQuestions.filter((q) => isAnsweredFor(q, answers[q.id])).length;
 
-  if (!current && !showFinalTransition) {
-    return null;
-  }
+  const goNextRef = useRef<() => void>(() => {});
+  const advanceTimer = useRef<number | undefined>(undefined);
 
-  const currentAnswer = current ? answers[current.id] : undefined;
+  // ── Load saved progress on mount ─────────────────────────────
+  useEffect(() => {
+    const saved = loadProgress();
+    savedRef.current = saved;
+    setPhase(saved ? "resume" : "question");
+  }, []);
 
-  const setAnswer = (value: unknown) => {
-    if (!current) return;
-    setAnswers((prev) => ({ ...prev, [current.id]: value }));
-  };
+  // ── Persist progress while answering ─────────────────────────
+  useEffect(() => {
+    if (phase === "question") saveProgress(answers, currentIndex);
+  }, [answers, currentIndex, phase]);
 
-  const isAnswered = (() => {
-    if (!current) return false;
-    const v = currentAnswer;
-    if (v === undefined || v === null) return false;
-    if (current.type === "measurement") {
-      return isMeasurement(v) && v.value > 0;
-    }
-    if (current.type === "multi-select") {
-      return Array.isArray(v) && v.length > 0;
-    }
-    if (current.type === "scale-optional") {
-      return typeof v === "number" || v === NA_SENTINEL;
-    }
-    return true;
-  })();
+  // ── Affirmation toast auto-dismiss ───────────────────────────
+  useEffect(() => {
+    if (!affirmation) return;
+    const timer = window.setTimeout(() => setAffirmation(null), 3600);
+    return () => window.clearTimeout(timer);
+  }, [affirmation]);
 
   const goNext = () => {
-    if (!current) return;
-    // If this is the last visible question — show transition and route
+    window.clearTimeout(advanceTimer.current);
+    const q = visibleQuestions[currentIndex];
+    if (!q || !isAnsweredFor(q, answers[q.id])) return;
+
     if (currentIndex >= total - 1) {
       const result = calculateScore(answers);
       if (typeof window !== "undefined") {
         localStorage.setItem("mandi-score", JSON.stringify(result));
         localStorage.setItem("mandi-answers", JSON.stringify(answers));
       }
-      // Persist to Supabase for logged-in users (fire-and-forget)
+      clearProgress();
       void persistResponse(answers, result);
-      setShowFinalTransition(true);
+      setPhase("final");
       return;
     }
 
-    // If next question is in a new domain — show domain transition first
-    if (nextQuestion && nextQuestion.domain !== current.domain) {
-      setDomainTransitionFrom(nextQuestion.domain);
+    if (nextQuestion && nextQuestion.domain !== q.domain) {
+      setDomainTransition({ completedDomain: q.domain, nextDomain: nextQuestion.domain });
       return;
     }
 
-    setDirection(1);
     setCurrentIndex((i) => i + 1);
   };
+  goNextRef.current = goNext;
 
   const goBack = () => {
+    window.clearTimeout(advanceTimer.current);
     if (currentIndex === 0) return;
-    setDirection(-1);
     setCurrentIndex((i) => i - 1);
   };
 
+  const setAnswer = (value: unknown) => {
+    const q = visibleQuestions[currentIndex];
+    if (!q) return;
+    setAnswers((prev) => ({ ...prev, [q.id]: value }));
+    if (q.id === goldenId) {
+      const n = 1 + Math.floor(Math.random() * 4);
+      setAffirmation(t(`questionnaire.affirmations.${n}`));
+    }
+    if (SINGLE_SELECT.has(q.type)) {
+      window.clearTimeout(advanceTimer.current);
+      advanceTimer.current = window.setTimeout(() => goNextRef.current(), 430);
+    }
+  };
+
   const onDomainTransitionDone = () => {
-    setDomainTransitionFrom(null);
-    setDirection(1);
+    setDomainTransition(null);
     setCurrentIndex((i) => i + 1);
   };
 
-  const onFinalTransitionDone = () => {
-    router.push("/roadmap");
-  };
+  const currentAnswer = current ? answers[current.id] : undefined;
+  const isAnswered = current ? isAnsweredFor(current, currentAnswer) : false;
 
-  // ── RENDER ────────────────────────────────────────────────
+  // ── Render ───────────────────────────────────────────────────
+  if (phase === "loading") return null;
 
-  if (showFinalTransition) {
-    return <TransitionScreen onDone={onFinalTransitionDone} />;
+  if (phase === "resume") {
+    const saved = savedRef.current;
+    const count = saved ? Object.keys(saved.answers).length : 0;
+    return (
+      <main className="relative min-h-screen overflow-hidden bg-mandi-gradient-soft flex items-center justify-center px-5 py-12">
+        <div className="absolute inset-0 bg-cream/45" />
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="relative z-10 w-full max-w-md rounded-5xl border border-cream-deep/60 bg-cream-soft/95 p-8 sm:p-10 text-center shadow-warm-xl"
+        >
+          <p className="text-[11px] uppercase tracking-[0.28em] text-terra font-semibold">
+            {t("landing.eyebrow").split("·")[0].trim()}
+          </p>
+          <h1 className="mt-3 font-display text-3xl text-brown">
+            {t("questionnaire.resumeTitle")}
+          </h1>
+          <p className="mt-3 text-sm text-brown/70 leading-relaxed">
+            {t("questionnaire.resumeBody", { progress: `${count} of ${total} patches` })}
+          </p>
+          <Button
+            variant="primary"
+            size="lg"
+            className="w-full mt-7"
+            onClick={() => {
+              if (saved) {
+                setAnswers(saved.answers);
+                setCurrentIndex(saved.currentIndex);
+              }
+              setPhase("question");
+            }}
+          >
+            {t("questionnaire.resumeContinue")} →
+          </Button>
+          <button
+            onClick={() => {
+              clearProgress();
+              setPhase("question");
+            }}
+            className="mt-3 text-sm font-medium text-brown/55 hover:text-terra"
+          >
+            {t("questionnaire.resumeFresh")}
+          </button>
+        </motion.div>
+      </main>
+    );
   }
+
+  if (phase === "final") {
+    return <TransitionScreen patches={patches} onDone={() => router.push("/roadmap")} />;
+  }
+
+  if (!current) return null;
 
   return (
     <>
-      <AnimatePresence>
-        {domainTransitionFrom && (
-          <DomainTransition
-            key={`domain-${domainTransitionFrom}`}
-            domain={domainTransitionFrom}
-            onDone={onDomainTransitionDone}
-          />
-        )}
-      </AnimatePresence>
+      {domainTransition && (
+        <DomainTransition
+          key={`domain-${domainTransition.nextDomain}`}
+          completedDomain={domainTransition.completedDomain}
+          nextDomain={domainTransition.nextDomain}
+          patches={patches}
+          answeredCount={answeredCount}
+          onDone={onDomainTransitionDone}
+        />
+      )}
 
       <QuestionScreen
         current={currentIndex + 1}
@@ -155,17 +248,11 @@ export default function QuestionnairePage() {
         domain={current.domain}
         onBack={goBack}
         showBack={currentIndex > 0}
+        patches={patches}
+        answeredCount={answeredCount}
+        onQuiltTap={() => setExpanded(true)}
       >
-        <AnimatePresence mode="wait" custom={direction}>
-          <motion.div
-            key={current.id}
-            custom={direction}
-            initial={{ opacity: 0, x: direction * 60, y: currentIndex === 0 ? 16 : 0 }}
-            animate={{ opacity: 1, x: 0, y: 0 }}
-            exit={{ opacity: 0, x: direction * -60 }}
-            transition={{ duration: currentIndex === 0 ? 0.5 : 0.35, ease: "easeInOut" }}
-            className="flex flex-col gap-6"
-          >
+        <div key={current.id} className="flex flex-col gap-6 animate-rise-in">
             <div className="text-center">
               <h2 className="font-display text-2xl sm:text-3xl text-brown leading-tight px-2">
                 {t(`questionnaire.${current.textKey}`)}
@@ -177,12 +264,7 @@ export default function QuestionnairePage() {
               )}
             </div>
 
-            {renderInput(
-              current,
-              currentAnswer,
-              setAnswer,
-              t,
-            )}
+            {renderInput(current, currentAnswer, setAnswer, t)}
 
             <div className="flex flex-col gap-3 mt-2">
               <Button
@@ -195,9 +277,44 @@ export default function QuestionnairePage() {
                 {currentIndex < total - 1 ? t("questionnaire.next") : t("questionnaire.finish")}
               </Button>
             </div>
-          </motion.div>
-        </AnimatePresence>
+        </div>
       </QuestionScreen>
+
+      {/* Easter egg — expand the blanket */}
+      {expanded && (
+        <div
+          onClick={() => setExpanded(false)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-brown/70 backdrop-blur-sm px-6 animate-fade-in"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-lg rounded-4xl bg-cream-soft p-6 shadow-warm-xl animate-rise-in"
+          >
+            <p className="text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-terra">
+              {t("questionnaire.quiltHeading")}
+            </p>
+            <h3 className="mt-1 text-center font-display text-xl text-brown">
+              {t("questionnaire.patchesStitched", { done: answeredCount, total }).split("·")[0].trim()}
+            </h3>
+            <div className="mt-5">
+              <Quilt patches={patches} answered={answeredCount} variant="full" className="mx-auto" />
+            </div>
+            <button
+              onClick={() => setExpanded(false)}
+              className="mx-auto mt-6 block rounded-full bg-terra px-9 py-2.5 text-sm font-semibold text-cream hover:bg-terra-dark transition-colors"
+            >
+              {t("questionnaire.quiltClose")}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Easter egg — golden patch affirmation */}
+      {affirmation && (
+        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-brown px-5 py-3 text-sm font-medium text-cream shadow-warm-xl animate-rise-in">
+          <span className="text-golden">✦</span> {affirmation}
+        </div>
+      )}
     </>
   );
 }
@@ -313,7 +430,6 @@ function MultiChoice({
   const selectedArr: string[] = Array.isArray(answer) ? (answer as string[]) : [];
 
   const toggle = (value: string) => {
-    // "none" is mutually exclusive with any other condition
     if (value === "none" || value === "not-sure") {
       setAnswer(selectedArr.includes(value) ? [] : [value]);
       return;
