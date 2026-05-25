@@ -40,6 +40,22 @@ export async function countPendingEvents(db: SupabaseClient): Promise<number> {
   return count ?? 0;
 }
 
+/** Phase 23: published events for the public /events page, with their
+ *  event_translations rows joined in. RLS (`events_read_published` +
+ *  `event_tr_read_public`) gates this for anonymous readers — they only
+ *  see status='published' events and only approved translations. We pull
+ *  ALL translations and let the caller pick the language with fallback. */
+export async function listPublicEvents(
+  db: SupabaseClient,
+): Promise<EventWithTranslations[]> {
+  const { data } = await db
+    .from("events")
+    .select("*, event_translations(*)")
+    .eq("status", "published")
+    .order("date", { ascending: true });
+  return (data ?? []) as EventWithTranslations[];
+}
+
 export interface InsertEventInput {
   date: string | null;
   location: string | null;

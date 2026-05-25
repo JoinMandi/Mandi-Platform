@@ -28,6 +28,32 @@ export async function deleteDoctor(db: SupabaseClient, id: string): Promise<void
   await db.from("doctor_profiles").delete().eq("id", id);
 }
 
+/** Phase 23: published doctors for the public /find-a-doctor page. RLS
+ *  `doctor_read_published` already gates this for anonymous readers. */
+export async function listPublicDoctors(db: SupabaseClient): Promise<DoctorRow[]> {
+  const { data } = await db
+    .from("doctor_profiles")
+    .select("*")
+    .eq("published", true)
+    .order("name", { ascending: true });
+  return (data ?? []) as DoctorRow[];
+}
+
+/** Phase 23: single published doctor for the /find-a-doctor/[id] profile.
+ *  Returns null when not found or not published (RLS handles the latter). */
+export async function getPublicDoctorById(
+  db: SupabaseClient,
+  id: string,
+): Promise<DoctorRow | null> {
+  const { data } = await db
+    .from("doctor_profiles")
+    .select("*")
+    .eq("id", id)
+    .eq("published", true)
+    .maybeSingle();
+  return (data as DoctorRow | null) ?? null;
+}
+
 /** Uploads a photo to the `doctor-photos` bucket and returns its public URL. */
 export async function uploadDoctorPhoto(
   db: SupabaseClient,

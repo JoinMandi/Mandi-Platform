@@ -43,3 +43,14 @@ export async function countPublishedClinics(db: SupabaseClient): Promise<number>
     .eq("published", true);
   return count ?? 0;
 }
+
+/** Phase 23: published clinics for the public /find-a-doctor page. RLS
+ *  `clinic_read_published` already gates this for anonymous readers. */
+export async function listPublicClinics(db: SupabaseClient): Promise<ClinicRow[]> {
+  const { data } = await db
+    .from("clinic_directory")
+    .select("*")
+    .eq("published", true)
+    .order("name", { ascending: true });
+  return (data ?? []) as ClinicRow[];
+}

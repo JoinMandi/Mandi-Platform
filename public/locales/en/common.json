@@ -642,29 +642,14 @@
       "inperson": "In-person"
     },
     "free": "Free",
+    "online": "Online",
     "hostedBy": "Hosted by {{host}}",
-    "items": {
-      "screening": {
-        "title": "Meer as Warm Gloede — Community Screening",
-        "description": "The kykNET documentary on the big screen. Community screenings followed by a facilitated conversation — in a venue near you.",
-        "host": "MrsKing Productions"
-      },
-      "askspecialist": {
-        "title": "Ask a Menopause Specialist — Live Online",
-        "description": "A live Q&A with an integrative doctor. Bring your questions about HRT, body-identical hormones, and practical next steps.",
-        "host": "Dr Funeka Bango"
-      },
-      "cafe": {
-        "title": "Mandi Café — Menopause Over Coffee",
-        "description": "No agenda, no pressure. Just women talking honestly about their bodies over coffee. Drop in any time.",
-        "host": "Mandi Community"
-      },
-      "isizulu": {
-        "title": "Hormonal Health in isiZulu",
-        "description": "A community health talk for women in KZN, in isiZulu, covering the basics of perimenopause and menopause.",
-        "host": "Community partner"
-      }
-    },
+    "loading": "Loading upcoming events…",
+    "loadError": "We couldn't load upcoming events right now.",
+    "empty": "No upcoming Mandi gatherings just yet — check back soon.",
+    "registerCta": "Register",
+    "contactToRegister": "Contact {{host}} to register.",
+    "theHost": "the host",
     "host": {
       "heading": "Host an event on Mandi.",
       "body": "Whether you are a gynaecologist running a monthly Q&A, an NGO hosting a community morning, or a workplace supporting your staff — Mandi Events is your platform too. Free to list.",
@@ -689,34 +674,29 @@
       "both": "Both"
     },
     "empty": "No clinics found for your selection. More are being added regularly.",
+    "emptyDoctors": "No doctors are listed just yet — more are being added.",
+    "loading": "Loading directory…",
+    "loadError": "We couldn't load the directory right now.",
     "bookConsult": "Book consult",
-    "clinics": {
-      "newson": {
-        "practice": "Private GP",
-        "note": "HRT specialist. Body-identical hormone therapy."
-      },
-      "hormonal": {
-        "practice": "Gynaecology Practice",
-        "note": "Menopause specialist. Online and in-person consultations."
-      },
-      "community": {
-        "practice": "Public Health",
-        "note": "Free or subsidised care. Referral pathway available."
-      }
-    },
+    "bookWith": "Book with Dr {{name}}",
+    "viewProfile": "View profile",
+    "hrtFriendly": "HRT-friendly",
+    "contactLabel": "Contact",
+    "contactBelow": "Contact details in the card",
     "meetEyebrow": "Meet the Doctors",
     "meetTitle": "Faces you can trust.",
-    "doctors": {
-      "bango": {
-        "practice": "Integrative Medicine",
-        "blurb": "Clinical advisor to JoinMandi. A warm, evidence-forward practitioner with a focus on hormonal health for African women."
-      },
-      "vandyk": {
-        "practice": "Gynaecology & Menopause",
-        "blurb": "HRT-trained GP practising in Stellenbosch. Body-identical HRT specialist with telehealth across South Africa."
-      }
-    },
-    "bookWith": "Book with {{name}}"
+    "profile": {
+      "eyebrow": "Doctor profile",
+      "aboutHeading": "About",
+      "bookHeading": "Book with Dr {{name}}",
+      "bookBody": "Opens her booking page in a new tab. Mandi doesn't process the booking itself — your details go directly to her practice.",
+      "bookCta": "Book a consultation",
+      "contactHeading": "Contact this doctor",
+      "contactBody": "She doesn't have an online booking link yet. Head back to the directory for her practice's contact details.",
+      "backToList": "Back to the directory",
+      "notFoundTitle": "This doctor's profile isn't available right now.",
+      "notFoundBody": "She may have been moved or unlisted. Try the directory for the current list of practitioners."
+    }
   },
   "hrt": {
     "eyebrow": "Education",
