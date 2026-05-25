@@ -1,5 +1,12 @@
 [build]
   command = "npm run build"
+  # Pin the publish dir explicitly so the Netlify dashboard's "publish dir"
+  # field can never override us. The @netlify/plugin-nextjs plugin reads
+  # this value and routes the Next.js build output (.next/) correctly.
+  # WITHOUT this, the dashboard kept setting publish to `.dist` / `.next` /
+  # `/` and the plugin's onPostBuild step failed with "Failed publishing
+  # static content."
+  publish = ".next"
 
 [build.environment]
   # Pin Node to 20 — required by the current build-time deps
