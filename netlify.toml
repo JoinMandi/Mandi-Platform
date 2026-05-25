@@ -7,6 +7,17 @@
   # `/` and the plugin's onPostBuild step failed with "Failed publishing
   # static content."
   publish = ".next"
+  # Pin the user-functions dir to a folder we don't actually populate.
+  # The plugin's own Next.js server handler lives in
+  # `.netlify/functions-internal/___netlify-server-handler/` (managed
+  # internally — DO NOT touch). This `functions = "netlify/functions"`
+  # only declares where YOUR custom Netlify functions would live; we
+  # don't have any, so the dir is empty / non-existent and that's fine.
+  # WITHOUT this pin, the dashboard's `/` default made Netlify scan the
+  # repo root and try to deploy every dotted file (next.config.js,
+  # tailwind.config.ts, etc.) as a Lambda function — which fails on
+  # the dots in the name.
+  functions = "netlify/functions"
 
 [build.environment]
   # Pin Node to 20 — required by the current build-time deps
