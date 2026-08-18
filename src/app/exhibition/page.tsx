@@ -218,6 +218,19 @@ export default function ExhibitionPage() {
   const resetRef = useRef(resetAll);
   resetRef.current = resetAll;
 
+  // Every step except attract carries an escape hatch back to the start.
+  const restartChip = (
+    <button
+      type="button"
+      onClick={() => resetRef.current()}
+      className="fixed right-4 top-4 z-[60] rounded-full border border-brown/15 bg-cream-soft/90 px-4 py-2
+        text-xs font-semibold text-brown/60 shadow-warm backdrop-blur-sm transition-colors
+        hover:border-terra hover:text-terra"
+    >
+      ↺ {t("exhibition.restart")}
+    </button>
+  );
+
   // ── Kiosk: idle auto-reset ───────────────────────────────────
   useEffect(() => {
     if (!kiosk || !step || step === "attract") return;
@@ -435,6 +448,7 @@ export default function ExhibitionPage() {
       <main className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0 bg-mandi-gradient-soft" />
         <div className="absolute inset-0 bg-cream/55" />
+        {restartChip}
         <div className="relative z-10 flex min-h-screen items-center justify-center px-5 py-16">
           <div className="w-full max-w-xl bg-cream-soft rounded-4xl shadow-warm-xl p-8 sm:p-10">
             <Reveal>
@@ -478,6 +492,7 @@ export default function ExhibitionPage() {
       <main className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0 bg-mandi-gradient-soft" />
         <div className="absolute inset-0 bg-cream/70" />
+        {restartChip}
         <div className="relative z-10 flex min-h-screen items-center justify-center px-5 py-16">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -513,6 +528,7 @@ export default function ExhibitionPage() {
     const currentAnswer = answers[tapQuestion.id];
     return (
       <>
+        {restartChip}
         <QuestionScreen
           current={tapIdx + 1}
           total={TOTAL}
@@ -598,6 +614,7 @@ export default function ExhibitionPage() {
       <div className="relative min-h-screen bg-cream overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-mandi-gradient-soft opacity-40" />
         <div className="pointer-events-none absolute inset-0 bg-cream/60" />
+        {restartChip}
         <ProgressBar variant="top" current={answeredCount} total={TOTAL} />
         <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-2xl flex-col px-5 pt-6 pb-10">
           <div className="rounded-3xl border border-cream-deep/60 bg-cream-soft/80 p-3 shadow-warm backdrop-blur-sm">
@@ -694,6 +711,7 @@ export default function ExhibitionPage() {
       <div className="relative flex h-[100dvh] flex-col overflow-hidden bg-cream">
         <div className="pointer-events-none absolute inset-0 bg-mandi-gradient-soft opacity-40" />
         <div className="pointer-events-none absolute inset-0 bg-cream/60" />
+        {restartChip}
         <ProgressBar variant="top" current={answeredCount} total={TOTAL} />
 
         {/* Pinned header */}
@@ -804,6 +822,7 @@ export default function ExhibitionPage() {
     const story = exhibitionStory(answers);
     return (
       <main className="relative">
+        {restartChip}
         {/* 1 — Hero: the finished blanket */}
         <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-mandi-gradient px-5 py-16">
           <div className="pointer-events-none absolute inset-0 bg-brown/20" />
@@ -1072,6 +1091,7 @@ export default function ExhibitionPage() {
   // thanks
   return (
     <main className="relative min-h-screen overflow-hidden bg-mandi-gradient-dusk">
+      {restartChip}
       <AmbientBlobs intensity="soft" />
       <div className="pointer-events-none absolute inset-0 bg-brown/30" />
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-16 text-center">

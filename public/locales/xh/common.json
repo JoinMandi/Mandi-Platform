@@ -922,6 +922,7 @@
   }
 ,
   "exhibition": {
+    "restart": "Qala kwakhona",
     "mode": {
       "title": "Ungathanda ukuphendula njani?",
       "taps": "Ukucofa okukhawulezayo",

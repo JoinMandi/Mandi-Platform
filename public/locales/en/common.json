@@ -958,6 +958,7 @@
   }
 ,
   "exhibition": {
+    "restart": "Start over",
     "mode": {
       "title": "How would you like to answer?",
       "taps": "Quick taps",

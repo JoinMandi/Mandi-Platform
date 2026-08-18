@@ -922,6 +922,7 @@
   }
 ,
   "exhibition": {
+    "restart": "Qala phansi",
     "mode": {
       "title": "Ungathanda ukuphendula kanjani?",
       "taps": "Ukuthepha okusheshayo",

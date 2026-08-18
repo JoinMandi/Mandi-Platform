@@ -922,6 +922,7 @@
   }
 ,
   "exhibition": {
+    "restart": "Begin oor",
     "mode": {
       "title": "Hoe wil jy antwoord?",
       "taps": "Vinnige tikke",
