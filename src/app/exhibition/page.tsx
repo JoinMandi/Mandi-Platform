@@ -671,7 +671,7 @@ export default function ExhibitionPage() {
               className="mt-8 flex justify-center"
             >
               <svg
-                className="h-8 w-8 animate-bounce text-golden"
+                className="h-8 w-8 animate-pulse-warm text-golden"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
