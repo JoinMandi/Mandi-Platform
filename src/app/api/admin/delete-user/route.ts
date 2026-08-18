@@ -9,15 +9,17 @@ export const runtime = "nodejs";
 
 export async function POST(req: Request) {
   // 1. Confirm the caller is a signed-in admin who has completed MFA (AAL2).
+  // getUser() (not getSession()) revalidates the JWT with the auth server.
   const supabase = createRouteClient();
   const {
-    data: { session },
-  } = await supabase.auth.getSession();
-  if (!session) {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
-  const me = await getUserAccount(supabase, session.user.id);
-  if (me?.role !== "admin") {
+  const me = await getUserAccount(supabase, user.id);
+  // superadmin is a superset of admin (mirrors requireAdmin).
+  if (me?.role !== "admin" && me?.role !== "superadmin") {
     return NextResponse.json({ error: "Admin only" }, { status: 403 });
   }
   const { data: aal } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
@@ -32,7 +34,7 @@ export async function POST(req: Request) {
   if (!body?.userId) {
     return NextResponse.json({ error: "userId required" }, { status: 400 });
   }
-  if (body.userId === session.user.id) {
+  if (body.userId === user.id) {
     return NextResponse.json({ error: "Refusing to delete self" }, { status: 400 });
   }
 
@@ -53,11 +55,11 @@ export async function POST(req: Request) {
   await Promise.all([
     insertDeletionLog(service, {
       user_email: body.userEmail ?? null,
-      deleted_by: session.user.id,
+      deleted_by: user.id,
     }),
     insertAuditLog(service, {
       action: "user_delete",
-      actorId: session.user.id,
+      actorId: user.id,
       actorEmail: me?.email ?? null,
       targetId: body.userId,
       meta: { target_email: body.userEmail ?? null },

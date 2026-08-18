@@ -17,11 +17,12 @@ export async function submitQuestionnaire(args: {
   selfHarmFlag: boolean;
   colleenFlag: boolean;
   topDomains: string[];
+  sessionId?: string | null;
 }): Promise<void> {
   const db = createActionClient();
   const user = await getSessionUser(db);
   await insertResponse(db, {
-    session_id: null,
+    session_id: args.sessionId ?? null,
     user_id: user?.id ?? null,
     language_code: null,
     answers: args.answers,

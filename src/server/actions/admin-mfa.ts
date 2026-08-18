@@ -77,6 +77,12 @@ export async function wipeMyMfaFactors(): Promise<{
   const errors: string[] = [];
   let deleted = 0;
   for (const f of data?.factors ?? []) {
+    // Only clear stale UNVERIFIED factors — those are what deadlock
+    // re-enrollment. Never delete a verified factor from this AAL1-gated
+    // path: a stolen password-only session must not be able to strip MFA
+    // step-up. A lost verified device is an admin-assisted reset, not self
+    // service. (This is the whole security fix for the tool.)
+    if (f.status === "verified") continue;
     const { error } = await service.auth.admin.mfa.deleteFactor({
       id: f.id,
       userId: user.id,

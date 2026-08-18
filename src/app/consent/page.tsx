@@ -7,14 +7,26 @@ import NavBar from "@/components/NavBar";
 import Button from "@/components/ui/Button";
 import ConsentCheckbox from "@/components/ui/ConsentCheckbox";
 import Reveal from "@/components/ui/Reveal";
+import { recordConsent } from "@/server/actions/consent";
 
 export default function ConsentPage() {
   const [agreed, setAgreed] = useState(false);
   const router = useRouter();
   const { t } = useTranslation("common");
 
-  const handleBegin = () => {
+  const handleBegin = async () => {
     if (!agreed) return;
+    const lang = typeof window !== "undefined" ? localStorage.getItem("mandi-lang") : null;
+    try {
+      // Durable, auditable POPIA consent record (localStorage alone isn't
+      // accountable). Keep the session id so the questionnaire links to it.
+      const sessionId = await recordConsent(lang);
+      if (sessionId && typeof window !== "undefined") {
+        localStorage.setItem("mandi-session", sessionId);
+      }
+    } catch {
+      /* best-effort — proceed even if the consent record fails to persist */
+    }
     if (typeof window !== "undefined") {
       localStorage.setItem("mandi-consent", new Date().toISOString());
     }
@@ -66,7 +78,7 @@ export default function ConsentPage() {
               <Button
                 variant="primary"
                 size="lg"
-                onClick={handleBegin}
+                onClick={() => void handleBegin()}
                 disabled={!agreed}
                 className={`w-full ${agreed ? "animate-pulse-warm" : ""}`}
               >

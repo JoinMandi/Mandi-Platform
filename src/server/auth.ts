@@ -2,12 +2,14 @@
 import type { SupabaseClient, User } from "@supabase/supabase-js";
 import { getUserRole } from "@/server/data/users";
 
-/** The signed-in user for this request, or null. */
+/** The signed-in user for this request, or null. Uses getUser() (not
+ *  getSession()) so authorization decisions revalidate the JWT against the
+ *  Supabase auth server rather than trusting the cookie as-is. */
 export async function getSessionUser(db: SupabaseClient): Promise<User | null> {
   const {
-    data: { session },
-  } = await db.auth.getSession();
-  return session?.user ?? null;
+    data: { user },
+  } = await db.auth.getUser();
+  return user ?? null;
 }
 
 /** Asserts the caller is a signed-in admin OR superadmin; throws otherwise.
