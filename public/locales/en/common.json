@@ -145,7 +145,7 @@
       },
       "mindset": {
         "title": "How you think and feel about this",
-        "description": "The last few questions — about you, not your symptoms."
+        "description": "The last few questions, about you, not your symptoms."
       }
     },
     "q1": {
@@ -173,111 +173,111 @@
     },
     "q6": { "text": "Difficulty concentrating" },
     "q7": {
-      "text": "Memory problems — forgetting names, words, or where you put things"
+      "text": "Memory problems, forgetting names, words, or where you put things"
     },
     "q8": {
-      "text": "Word-finding difficulty — knowing what you want to say but not being able to find the word"
+      "text": "Word-finding difficulty, knowing what you want to say but not being able to find the word"
     },
     "q9": {
-      "text": "Reduced ability to multitask — struggling to manage more than one thing at a time"
+      "text": "Reduced ability to multitask, struggling to manage more than one thing at a time"
     },
-    "q10": { "text": "Mood swings — feeling up and down for no clear reason" },
+    "q10": { "text": "Mood swings, feeling up and down for no clear reason" },
     "q11": {
-      "text": "Irritability — snapping or getting frustrated more easily than usual"
+      "text": "Irritability, snapping or getting frustrated more easily than usual"
     },
     "q12": { "text": "Feeling anxious or worried more than usual" },
     "q13": { "text": "Feeling low, flat, or depressed" },
     "q14": {
-      "text": "Low motivation — struggling to find the energy or desire to do things you used to enjoy"
+      "text": "Low motivation, struggling to find the energy or desire to do things you used to enjoy"
     },
     "q15": {
-      "text": "Low self-worth — feeling less confident or less valuable than before"
+      "text": "Low self-worth, feeling less confident or less valuable than before"
     },
     "q16": {
-      "text": "Not feeling like yourself — not recognising the person you have become",
+      "text": "Not feeling like yourself, not recognising the person you have become",
       "hint": "This question catches many women for the first time. Trust what you feel."
     },
     "q17": {
       "text": "Thoughts of self-harm or suicide",
       "hint": "You can answer honestly. If you're struggling, Mandi will put support on your roadmap right away."
     },
-    "q18": { "text": "Hot flushes — sudden waves of heat through your body" },
-    "q19": { "text": "Night sweats — waking drenched or overheated" },
-    "q20": { "text": "Sleep problems — difficulty falling or staying asleep" },
+    "q18": { "text": "Hot flushes, sudden waves of heat through your body" },
+    "q19": { "text": "Night sweats, waking drenched or overheated" },
+    "q20": { "text": "Sleep problems, difficulty falling or staying asleep" },
     "q21": {
-      "text": "Heart palpitations — your heart racing or beating irregularly"
+      "text": "Heart palpitations, your heart racing or beating irregularly"
     },
     "q22": {
-      "text": "Headaches or migraines — more frequent or more severe than before"
+      "text": "Headaches or migraines, more frequent or more severe than before"
     },
     "q23": { "text": "Dizziness or feeling faint" },
     "q24": {
-      "text": "Restless legs — an uncomfortable urge to move your legs, especially at night"
+      "text": "Restless legs, an uncomfortable urge to move your legs, especially at night"
     },
-    "q25": { "text": "Tinnitus — ringing or buzzing in the ears" },
-    "q26": { "text": "Joint pain — aching, stiffness, or swelling in joints" },
-    "q27": { "text": "Muscle pain — generalised aching in muscles" },
+    "q25": { "text": "Tinnitus, ringing or buzzing in the ears" },
+    "q26": { "text": "Joint pain, aching, stiffness, or swelling in joints" },
+    "q27": { "text": "Muscle pain, generalised aching in muscles" },
     "q28": {
-      "text": "Frozen shoulder — pain or restricted movement in the shoulder",
+      "text": "Frozen shoulder, pain or restricted movement in the shoulder",
       "hint": "An under-recognised menopause symptom. If this is you, you are not imagining it."
     },
-    "q29": { "text": "Fatigue and low energy — exhausted even after rest" },
-    "q30": { "text": "Weight gain — especially around the middle" },
+    "q29": { "text": "Fatigue and low energy, exhausted even after rest" },
+    "q30": { "text": "Weight gain, especially around the middle" },
     "q31": { "text": "Bloating or digestive discomfort" },
-    "q32": { "text": "Skin changes — dryness, itchiness, or texture changes" },
+    "q32": { "text": "Skin changes, dryness, itchiness, or texture changes" },
     "q33": { "text": "Hair loss or thinning" },
-    "q34": { "text": "Dry eyes — persistent dryness, irritation, or blurry vision" },
+    "q34": { "text": "Dry eyes, persistent dryness, irritation, or blurry vision" },
     "q35": {
-      "text": "Changes in your period — heavier, lighter, longer, shorter, or more irregular than before"
+      "text": "Changes in your period, heavier, lighter, longer, shorter, or more irregular than before"
     },
     "q36": { "text": "Vaginal dryness or discomfort" },
     "q37": { "text": "Painful sex" },
     "q38": {
-      "text": "Bladder issues — urgency, leaking, or needing to go more often, including at night"
+      "text": "Bladder issues, urgency, leaking, or needing to go more often, including at night"
     },
     "q39": { "text": "Recurrent urinary tract infections" },
     "q40": { "text": "Loss of interest in sex" },
     "q41": {
-      "text": "Reduced alcohol tolerance — two glasses that used to be fine now feel like four",
-      "hint": "This is the question that makes women say: 'wait — that is menopause?'"
+      "text": "Reduced alcohol tolerance, two glasses that used to be fine now feel like four",
+      "hint": "This is the question that makes women say: 'wait, that is menopause?'"
     },
     "q42": {
-      "text": "New or worsening allergies — hay fever, food intolerances, or sensitivities you never had before"
+      "text": "New or worsening allergies, hay fever, food intolerances, or sensitivities you never had before"
     },
     "q43": {
-      "text": "Worsening of a long-term health condition — asthma, migraine, autoimmune condition, or similar",
+      "text": "Worsening of a long-term health condition, asthma, migraine, autoimmune condition, or similar",
       "hint": "If this is a strong yes, Mandi will route you to specialist-led care."
     },
     "q44": {
-      "text": "Impact on your ability to work — concentration, productivity, or confidence at work"
+      "text": "Impact on your ability to work, concentration, productivity, or confidence at work"
     },
     "q45": {
       "text": "Impact on your relationship with your partner"
     },
     "q46": {
-      "text": "Impact on your relationships with family — children, parents, close relatives"
+      "text": "Impact on your relationships with family, children, parents, close relatives"
     },
     "q47": {
-      "text": "Impact on your social life — withdrawing, not wanting to go out"
+      "text": "Impact on your social life, withdrawing, not wanting to go out"
     },
     "q48": { "text": "Impact on your ability to stay active and exercise" },
     "q49": {
-      "text": "When you think about what you have been experiencing — what is your gut feeling?",
+      "text": "When you think about what you have been experiencing, what is your gut feeling?",
       "a": "Something is wrong and I need help now.",
-      "b": "It is probably just ageing — I will manage.",
+      "b": "It is probably just ageing, I will manage.",
       "c": "I have tried everything. Nothing works for me.",
-      "d": "I have done my research — I know what is happening."
+      "d": "I have done my research, I know what is happening."
     },
     "q50": {
       "text": "How do you feel about hormone therapy (HRT)?",
       "a": "Open to it if a doctor recommends it.",
-      "b": "I prefer natural approaches — herbs, lifestyle, supplements.",
-      "c": "I am nervous — I have heard it can be risky.",
+      "b": "I prefer natural approaches, herbs, lifestyle, supplements.",
+      "c": "I am nervous, I have heard it can be risky.",
       "d": "I am already on HRT, or I have already tried it."
     },
     "q51": {
       "text": "How do you feel about the medical system when it comes to your health?",
-      "a": "I trust my doctor — I just need the right referral.",
+      "a": "I trust my doctor, I just need the right referral.",
       "b": "My symptoms have been dismissed. I feel unseen.",
       "c": "I prefer to research first before going to a doctor.",
       "d": "I honestly do not know where to start."
@@ -290,7 +290,7 @@
       "d": "I had not thought about it."
     },
     "q53": {
-      "text": "Do you ever feel like it might be too late to get help — that you missed the window?"
+      "text": "Do you ever feel like it might be too late to get help, that you missed the window?"
     },
     "q54": {
       "text": "Do you have any existing health conditions that make you worry about hormone treatment?",
@@ -300,13 +300,13 @@
       "autoimmune": "Autoimmune condition",
       "cardiovascular": "Diabetes or heart condition",
       "psychiatric": "Psychiatric condition",
-      "notSure": "Not sure — I would like guidance"
+      "notSure": "Not sure, I would like guidance"
     },
     "q55": {
       "text": "What would feel most useful to you today?",
       "a": "Understand what is happening in my body.",
       "b": "Know if what I am feeling is normal.",
-      "c": "Learn my options — HRT and alternatives.",
+      "c": "Learn my options, HRT and alternatives.",
       "d": "Find a doctor who speaks my language and understands hormones.",
       "e": "Something to take to my existing doctor."
     },
@@ -324,27 +324,27 @@
     "areaProgress": "Area {{current}} of {{total}}",
     "patchesStitched": "{{done}} of {{total}} patches stitched · tap to view",
     "continue": "Continue",
-    "bandComplete": "{{area}} — stitched",
+    "bandComplete": "{{area}}, stitched",
     "bandHeadline": "Another piece of your blanket.",
-    "nextArea": "Next — {{area}}.",
+    "nextArea": "Next, {{area}}.",
     "quiltHeading": "Your blanket so far",
     "quiltClose": "Close",
     "blanketComplete": "You have stitched your blanket.",
-    "blanketCompleteBody": "Every patch is something you shared. This blanket is yours — a piece of the one all South African women are stitching together.",
+    "blanketCompleteBody": "Every patch is something you shared. This blanket is yours, a piece of the one all South African women are stitching together.",
     "resumeTitle": "Welcome back.",
-    "resumeBody": "Your blanket is waiting — {{progress}} already stitched. You can pick up exactly where you left off.",
+    "resumeBody": "Your blanket is waiting, {{progress}} already stitched. You can pick up exactly where you left off.",
     "resumeContinue": "Continue stitching",
     "resumeFresh": "Start fresh instead",
     "facts": {
-      "context": "Perimenopause — the years of change before periods stop — most often lasts around 4 to 8 years, though for some women it is shorter or longer. Menopause itself is just one day.",
-      "mind-cognition": "Brain fog is one of the most common menopause symptoms — caused by shifting oestrogen, not by you losing your sharpness. For most women, it lifts.",
-      "mood": "Mood changes in menopause are physical, not a personal failing. Oestrogen interacts with serotonin, one of the brain's mood chemicals — so when hormone levels shift, mood can shift too.",
-      "nervous-system": "Hot flushes can begin years before your last period. Up to 8 in 10 women experience them — whatever you are feeling, you are far from alone.",
-      "body": "Joint and muscle aches are an under-recognised menopause symptom — oestrogen helps keep joints comfortable. Even frozen shoulder is linked to this change.",
-      "urogenital": "Unlike hot flushes, intimate and bladder symptoms tend not to fade on their own — but they respond very well to treatment. They are nothing to be ashamed of.",
-      "other": "Suddenly cannot tolerate alcohol the way you used to? Oestrogen interacts with histamine — the chemical behind allergy-type reactions — and some women notice new sensitivities in midlife. You are not imagining it.",
-      "quality-of-life": "Menopause symptoms ripple into work, sleep and relationships. Naming that impact is not complaining — it is the first step to getting the right support.",
-      "mindset": "It is never too late to ask for help. Some symptoms — including vaginal and bladder ones — respond well to treatment no matter how many years have passed since menopause."
+      "context": "Perimenopause, the years of change before periods stop, most often lasts around 4 to 8 years, though for some women it is shorter or longer. Menopause itself is just one day.",
+      "mind-cognition": "Brain fog is one of the most common menopause symptoms, caused by shifting oestrogen, not by you losing your sharpness. For most women, it lifts.",
+      "mood": "Mood changes in menopause are physical, not a personal failing. Oestrogen interacts with serotonin, one of the brain's mood chemicals, so when hormone levels shift, mood can shift too.",
+      "nervous-system": "Hot flushes can begin years before your last period. Up to 8 in 10 women experience them, whatever you are feeling, you are far from alone.",
+      "body": "Joint and muscle aches are an under-recognised menopause symptom, oestrogen helps keep joints comfortable. Even frozen shoulder is linked to this change.",
+      "urogenital": "Unlike hot flushes, intimate and bladder symptoms tend not to fade on their own, but they respond very well to treatment. They are nothing to be ashamed of.",
+      "other": "Suddenly cannot tolerate alcohol the way you used to? Oestrogen interacts with histamine, the chemical behind allergy-type reactions, and some women notice new sensitivities in midlife. You are not imagining it.",
+      "quality-of-life": "Menopause symptoms ripple into work, sleep and relationships. Naming that impact is not complaining, it is the first step to getting the right support.",
+      "mindset": "It is never too late to ask for help. Some symptoms, including vaginal and bladder ones, respond well to treatment no matter how many years have passed since menopause."
     },
     "loadingStages": {
       "1": "Listening to everything you have shared…",
@@ -356,7 +356,7 @@
       "1": "Every patch is a piece of your story.",
       "2": "Showing up for yourself is the brave part.",
       "3": "You are not alone in this.",
-      "4": "What you feel is real — and it matters."
+      "4": "What you feel is real, and it matters."
     }
   },
   "units": {
@@ -961,9 +961,9 @@
     "mode": {
       "title": "How would you like to answer?",
       "taps": "Quick taps",
-      "tapsSub": "One question at a time — under two minutes",
+      "tapsSub": "One question at a time, under two minutes",
       "chat": "Chat with Mandi",
-      "chatSub": "A gentle conversation — she answers back"
+      "chatSub": "A gentle conversation, she answers back"
     },
     "capture": {
       "pageGate": "Answer all four to continue.",
@@ -984,15 +984,15 @@
       "finePrint": "We never share your details. You can ask us to erase everything at any time."
     },
     "chat": {
-      "greeting": "Hi, I'm Mandi. I have eight quick questions about how you've been feeling lately — just tap the answer that fits.",
+      "greeting": "Hi, I'm Mandi. I have eight quick questions about how you've been feeling lately, just tap the answer that fits.",
       "mind-cognition": {
         "hi": {
-          "1": "That word-finding feeling — it isn't your mind failing you.",
+          "1": "That word-finding feeling, it isn't your mind failing you.",
           "2": "Your memory isn't broken. So many women describe exactly this."
         },
         "lo": {
           "1": "Good. Your clarity is holding.",
-          "2": "Thank you — useful to know."
+          "2": "Thank you, useful to know."
         }
       },
       "nervous-system": {
@@ -1001,23 +1001,23 @@
           "2": "Your body is keeping you up at night. That counts."
         },
         "lo": {
-          "1": "Good — your nights are holding.",
+          "1": "Good, your nights are holding.",
           "2": "Thank you."
         }
       },
       "body": {
         "hi": {
-          "1": "Your body is telling you something — and it's worth listening to.",
+          "1": "Your body is telling you something, and it's worth listening to.",
           "2": "It's real, and it's well documented."
         },
         "lo": {
-          "1": "Thank you — noted.",
+          "1": "Thank you, noted.",
           "2": "Good."
         }
       },
       "other": {
         "hi": {
-          "1": "Yes — that one surprises almost everybody.",
+          "1": "Yes, that one surprises almost everybody.",
           "2": "Many women only make that connection much later."
         },
         "lo": {
@@ -1037,18 +1037,18 @@
       }
     },
     "story": {
-      "disclaimer": "Educational information only — not medical advice.",
+      "disclaimer": "Educational information only, not medical advice.",
       "intro": {
         "title": "Your blanket tells a story",
-        "sub": "Scroll down — every patch you stitched has something to say."
+        "sub": "Scroll down, every patch you stitched has something to say."
       },
       "cute": {
         "context": "Every story starts somewhere.",
-        "mind-cognition": "Losing words mid-sentence? They're not lost — just on a tea break.",
+        "mind-cognition": "Losing words mid-sentence? They're not lost, just on a tea break.",
         "mood": "Feelings doing somersaults? There's a reason.",
         "nervous-system": "Your body has been sending you postcards.",
         "body": "Aches that arrived uninvited? We see them.",
-        "urogenital": "The things nobody talks about — we talk about them.",
+        "urogenital": "The things nobody talks about, we talk about them.",
         "other": "The 'wait, THAT's menopause?' section.",
         "quality-of-life": "It touches the things you love. That matters.",
         "mindset": "You showed up. That's the biggest stitch of all."
@@ -1056,12 +1056,12 @@
       "factLabel": "Why this happens",
       "hormoneHook": {
         "title": "Don't count out your hormones.",
-        "body": "So many women live with symptoms like these for years — never knowing hormones could be part of the story. Whatever your blanket looks like, they are worth understanding. That is what Mandi is building: intentional, destigmatised women's health, in your language, with an African voice.",
+        "body": "So many women live with symptoms like these for years, never knowing hormones could be part of the story. Whatever your blanket looks like, they are worth understanding. That is what Mandi is building: intentional, destigmatised women's health, in your language, with an African voice.",
         "cta": "Join the Mandi journey"
       },
       "none": {
-        "title": "Your blanket looks calm — lucky you!",
-        "body": "No strong symptoms today. Menopause arrives differently for every woman — and knowing what to look for is the best head start there is."
+        "title": "Your blanket looks calm, lucky you!",
+        "body": "No strong symptoms today. Menopause arrives differently for every woman, and knowing what to look for is the best head start there is."
       }
     },
     "attract": {
@@ -1077,15 +1077,15 @@
       "heading": "Your blanket, so far",
       "scoreLabel": "Your demo MenoScore",
       "band": {
-        "mild": "Your symptoms look mild — staying informed is the best next stitch.",
-        "moderate": "Your symptoms look moderate — you are not imagining it, and you are not alone.",
-        "significant": "Your symptoms look significant — a doctor who understands menopause can change everything."
+        "mild": "Your symptoms look mild, staying informed is the best next stitch.",
+        "moderate": "Your symptoms look moderate, you are not imagining it, and you are not alone.",
+        "significant": "Your symptoms look significant, a doctor who understands menopause can change everything."
       },
       "cta": "Get my blanket"
     },
     "email": {
       "title": "Take your blanket home",
-      "body": "Leave your email and Mandi will send you your results — and welcome you to the journey the moment we launch.",
+      "body": "Leave your email and Mandi will send you your blanket, your link to the full 56-question assessment, and a place on the journey, so you can finish your blanket in your own time, in your own home.",
       "placeholder": "your@email.com",
       "consent": "Store my email and demo answers so Mandi can send me my results and launch news.",
       "cta": "Send my blanket",
@@ -1093,8 +1093,8 @@
     },
     "thanks": {
       "title": "Sala kahle. Totsiens. Goodbye, for now.",
-      "bodyKiosk": "Thank you for stitching your story with us — Mandi is building destigmatised women's health for South Africa, and you are part of it now. Please hand the tablet back.",
-      "bodyPhone": "Watch your inbox. Mandi is building a home for women's health in South Africa — menopause understood, not endured; every woman in her own language. Your blanket is the first stitch. Come finish it at joinmandi.com.",
+      "bodyKiosk": "Thank you for stitching your story with us, Mandi is building destigmatised women's health for South Africa, and you are part of it now. Please hand the tablet back.",
+      "bodyPhone": "Watch your inbox. Mandi is building a home for women's health in South Africa, menopause understood, not endured; every woman in her own language. Your blanket is the first stitch. Come finish it at joinmandi.com.",
       "fullCta": "Join the Mandi journey"
     }
   }

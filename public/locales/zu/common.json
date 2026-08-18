@@ -141,7 +141,7 @@
       },
       "mindset": {
         "title": "Indlela ocabanga nezimizwa ngakho",
-        "description": "Imibuzo embalwa yokugcina — ngawe, hhayi izimpawu zakho."
+        "description": "Imibuzo embalwa yokugcina, ngawe, hhayi izimpawu zakho."
       }
     },
     "q1": {
@@ -171,19 +171,19 @@
       "text": "Ukungakwazi ukugxila"
     },
     "q7": {
-      "text": "Izinkinga zenkumbulo — ukukhohlwa amagama, amagama, noma lapho ubeka khona izinto"
+      "text": "Izinkinga zenkumbulo, ukukhohlwa amagama, amagama, noma lapho ubeka khona izinto"
     },
     "q8": {
-      "text": "Ukungatholi amagama — uyakwazi ofuna ukukusho kodwa awulitholi igama"
+      "text": "Ukungatholi amagama, uyakwazi ofuna ukukusho kodwa awulitholi igama"
     },
     "q9": {
-      "text": "Ukunciphisa amandla okwenza imisebenzi eminingi — kunzima ukuphatha okudlula okukodwa kanye"
+      "text": "Ukunciphisa amandla okwenza imisebenzi eminingi, kunzima ukuphatha okudlula okukodwa kanye"
     },
     "q10": {
-      "text": "Ukuphazama kwemizwa — ukuzizwa uphakeme nophansi ngaphandle kwesizathu"
+      "text": "Ukuphazama kwemizwa, ukuzizwa uphakeme nophansi ngaphandle kwesizathu"
     },
     "q11": {
-      "text": "Ukucasuka — ukuzwa ulaka noma ukucasuka kalula kunesijwayelekile"
+      "text": "Ukucasuka, ukuzwa ulaka noma ukucasuka kalula kunesijwayelekile"
     },
     "q12": {
       "text": "Ukuzizwa ukhathazekile noma uthukile ngaphezu kokujwayelekile"
@@ -192,13 +192,13 @@
       "text": "Ukuzizwa uphansi, ulingene nje, noma udangele"
     },
     "q14": {
-      "text": "Ukungabi nesisusa — kunzima ukuthola amandla noma isifiso sokwenza izinto obhihla uzizajzelelisa ngazo"
+      "text": "Ukungabi nesisusa, kunzima ukuthola amandla noma isifiso sokwenza izinto obhihla uzizajzelelisa ngazo"
     },
     "q15": {
-      "text": "Ukungazethembi — ukuzizwa ungenakuzethemba noma uyinto encane kunangaphambili"
+      "text": "Ukungazethembi, ukuzizwa ungenakuzethemba noma uyinto encane kunangaphambili"
     },
     "q16": {
-      "text": "Ukungazwa unjengawe — ukungamboni umuntu obube nguye",
+      "text": "Ukungazwa unjengawe, ukungamboni umuntu obube nguye",
       "hint": "Lo mbuzo uthinta abesifazane abaningi okokuqala. Themba lokho okuzwayo."
     },
     "q17": {
@@ -206,59 +206,59 @@
       "hint": "Ungaphendula ngokweqiniso. Uma uzwa ubunzima, uMandi uzobeka usizo ohlelweni lwakho ngokushesha."
     },
     "q18": {
-      "text": "Ukushisa kwesiquphe — amagagasi okushisa ngomzimba wakho"
+      "text": "Ukushisa kwesiquphe, amagagasi okushisa ngomzimba wakho"
     },
     "q19": {
-      "text": "Ukujuluka ebusuku — ukuvuka umanzi noma ushisa kakhulu"
+      "text": "Ukujuluka ebusuku, ukuvuka umanzi noma ushisa kakhulu"
     },
     "q20": {
-      "text": "Izinkinga zokulala — kunzima ukuwa ebuthongweni noma ukuhlala ulele"
+      "text": "Izinkinga zokulala, kunzima ukuwa ebuthongweni noma ukuhlala ulele"
     },
     "q21": {
-      "text": "Ukugxuma kwenhliziyo — inhliziyo yakho egijimayo noma engashayi kahle"
+      "text": "Ukugxuma kwenhliziyo, inhliziyo yakho egijimayo noma engashayi kahle"
     },
     "q22": {
-      "text": "Amakhanda abuhlungu noma i-migraine — njalo noma kanzima kunangaphambili"
+      "text": "Amakhanda abuhlungu noma i-migraine, njalo noma kanzima kunangaphambili"
     },
     "q23": {
       "text": "Isiyezi noma ukuzwa uzochithula"
     },
     "q24": {
-      "text": "Imilenze engaphumuli — isifiso esingakhululekile sokushintsha imilenze, ikakhulukazi ebusuku"
+      "text": "Imilenze engaphumuli, isifiso esingakhululekile sokushintsha imilenze, ikakhulukazi ebusuku"
     },
     "q25": {
-      "text": "I-tinnitus — ukukhala noma ukuduma ezindlebeni"
+      "text": "I-tinnitus, ukukhala noma ukuduma ezindlebeni"
     },
     "q26": {
-      "text": "Ubuhlungu emalungeni — ubuhlungu, ukuqina, noma ukuvuvuka emalungeni"
+      "text": "Ubuhlungu emalungeni, ubuhlungu, ukuqina, noma ukuvuvuka emalungeni"
     },
     "q27": {
-      "text": "Ubuhlungu emisipheni — ubuhlungu obujwayelekile emisipheni"
+      "text": "Ubuhlungu emisipheni, ubuhlungu obujwayelekile emisipheni"
     },
     "q28": {
-      "text": "Ihlombe elingahambi — ubuhlungu noma ukunqunyezelwa kokuhamba ehlombeni",
+      "text": "Ihlombe elingahambi, ubuhlungu noma ukunqunyezelwa kokuhamba ehlombeni",
       "hint": "Uphawu lwe-menopause olungaqondwa ngempela. Uma kunjalo, awucabangi."
     },
     "q29": {
-      "text": "Ukukhathala namandla aphansi — ukhathele ngisho nasemva kokuphumula"
+      "text": "Ukukhathala namandla aphansi, ukhathele ngisho nasemva kokuphumula"
     },
     "q30": {
-      "text": "Ukukhula komzimba — ikakhulukazi ekhaleni"
+      "text": "Ukukhula komzimba, ikakhulukazi ekhaleni"
     },
     "q31": {
       "text": "Ukuvuvuka noma ukungazwa kahle kwesisu"
     },
     "q32": {
-      "text": "Izinguquko esikhumbeni — ukuoma, ukuluma, noma ukushintsha kwesithombe"
+      "text": "Izinguquko esikhumbeni, ukuoma, ukuluma, noma ukushintsha kwesithombe"
     },
     "q33": {
       "text": "Ukulahlekelwa izinwele noma ukunciphisa"
     },
     "q34": {
-      "text": "Amehlo omile — ukuoma okuqhubekayo, ukucasuka, noma ukubona okufiphele"
+      "text": "Amehlo omile, ukuoma okuqhubekayo, ukucasuka, noma ukubona okufiphele"
     },
     "q35": {
-      "text": "Izinguquko ezinkathini zakho — zinzima, zilula, zide, zifushane, noma azifiki njalo kunangaphambili"
+      "text": "Izinguquko ezinkathini zakho, zinzima, zilula, zide, zifushane, noma azifiki njalo kunangaphambili"
     },
     "q36": {
       "text": "Ukuoma kwesithako noma ukungazwakala kahle"
@@ -267,7 +267,7 @@
       "text": "Ucansi olubuhlungu"
     },
     "q38": {
-      "text": "Izinkinga zesinye — ushisekela, ukuvuza, noma ukuhamba njalo, kuhlanganise nasebusuku"
+      "text": "Izinkinga zesinye, ushisekela, ukuvuza, noma ukuhamba njalo, kuhlanganise nasebusuku"
     },
     "q39": {
       "text": "Izifo zomgudu womchamo eziphindelelayo"
@@ -276,48 +276,48 @@
       "text": "Ukulahla isithakazelo kucansi"
     },
     "q41": {
-      "text": "Ukunciphisa ukubekezelela utshwala — izingilazi ezimbili ezazingafanele zizwakala njengezine",
-      "hint": "Lo umbuzo owenza abesifazane bathi: 'mawu — yi-menopause leyo?'"
+      "text": "Ukunciphisa ukubekezelela utshwala, izingilazi ezimbili ezazingafanele zizwakala njengezine",
+      "hint": "Lo umbuzo owenza abesifazane bathi: 'mawu, yi-menopause leyo?'"
     },
     "q42": {
-      "text": "Izimpushane ezintsha noma ezimbi kakhulu — i-hay fever, ukungabekezeleli ukudla, noma izimpushane obungazikholwa"
+      "text": "Izimpushane ezintsha noma ezimbi kakhulu, i-hay fever, ukungabekezeleli ukudla, noma izimpushane obungazikholwa"
     },
     "q43": {
-      "text": "Ukwenziwa kakhulu kwesimo sempilo esivamile — i-asthma, i-migraine, isimo se-autoimmune, noma okufanayo",
+      "text": "Ukwenziwa kakhulu kwesimo sempilo esivamile, i-asthma, i-migraine, isimo se-autoimmune, noma okufanayo",
       "hint": "Uma kungumpyo onamandla, uMandi uzokuyisa kunakekelo lwezohlobo."
     },
     "q44": {
-      "text": "Umphumela kwekhono lakho lokusebenza — ukugxila, ukuvelisa, noma ukuzethemba emsebenzini"
+      "text": "Umphumela kwekhono lakho lokusebenza, ukugxila, ukuvelisa, noma ukuzethemba emsebenzini"
     },
     "q45": {
       "text": "Umphumela kubudlelwane bakho nesithandwa sakho"
     },
     "q46": {
-      "text": "Umphumela kubudlelwane bakho nomndeni — izingane, abazali, izihlobo eziseduze"
+      "text": "Umphumela kubudlelwane bakho nomndeni, izingane, abazali, izihlobo eziseduze"
     },
     "q47": {
-      "text": "Umphumela kwimpilo yakho yokuhlalisana — ukuhoxa, ukungafuni ukuphuma"
+      "text": "Umphumela kwimpilo yakho yokuhlalisana, ukuhoxa, ukungafuni ukuphuma"
     },
     "q48": {
       "text": "Umphumela kwekhono lakho lokuhlala uhambisana ne-exercise"
     },
     "q49": {
-      "text": "Uma ucabanga ngalokho obukubhukuda — yini umuzwa wakho?",
+      "text": "Uma ucabanga ngalokho obukubhukuda, yini umuzwa wakho?",
       "a": "Kukhona okungalungile ngifuna usizo manje.",
-      "b": "Mhlawumbe yikuguga nje — ngizoyenza ngehlule.",
+      "b": "Mhlawumbe yikuguga nje, ngizoyenza ngehlule.",
       "c": "Ngizamile konke. Akukho okusebenzayo kimi.",
-      "d": "Ngenze ucwaningo lwami — ngiyazi okwenzekayo."
+      "d": "Ngenze ucwaningo lwami, ngiyazi okwenzekayo."
     },
     "q50": {
       "text": "Uzizwa kanjani nge-hormone therapy (HRT)?",
       "a": "Ngivuma uma udokotela engincomayo.",
-      "b": "Ngithanda izindlela zemvelo — amakhambi, indlela yokuphila, izenezelelo.",
-      "c": "Ngingathukile — ngizwile ukuthi ingaba yingozi.",
+      "b": "Ngithanda izindlela zemvelo, amakhambi, indlela yokuphila, izenezelelo.",
+      "c": "Ngingathukile, ngizwile ukuthi ingaba yingozi.",
       "d": "Sengivele ngise-HRT, noma sengilikhuzile."
     },
     "q51": {
       "text": "Uzizwa kanjani ngohlelo lwezempilo lapho kufika empilweni yakho?",
-      "a": "Ngithemba udokotela wami — ngidinga nje ukuthunyelwa okufanele.",
+      "a": "Ngithemba udokotela wami, ngidinga nje ukuthunyelwa okufanele.",
       "b": "Izimpawu zami ziye zachitha. Ngizizwa ngingabonwa.",
       "c": "Ngithanda ukucwaninga kuqala ngaphambi kokuya kudokotela.",
       "d": "Ngokweqiniso angazi lapho ngiqala khona."
@@ -330,7 +330,7 @@
       "d": "Angicabanganga ngakho."
     },
     "q53": {
-      "text": "Uke wazizwa ukuthi mhlawumbe sekuhlangabezele ukuthola usizo — ukuthi uphuthelwe yithuba?"
+      "text": "Uke wazizwa ukuthi mhlawumbe sekuhlangabezele ukuthola usizo, ukuthi uphuthelwe yithuba?"
     },
     "q54": {
       "text": "Unazo izimo zempilo ezikhona ezikwenza ukhathazeke ngokwelashwa kwamahomoni?",
@@ -340,13 +340,13 @@
       "autoimmune": "Isimo se-autoimmune",
       "cardiovascular": "I-diabetes noma isimo senhliziyo",
       "psychiatric": "Isimo se-psychiatric",
-      "notSure": "Angiqinisekile — ngingathanda isikhokelo"
+      "notSure": "Angiqinisekile, ngingathanda isikhokelo"
     },
     "q55": {
       "text": "Yini okuzobakuhle kakhulu kuwe namuhla?",
       "a": "Qonda okwenzekayo emzimbeni wami.",
       "b": "Yazi ukuthi lokho engikuzwayo kuyajwayeleka.",
-      "c": "Funda izindlela zami — i-HRT nezinye.",
+      "c": "Funda izindlela zami, i-HRT nezinye.",
       "d": "Thola udokotela okhuluma ulimi lwami noqonda amahomoni.",
       "e": "Okuthize engingakuyisa kudokotela wami osekhona."
     },
@@ -364,27 +364,27 @@
     "areaProgress": "Indawo {{current}} kwezi-{{total}}",
     "patchesStitched": "{{done}} kwezi-{{total}} zithungiwe · thepha ukubona",
     "continue": "Qhubeka",
-    "bandComplete": "{{area}} — kuthungiwe",
+    "bandComplete": "{{area}}, kuthungiwe",
     "bandHeadline": "Enye ingxenye yengubo yakho.",
-    "nextArea": "Okulandelayo — {{area}}.",
+    "nextArea": "Okulandelayo, {{area}}.",
     "quiltHeading": "Ingubo yakho kuze kube manje",
     "quiltClose": "Vala",
     "blanketComplete": "Useyithungile ingubo yakho.",
-    "blanketCompleteBody": "Isitebhe ngasinye yinto oyabelwene nathi. Le ngubo ngeyakho — ingxenye yale eyethungwa ngabo bonke abesifazane baseNingizimu Afrika ndawonye.",
+    "blanketCompleteBody": "Isitebhe ngasinye yinto oyabelwene nathi. Le ngubo ngeyakho, ingxenye yale eyethungwa ngabo bonke abesifazane baseNingizimu Afrika ndawonye.",
     "resumeTitle": "Wamukelekile futhi.",
-    "resumeBody": "Ingubo yakho ilindile — {{progress}} sekuthungiwe. Ungaqhubeka kanye lapho ushiya khona.",
+    "resumeBody": "Ingubo yakho ilindile, {{progress}} sekuthungiwe. Ungaqhubeka kanye lapho ushiya khona.",
     "resumeContinue": "Qhubeka ukuthunga",
     "resumeFresh": "Qala kabusha esikhundleni salokho",
     "facts": {
-      "context": "I-perimenopause — iminyaka yoshintsho ngaphambi kokuthi izinsuku zenyanga ziphele — ivamise ukuthatha iminyaka engaba mi-4 kuya kwengu-8, nakuba kwabanye besifazane imfushane noma inde. I-menopause uqobo lusuku olulodwa nje.",
-      "mind-cognition": "Inkungu yengqondo iyenye yezimpawu ezivame kakhulu ze-menopause — ibangelwa ukushintsha kwe-oestrogen, hhayi ngokuthi ulahlekelwa ububanzi bakho. Eningini labesifazane, iyaphakama.",
-      "mood": "Ukushintsha kwemizwa ku-menopause kungokomzimba, akusikho ukwehluleka komuntu. I-oestrogen isebenzisana ne-serotonin, elinye lamakhemikhali emizwa obuchopho — ngakho lapho amazinga ama-hormone eshintsha, imizwa nayo ingashintsha.",
-      "nervous-system": "Ukushisa kwesiquphe kungaqala iminyaka ngaphambi kwezinkathi zakho zokugcina. Kuya kuma-8 kwabesifazane abali-10 abakubhekana nakho — noma yini oyizwayo, awuwedwa.",
-      "body": "Ubuhlungu bamalungu nemisipha kuyimpawu enye ye-menopause engaqondwa kahle — i-oestrogen isiza ukugcina amalunga azwakala kahle. Ngisho nehlombe elingahambi kuxhumene nale guquko.",
-      "urogenital": "Ngokungafani nokushisa kwesiquphe, izimpawu zangaphakathi nezesinye azidlebi kahle ngazo — kodwa ziphendula kahle elashweni. Akukho lutho okufanele uneze namahloni ngalo.",
-      "other": "Awusakwazi ukubekezelela utshwala njengakuqala? I-oestrogen isebenzisana ne-histamine — ikhemikhali engemuva kokusabela okufana nama-allergy — futhi abanye besifazane baqaphela ukuzwela okusha eminyakeni ephakathi. Awuzicabangeli nje.",
-      "quality-of-life": "Izimpawu ze-menopause zifika emsebenzini, ekulaleni, nasebudlelwaneni. Ukuqamba lowo mphumela akukhona ukukhala — kuyisinyathelo sokuqala sokuthola usekelo olufanele.",
-      "mindset": "Akukaze kube sekwephuzile ukucela usizo. Ezinye izimpawu — kuhlanganise nezesitho sangasese nezesinye — zisabela kahle ekwelashweni noma sekudlule iminyaka emingaki selokhu kwaba yi-menopause."
+      "context": "I-perimenopause, iminyaka yoshintsho ngaphambi kokuthi izinsuku zenyanga ziphele, ivamise ukuthatha iminyaka engaba mi-4 kuya kwengu-8, nakuba kwabanye besifazane imfushane noma inde. I-menopause uqobo lusuku olulodwa nje.",
+      "mind-cognition": "Inkungu yengqondo iyenye yezimpawu ezivame kakhulu ze-menopause, ibangelwa ukushintsha kwe-oestrogen, hhayi ngokuthi ulahlekelwa ububanzi bakho. Eningini labesifazane, iyaphakama.",
+      "mood": "Ukushintsha kwemizwa ku-menopause kungokomzimba, akusikho ukwehluleka komuntu. I-oestrogen isebenzisana ne-serotonin, elinye lamakhemikhali emizwa obuchopho, ngakho lapho amazinga ama-hormone eshintsha, imizwa nayo ingashintsha.",
+      "nervous-system": "Ukushisa kwesiquphe kungaqala iminyaka ngaphambi kwezinkathi zakho zokugcina. Kuya kuma-8 kwabesifazane abali-10 abakubhekana nakho, noma yini oyizwayo, awuwedwa.",
+      "body": "Ubuhlungu bamalungu nemisipha kuyimpawu enye ye-menopause engaqondwa kahle, i-oestrogen isiza ukugcina amalunga azwakala kahle. Ngisho nehlombe elingahambi kuxhumene nale guquko.",
+      "urogenital": "Ngokungafani nokushisa kwesiquphe, izimpawu zangaphakathi nezesinye azidlebi kahle ngazo, kodwa ziphendula kahle elashweni. Akukho lutho okufanele uneze namahloni ngalo.",
+      "other": "Awusakwazi ukubekezelela utshwala njengakuqala? I-oestrogen isebenzisana ne-histamine, ikhemikhali engemuva kokusabela okufana nama-allergy, futhi abanye besifazane baqaphela ukuzwela okusha eminyakeni ephakathi. Awuzicabangeli nje.",
+      "quality-of-life": "Izimpawu ze-menopause zifika emsebenzini, ekulaleni, nasebudlelwaneni. Ukuqamba lowo mphumela akukhona ukukhala, kuyisinyathelo sokuqala sokuthola usekelo olufanele.",
+      "mindset": "Akukaze kube sekwephuzile ukucela usizo. Ezinye izimpawu, kuhlanganise nezesitho sangasese nezesinye, zisabela kahle ekwelashweni noma sekudlule iminyaka emingaki selokhu kwaba yi-menopause."
     },
     "loadingStages": {
       "1": "Lalela konke okwabelene nathi…",
@@ -396,7 +396,7 @@
       "1": "Isitebhe ngasinye siyingxenye yendaba yakho.",
       "2": "Ukuvela wena uqobo yisibindi.",
       "3": "Awuwedwa kulokhu.",
-      "4": "Lokho okuzwayo kuyiqiniso — futhi kubalulekile."
+      "4": "Lokho okuzwayo kuyiqiniso, futhi kubalulekile."
     }
   },
   "units": {
@@ -925,9 +925,9 @@
     "mode": {
       "title": "Ungathanda ukuphendula kanjani?",
       "taps": "Ukuthepha okusheshayo",
-      "tapsSub": "Umbuzo owodwa ngesikhathi — ngaphansi kwemizuzu emibili",
+      "tapsSub": "Umbuzo owodwa ngesikhathi, ngaphansi kwemizuzu emibili",
       "chat": "Xoxa noMandi",
-      "chatSub": "Ingxoxo emnene — uyaphendula naye"
+      "chatSub": "Ingxoxo emnene, uyaphendula naye"
     },
     "capture": {
       "pageGate": "Phendula zozine ukuze uqhubeke.",
@@ -948,15 +948,15 @@
       "finePrint": "Asisoze sabelane ngemininingwane yakho. Ungacela ukuthi sisule konke noma nini."
     },
     "chat": {
-      "greeting": "Sawubona, nginguMandi. Nginemibuzo eyisishiyagalombili esheshayo mayelana nokuthi uzizwa kanjani muva nje — vele uthephe impendulo efanele.",
+      "greeting": "Sawubona, nginguMandi. Nginemibuzo eyisishiyagalombili esheshayo mayelana nokuthi uzizwa kanjani muva nje, vele uthephe impendulo efanele.",
       "mind-cognition": {
         "hi": {
-          "1": "Lowo muzwa wokulahlekelwa amagama — akusiyo ingqondo yakho ekwehlulayo.",
+          "1": "Lowo muzwa wokulahlekelwa amagama, akusiyo ingqondo yakho ekwehlulayo.",
           "2": "Inkumbulo yakho ayiphukile. Abesifazane abaningi kakhulu bachaza khona lokhu."
         },
         "lo": {
           "1": "Kuhle. Ukucaca kwakho kusabambile.",
-          "2": "Siyabonga — kuyasiza ukwazi."
+          "2": "Siyabonga, kuyasiza ukwazi."
         }
       },
       "nervous-system": {
@@ -965,23 +965,23 @@
           "2": "Umzimba wakho ukugcina uphapheme ebusuku. Lokho kubalulekile."
         },
         "lo": {
-          "1": "Kuhle — ubusuku bakho busabambile.",
+          "1": "Kuhle, ubusuku bakho busabambile.",
           "2": "Siyabonga."
         }
       },
       "body": {
         "hi": {
-          "1": "Umzimba wakho ukutshela okuthile — futhi kufanele ukulalele.",
+          "1": "Umzimba wakho ukutshela okuthile, futhi kufanele ukulalele.",
           "2": "Kuyiqiniso, futhi kuyaziwa."
         },
         "lo": {
-          "1": "Siyabonga — kuqashelwe.",
+          "1": "Siyabonga, kuqashelwe.",
           "2": "Kuhle."
         }
       },
       "other": {
         "hi": {
-          "1": "Yebo — leyo imangaza cishe wonke umuntu.",
+          "1": "Yebo, leyo imangaza cishe wonke umuntu.",
           "2": "Abesifazane abaningi bakwenza lokho kuxhumana kamuva kakhulu."
         },
         "lo": {
@@ -1001,18 +1001,18 @@
       }
     },
     "story": {
-      "disclaimer": "Ulwazi lwemfundo kuphela — akusiyo iseluleko sezokwelapha.",
+      "disclaimer": "Ulwazi lwemfundo kuphela, akusiyo iseluleko sezokwelapha.",
       "intro": {
         "title": "Ingubo yakho ixoxa indaba",
-        "sub": "Skrolela phansi — yonke ingcephe oyithungile inokuthile ezokusho."
+        "sub": "Skrolela phansi, yonke ingcephe oyithungile inokuthile ezokusho."
       },
       "cute": {
         "context": "Yonke indaba iqala ndawana thize.",
-        "mind-cognition": "Amagama alahlekayo phakathi komusho? Awalahlekile — asekhefini letiye nje.",
+        "mind-cognition": "Amagama alahlekayo phakathi komusho? Awalahlekile, asekhefini letiye nje.",
         "mood": "Imizwa eyenza amasaka? Kunesizathu.",
         "nervous-system": "Umzimba wakho ubulokhu ukuthumelela amaposikhadi.",
         "body": "Ubuhlungu obufike bungamenywanga? Siyabubona.",
-        "urogenital": "Izinto okungakhulunywa ngazo — thina sikhuluma ngazo.",
+        "urogenital": "Izinto okungakhulunywa ngazo, thina sikhuluma ngazo.",
         "other": "Isigaba se-'ima, LOKHO yi-menopause?'",
         "quality-of-life": "Kuthinta izinto ozithandayo. Lokho kubalulekile.",
         "mindset": "Ufikile. Lowo ngumthungo omkhulu kunayo yonke."
@@ -1020,12 +1020,12 @@
       "factLabel": "Kungani lokhu kwenzeka",
       "hormoneHook": {
         "title": "Ungawashiyi ngaphandle ama-hormone akho.",
-        "body": "Abesifazane abaningi kakhulu baphila iminyaka nezimpawu ezifana nalezi — bengazi ukuthi ama-hormone angaba yingxenye yendaba. Noma ngabe ingubo yakho ibukeka kanjani, kufanele uwaqonde. Yilokho uMandi akwakhayo: impilo yabesifazane ehlosiwe, engenakuhlazisa, ngolimi lwakho, ngezwi lase-Afrika.",
+        "body": "Abesifazane abaningi kakhulu baphila iminyaka nezimpawu ezifana nalezi, bengazi ukuthi ama-hormone angaba yingxenye yendaba. Noma ngabe ingubo yakho ibukeka kanjani, kufanele uwaqonde. Yilokho uMandi akwakhayo: impilo yabesifazane ehlosiwe, engenakuhlazisa, ngolimi lwakho, ngezwi lase-Afrika.",
         "cta": "Joyina uhambo lukaMandi"
       },
       "none": {
-        "title": "Ingubo yakho ibukeka izolile — unenhlanhla!",
-        "body": "Azikho izimpawu ezinamandla namuhla. I-menopause ifika ngokwehlukile kuwo wonke owesifazane — futhi ukwazi okufanele ukubheke kuyisiqalo esihle kunazo zonke."
+        "title": "Ingubo yakho ibukeka izolile, unenhlanhla!",
+        "body": "Azikho izimpawu ezinamandla namuhla. I-menopause ifika ngokwehlukile kuwo wonke owesifazane, futhi ukwazi okufanele ukubheke kuyisiqalo esihle kunazo zonke."
       }
     },
     "attract": {
@@ -1041,15 +1041,15 @@
       "heading": "Ingubo yakho, kuze kube manje",
       "scoreLabel": "I-MenoScore yakho yedemo",
       "band": {
-        "mild": "Izimpawu zakho zibukeka zilula — ukuhlala unolwazi kuyisinyathelo esilandelayo esihle kakhulu.",
-        "moderate": "Izimpawu zakho zibukeka ziphakathi — awuzicabangeli nje, futhi awuwedwa.",
-        "significant": "Izimpawu zakho zibukeka zinzima — udokotela oqonda i-menopause angashintsha konke."
+        "mild": "Izimpawu zakho zibukeka zilula, ukuhlala unolwazi kuyisinyathelo esilandelayo esihle kakhulu.",
+        "moderate": "Izimpawu zakho zibukeka ziphakathi, awuzicabangeli nje, futhi awuwedwa.",
+        "significant": "Izimpawu zakho zibukeka zinzima, udokotela oqonda i-menopause angashintsha konke."
       },
       "cta": "Ngithathele ingubo yami"
     },
     "email": {
       "title": "Hamba nengubo yakho",
-      "body": "Shiya i-imeyili yakho uMandi uzokuthumelela imiphumela yakho — futhi akwamukele ohambweni ngesikhathi esiqala ngaso.",
+      "body": "Shiya i-imeyili yakho uMandi akuthumelele ingubo yakho, isixhumanisi sakho sokuhlolwa okuphelele kwemibuzo engu-56, kanye nendawo ohambweni, ukuze uqedele ingubo yakho ngesikhathi sakho, ekhaya lakho.",
       "placeholder": "eyakho@imeyili.com",
       "consent": "Gcina i-imeyili yami nezimpendulo zedemo ukuze uMandi angithumelele imiphumela yami nezindaba zokwethulwa.",
       "cta": "Thumela ingubo yami",
@@ -1057,8 +1057,8 @@
     },
     "thanks": {
       "title": "Sala kahle, okwamanje.",
-      "bodyKiosk": "Siyabonga ngokuthunga indaba yakho nathi — uMandi wakha impilo yabesifazane engenakuhlazisa eNingizimu Afrika, futhi usuyingxenye yayo manje. Sicela ubuyisele ithebulethi.",
-      "bodyPhone": "Bheka ibhokisi lakho le-imeyili. UMandi wakha ikhaya lempilo yabesifazane eNingizimu Afrika — i-menopause eqondwayo, hhayi ebekezelelwayo; wonke owesifazane ngolimi lwakhe. Ingubo yakho iwumthungo wokuqala. Woza uyiqedele ku-joinmandi.com.",
+      "bodyKiosk": "Siyabonga ngokuthunga indaba yakho nathi, uMandi wakha impilo yabesifazane engenakuhlazisa eNingizimu Afrika, futhi usuyingxenye yayo manje. Sicela ubuyisele ithebulethi.",
+      "bodyPhone": "Bheka ibhokisi lakho le-imeyili. UMandi wakha ikhaya lempilo yabesifazane eNingizimu Afrika, i-menopause eqondwayo, hhayi ebekezelelwayo; wonke owesifazane ngolimi lwakhe. Ingubo yakho iwumthungo wokuqala. Woza uyiqedele ku-joinmandi.com.",
       "fullCta": "Joyina uhambo lukaMandi"
     }
   }

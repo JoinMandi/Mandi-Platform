@@ -141,7 +141,7 @@
       },
       "mindset": {
         "title": "Hoe jy hieroor dink en voel",
-        "description": "Die laaste paar vrae — oor jou, nie jou simptome nie."
+        "description": "Die laaste paar vrae, oor jou, nie jou simptome nie."
       }
     },
     "q1": {
@@ -171,19 +171,19 @@
       "text": "Probleme om te konsentreer"
     },
     "q7": {
-      "text": "Geheueprobleme — vergeet name, woorde, of waar jy goed neersit"
+      "text": "Geheueprobleme, vergeet name, woorde, of waar jy goed neersit"
     },
     "q8": {
-      "text": "Sukkel om woorde te vind — jy weet wat jy wil sê maar kry nie die woord nie"
+      "text": "Sukkel om woorde te vind, jy weet wat jy wil sê maar kry nie die woord nie"
     },
     "q9": {
-      "text": "Verminderde vermoë om meertaakwerk te doen — sukkel om meer as een ding op 'n slag te bestuur"
+      "text": "Verminderde vermoë om meertaakwerk te doen, sukkel om meer as een ding op 'n slag te bestuur"
     },
     "q10": {
-      "text": "Buierighede — sonder rede op en af voel"
+      "text": "Buierighede, sonder rede op en af voel"
     },
     "q11": {
-      "text": "Prikkelbaarheid — vinniger as gewoonlik snou of gefrustreerd raak"
+      "text": "Prikkelbaarheid, vinniger as gewoonlik snou of gefrustreerd raak"
     },
     "q12": {
       "text": "Angstig of bekommerd voel meer as gewoonlik"
@@ -192,13 +192,13 @@
       "text": "Laag, plat of depressief voel"
     },
     "q14": {
-      "text": "Lae motivering — sukkel om die energie of begeerte te vind vir dinge wat jy vroeër geniet het"
+      "text": "Lae motivering, sukkel om die energie of begeerte te vind vir dinge wat jy vroeër geniet het"
     },
     "q15": {
-      "text": "Lae selfwaarde — voel minder selfversekerd of minder waardevol as voorheen"
+      "text": "Lae selfwaarde, voel minder selfversekerd of minder waardevol as voorheen"
     },
     "q16": {
-      "text": "Nie soos jouself voel nie — herken nie die persoon wat jy geword het nie",
+      "text": "Nie soos jouself voel nie, herken nie die persoon wat jy geword het nie",
       "hint": "Hierdie vraag tref baie vroue vir die eerste keer. Vertrou wat jy voel."
     },
     "q17": {
@@ -206,59 +206,59 @@
       "hint": "Jy kan eerlik antwoord. As jy sukkel, sal Mandi onmiddellik ondersteuning op jou padkaart sit."
     },
     "q18": {
-      "text": "Warmgloede — skielike golwe van hitte deur jou liggaam"
+      "text": "Warmgloede, skielike golwe van hitte deur jou liggaam"
     },
     "q19": {
-      "text": "Nagtelike sweet — wakker word deurnat of oorverhit"
+      "text": "Nagtelike sweet, wakker word deurnat of oorverhit"
     },
     "q20": {
-      "text": "Slaapprobleme — sukkel om aan die slaap te raak of te bly slaap"
+      "text": "Slaapprobleme, sukkel om aan die slaap te raak of te bly slaap"
     },
     "q21": {
-      "text": "Hartkloppings — jou hart wat jaag of onreëlmatig klop"
+      "text": "Hartkloppings, jou hart wat jaag of onreëlmatig klop"
     },
     "q22": {
-      "text": "Hoofpyne of migraine — gereelder of erger as voorheen"
+      "text": "Hoofpyne of migraine, gereelder of erger as voorheen"
     },
     "q23": {
       "text": "Duiseligheid of flou voel"
     },
     "q24": {
-      "text": "Rustelose bene — 'n ongemaklike drang om jou bene te beweeg, veral snags"
+      "text": "Rustelose bene, 'n ongemaklike drang om jou bene te beweeg, veral snags"
     },
     "q25": {
-      "text": "Tinnitus — gerinkel of gegons in die ore"
+      "text": "Tinnitus, gerinkel of gegons in die ore"
     },
     "q26": {
-      "text": "Gewrigspyn — pyn, styfheid of swelling in gewrigte"
+      "text": "Gewrigspyn, pyn, styfheid of swelling in gewrigte"
     },
     "q27": {
-      "text": "Spierpyn — algemene pyn in spiere"
+      "text": "Spierpyn, algemene pyn in spiere"
     },
     "q28": {
-      "text": "Gevriesde skouer — pyn of beperkte beweging in die skouer",
+      "text": "Gevriesde skouer, pyn of beperkte beweging in die skouer",
       "hint": "'n Onder-erkende simptoom van menopouse. As dit jy is, verbeel jy jou dit nie."
     },
     "q29": {
-      "text": "Vermoeidheid en lae energie — uitgeput selfs na rus"
+      "text": "Vermoeidheid en lae energie, uitgeput selfs na rus"
     },
     "q30": {
-      "text": "Gewigstoename — veral om die middel"
+      "text": "Gewigstoename, veral om die middel"
     },
     "q31": {
       "text": "Opgeblaasheid of spysverteringsongemak"
     },
     "q32": {
-      "text": "Vel-veranderinge — droogheid, jeuk of tekstuur-veranderinge"
+      "text": "Vel-veranderinge, droogheid, jeuk of tekstuur-veranderinge"
     },
     "q33": {
       "text": "Haarverlies of haaruitdunning"
     },
     "q34": {
-      "text": "Droë oë — volgehoue droogheid, irritasie of wasige sig"
+      "text": "Droë oë, volgehoue droogheid, irritasie of wasige sig"
     },
     "q35": {
-      "text": "Veranderinge in jou maandstonde — swaarder, ligter, langer, korter of meer ongereeld as voorheen"
+      "text": "Veranderinge in jou maandstonde, swaarder, ligter, langer, korter of meer ongereeld as voorheen"
     },
     "q36": {
       "text": "Vaginale droogheid of ongemak"
@@ -267,7 +267,7 @@
       "text": "Pynlike seks"
     },
     "q38": {
-      "text": "Blaasprobleme — dringendheid, lekkasies of meer dikwels moet gaan, ook snags"
+      "text": "Blaasprobleme, dringendheid, lekkasies of meer dikwels moet gaan, ook snags"
     },
     "q39": {
       "text": "Herhalende urineweë-infeksies"
@@ -276,48 +276,48 @@
       "text": "Verlies van belangstelling in seks"
     },
     "q41": {
-      "text": "Verminderde alkoholverdraagsaamheid — twee glasies wat voorheen fyn was, voel nou soos vier",
-      "hint": "Dit is die vraag wat vroue laat sê: 'wag — is dít menopouse?'"
+      "text": "Verminderde alkoholverdraagsaamheid, twee glasies wat voorheen fyn was, voel nou soos vier",
+      "hint": "Dit is die vraag wat vroue laat sê: 'wag, is dít menopouse?'"
     },
     "q42": {
-      "text": "Nuwe of vererger allergieë — hooikoors, voedselonverdraagsaamheid, of sensitiwiteite wat jy nooit voorheen gehad het nie"
+      "text": "Nuwe of vererger allergieë, hooikoors, voedselonverdraagsaamheid, of sensitiwiteite wat jy nooit voorheen gehad het nie"
     },
     "q43": {
-      "text": "Verergering van 'n langtermyn-gesondheidstoestand — asma, migraine, outo-immuun-toestand of soortgelyks",
+      "text": "Verergering van 'n langtermyn-gesondheidstoestand, asma, migraine, outo-immuun-toestand of soortgelyks",
       "hint": "As dit 'n sterk ja is, sal Mandi jou na spesialis-geleide sorg verwys."
     },
     "q44": {
-      "text": "Impak op jou vermoë om te werk — konsentrasie, produktiwiteit of selfvertroue by die werk"
+      "text": "Impak op jou vermoë om te werk, konsentrasie, produktiwiteit of selfvertroue by die werk"
     },
     "q45": {
       "text": "Impak op jou verhouding met jou maat"
     },
     "q46": {
-      "text": "Impak op jou verhoudings met familie — kinders, ouers, naby familielede"
+      "text": "Impak op jou verhoudings met familie, kinders, ouers, naby familielede"
     },
     "q47": {
-      "text": "Impak op jou sosiale lewe — onttrekking, nie wil uitgaan nie"
+      "text": "Impak op jou sosiale lewe, onttrekking, nie wil uitgaan nie"
     },
     "q48": {
       "text": "Impak op jou vermoë om aktief te bly en oefen"
     },
     "q49": {
-      "text": "Wanneer jy dink aan wat jy ervaar het — wat is jou onderbuikgevoel?",
+      "text": "Wanneer jy dink aan wat jy ervaar het, wat is jou onderbuikgevoel?",
       "a": "Iets is verkeerd en ek het nou hulp nodig.",
-      "b": "Dit is waarskynlik net ouer word — ek sal regkom.",
+      "b": "Dit is waarskynlik net ouer word, ek sal regkom.",
       "c": "Ek het alles probeer. Niks werk vir my nie.",
-      "d": "Ek het my navorsing gedoen — ek weet wat aangaan."
+      "d": "Ek het my navorsing gedoen, ek weet wat aangaan."
     },
     "q50": {
       "text": "Hoe voel jy oor hormoonterapie (HRT)?",
       "a": "Oop daarvoor as 'n dokter dit aanbeveel.",
-      "b": "Ek verkies natuurlike benaderings — kruie, leefstyl, aanvullings.",
-      "c": "Ek is senuweeagtig — ek het gehoor dit kan riskant wees.",
+      "b": "Ek verkies natuurlike benaderings, kruie, leefstyl, aanvullings.",
+      "c": "Ek is senuweeagtig, ek het gehoor dit kan riskant wees.",
       "d": "Ek is reeds op HRT, of het dit al probeer."
     },
     "q51": {
       "text": "Hoe voel jy oor die mediese stelsel as dit by jou gesondheid kom?",
-      "a": "Ek vertrou my dokter — ek het net die regte verwysing nodig.",
+      "a": "Ek vertrou my dokter, ek het net die regte verwysing nodig.",
       "b": "My simptome is van die hand gewys. Ek voel ongesien.",
       "c": "Ek verkies om eers navorsing te doen voordat ek 'n dokter besoek.",
       "d": "Ek weet eerlikwaar nie waar om te begin nie."
@@ -330,7 +330,7 @@
       "d": "Ek het nie daaraan gedink nie."
     },
     "q53": {
-      "text": "Voel jy ooit dat dit dalk te laat is om hulp te kry — dat jy die geleentheid mis?"
+      "text": "Voel jy ooit dat dit dalk te laat is om hulp te kry, dat jy die geleentheid mis?"
     },
     "q54": {
       "text": "Het jy enige bestaande gesondheidstoestande wat jou bekommer oor hormoonbehandeling?",
@@ -340,13 +340,13 @@
       "autoimmune": "Outo-immuun-toestand",
       "cardiovascular": "Diabetes of hart-toestand",
       "psychiatric": "Psigiatriese toestand",
-      "notSure": "Nie seker nie — ek wil graag leiding hê"
+      "notSure": "Nie seker nie, ek wil graag leiding hê"
     },
     "q55": {
       "text": "Wat sal die nuttigste vir jou wees vandag?",
       "a": "Verstaan wat in my liggaam aangaan.",
       "b": "Weet of wat ek voel normaal is.",
-      "c": "Leer my opsies — HRT en alternatiewe.",
+      "c": "Leer my opsies, HRT en alternatiewe.",
       "d": "Vind 'n dokter wat my taal praat en hormone verstaan.",
       "e": "Iets om saam met my te neem na my huidige dokter."
     },
@@ -364,27 +364,27 @@
     "areaProgress": "Area {{current}} van {{total}}",
     "patchesStitched": "{{done}} van {{total}} lappies vasgestik · tik om te sien",
     "continue": "Gaan voort",
-    "bandComplete": "{{area}} — vasgestik",
+    "bandComplete": "{{area}}, vasgestik",
     "bandHeadline": "Nog 'n stukkie van jou kombers.",
-    "nextArea": "Volgende — {{area}}.",
+    "nextArea": "Volgende, {{area}}.",
     "quiltHeading": "Jou kombers tot dusver",
     "quiltClose": "Maak toe",
     "blanketComplete": "Jy het jou kombers vasgestik.",
-    "blanketCompleteBody": "Elke lappie is iets wat jy gedeel het. Hierdie kombers is joune — 'n stukkie van die een wat alle Suid-Afrikaanse vroue saam stik.",
+    "blanketCompleteBody": "Elke lappie is iets wat jy gedeel het. Hierdie kombers is joune, 'n stukkie van die een wat alle Suid-Afrikaanse vroue saam stik.",
     "resumeTitle": "Welkom terug.",
-    "resumeBody": "Jou kombers wag — {{progress}} reeds vasgestik. Jy kan presies opgaan waar jy gestop het.",
+    "resumeBody": "Jou kombers wag, {{progress}} reeds vasgestik. Jy kan presies opgaan waar jy gestop het.",
     "resumeContinue": "Gaan voort met stik",
     "resumeFresh": "Begin liewer van voor af",
     "facts": {
-      "context": "Perimenopouse — die jare van verandering voordat maandstondes ophou — duur meestal ongeveer 4 tot 8 jaar, hoewel dit vir sommige vroue korter of langer is. Menopouse self is net een dag.",
-      "mind-cognition": "Breinmist is een van die mees algemene simptome van menopouse — veroorsaak deur veranderende estrogeen, nie deurdat jy jou skerpheid verloor nie. Vir die meeste vroue lig dit op.",
-      "mood": "Buiveranderinge in menopouse is fisies, nie 'n persoonlike mislukking nie. Estrogeen werk in op serotonien, een van die brein se buichemikalieë — so wanneer hormoonvlakke verskuif, kan jou bui ook verskuif.",
-      "nervous-system": "Warmgloede kan jare voor jou laaste maandstonde begin. Tot 8 uit 10 vroue ervaar dit — wat ook al jy voel, jy is ver van alleen nie.",
-      "body": "Gewrigs- en spierpyn is 'n onder-erkende simptoom van menopouse — estrogeen help om gewrigte gemaklik te hou. Selfs gevriesde skouer is hieraan gekoppel.",
-      "urogenital": "Anders as warmgloede, vervaag intieme en blaas-simptome neig nie vanself nie — maar hulle reageer baie goed op behandeling. Daar is niks om vir skaam te wees nie.",
-      "other": "Kan jy skielik nie alkohol verdra soos vroeër nie? Estrogeen werk in op histamien — die chemikalie agter allergie-tipe reaksies — en sommige vroue merk nuwe sensitiwiteite in die middeljare op. Jy verbeel jou nie.",
-      "quality-of-life": "Menopouse-simptome strek na werk, slaap en verhoudings. Om daardie impak te benoem is nie kla nie — dit is die eerste stap om die regte ondersteuning te kry.",
-      "mindset": "Dit is nooit te laat om hulp te vra nie. Sommige simptome — insluitend vaginale en blaassimptome — reageer goed op behandeling, maak nie saak hoeveel jare sedert menopouse verby is nie."
+      "context": "Perimenopouse, die jare van verandering voordat maandstondes ophou, duur meestal ongeveer 4 tot 8 jaar, hoewel dit vir sommige vroue korter of langer is. Menopouse self is net een dag.",
+      "mind-cognition": "Breinmist is een van die mees algemene simptome van menopouse, veroorsaak deur veranderende estrogeen, nie deurdat jy jou skerpheid verloor nie. Vir die meeste vroue lig dit op.",
+      "mood": "Buiveranderinge in menopouse is fisies, nie 'n persoonlike mislukking nie. Estrogeen werk in op serotonien, een van die brein se buichemikalieë, so wanneer hormoonvlakke verskuif, kan jou bui ook verskuif.",
+      "nervous-system": "Warmgloede kan jare voor jou laaste maandstonde begin. Tot 8 uit 10 vroue ervaar dit, wat ook al jy voel, jy is ver van alleen nie.",
+      "body": "Gewrigs- en spierpyn is 'n onder-erkende simptoom van menopouse, estrogeen help om gewrigte gemaklik te hou. Selfs gevriesde skouer is hieraan gekoppel.",
+      "urogenital": "Anders as warmgloede, vervaag intieme en blaas-simptome neig nie vanself nie, maar hulle reageer baie goed op behandeling. Daar is niks om vir skaam te wees nie.",
+      "other": "Kan jy skielik nie alkohol verdra soos vroeër nie? Estrogeen werk in op histamien, die chemikalie agter allergie-tipe reaksies, en sommige vroue merk nuwe sensitiwiteite in die middeljare op. Jy verbeel jou nie.",
+      "quality-of-life": "Menopouse-simptome strek na werk, slaap en verhoudings. Om daardie impak te benoem is nie kla nie, dit is die eerste stap om die regte ondersteuning te kry.",
+      "mindset": "Dit is nooit te laat om hulp te vra nie. Sommige simptome, insluitend vaginale en blaassimptome, reageer goed op behandeling, maak nie saak hoeveel jare sedert menopouse verby is nie."
     },
     "loadingStages": {
       "1": "Luister na alles wat jy gedeel het…",
@@ -396,7 +396,7 @@
       "1": "Elke lappie is 'n stukkie van jou storie.",
       "2": "Om vir jouself op te daag is die dapper deel.",
       "3": "Jy is nie alleen hierin nie.",
-      "4": "Wat jy voel is werklik — en dit maak saak."
+      "4": "Wat jy voel is werklik, en dit maak saak."
     }
   },
   "units": {
@@ -925,9 +925,9 @@
     "mode": {
       "title": "Hoe wil jy antwoord?",
       "taps": "Vinnige tikke",
-      "tapsSub": "Een vraag op 'n slag — onder twee minute",
+      "tapsSub": "Een vraag op 'n slag, onder twee minute",
       "chat": "Gesels met Mandi",
-      "chatSub": "'n Sagte gesprek — sy antwoord terug"
+      "chatSub": "'n Sagte gesprek, sy antwoord terug"
     },
     "capture": {
       "pageGate": "Antwoord al vier om voort te gaan.",
@@ -948,15 +948,15 @@
       "finePrint": "Ons deel nooit jou besonderhede nie. Jy kan enige tyd vra dat ons alles uitvee."
     },
     "chat": {
-      "greeting": "Hallo, ek is Mandi. Ek het agt vinnige vrae oor hoe jy die laaste tyd voel — tik net die antwoord wat pas.",
+      "greeting": "Hallo, ek is Mandi. Ek het agt vinnige vrae oor hoe jy die laaste tyd voel, tik net die antwoord wat pas.",
       "mind-cognition": {
         "hi": {
-          "1": "Daai woord-soek gevoel — dis nie jou kop wat jou faal nie.",
+          "1": "Daai woord-soek gevoel, dis nie jou kop wat jou faal nie.",
           "2": "Jou geheue is nie stukkend nie. Soveel vroue beskryf presies dit."
         },
         "lo": {
           "1": "Goed so. Jou helderheid hou nog stand.",
-          "2": "Dankie — dis nuttig om te weet."
+          "2": "Dankie, dis nuttig om te weet."
         }
       },
       "nervous-system": {
@@ -965,23 +965,23 @@
           "2": "Jou lyf hou jou snags wakker. Dit tel."
         },
         "lo": {
-          "1": "Goed — jou nagte hou nog.",
+          "1": "Goed, jou nagte hou nog.",
           "2": "Dankie."
         }
       },
       "body": {
         "hi": {
-          "1": "Jou lyf vertel jou iets — en dis die moeite werd om te luister.",
+          "1": "Jou lyf vertel jou iets, en dis die moeite werd om te luister.",
           "2": "Dit is regtig, en dit is bekend."
         },
         "lo": {
-          "1": "Dankie — genoteer.",
+          "1": "Dankie, genoteer.",
           "2": "Goed so."
         }
       },
       "other": {
         "hi": {
-          "1": "Ja — daai een verras byna almal.",
+          "1": "Ja, daai een verras byna almal.",
           "2": "Baie vroue maak daardie verband eers baie later."
         },
         "lo": {
@@ -1001,18 +1001,18 @@
       }
     },
     "story": {
-      "disclaimer": "Slegs opvoedkundige inligting — nie mediese advies nie.",
+      "disclaimer": "Slegs opvoedkundige inligting, nie mediese advies nie.",
       "intro": {
         "title": "Jou kombers vertel 'n storie",
-        "sub": "Rol af — elke lappie wat jy gestik het, het iets te sê."
+        "sub": "Rol af, elke lappie wat jy gestik het, het iets te sê."
       },
       "cute": {
         "context": "Elke storie begin êrens.",
-        "mind-cognition": "Woorde wat wegraak? Hulle is nie weg nie — net gou op 'n teepouse.",
+        "mind-cognition": "Woorde wat wegraak? Hulle is nie weg nie, net gou op 'n teepouse.",
         "mood": "Gevoelens wat bollemakiesie slaan? Daar is 'n rede.",
         "nervous-system": "Jou liggaam stuur vir jou poskaarte.",
         "body": "Pyne wat ongenooid opgedaag het? Ons sien hulle.",
-        "urogenital": "Die dinge waaroor niemand praat nie — ons praat daaroor.",
+        "urogenital": "Die dinge waaroor niemand praat nie, ons praat daaroor.",
         "other": "Die 'wag, is DIT menopouse?'-afdeling.",
         "quality-of-life": "Dit raak die dinge wat jy liefhet. Dit maak saak.",
         "mindset": "Jy het opgedaag. Dis die grootste steek van almal."
@@ -1020,12 +1020,12 @@
       "factLabel": "Hoekom dit gebeur",
       "hormoneHook": {
         "title": "Moenie jou hormone uitsluit nie.",
-        "body": "Soveel vroue leef jare lank met simptome soos hierdie — sonder om te weet dat hormone deel van die storie kan wees. Hoe jou kombers ook al lyk, dit is die moeite werd om hulle te verstaan. Dit is wat Mandi bou: doelgerigte, gedestigmatiseerde vrouegesondheid, in jou taal, met 'n Afrika-stem.",
+        "body": "Soveel vroue leef jare lank met simptome soos hierdie, sonder om te weet dat hormone deel van die storie kan wees. Hoe jou kombers ook al lyk, dit is die moeite werd om hulle te verstaan. Dit is wat Mandi bou: doelgerigte, gedestigmatiseerde vrouegesondheid, in jou taal, met 'n Afrika-stem.",
         "cta": "Sluit aan by die Mandi-reis"
       },
       "none": {
-        "title": "Jou kombers lyk rustig — gelukkige jy!",
-        "body": "Geen sterk simptome vandag nie. Menopouse kom vir elke vrou anders — en om te weet waarna om te kyk, is die beste voorsprong wat daar is."
+        "title": "Jou kombers lyk rustig, gelukkige jy!",
+        "body": "Geen sterk simptome vandag nie. Menopouse kom vir elke vrou anders, en om te weet waarna om te kyk, is die beste voorsprong wat daar is."
       }
     },
     "attract": {
@@ -1041,15 +1041,15 @@
       "heading": "Jou kombers, tot dusver",
       "scoreLabel": "Jou demo-MenoScore",
       "band": {
-        "mild": "Jou simptome lyk lig — om ingelig te bly is die beste volgende steek.",
-        "moderate": "Jou simptome lyk matig — jy verbeel jou nie, en jy is nie alleen nie.",
-        "significant": "Jou simptome lyk beduidend — 'n dokter wat menopouse verstaan, kan alles verander."
+        "mild": "Jou simptome lyk lig, om ingelig te bly is die beste volgende steek.",
+        "moderate": "Jou simptome lyk matig, jy verbeel jou nie, en jy is nie alleen nie.",
+        "significant": "Jou simptome lyk beduidend, 'n dokter wat menopouse verstaan, kan alles verander."
       },
       "cta": "Kry my kombers"
     },
     "email": {
       "title": "Neem jou kombers huis toe",
-      "body": "Los jou e-pos en Mandi stuur jou resultate — en verwelkom jou op die reis die oomblik wat ons loods.",
+      "body": "Los jou e-pos en Mandi stuur jou kombers, jou skakel na die volledige 56-vraag-assessering, en 'n plek op die reis, sodat jy jou kombers in jou eie tyd, in jou eie huis kan voltooi.",
       "placeholder": "jou@epos.com",
       "consent": "Stoor my e-pos en demo-antwoorde sodat Mandi my resultate en loodsnuus kan stuur.",
       "cta": "Stuur my kombers",
@@ -1057,8 +1057,8 @@
     },
     "thanks": {
       "title": "Totsiens, vir eers.",
-      "bodyKiosk": "Dankie dat jy jou storie saam met ons gestik het — Mandi bou gedestigmatiseerde vrouegesondheid vir Suid-Afrika, en jy is nou deel daarvan. Gee asseblief die tablet terug.",
-      "bodyPhone": "Hou jou inboks dop. Mandi bou 'n tuiste vir vrouegesondheid in Suid-Afrika — menopouse verstaan, nie verduur nie; elke vrou in haar eie taal. Jou kombers is die eerste steek. Kom voltooi dit by joinmandi.com.",
+      "bodyKiosk": "Dankie dat jy jou storie saam met ons gestik het, Mandi bou gedestigmatiseerde vrouegesondheid vir Suid-Afrika, en jy is nou deel daarvan. Gee asseblief die tablet terug.",
+      "bodyPhone": "Hou jou inboks dop. Mandi bou 'n tuiste vir vrouegesondheid in Suid-Afrika, menopouse verstaan, nie verduur nie; elke vrou in haar eie taal. Jou kombers is die eerste steek. Kom voltooi dit by joinmandi.com.",
       "fullCta": "Sluit aan by die Mandi-reis"
     }
   }
