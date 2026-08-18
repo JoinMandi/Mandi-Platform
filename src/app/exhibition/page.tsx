@@ -911,16 +911,16 @@ export default function ExhibitionPage() {
                 <p className="text-center text-xs font-medium text-brown/55">
                   {t("exhibition.story.disclaimer")}
                 </p>
-                <details className="mt-3 text-brown/50">
-                  <summary className="cursor-pointer text-center text-[11px] font-semibold uppercase tracking-[0.18em]">
+                <div className="mt-4 text-brown/50">
+                  <p className="text-center text-[11px] font-semibold uppercase tracking-[0.18em]">
                     Sources
-                  </summary>
+                  </p>
                   <ol className="mx-auto mt-3 max-w-md list-decimal space-y-1 pl-5 text-[11px] leading-relaxed">
                     {FACT_SOURCES.map((s) => (
                       <li key={s}>{s}</li>
                     ))}
                   </ol>
-                </details>
+                </div>
               </div>
             </Reveal>
           </div>
