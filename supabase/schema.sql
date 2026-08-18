@@ -698,6 +698,44 @@ create policy "audit_superadmin_read" on admin_audit_log
 -- No insert policy — only service-role writes (via server actions).
 
 -- ═════════════════════════════════════════════════════════════
+-- 11. exhibition_signups (Silwerskermfees festival email capture)
+--
+-- Anonymous insert from the /exhibition demo funnel; rows hold PII
+-- (email) so reads are admin-only — deliberately NOT the world-readable
+-- sessions_select_own pattern. No update/delete policies: anon can't
+-- touch rows post-insert (service role handles cleanup).
+-- POPIA: consent is captured on the row itself (checkbox at the email
+-- step). Delete-by-email must be included in the POPIA deletion process
+-- alongside popia_deletion_log.
+-- ═════════════════════════════════════════════════════════════
+
+create table if not exists exhibition_signups (
+  id               uuid primary key default gen_random_uuid(),
+  created_at       timestamptz default now(),
+  email            text not null,
+  whatsapp         text,
+  age_band         text check (age_band in ('40-44','45-49','50-54','55-59','60plus','none')),
+  language_code    text references languages(code),
+  meno_score       int,
+  score_band       text check (score_band in ('mild','moderate','significant')),
+  answers          jsonb,
+  consent          boolean not null default false,
+  -- Separate, explicit, unticked-by-default marketing opt-in — never bundled
+  -- with the POPIA consent to store the answers.
+  marketing_opt_in boolean not null default false,
+  source           text not null default 'exhibition'
+);
+
+alter table exhibition_signups enable row level security;
+
+drop policy if exists "exhibition_signups_insert_any" on exhibition_signups;
+drop policy if exists "exhibition_signups_admin_read" on exhibition_signups;
+create policy "exhibition_signups_insert_any" on exhibition_signups
+  for insert with check (true);
+create policy "exhibition_signups_admin_read" on exhibition_signups
+  for select using (public.is_admin());
+
+-- ═════════════════════════════════════════════════════════════
 -- End of schema.
 -- Bootstrap an admin after the first sign-up:
 --   update users set role = 'admin' where email = 'you@example.com';

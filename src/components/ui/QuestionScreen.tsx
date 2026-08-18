@@ -18,6 +18,8 @@ interface QuestionScreenProps {
   patches: QuiltPatch[];
   answeredCount: number;
   onQuiltTap: () => void;
+  /** Hide the "takes about 10 minutes" note (e.g. the 2-minute exhibition demo). */
+  showTime?: boolean;
 }
 
 export default function QuestionScreen({
@@ -30,6 +32,7 @@ export default function QuestionScreen({
   patches,
   answeredCount,
   onQuiltTap,
+  showTime = true,
 }: QuestionScreenProps) {
   const { t } = useTranslation("common");
   const domainNumber = DOMAIN_ORDER.indexOf(domain) + 1;
@@ -93,7 +96,7 @@ export default function QuestionScreen({
         {/* Content */}
         <div className="flex-1 flex flex-col justify-center gap-8">{children}</div>
 
-        {current === 1 && (
+        {current === 1 && showTime && (
           <p className="text-center text-xs text-brown/45 mt-6 font-medium">
             {t("questionnaire.time")}
           </p>
