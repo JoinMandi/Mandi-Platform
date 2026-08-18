@@ -935,6 +935,8 @@
       "whatsappPlaceholder": "082 000 0000",
       "age": "Jou ouderdom (opsioneel)",
       "ages": {
+        "30-39": "30–39",
+        "20-29": "20–29",
         "40-44": "40–44",
         "45-49": "45–49",
         "50-54": "50–54",
@@ -950,7 +952,7 @@
       "mind-cognition": {
         "hi": {
           "1": "Daai woord-soek gevoel — dis nie jou kop wat jou faal nie.",
-          "2": "Jou geheue is nie stukkend nie. Hormone raak dit ook."
+          "2": "Jou geheue is nie stukkend nie. Soveel vroue beskryf presies dit."
         },
         "lo": {
           "1": "Goed so. Jou helderheid hou nog stand.",
@@ -969,7 +971,7 @@
       },
       "body": {
         "hi": {
-          "1": "Jou lyf praat. Dit is nie sommer net ouer word nie.",
+          "1": "Jou lyf vertel jou iets — en dis die moeite werd om te luister.",
           "2": "Dit is regtig, en dit is bekend."
         },
         "lo": {
@@ -980,7 +982,7 @@
       "other": {
         "hi": {
           "1": "Ja — daai een verras byna almal.",
-          "2": "Dis menopouse. Regtig."
+          "2": "Baie vroue maak daardie verband eers baie later."
         },
         "lo": {
           "1": "Goed om te weet.",
@@ -1018,8 +1020,8 @@
       "factLabel": "Hoekom dit gebeur",
       "hormoneHook": {
         "title": "Dis nie jy nie. Dis jou hormone.",
-        "body": "Byna alles wat jy nou net gelees het, kom van veranderende estrogeen en progesteroon. Om hulle te verstaan is die sleutel om weer soos jouself te voel — en dis presies waarvoor Mandi daar is.",
-        "cta": "Leer hoe hormone werk op joinmandi.com"
+        "body": "Byna alles wat jy nou net gelees het, kom van veranderende hormone. Om hulle te verstaan is die sleutel om weer soos jouself te voel — en dit is wat Mandi bou: doelgerigte, gedestigmatiseerde vrouegesondheid, in jou taal, met 'n Afrika-stem.",
+        "cta": "Sluit aan by die Mandi-reis"
       },
       "none": {
         "title": "Jou kombers lyk rustig — gelukkige jy!",
@@ -1047,7 +1049,7 @@
     },
     "email": {
       "title": "Neem jou kombers huis toe",
-      "body": "Los jou e-pos en Mandi stuur jou resultate — en laat weet jou die oomblik wat ons loods.",
+      "body": "Los jou e-pos en Mandi stuur jou resultate — en verwelkom jou op die reis die oomblik wat ons loods.",
       "placeholder": "jou@epos.com",
       "consent": "Stoor my e-pos en demo-antwoorde sodat Mandi my resultate en loodsnuus kan stuur.",
       "cta": "Stuur my kombers",
@@ -1056,8 +1058,8 @@
     "thanks": {
       "title": "Totsiens, vir eers.",
       "bodyKiosk": "Dankie dat jy saam met ons gestik het — gee asseblief die tablet terug.",
-      "bodyPhone": "Hou jou inboks dop. Jou volle kombers wag by joinmandi.com.",
-      "fullCta": "Stik die volle kombers"
+      "bodyPhone": "Hou jou inboks dop. Jou volle kombers — en 'n beweging vir vrouegesondheid met 'n Afrika-stem — wag by joinmandi.com.",
+      "fullCta": "Sluit aan by die Mandi-reis"
     }
   }
 }

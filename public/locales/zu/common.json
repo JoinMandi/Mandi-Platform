@@ -935,6 +935,8 @@
       "whatsappPlaceholder": "082 000 0000",
       "age": "Iminyaka yakho (uma uthanda)",
       "ages": {
+        "30-39": "30–39",
+        "20-29": "20–29",
         "40-44": "40–44",
         "45-49": "45–49",
         "50-54": "50–54",
@@ -950,7 +952,7 @@
       "mind-cognition": {
         "hi": {
           "1": "Lowo muzwa wokulahlekelwa amagama — akusiyo ingqondo yakho ekwehlulayo.",
-          "2": "Inkumbulo yakho ayiphukile. Ama-hormone ayayifinyelela nayo."
+          "2": "Inkumbulo yakho ayiphukile. Abesifazane abaningi kakhulu bachaza khona lokhu."
         },
         "lo": {
           "1": "Kuhle. Ukucaca kwakho kusabambile.",
@@ -969,7 +971,7 @@
       },
       "body": {
         "hi": {
-          "1": "Umzimba wakho uyakhuluma. Lokhu akusikho nje ukuguga.",
+          "1": "Umzimba wakho ukutshela okuthile — futhi kufanele ukulalele.",
           "2": "Kuyiqiniso, futhi kuyaziwa."
         },
         "lo": {
@@ -980,7 +982,7 @@
       "other": {
         "hi": {
           "1": "Yebo — leyo imangaza cishe wonke umuntu.",
-          "2": "Yi-menopause. Ngempela."
+          "2": "Abesifazane abaningi bakwenza lokho kuxhumana kamuva kakhulu."
         },
         "lo": {
           "1": "Kuhle ukwazi.",
@@ -1018,8 +1020,8 @@
       "factLabel": "Kungani lokhu kwenzeka",
       "hormoneHook": {
         "title": "Akuwena. Ngama-hormone akho.",
-        "body": "Cishe konke osanda kukufunda kubuyela ku-oestrogen ne-progesterone eshintshayo. Ukuwaqonda kuyisihluthulelo sokuphinde uzizwe unguwe — futhi yilokho kanye uMandi akhona ngakho.",
-        "cta": "Funda ukuthi ama-hormone asebenza kanjani ku-joinmandi.com"
+        "body": "Cishe konke osanda kukufunda kuvela kuma-hormone ashintshayo. Ukuwaqonda kuyisihluthulelo sokuphinde uzizwe unguwe — futhi yilokho uMandi akwakhayo: impilo yabesifazane ehlosiwe, engenakuhlazisa, ngolimi lwakho, ngezwi lase-Afrika.",
+        "cta": "Joyina uhambo lukaMandi"
       },
       "none": {
         "title": "Ingubo yakho ibukeka izolile — unenhlanhla!",
@@ -1047,7 +1049,7 @@
     },
     "email": {
       "title": "Hamba nengubo yakho",
-      "body": "Shiya i-imeyili yakho uMandi uzokuthumelela imiphumela yakho — futhi akwazise ngesikhathi esiqala ngaso.",
+      "body": "Shiya i-imeyili yakho uMandi uzokuthumelela imiphumela yakho — futhi akwamukele ohambweni ngesikhathi esiqala ngaso.",
       "placeholder": "eyakho@imeyili.com",
       "consent": "Gcina i-imeyili yami nezimpendulo zedemo ukuze uMandi angithumelele imiphumela yami nezindaba zokwethulwa.",
       "cta": "Thumela ingubo yami",
@@ -1056,8 +1058,8 @@
     "thanks": {
       "title": "Sala kahle, okwamanje.",
       "bodyKiosk": "Siyabonga ngokuthunga nathi — sicela ubuyisele ithebulethi.",
-      "bodyPhone": "Bheka ibhokisi lakho le-imeyili. Ingubo yakho ephelele ikulindile ku-joinmandi.com.",
-      "fullCta": "Thunga ingubo ephelele"
+      "bodyPhone": "Bheka ibhokisi lakho le-imeyili. Ingubo yakho ephelele — nombutho wempilo yabesifazane onezwi lase-Afrika — ukulindile ku-joinmandi.com.",
+      "fullCta": "Joyina uhambo lukaMandi"
     }
   }
 }

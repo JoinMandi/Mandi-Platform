@@ -61,7 +61,18 @@ const THANKS_RESET_MS = 12_000;
 const CHAT_PAUSE_MS = 700; // typing-indicator pause before the next question
 const KIOSK_PAGE_SIZE = 4; // prototype variant B: four cards per screen
 
-const AGE_BANDS: AgeBand[] = ["40-44", "45-49", "50-54", "55-59", "60plus", "none"];
+// Oldest to youngest, per product direction — 20s/30s included so younger
+// visitors can join the journey without the form implying they don't belong.
+const AGE_BANDS: AgeBand[] = [
+  "60plus",
+  "55-59",
+  "50-54",
+  "45-49",
+  "40-44",
+  "30-39",
+  "20-29",
+  "none",
+];
 
 type ChatEntry = { role: "me" | "mandi"; text: string };
 

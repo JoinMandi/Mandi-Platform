@@ -971,6 +971,8 @@
       "whatsappPlaceholder": "082 000 0000",
       "age": "Your age (optional)",
       "ages": {
+        "30-39": "30–39",
+        "20-29": "20–29",
         "40-44": "40–44",
         "45-49": "45–49",
         "50-54": "50–54",
@@ -986,7 +988,7 @@
       "mind-cognition": {
         "hi": {
           "1": "That word-finding feeling — it isn't your mind failing you.",
-          "2": "Your memory isn't broken. Hormones reach it too."
+          "2": "Your memory isn't broken. So many women describe exactly this."
         },
         "lo": {
           "1": "Good. Your clarity is holding.",
@@ -1005,7 +1007,7 @@
       },
       "body": {
         "hi": {
-          "1": "Your body is talking. This isn't just getting older.",
+          "1": "Your body is telling you something — and it's worth listening to.",
           "2": "It's real, and it's well documented."
         },
         "lo": {
@@ -1016,7 +1018,7 @@
       "other": {
         "hi": {
           "1": "Yes — that one surprises almost everybody.",
-          "2": "It's menopause. Really."
+          "2": "Many women only make that connection much later."
         },
         "lo": {
           "1": "Good to know.",
@@ -1054,8 +1056,8 @@
       "factLabel": "Why this happens",
       "hormoneHook": {
         "title": "It's not you. It's your hormones.",
-        "body": "Almost everything you just read traces back to shifting oestrogen and progesterone. Understanding them is the key to feeling like yourself again — and that's exactly what Mandi is for.",
-        "cta": "Learn how hormones work on joinmandi.com"
+        "body": "Almost everything you just read traces back to shifting hormones. Understanding them is the key to feeling like yourself again — and that is what Mandi is building: intentional, destigmatised women's health, in your language, with an African voice.",
+        "cta": "Join the Mandi journey"
       },
       "none": {
         "title": "Your blanket looks calm — lucky you!",
@@ -1083,7 +1085,7 @@
     },
     "email": {
       "title": "Take your blanket home",
-      "body": "Leave your email and Mandi will send you your results — and let you know the moment we launch.",
+      "body": "Leave your email and Mandi will send you your results — and welcome you to the journey the moment we launch.",
       "placeholder": "your@email.com",
       "consent": "Store my email and demo answers so Mandi can send me my results and launch news.",
       "cta": "Send my blanket",
@@ -1092,8 +1094,8 @@
     "thanks": {
       "title": "Sala kahle. Totsiens. Goodbye, for now.",
       "bodyKiosk": "Thank you for stitching with us — please hand the tablet back.",
-      "bodyPhone": "Watch your inbox. Your full blanket is waiting at joinmandi.com.",
-      "fullCta": "Stitch the full blanket"
+      "bodyPhone": "Watch your inbox. Your full blanket — and a movement for women's health with an African voice — is waiting at joinmandi.com.",
+      "fullCta": "Join the Mandi journey"
     }
   }
 }

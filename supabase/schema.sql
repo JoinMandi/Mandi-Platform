@@ -714,7 +714,7 @@ create table if not exists exhibition_signups (
   created_at       timestamptz default now(),
   email            text not null,
   whatsapp         text,
-  age_band         text check (age_band in ('40-44','45-49','50-54','55-59','60plus','none')),
+  age_band         text check (age_band in ('20-29','30-39','40-44','45-49','50-54','55-59','60plus','none')),
   language_code    text references languages(code),
   meno_score       int,
   score_band       text check (score_band in ('mild','moderate','significant')),
