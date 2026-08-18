@@ -37,13 +37,13 @@ type Step =
   | "attract"
   | "language"
   | "consent"
-  | "mode"
   | "question"
   | "story"
   | "thanks";
 
-/** How the 8 questions are presented. Kiosk always uses "pages" (variant B);
- *  phone visitors choose "taps" (one per screen) or "chat" on the mode step. */
+/** How the 8 questions are presented. Kiosk uses "pages" (variant B); phone
+ *  uses "chat" — the taps cadence stays reachable via ?mode=taps for
+ *  side-by-side comparison during rehearsal, with no visitor-facing chooser. */
 type QMode = "pages" | "taps" | "chat";
 
 const LANGUAGES = [
@@ -58,7 +58,7 @@ const ATTRACT_CTAS = ["Tap to begin", "Tik om te begin", "Thepha ukuqala", "Cofa
 
 const IDLE_RESET_MS = 90_000;
 const THANKS_RESET_MS = 12_000;
-const CHAT_PAUSE_MS = 900; // prototype variant C pacing
+const CHAT_PAUSE_MS = 700; // typing-indicator pause before the next question
 const KIOSK_PAGE_SIZE = 4; // prototype variant B: four cards per screen
 
 const AGE_BANDS: AgeBand[] = ["40-44", "45-49", "50-54", "55-59", "60plus", "none"];
@@ -164,8 +164,10 @@ export default function ExhibitionPage() {
 
   // ── Boot: kiosk detection + language-remount handoff ─────────
   useEffect(() => {
-    const isKiosk = new URLSearchParams(window.location.search).has("kiosk");
+    const params = new URLSearchParams(window.location.search);
+    const isKiosk = params.has("kiosk");
     setKiosk(isKiosk);
+    setQMode(isKiosk ? "pages" : params.get("mode") === "taps" ? "taps" : "chat");
     // Idempotent under StrictMode's double-run: consume bootStep once, and
     // never overwrite a step that a previous run (or handoff) already set.
     const handoff = bootStep;
@@ -180,7 +182,7 @@ export default function ExhibitionPage() {
     setScore(null);
     setAffirmation(null);
     setBursting(null);
-    setQMode("chat");
+    // qMode is URL-derived (kiosk/mode params) — survives reset untouched.
     setPage(0);
     setTapIdx(0);
     setExpanded(false);
@@ -480,61 +482,11 @@ export default function ExhibitionPage() {
               variant="primary"
               size="lg"
               className="w-full animate-pulse-warm"
-              onClick={() => {
-                if (kiosk) {
-                  setQMode("pages");
-                  setStep("question");
-                } else {
-                  setStep("mode");
-                }
-              }}
+              onClick={() => setStep("question")}
             >
               {t("exhibition.consent.cta")} →
             </Button>
           </motion.div>
-        </div>
-      </main>
-    );
-  }
-
-  if (step === "mode") {
-    // Phone only: choose how to answer — quick taps or chat with Mandi.
-    const pick = (m: QMode) => {
-      setQMode(m);
-      setStep("question");
-    };
-    return (
-      <main className="relative min-h-screen overflow-hidden">
-        <div className="absolute inset-0 bg-mandi-gradient-soft" />
-        <div className="absolute inset-0 bg-cream/55" />
-        <div className="relative z-10 flex min-h-screen items-center justify-center px-5 py-16">
-          <div className="w-full max-w-xl bg-cream-soft rounded-4xl shadow-warm-xl p-8 sm:p-10">
-            <Reveal>
-              <h1 className="font-display text-3xl sm:text-4xl text-brown text-center mb-8">
-                {t("exhibition.mode.title")}
-              </h1>
-            </Reveal>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {(
-                [
-                  { m: "taps" as QMode, label: t("exhibition.mode.taps"), sub: t("exhibition.mode.tapsSub") },
-                  { m: "chat" as QMode, label: t("exhibition.mode.chat"), sub: t("exhibition.mode.chatSub") },
-                ]
-              ).map(({ m, label, sub }, i) => (
-                <Reveal key={m} variant="stitch" delay={i * 70}>
-                  <button
-                    onClick={() => pick(m)}
-                    className="flex w-full flex-col items-center gap-1.5 rounded-2xl border-2 border-coral/30
-                      bg-white px-5 py-7 text-brown shadow-warm transition-all duration-200
-                      hover:-translate-y-0.5 hover:border-terra hover:bg-terra hover:text-cream active:scale-95"
-                  >
-                    <span className="font-display text-xl">{label}</span>
-                    <span className="text-xs opacity-70 text-center leading-relaxed">{sub}</span>
-                  </button>
-                </Reveal>
-              ))}
-            </div>
-          </div>
         </div>
       </main>
     );
@@ -719,19 +671,22 @@ export default function ExhibitionPage() {
   }
 
   if (step === "question" && qMode === "chat" && chatQuestion) {
-    // Variant C — chat: Mandi asks, she answers, Mandi replies.
+    // Variant C — chat: messenger layout. Header and chips are pinned; only
+    // the conversation scrolls (100dvh lock so phone keyboards/chrome don't
+    // push the chips off-screen).
     return (
-      <div className="relative min-h-screen bg-cream overflow-hidden">
+      <div className="relative flex h-[100dvh] flex-col overflow-hidden bg-cream">
         <div className="pointer-events-none absolute inset-0 bg-mandi-gradient-soft opacity-40" />
         <div className="pointer-events-none absolute inset-0 bg-cream/60" />
         <ProgressBar variant="top" current={answeredCount} total={TOTAL} />
-        <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-xl flex-col px-5 pt-6 pb-8">
+
+        {/* Pinned header */}
+        <div className="relative z-10 mx-auto w-full max-w-xl shrink-0 px-5 pt-5">
           {/* Quilt dimmed until the story reveals it in full — prototype rule */}
-          <div className="rounded-3xl border border-cream-deep/60 bg-cream-soft/80 p-3 opacity-75 shadow-warm backdrop-blur-sm">
+          <div className="rounded-3xl border border-cream-deep/60 bg-cream-soft/80 p-2.5 opacity-75 shadow-warm backdrop-blur-sm">
             <Quilt patches={PATCHES} answered={answeredCount} variant="compact" className="mx-auto" />
           </div>
-
-          <div className="mt-4 mb-2 flex items-center justify-between">
+          <div className="mt-3 flex items-center justify-between">
             {chatIdx > 0 ? (
               <button
                 onClick={chatBack}
@@ -747,21 +702,35 @@ export default function ExhibitionPage() {
               {t("questionnaire.progress", { current: Math.min(chatIdx + 1, TOTAL), total: TOTAL })}
             </span>
           </div>
+        </div>
 
-          <div className="flex flex-1 flex-col gap-3 overflow-y-auto py-2">
+        {/* The conversation — the only scrolling region */}
+        <div className="relative z-10 mx-auto w-full max-w-xl flex-1 overflow-y-auto overscroll-contain px-5 py-3">
+          <div className="flex min-h-full flex-col justify-end gap-3">
             {chatLog.map((entry, i) => (
               <div
                 key={i}
                 className={`max-w-[85%] rounded-3xl px-4 py-3 text-sm leading-relaxed animate-rise-in ${
                   entry.role === "me"
-                    ? "self-end rounded-br-lg bg-terra text-cream"
+                    ? "self-end rounded-br-lg bg-terra text-cream shadow-warm"
                     : "self-start rounded-bl-lg bg-cream-soft text-brown border border-cream-deep/50 shadow-warm"
                 }`}
               >
                 {entry.text}
               </div>
             ))}
-            {!chatBusy && (
+            {chatBusy ? (
+              /* Typing indicator — Mandi is "thinking" before the next question */
+              <div className="flex max-w-[85%] items-center gap-1.5 self-start rounded-3xl rounded-bl-lg border border-cream-deep/50 bg-cream-soft px-4 py-3.5 shadow-warm animate-rise-in">
+                {[0, 1, 2].map((d) => (
+                  <span
+                    key={d}
+                    className="h-2 w-2 rounded-full bg-terra/60 animate-pulse-warm"
+                    style={{ animationDelay: `${d * 180}ms` }}
+                  />
+                ))}
+              </div>
+            ) : (
               <div
                 key={`q-${chatQuestion.id}`}
                 className="max-w-[85%] self-start rounded-3xl rounded-bl-lg border border-cream-deep/50 bg-cream-soft px-4 py-3 shadow-warm animate-rise-in"
@@ -778,8 +747,11 @@ export default function ExhibitionPage() {
             )}
             <div ref={chatEndRef} />
           </div>
+        </div>
 
-          <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+        {/* Pinned answer chips */}
+        <div className="relative z-10 mx-auto w-full max-w-xl shrink-0 border-t border-cream-deep/40 bg-cream/85 px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-sm">
+          <div className="grid grid-cols-4 gap-2">
             {[0, 1, 2, 3].map((s) => (
               <button
                 key={s}
@@ -787,7 +759,7 @@ export default function ExhibitionPage() {
                 disabled={chatBusy}
                 onClick={() => answerChat(s)}
                 className={`flex flex-col items-center gap-0.5 rounded-2xl border-2 border-coral/30 bg-white
-                  px-3 py-3.5 text-xs font-semibold text-brown transition-all hover:border-terra
+                  px-2 py-3 text-xs font-semibold text-brown transition-all hover:border-terra
                   hover:bg-terra hover:text-cream active:scale-95 ${chatBusy ? "opacity-40" : ""}`}
               >
                 <span className="font-display text-xl leading-none">{s}</span>
@@ -800,7 +772,7 @@ export default function ExhibitionPage() {
         </div>
 
         {affirmation && (
-          <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-brown px-5 py-3 text-sm font-medium text-cream shadow-warm-xl animate-rise-in">
+          <div className="fixed bottom-24 left-1/2 z-50 -translate-x-1/2 rounded-full bg-brown px-5 py-3 text-sm font-medium text-cream shadow-warm-xl animate-rise-in">
             <span className="text-golden">✦</span> {affirmation}
           </div>
         )}
