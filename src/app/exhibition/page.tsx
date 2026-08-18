@@ -317,8 +317,11 @@ export default function ExhibitionPage() {
     const q = chatQuestion;
     setAnswers((prev) => ({ ...prev, [q.id]: value }));
     maybeAffirm(q.id);
+    // The asked question enters the transcript too — a WhatsApp-style
+    // permanent log, not a disappearing prompt.
     setChatLog((log) => [
       ...log,
+      { role: "mandi", text: t(`questionnaire.${q.textKey}`) },
       { role: "me", text: t(`questionnaire.scale.${value}`) },
       { role: "mandi", text: replyFor(q.domain, value) },
     ]);
@@ -333,8 +336,8 @@ export default function ExhibitionPage() {
 
   const chatBack = () => {
     if (chatBusy || chatIdx === 0) return;
-    // Prototype rule: pop TWO entries — her echo and Mandi's reply.
-    setChatLog((log) => log.slice(0, -2));
+    // Pop the whole exchange: question, her echo, and Mandi's reply.
+    setChatLog((log) => log.slice(0, -3));
     setChatIdx((i) => i - 1);
   };
 
@@ -707,6 +710,10 @@ export default function ExhibitionPage() {
         {/* The conversation — the only scrolling region */}
         <div className="relative z-10 mx-auto w-full max-w-xl flex-1 overflow-y-auto overscroll-contain px-5 py-3">
           <div className="flex min-h-full flex-col justify-end gap-3">
+            {/* Lead-in — Mandi introduces herself before the first question */}
+            <div className="max-w-[85%] self-start rounded-3xl rounded-bl-lg border border-cream-deep/50 bg-cream-soft px-4 py-3 text-sm leading-relaxed text-brown shadow-warm">
+              {t("exhibition.chat.greeting")}
+            </div>
             {chatLog.map((entry, i) => (
               <div
                 key={i}

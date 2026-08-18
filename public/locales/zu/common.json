@@ -946,6 +946,7 @@
       "finePrint": "Asisoze sabelane ngemininingwane yakho. Ungacela ukuthi sisule konke noma nini."
     },
     "chat": {
+      "greeting": "Sawubona, nginguMandi. Nginemibuzo eyisishiyagalombili esheshayo mayelana nokuthi uzizwa kanjani muva nje — vele uthephe impendulo efanele.",
       "mind-cognition": {
         "hi": {
           "1": "Lowo muzwa wokulahlekelwa amagama — akusiyo ingqondo yakho ekwehlulayo.",

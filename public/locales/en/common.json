@@ -982,6 +982,7 @@
       "finePrint": "We never share your details. You can ask us to erase everything at any time."
     },
     "chat": {
+      "greeting": "Hi, I'm Mandi. I have eight quick questions about how you've been feeling lately — just tap the answer that fits.",
       "mind-cognition": {
         "hi": {
           "1": "That word-finding feeling — it isn't your mind failing you.",
