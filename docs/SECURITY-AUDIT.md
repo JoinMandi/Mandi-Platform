@@ -18,6 +18,12 @@ Core product: a 56-question menopause assessment → normalized MenoScore (0–1
 - **#2 Consent** — now recorded server-side into `sessions` via `recordConsent()` (`src/server/actions/consent.ts` → `src/server/data/sessions.ts`); session id is linked onto the questionnaire response.
 - **#3 RLS write** — `qr_insert_any` bound to `user_id = auth.uid() or user_id is null`. **Requires re-running `supabase/schema.sql` against the DB to take effect.**
 - **#4 MFA wipe** — `wipeMyMfaFactors` now deletes only *unverified* factors, so an AAL1 session can't strip verified MFA.
+- **#6 Session validation** — `getSessionUser` (the guard all admin actions flow through) and the delete-user route now use `getUser()` instead of `getSession()`, revalidating the JWT with the auth server. Middleware keeps `getSession()` intentionally: it is a coarse gate + token refresh, not the enforcement point (guards + RLS revalidate downstream).
+- **#7 Delete-user authz bug** — the route accepted only `role === "admin"`, rejecting superadmins; now accepts both (mirrors `requireAdmin`).
+
+## Deferred — needs a decision, not a mechanical change
+
+- **#5 AAL2 on admin health-data reads** — *not applied.* The `qr_admin_read` / `users_admin_read` policies use `is_admin()`, not `is_admin_aal2()`. Tightening them to AAL2 is the right posture for health data, **but `is_admin_aal2()` hard-requires the `aal2` JWT claim with no escape hatch** — so it would lock admins out of reading user/health data whenever MFA isn't enforced at the Supabase project level, contradicting the codebase's deliberate "never lock admins out on a config gap" stance (see `auth.ts`). **Precondition: enforce MFA project-side first**, then switch those two read policies to `is_admin_aal2()`. Decision left to the team.
 
 ## Findings (prioritized)
 
