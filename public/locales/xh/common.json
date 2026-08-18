@@ -922,6 +922,13 @@
   }
 ,
   "exhibition": {
+    "mode": {
+      "title": "Ungathanda ukuphendula njani?",
+      "taps": "Ukucofa okukhawulezayo",
+      "tapsSub": "Umbuzo omnye ngexesha — ngaphantsi kwemizuzu emibini",
+      "chat": "Ncokola noMandi",
+      "chatSub": "Incoko ethambileyo — uyaphendula naye"
+    },
     "capture": {
       "pageGate": "Phendula zone ukuze uqhubeke.",
       "whatsapp": "Inombolo ye-WhatsApp (ukuba uyathanda)",

@@ -922,6 +922,13 @@
   }
 ,
   "exhibition": {
+    "mode": {
+      "title": "Ungathanda ukuphendula kanjani?",
+      "taps": "Ukuthepha okusheshayo",
+      "tapsSub": "Umbuzo owodwa ngesikhathi — ngaphansi kwemizuzu emibili",
+      "chat": "Xoxa noMandi",
+      "chatSub": "Ingxoxo emnene — uyaphendula naye"
+    },
     "capture": {
       "pageGate": "Phendula zozine ukuze uqhubeke.",
       "whatsapp": "Inombolo ye-WhatsApp (uma uthanda)",

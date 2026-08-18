@@ -18,8 +18,10 @@ import ConsentCheckbox from "@/components/ui/ConsentCheckbox";
 import PetalBurst from "@/components/ui/PetalBurst";
 import AmbientBlobs from "@/components/ui/AmbientBlobs";
 import ProgressBar from "@/components/ui/ProgressBar";
+import QuestionScreen from "@/components/ui/QuestionScreen";
 import Quilt from "@/components/ui/Quilt";
 import Reveal from "@/components/ui/Reveal";
+import ScaleInput from "@/components/ui/ScaleInput";
 import StitchDivider from "@/components/ui/StitchDivider";
 import type { AgeBand } from "@/lib/types/database";
 import {
@@ -35,9 +37,14 @@ type Step =
   | "attract"
   | "language"
   | "consent"
+  | "mode"
   | "question"
   | "story"
   | "thanks";
+
+/** How the 8 questions are presented. Kiosk always uses "pages" (variant B);
+ *  phone visitors choose "taps" (one per screen) or "chat" on the mode step. */
+type QMode = "pages" | "taps" | "chat";
 
 const LANGUAGES = [
   { code: "en", label: "Talk to Mandi", sub: "English" },
@@ -128,9 +135,13 @@ export default function ExhibitionPage() {
   const [score, setScore] = useState<ExhibitionScoreResult | null>(null);
   const [affirmation, setAffirmation] = useState<string | null>(null);
   const [bursting, setBursting] = useState<string | null>(null);
+  const [qMode, setQMode] = useState<QMode>("chat");
   // Variant B (kiosk): paged cards
   const [page, setPage] = useState(0);
-  // Variant C (phone): chat
+  // Variant A (phone "taps"): one question per screen
+  const [tapIdx, setTapIdx] = useState(0);
+  const [expanded, setExpanded] = useState(false);
+  // Variant C (phone "chat")
   const [chatIdx, setChatIdx] = useState(0);
   const [chatLog, setChatLog] = useState<ChatEntry[]>([]);
   const [chatBusy, setChatBusy] = useState(false);
@@ -143,6 +154,7 @@ export default function ExhibitionPage() {
   const [sending, setSending] = useState(false);
 
   const chatTimer = useRef<number | undefined>(undefined);
+  const advanceTimer = useRef<number | undefined>(undefined);
   const answersRef = useRef(answers);
   answersRef.current = answers;
   const chatEndRef = useRef<HTMLDivElement | null>(null);
@@ -163,11 +175,15 @@ export default function ExhibitionPage() {
 
   const resetAll = () => {
     window.clearTimeout(chatTimer.current);
+    window.clearTimeout(advanceTimer.current);
     setAnswers({});
     setScore(null);
     setAffirmation(null);
     setBursting(null);
+    setQMode("chat");
     setPage(0);
+    setTapIdx(0);
+    setExpanded(false);
     setChatIdx(0);
     setChatLog([]);
     setChatBusy(false);
@@ -320,6 +336,28 @@ export default function ExhibitionPage() {
     setChatIdx((i) => i - 1);
   };
 
+  // ── Variant A (phone "taps"): one question per screen ────────
+  const tapQuestion = exhibitionQuestions[Math.min(tapIdx, TOTAL - 1)];
+
+  const tapNext = () => {
+    window.clearTimeout(advanceTimer.current);
+    const q = exhibitionQuestions[tapIdx];
+    if (!q || typeof answersRef.current[q.id] !== "number") return;
+    if (tapIdx >= TOTAL - 1) return finish();
+    setTapIdx((i) => i + 1);
+  };
+  const tapNextRef = useRef(tapNext);
+  tapNextRef.current = tapNext;
+
+  const tapAnswer = (value: number) => {
+    const q = exhibitionQuestions[tapIdx];
+    if (!q) return;
+    setAnswers((prev) => ({ ...prev, [q.id]: value }));
+    maybeAffirm(q.id);
+    window.clearTimeout(advanceTimer.current);
+    advanceTimer.current = window.setTimeout(() => tapNextRef.current(), 430);
+  };
+
   const submitEmail = async () => {
     if (!emailConsent || !email || sending || !score) return;
     setSending(true);
@@ -442,7 +480,14 @@ export default function ExhibitionPage() {
               variant="primary"
               size="lg"
               className="w-full animate-pulse-warm"
-              onClick={() => setStep("question")}
+              onClick={() => {
+                if (kiosk) {
+                  setQMode("pages");
+                  setStep("question");
+                } else {
+                  setStep("mode");
+                }
+              }}
             >
               {t("exhibition.consent.cta")} →
             </Button>
@@ -452,7 +497,134 @@ export default function ExhibitionPage() {
     );
   }
 
-  if (step === "question" && kiosk) {
+  if (step === "mode") {
+    // Phone only: choose how to answer — quick taps or chat with Mandi.
+    const pick = (m: QMode) => {
+      setQMode(m);
+      setStep("question");
+    };
+    return (
+      <main className="relative min-h-screen overflow-hidden">
+        <div className="absolute inset-0 bg-mandi-gradient-soft" />
+        <div className="absolute inset-0 bg-cream/55" />
+        <div className="relative z-10 flex min-h-screen items-center justify-center px-5 py-16">
+          <div className="w-full max-w-xl bg-cream-soft rounded-4xl shadow-warm-xl p-8 sm:p-10">
+            <Reveal>
+              <h1 className="font-display text-3xl sm:text-4xl text-brown text-center mb-8">
+                {t("exhibition.mode.title")}
+              </h1>
+            </Reveal>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {(
+                [
+                  { m: "taps" as QMode, label: t("exhibition.mode.taps"), sub: t("exhibition.mode.tapsSub") },
+                  { m: "chat" as QMode, label: t("exhibition.mode.chat"), sub: t("exhibition.mode.chatSub") },
+                ]
+              ).map(({ m, label, sub }, i) => (
+                <Reveal key={m} variant="stitch" delay={i * 70}>
+                  <button
+                    onClick={() => pick(m)}
+                    className="flex w-full flex-col items-center gap-1.5 rounded-2xl border-2 border-coral/30
+                      bg-white px-5 py-7 text-brown shadow-warm transition-all duration-200
+                      hover:-translate-y-0.5 hover:border-terra hover:bg-terra hover:text-cream active:scale-95"
+                  >
+                    <span className="font-display text-xl">{label}</span>
+                    <span className="text-xs opacity-70 text-center leading-relaxed">{sub}</span>
+                  </button>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  if (step === "question" && qMode === "taps" && tapQuestion) {
+    // Variant A — one question per screen, 430ms auto-advance (the v2 cadence).
+    const currentAnswer = answers[tapQuestion.id];
+    return (
+      <>
+        <QuestionScreen
+          current={tapIdx + 1}
+          total={TOTAL}
+          domain={tapQuestion.domain}
+          onBack={() => {
+            window.clearTimeout(advanceTimer.current);
+            if (tapIdx > 0) setTapIdx((i) => i - 1);
+          }}
+          showBack={tapIdx > 0}
+          patches={PATCHES}
+          answeredCount={answeredCount}
+          onQuiltTap={() => setExpanded(true)}
+          showTime={false}
+        >
+          <div key={tapQuestion.id} className="flex flex-col gap-6 animate-rise-in">
+            <div className="text-center">
+              <h2 className="font-display text-2xl sm:text-3xl text-brown leading-tight px-2">
+                {t(`questionnaire.${tapQuestion.textKey}`)}
+              </h2>
+              {tapQuestion.hintKey && (
+                <p className="mt-3 text-sm text-brown/60 italic leading-relaxed max-w-md mx-auto">
+                  {t(`questionnaire.${tapQuestion.hintKey}`)}
+                </p>
+              )}
+            </div>
+
+            <ScaleInput
+              value={typeof currentAnswer === "number" ? currentAnswer : null}
+              onChange={tapAnswer}
+            />
+
+            <div className="flex flex-col gap-3 mt-2">
+              <Button
+                variant="primary"
+                size="lg"
+                onClick={tapNext}
+                disabled={typeof currentAnswer !== "number"}
+                className="w-full"
+              >
+                {tapIdx < TOTAL - 1 ? t("questionnaire.next") : t("questionnaire.finish")}
+              </Button>
+            </div>
+          </div>
+        </QuestionScreen>
+
+        {expanded && (
+          <div
+            onClick={() => setExpanded(false)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-brown/70 backdrop-blur-sm px-6 animate-fade-in"
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-lg rounded-4xl bg-cream-soft p-6 shadow-warm-xl animate-rise-in"
+            >
+              <p className="text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-terra">
+                {t("questionnaire.quiltHeading")}
+              </p>
+              <div className="mt-5">
+                <Quilt patches={PATCHES} answered={answeredCount} variant="full" className="mx-auto" />
+              </div>
+              <button
+                onClick={() => setExpanded(false)}
+                className="mx-auto mt-6 block rounded-full bg-terra px-9 py-2.5 text-sm font-semibold text-cream hover:bg-terra-dark transition-colors"
+              >
+                {t("questionnaire.quiltClose")}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {affirmation && (
+          <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-brown px-5 py-3 text-sm font-medium text-cream shadow-warm-xl animate-rise-in">
+            <span className="text-golden">✦</span> {affirmation}
+          </div>
+        )}
+      </>
+    );
+  }
+
+  if (step === "question" && qMode === "pages") {
     // Variant B — four cards per screen, gate until all answered.
     return (
       <div className="relative min-h-screen bg-cream overflow-hidden">
@@ -546,7 +718,7 @@ export default function ExhibitionPage() {
     );
   }
 
-  if (step === "question" && chatQuestion) {
+  if (step === "question" && qMode === "chat" && chatQuestion) {
     // Variant C — chat: Mandi asks, she answers, Mandi replies.
     return (
       <div className="relative min-h-screen bg-cream overflow-hidden">

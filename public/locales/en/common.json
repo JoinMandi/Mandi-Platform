@@ -958,6 +958,13 @@
   }
 ,
   "exhibition": {
+    "mode": {
+      "title": "How would you like to answer?",
+      "taps": "Quick taps",
+      "tapsSub": "One question at a time — under two minutes",
+      "chat": "Chat with Mandi",
+      "chatSub": "A gentle conversation — she answers back"
+    },
     "capture": {
       "pageGate": "Answer all four to continue.",
       "whatsapp": "WhatsApp number (optional)",

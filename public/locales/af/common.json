@@ -922,6 +922,13 @@
   }
 ,
   "exhibition": {
+    "mode": {
+      "title": "Hoe wil jy antwoord?",
+      "taps": "Vinnige tikke",
+      "tapsSub": "Een vraag op 'n slag — onder twee minute",
+      "chat": "Gesels met Mandi",
+      "chatSub": "'n Sagte gesprek — sy antwoord terug"
+    },
     "capture": {
       "pageGate": "Antwoord al vier om voort te gaan.",
       "whatsapp": "WhatsApp-nommer (opsioneel)",
