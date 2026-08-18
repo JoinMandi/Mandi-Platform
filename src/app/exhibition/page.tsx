@@ -183,7 +183,9 @@ export default function ExhibitionPage() {
     // never overwrite a step that a previous run (or handoff) already set.
     const handoff = bootStep;
     bootStep = null;
-    setStep((prev) => prev ?? handoff ?? (isKiosk ? "attract" : "language"));
+    // Everyone opens on the full-bleed gradient attract screen — it's the
+    // brand moment; a phone visitor taps once to reach the language picker.
+    setStep((prev) => prev ?? handoff ?? "attract");
   }, []);
 
   const resetAll = () => {
@@ -206,7 +208,7 @@ export default function ExhibitionPage() {
     setEmailConsent(false);
     setMarketingOptIn(false);
     setSending(false);
-    const target: Step = kiosk ? "attract" : "language";
+    const target: Step = "attract";
     if (i18n.language !== "en") {
       bootStep = target; // changeLanguage remounts; fresh mount lands on target
       void i18n.changeLanguage("en");
