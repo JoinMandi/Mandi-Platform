@@ -376,15 +376,15 @@
     "resumeContinue": "Qhubeka ukuthunga",
     "resumeFresh": "Qala kwakhona endaweni yoko",
     "facts": {
-      "context": "I-perimenopause — iminyaka yotshintsho phambi kokuba iitsuku ziphele — inokuthatha kuphi nakuphi ukusuka kwiminyaka emi-4 ukuya kwemi-10. I-menopause ngokwayo lusuku olunye nje.",
+      "context": "I-perimenopause — iminyaka yotshintsho phambi kokuba iimeko zenyanga ziphele — idla ngokuthatha malunga neminyaka emi-4 ukuya kwesi-8, nangona kwabanye abafazi imfutshane okanye inde. I-menopause ngokwayo lusuku olunye nje.",
       "mind-cognition": "Inkungu yengqondo yenye yeempawu eziqhelekileyo ze-menopause — ibangelwa kukutshintsha kwe-oestrogen, kungenxa yokuba uphulukene nokukhanya kwakho. Kuninzi lwabafazi, iyaphakama.",
-      "mood": "Utshintsho lweemvakalelo kwi-menopause kukokomzimba, kungekuko ukungaphumeleli kobuqu. I-oestrogen inceda ekulawuleni i-serotonin, ikhemikhali ye-mood yengqondo — xa isihla, iimvakalelo zilandela.",
+      "mood": "Utshintsho lweemvakalelo kwi-menopause lolomzimba, ayikokusilela komntu. I-oestrogen isebenzisana ne-serotonin, enye yeekhemikhali zemvakalelo zengqondo — ngoko xa amanqanaba ee-hormone etshintsha, iimvakalelo nazo zinokutshintsha.",
       "nervous-system": "Ukushushuziswa kunokuqala iminyaka phambi kweenyanga zakho zokugqibela. Ukuya kuma-8 kwabafazi abali-10 banakho ukufumana oku — nokuba uziva ntoni, awukho wedwa kwaphela.",
       "body": "Iintlungu zamalungu nezihlunu luphawu lwe-menopause olungaqondwa kakhulu — i-oestrogen inceda amalungu ahlale evakala kakuhle. Nokuqhuma kwegxalaba kunxulunyaniswa nale ntshintsho.",
       "urogenital": "Ngokwahlukileyo kushushuzisweni, iimpawu zangaphakathi nezesidlele azidhli ngokwazo — kodwa ziphendula kakuhle kunyango. Akukho nto ekufuneka uneentloni ngayo.",
-      "other": "Ngesiquphe awukwazi ukunyamezela utywala njengakuqala? Ii-allergies ezintsha? Loo mzuzu wokuthi 'linda — yi-menopause leyo?' uyinyaniso, kwaye uqhelekile ngaphezu kokucinga kwabantu.",
+      "other": "Awusakwazi ukunyamezela utywala njengangaphambili? I-oestrogen isebenzisana ne-histamine — ikhemikhali esemva kokusabela okufana ne-allergy — kwaye abanye abafazi baphawula uvakalelo olutsha kwiminyaka ephakathi. Awuzicingeli nje.",
       "quality-of-life": "Iimpawu ze-menopause zifika emsebenzini, ekulaleni, nakubudlelwane. Ukuthi loo mpembelelo akuyiyo ukukhalaza — linyathelo lokuqala lokufumana inkxaso elungileyo.",
-      "mindset": "Akukho lemva kakhulu. Abafazi abafuna inkxaso nokuba kuminyaka emva kwe-menopause baphucula ngokuqhubekayo."
+      "mindset": "Akuze kube semva kwexesha ukucela uncedo. Ezinye iimpawu — kuquka ezesini nezesinyi — zisabela kakuhle kunyango nokuba kudlule iminyaka emingaphi ukususela kwi-menopause."
     },
     "loadingStages": {
       "1": "Uphulaphula konke oko uyabelaneyo…",
@@ -919,5 +919,137 @@
     "privacy": "Ubumfihlo bakho — indlela esisebenzisa idatha yakho",
     "terms": "Imigaqo",
     "contact": "Qhagamshelana"
+  }
+,
+  "exhibition": {
+    "capture": {
+      "pageGate": "Phendula zone ukuze uqhubeke.",
+      "whatsapp": "Inombolo ye-WhatsApp (ukuba uyathanda)",
+      "whatsappPlaceholder": "082 000 0000",
+      "age": "Iminyaka yakho (ukuba uyathanda)",
+      "ages": {
+        "40-44": "40–44",
+        "45-49": "45–49",
+        "50-54": "50–54",
+        "55-59": "55–59",
+        "60plus": "60+",
+        "none": "Ndikhetha ukungatsho"
+      },
+      "marketing": "Ewe, uMandi angandiqhagamshelana malunga novavanyo lwam olupheleleyo, imisitho nenkxaso. Ndingatsho nanini na ukuba mayeke.",
+      "finePrint": "Asisoze sabelane ngeenkcukacha zakho. Ungacela ukuba sicime yonke into nanini na."
+    },
+    "chat": {
+      "mind-cognition": {
+        "hi": {
+          "1": "Loo mvakalelo yokulahlekelwa ngamagama — ayiyongqondo yakho ekusilelayo.",
+          "2": "Inkumbulo yakho ayaphukanga. Ii-hormone ziyayifikelela nayo."
+        },
+        "lo": {
+          "1": "Kulungile. Ukucaca kwakho kusabambile.",
+          "2": "Enkosi — kuluncedo ukwazi."
+        }
+      },
+      "nervous-system": {
+        "hi": {
+          "1": "Ubuthongo kulapho kuqala khona kubafazi abaninzi. Awuwedwa.",
+          "2": "Umzimba wakho ukugcina uphaphile ebusuku. Oko kubalulekile."
+        },
+        "lo": {
+          "1": "Kulungile — ubusuku bakho busabambile.",
+          "2": "Enkosi."
+        }
+      },
+      "body": {
+        "hi": {
+          "1": "Umzimba wakho uyathetha. Oku akukokuguga nje.",
+          "2": "Kuyinyani, kwaye kuyaziwa."
+        },
+        "lo": {
+          "1": "Enkosi — kuqwalaselwe.",
+          "2": "Kulungile."
+        }
+      },
+      "other": {
+        "hi": {
+          "1": "Ewe — leyo imangalisa phantse wonke umntu.",
+          "2": "Yi-menopause. Ngenene."
+        },
+        "lo": {
+          "1": "Kulungile ukwazi.",
+          "2": "Enkosi."
+        }
+      },
+      "quality-of-life": {
+        "hi": {
+          "1": "Kulapho iimpawu zifikelela khona ebomini bakho. Kubaluleke kakhulu.",
+          "2": "Enkosi. Le yinxalenye abantu abangayiboniyo."
+        },
+        "lo": {
+          "1": "Enkosi.",
+          "2": "Kuqwalaselwe."
+        }
+      }
+    },
+    "story": {
+      "disclaimer": "Lulwazi lwemfundo kuphela — ayisosiluleko sonyango.",
+      "intro": {
+        "title": "Ingubo yakho ibalisa ibali",
+        "sub": "Skrola uye ezantsi — yonke ilaphu olithungileyo linento yokuthetha."
+      },
+      "cute": {
+        "context": "Lonke ibali liqala kwindawo ethile.",
+        "mind-cognition": "Amagama alahlekayo phakathi kwesivakalisi? Awalahlekanga — akwikhefu leti nje.",
+        "mood": "Iimvakalelo ezenza amajika? Kukho isizathu.",
+        "nervous-system": "Umzimba wakho ubusoloko ukuthumelela iiposikhadi.",
+        "body": "Iintlungu ezifike zingamenywanga? Siyazibona.",
+        "urogenital": "Izinto ekungathethwa ngazo — thina sithetha ngazo.",
+        "other": "Icandelo le-'yima, LEYO yi-menopause?'",
+        "quality-of-life": "Ichaphazela izinto ozithandayo. Oko kubalulekile.",
+        "mindset": "Ufikile. Ngowona mthungo mkhulu ke lowo."
+      },
+      "factLabel": "Kutheni oku kusenzeka",
+      "hormoneHook": {
+        "title": "Ayinguwe. Zii-hormone zakho.",
+        "body": "Phantse yonke into osanda kuyifunda ibuyela kwi-oestrogen ne-progesterone etshintshayo. Ukuziqonda sisitshixo sokuphinda uzive ungowakho — kwaye yiloo nto kanye uMandi akhoyo ngayo.",
+        "cta": "Funda indlela ii-hormone ezisebenza ngayo ku-joinmandi.com"
+      },
+      "none": {
+        "title": "Ingubo yakho ibonakala izolile — unethamsanqa!",
+        "body": "Akukho zimpawu zinamandla namhlanje. I-menopause ifika ngokwahlukileyo kumfazi ngamnye — kwaye ukwazi omawukhangele kuyeyona ntshayelelo ilungileyo ikhoyo."
+      }
+    },
+    "attract": {
+      "title": "Wonke umfazi unebali. Thunga elakho.",
+      "cta": "Cofa ukuqalisa"
+    },
+    "consent": {
+      "title": "Incasa ekhawulezayo kaMandi",
+      "body": "Imibuzo esibhozo ethambileyo, ngaphantsi kwemizuzu emibini. Akukho nto igcinwayo ngaphandle kokuba ukhethe ukushiya i-imeyile yakho ekupheleni.",
+      "cta": "Masithunge"
+    },
+    "reveal": {
+      "heading": "Ingubo yakho, ukuza kuthi ga ngoku",
+      "scoreLabel": "I-MenoScore yakho yedemo",
+      "band": {
+        "mild": "Iimpawu zakho zibonakala zilula — ukuhlala unolwazi lelona nyathelo lilandelayo lilungileyo.",
+        "moderate": "Iimpawu zakho zibonakala ziphakathi — awuzicingeli nje, kwaye awuwedwa.",
+        "significant": "Iimpawu zakho zibonakala zinzulu — ugqirha oyiqondayo i-menopause unokutshintsha yonke into."
+      },
+      "cta": "Ndifunele ingubo yam"
+    },
+    "email": {
+      "title": "Goduka nengubo yakho",
+      "body": "Shiya i-imeyile yakho uMandi uya kukuthumelela iziphumo zakho — kwaye akwazise ngexesha esisungula ngalo.",
+      "placeholder": "eyakho@imeyile.com",
+      "consent": "Gcina i-imeyile yam neempendulo zedemo ukuze uMandi andithumelele iziphumo zam neendaba zokusungulwa.",
+      "cta": "Thumela ingubo yam",
+      "skip": "Hayi enkosi"
+    },
+    "thanks": {
+      "title": "Sala kakuhle, okwangoku.",
+      "bodyKiosk": "Enkosi ngokuthunga nathi — nceda ubuyisele ithebhulethi.",
+      "bodyPhone": "Jonga ibhokisi yakho ye-imeyile. Ingubo yakho epheleleyo ikulindile ku-joinmandi.com.",
+      "fullCta": "Thunga ingubo epheleleyo"
+    }
   }
 }

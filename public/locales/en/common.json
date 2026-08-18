@@ -336,15 +336,15 @@
     "resumeContinue": "Continue stitching",
     "resumeFresh": "Start fresh instead",
     "facts": {
-      "context": "Perimenopause — the years of change before periods stop — can last anywhere from 4 to 10 years. Menopause itself is just one day.",
+      "context": "Perimenopause — the years of change before periods stop — most often lasts around 4 to 8 years, though for some women it is shorter or longer. Menopause itself is just one day.",
       "mind-cognition": "Brain fog is one of the most common menopause symptoms — caused by shifting oestrogen, not by you losing your sharpness. For most women, it lifts.",
-      "mood": "Mood changes in menopause are physical, not a personal failing. Oestrogen helps regulate serotonin, the brain's mood chemical — when it dips, mood follows.",
+      "mood": "Mood changes in menopause are physical, not a personal failing. Oestrogen interacts with serotonin, one of the brain's mood chemicals — so when hormone levels shift, mood can shift too.",
       "nervous-system": "Hot flushes can begin years before your last period. Up to 8 in 10 women experience them — whatever you are feeling, you are far from alone.",
       "body": "Joint and muscle aches are an under-recognised menopause symptom — oestrogen helps keep joints comfortable. Even frozen shoulder is linked to this change.",
       "urogenital": "Unlike hot flushes, intimate and bladder symptoms tend not to fade on their own — but they respond very well to treatment. They are nothing to be ashamed of.",
-      "other": "Suddenly cannot tolerate alcohol the way you used to? New allergies? That 'wait — is that menopause?' moment is real, and far more common than people think.",
+      "other": "Suddenly cannot tolerate alcohol the way you used to? Oestrogen interacts with histamine — the chemical behind allergy-type reactions — and some women notice new sensitivities in midlife. You are not imagining it.",
       "quality-of-life": "Menopause symptoms ripple into work, sleep and relationships. Naming that impact is not complaining — it is the first step to getting the right support.",
-      "mindset": "It is never too late. Women who seek support even years after menopause still see meaningful, lasting improvement."
+      "mindset": "It is never too late to ask for help. Some symptoms — including vaginal and bladder ones — respond well to treatment no matter how many years have passed since menopause."
     },
     "loadingStages": {
       "1": "Listening to everything you have shared…",
@@ -955,5 +955,137 @@
     "privacy": "Your privacy — how we use your data",
     "terms": "Terms",
     "contact": "Contact"
+  }
+,
+  "exhibition": {
+    "capture": {
+      "pageGate": "Answer all four to continue.",
+      "whatsapp": "WhatsApp number (optional)",
+      "whatsappPlaceholder": "082 000 0000",
+      "age": "Your age (optional)",
+      "ages": {
+        "40-44": "40–44",
+        "45-49": "45–49",
+        "50-54": "50–54",
+        "55-59": "55–59",
+        "60plus": "60+",
+        "none": "Prefer not to say"
+      },
+      "marketing": "Yes, Mandi may contact me about my full assessment, events and support. I can tell them to stop at any time.",
+      "finePrint": "We never share your details. You can ask us to erase everything at any time."
+    },
+    "chat": {
+      "mind-cognition": {
+        "hi": {
+          "1": "That word-finding feeling — it isn't your mind failing you.",
+          "2": "Your memory isn't broken. Hormones reach it too."
+        },
+        "lo": {
+          "1": "Good. Your clarity is holding.",
+          "2": "Thank you — useful to know."
+        }
+      },
+      "nervous-system": {
+        "hi": {
+          "1": "Sleep is where it starts for a lot of women. You're not alone.",
+          "2": "Your body is keeping you up at night. That counts."
+        },
+        "lo": {
+          "1": "Good — your nights are holding.",
+          "2": "Thank you."
+        }
+      },
+      "body": {
+        "hi": {
+          "1": "Your body is talking. This isn't just getting older.",
+          "2": "It's real, and it's well documented."
+        },
+        "lo": {
+          "1": "Thank you — noted.",
+          "2": "Good."
+        }
+      },
+      "other": {
+        "hi": {
+          "1": "Yes — that one surprises almost everybody.",
+          "2": "It's menopause. Really."
+        },
+        "lo": {
+          "1": "Good to know.",
+          "2": "Thank you."
+        }
+      },
+      "quality-of-life": {
+        "hi": {
+          "1": "This is where symptoms reach your life. It counts most.",
+          "2": "Thank you. This is the part people don't see."
+        },
+        "lo": {
+          "1": "Thank you.",
+          "2": "Noted."
+        }
+      }
+    },
+    "story": {
+      "disclaimer": "Educational information only — not medical advice.",
+      "intro": {
+        "title": "Your blanket tells a story",
+        "sub": "Scroll down — every patch you stitched has something to say."
+      },
+      "cute": {
+        "context": "Every story starts somewhere.",
+        "mind-cognition": "Losing words mid-sentence? They're not lost — just on a tea break.",
+        "mood": "Feelings doing somersaults? There's a reason.",
+        "nervous-system": "Your body has been sending you postcards.",
+        "body": "Aches that arrived uninvited? We see them.",
+        "urogenital": "The things nobody talks about — we talk about them.",
+        "other": "The 'wait, THAT's menopause?' section.",
+        "quality-of-life": "It touches the things you love. That matters.",
+        "mindset": "You showed up. That's the biggest stitch of all."
+      },
+      "factLabel": "Why this happens",
+      "hormoneHook": {
+        "title": "It's not you. It's your hormones.",
+        "body": "Almost everything you just read traces back to shifting oestrogen and progesterone. Understanding them is the key to feeling like yourself again — and that's exactly what Mandi is for.",
+        "cta": "Learn how hormones work on joinmandi.com"
+      },
+      "none": {
+        "title": "Your blanket looks calm — lucky you!",
+        "body": "No strong symptoms today. Menopause arrives differently for every woman — and knowing what to look for is the best head start there is."
+      }
+    },
+    "attract": {
+      "title": "Every woman has a story. Stitch yours.",
+      "cta": "Tap to begin"
+    },
+    "consent": {
+      "title": "A quick taste of Mandi",
+      "body": "Eight gentle questions, under two minutes. Nothing is stored unless you choose to leave your email at the end.",
+      "cta": "Let's stitch"
+    },
+    "reveal": {
+      "heading": "Your blanket, so far",
+      "scoreLabel": "Your demo MenoScore",
+      "band": {
+        "mild": "Your symptoms look mild — staying informed is the best next stitch.",
+        "moderate": "Your symptoms look moderate — you are not imagining it, and you are not alone.",
+        "significant": "Your symptoms look significant — a doctor who understands menopause can change everything."
+      },
+      "cta": "Get my blanket"
+    },
+    "email": {
+      "title": "Take your blanket home",
+      "body": "Leave your email and Mandi will send you your results — and let you know the moment we launch.",
+      "placeholder": "your@email.com",
+      "consent": "Store my email and demo answers so Mandi can send me my results and launch news.",
+      "cta": "Send my blanket",
+      "skip": "No thanks"
+    },
+    "thanks": {
+      "title": "Sala kahle. Totsiens. Goodbye, for now.",
+      "bodyKiosk": "Thank you for stitching with us — please hand the tablet back.",
+      "bodyPhone": "Watch your inbox. Your full blanket is waiting at joinmandi.com.",
+      "fullCta": "Stitch the full blanket"
+    }
   }
 }

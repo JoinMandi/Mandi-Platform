@@ -376,15 +376,15 @@
     "resumeContinue": "Gaan voort met stik",
     "resumeFresh": "Begin liewer van voor af",
     "facts": {
-      "context": "Perimenopouse — die jare van verandering voor maandstondes ophou — kan enige plek van 4 tot 10 jaar duur. Menopouse self is net een dag.",
+      "context": "Perimenopouse — die jare van verandering voordat maandstondes ophou — duur meestal ongeveer 4 tot 8 jaar, hoewel dit vir sommige vroue korter of langer is. Menopouse self is net een dag.",
       "mind-cognition": "Breinmist is een van die mees algemene simptome van menopouse — veroorsaak deur veranderende estrogeen, nie deurdat jy jou skerpheid verloor nie. Vir die meeste vroue lig dit op.",
-      "mood": "Buierighede in menopouse is fisies, nie 'n persoonlike mislukking nie. Estrogeen help om serotonien te reguleer, die brein se buigselchemikalie — wanneer dit daal, volg buierighede.",
+      "mood": "Buiveranderinge in menopouse is fisies, nie 'n persoonlike mislukking nie. Estrogeen werk in op serotonien, een van die brein se buichemikalieë — so wanneer hormoonvlakke verskuif, kan jou bui ook verskuif.",
       "nervous-system": "Warmgloede kan jare voor jou laaste maandstonde begin. Tot 8 uit 10 vroue ervaar dit — wat ook al jy voel, jy is ver van alleen nie.",
       "body": "Gewrigs- en spierpyn is 'n onder-erkende simptoom van menopouse — estrogeen help om gewrigte gemaklik te hou. Selfs gevriesde skouer is hieraan gekoppel.",
       "urogenital": "Anders as warmgloede, vervaag intieme en blaas-simptome neig nie vanself nie — maar hulle reageer baie goed op behandeling. Daar is niks om vir skaam te wees nie.",
-      "other": "Skielik kan jy nie meer alkohol verdra soos voorheen nie? Nuwe allergieë? Daardie 'wag — is dít menopouse?'-oomblik is werklik, en baie meer algemeen as wat mense dink.",
+      "other": "Kan jy skielik nie alkohol verdra soos vroeër nie? Estrogeen werk in op histamien — die chemikalie agter allergie-tipe reaksies — en sommige vroue merk nuwe sensitiwiteite in die middeljare op. Jy verbeel jou nie.",
       "quality-of-life": "Menopouse-simptome strek na werk, slaap en verhoudings. Om daardie impak te benoem is nie kla nie — dit is die eerste stap om die regte ondersteuning te kry.",
-      "mindset": "Dit is nooit te laat nie. Vroue wat ondersteuning soek selfs jare na menopouse sien steeds betekenisvolle, blywende verbetering."
+      "mindset": "Dit is nooit te laat om hulp te vra nie. Sommige simptome — insluitend vaginale en blaassimptome — reageer goed op behandeling, maak nie saak hoeveel jare sedert menopouse verby is nie."
     },
     "loadingStages": {
       "1": "Luister na alles wat jy gedeel het…",
@@ -919,5 +919,137 @@
     "privacy": "Jou privaatheid — hoe ons jou data gebruik",
     "terms": "Voorwaardes",
     "contact": "Kontak"
+  }
+,
+  "exhibition": {
+    "capture": {
+      "pageGate": "Antwoord al vier om voort te gaan.",
+      "whatsapp": "WhatsApp-nommer (opsioneel)",
+      "whatsappPlaceholder": "082 000 0000",
+      "age": "Jou ouderdom (opsioneel)",
+      "ages": {
+        "40-44": "40–44",
+        "45-49": "45–49",
+        "50-54": "50–54",
+        "55-59": "55–59",
+        "60plus": "60+",
+        "none": "Verkies om nie te sê nie"
+      },
+      "marketing": "Ja, Mandi mag my kontak oor my volledige assessering, geleenthede en ondersteuning. Ek kan enige tyd sê ek wil nie meer nie.",
+      "finePrint": "Ons deel nooit jou besonderhede nie. Jy kan enige tyd vra dat ons alles uitvee."
+    },
+    "chat": {
+      "mind-cognition": {
+        "hi": {
+          "1": "Daai woord-soek gevoel — dis nie jou kop wat jou faal nie.",
+          "2": "Jou geheue is nie stukkend nie. Hormone raak dit ook."
+        },
+        "lo": {
+          "1": "Goed so. Jou helderheid hou nog stand.",
+          "2": "Dankie — dis nuttig om te weet."
+        }
+      },
+      "nervous-system": {
+        "hi": {
+          "1": "Slaap is waar dit vir baie vroue begin. Jy is nie alleen nie.",
+          "2": "Jou lyf hou jou snags wakker. Dit tel."
+        },
+        "lo": {
+          "1": "Goed — jou nagte hou nog.",
+          "2": "Dankie."
+        }
+      },
+      "body": {
+        "hi": {
+          "1": "Jou lyf praat. Dit is nie sommer net ouer word nie.",
+          "2": "Dit is regtig, en dit is bekend."
+        },
+        "lo": {
+          "1": "Dankie — genoteer.",
+          "2": "Goed so."
+        }
+      },
+      "other": {
+        "hi": {
+          "1": "Ja — daai een verras byna almal.",
+          "2": "Dis menopouse. Regtig."
+        },
+        "lo": {
+          "1": "Goed om te weet.",
+          "2": "Dankie."
+        }
+      },
+      "quality-of-life": {
+        "hi": {
+          "1": "Dit is waar simptome lewens raak. Dit tel die meeste.",
+          "2": "Dankie. Dit is die deel wat mense nie sien nie."
+        },
+        "lo": {
+          "1": "Dankie.",
+          "2": "Genoteer."
+        }
+      }
+    },
+    "story": {
+      "disclaimer": "Slegs opvoedkundige inligting — nie mediese advies nie.",
+      "intro": {
+        "title": "Jou kombers vertel 'n storie",
+        "sub": "Rol af — elke lappie wat jy gestik het, het iets te sê."
+      },
+      "cute": {
+        "context": "Elke storie begin êrens.",
+        "mind-cognition": "Woorde wat wegraak? Hulle is nie weg nie — net gou op 'n teepouse.",
+        "mood": "Gevoelens wat bollemakiesie slaan? Daar is 'n rede.",
+        "nervous-system": "Jou liggaam stuur vir jou poskaarte.",
+        "body": "Pyne wat ongenooid opgedaag het? Ons sien hulle.",
+        "urogenital": "Die dinge waaroor niemand praat nie — ons praat daaroor.",
+        "other": "Die 'wag, is DIT menopouse?'-afdeling.",
+        "quality-of-life": "Dit raak die dinge wat jy liefhet. Dit maak saak.",
+        "mindset": "Jy het opgedaag. Dis die grootste steek van almal."
+      },
+      "factLabel": "Hoekom dit gebeur",
+      "hormoneHook": {
+        "title": "Dis nie jy nie. Dis jou hormone.",
+        "body": "Byna alles wat jy nou net gelees het, kom van veranderende estrogeen en progesteroon. Om hulle te verstaan is die sleutel om weer soos jouself te voel — en dis presies waarvoor Mandi daar is.",
+        "cta": "Leer hoe hormone werk op joinmandi.com"
+      },
+      "none": {
+        "title": "Jou kombers lyk rustig — gelukkige jy!",
+        "body": "Geen sterk simptome vandag nie. Menopouse kom vir elke vrou anders — en om te weet waarna om te kyk, is die beste voorsprong wat daar is."
+      }
+    },
+    "attract": {
+      "title": "Elke vrou het 'n storie. Stik joune.",
+      "cta": "Tik om te begin"
+    },
+    "consent": {
+      "title": "'n Vinnige voorsmakie van Mandi",
+      "body": "Agt sagte vrae, onder twee minute. Niks word gestoor nie, tensy jy kies om jou e-pos aan die einde te los.",
+      "cta": "Kom ons stik"
+    },
+    "reveal": {
+      "heading": "Jou kombers, tot dusver",
+      "scoreLabel": "Jou demo-MenoScore",
+      "band": {
+        "mild": "Jou simptome lyk lig — om ingelig te bly is die beste volgende steek.",
+        "moderate": "Jou simptome lyk matig — jy verbeel jou nie, en jy is nie alleen nie.",
+        "significant": "Jou simptome lyk beduidend — 'n dokter wat menopouse verstaan, kan alles verander."
+      },
+      "cta": "Kry my kombers"
+    },
+    "email": {
+      "title": "Neem jou kombers huis toe",
+      "body": "Los jou e-pos en Mandi stuur jou resultate — en laat weet jou die oomblik wat ons loods.",
+      "placeholder": "jou@epos.com",
+      "consent": "Stoor my e-pos en demo-antwoorde sodat Mandi my resultate en loodsnuus kan stuur.",
+      "cta": "Stuur my kombers",
+      "skip": "Nee dankie"
+    },
+    "thanks": {
+      "title": "Totsiens, vir eers.",
+      "bodyKiosk": "Dankie dat jy saam met ons gestik het — gee asseblief die tablet terug.",
+      "bodyPhone": "Hou jou inboks dop. Jou volle kombers wag by joinmandi.com.",
+      "fullCta": "Stik die volle kombers"
+    }
   }
 }

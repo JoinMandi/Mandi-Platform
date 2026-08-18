@@ -61,6 +61,23 @@ export interface SessionRow {
   popia_consent_at: string | null;
 }
 
+export type AgeBand = "40-44" | "45-49" | "50-54" | "55-59" | "60plus" | "none";
+
+export interface ExhibitionSignupRow {
+  id: string;
+  created_at: string;
+  email: string;
+  whatsapp: string | null;
+  age_band: AgeBand | null;
+  language_code: string | null;
+  meno_score: number | null;
+  score_band: ScoreBand | null;
+  answers: Record<string, unknown> | null;
+  consent: boolean;
+  marketing_opt_in: boolean;
+  source: string;
+}
+
 export interface UserRow {
   id: string;
   email: string | null;
