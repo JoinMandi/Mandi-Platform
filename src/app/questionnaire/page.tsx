@@ -52,6 +52,8 @@ async function persistResponse(
   result: ReturnType<typeof calculateScore>,
 ) {
   try {
+    const sessionId =
+      typeof window !== "undefined" ? localStorage.getItem("mandi-session") : null;
     await submitQuestionnaire({
       answers: answers as Record<string, unknown>,
       menoScore: result.menoScore,
@@ -60,6 +62,7 @@ async function persistResponse(
       selfHarmFlag: result.selfHarmFlag,
       colleenFlag: result.colleenFlag,
       topDomains: result.topDomains,
+      sessionId,
     });
   } catch {
     /* best-effort — localStorage copy is the source of truth for the roadmap */

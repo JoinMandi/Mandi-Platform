@@ -442,7 +442,10 @@ create policy "sessions_select_own" on sessions for select using (true);
 drop policy if exists "qr_insert_any" on questionnaire_responses;
 drop policy if exists "qr_select_own" on questionnaire_responses;
 drop policy if exists "qr_admin_read" on questionnaire_responses;
-create policy "qr_insert_any" on questionnaire_responses for insert with check (true);
+-- Bind inserts to the caller: authenticated users may only write their own
+-- row; anonymous funnel submissions (no session) use a null user_id.
+create policy "qr_insert_any" on questionnaire_responses for insert
+  with check (user_id = auth.uid() or user_id is null);
 create policy "qr_select_own" on questionnaire_responses for select
   using (user_id = auth.uid() or user_id is null);
 create policy "qr_admin_read" on questionnaire_responses for select using (public.is_admin());
