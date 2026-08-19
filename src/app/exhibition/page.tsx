@@ -725,7 +725,8 @@ export default function ExhibitionPage() {
               <button
                 onClick={chatBack}
                 type="button"
-                className="text-sm font-medium text-brown/60 hover:text-terra transition-colors"
+                className="rounded-full border border-brown/15 bg-cream-soft/90 px-3.5 py-1.5 text-sm
+                  font-semibold text-brown/70 shadow-warm transition-colors hover:border-terra hover:text-terra"
               >
                 ← {t("questionnaire.back")}
               </button>
@@ -787,15 +788,21 @@ export default function ExhibitionPage() {
           </div>
         </div>
 
-        {/* Pinned answer chips */}
+        {/* Pinned answer chips — keyed by question so the buttons remount
+            fresh each time: mobile browsers keep :hover on a tapped element,
+            which made the previous answer's colour linger onto the next
+            question. New DOM per question = every value starts clear. */}
         <div className="relative z-10 mx-auto w-full max-w-xl shrink-0 border-t border-cream-deep/40 bg-cream/85 px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-sm">
-          <div className="grid grid-cols-4 gap-2">
+          <div key={`chips-${chatQuestion.id}`} className="grid grid-cols-4 gap-2">
             {[0, 1, 2, 3].map((s) => (
               <button
                 key={s}
                 type="button"
                 disabled={chatBusy}
-                onClick={() => answerChat(s)}
+                onClick={(e) => {
+                  e.currentTarget.blur();
+                  answerChat(s);
+                }}
                 className={`flex flex-col items-center gap-0.5 rounded-2xl border-2 border-coral/30 bg-white
                   px-2 py-3 text-xs font-semibold text-brown transition-all hover:border-terra
                   hover:bg-terra hover:text-cream active:scale-95 ${chatBusy ? "opacity-40" : ""}`}
@@ -945,35 +952,7 @@ export default function ExhibitionPage() {
           </div>
         </section>
 
-        {/* 3 — The hormone hook */}
-        <section className="relative overflow-hidden bg-mandi-gradient-dusk px-5 py-20 sm:py-24">
-          <AmbientBlobs intensity="soft" />
-          <div className="pointer-events-none absolute inset-0 bg-brown/30" />
-          <div className="relative z-10 mx-auto max-w-xl text-center">
-            <Reveal variant="rise">
-              <h2 className="font-display text-3xl leading-tight text-cream drop-shadow-md sm:text-4xl">
-                {t("exhibition.story.hormoneHook.title")}
-              </h2>
-              <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-cream/85">
-                {t("exhibition.story.hormoneHook.body")}
-              </p>
-              {kiosk ? (
-                <p className="mt-8 inline-block rounded-full bg-golden/20 px-7 py-3 text-sm font-semibold text-golden">
-                  {t("exhibition.story.hormoneHook.cta")}
-                </p>
-              ) : (
-                <a
-                  href="https://joinmandi.com"
-                  className="mt-8 inline-block rounded-full bg-golden px-7 py-3 text-sm font-semibold text-brown shadow-warm-lg transition-colors hover:bg-sun"
-                >
-                  {t("exhibition.story.hormoneHook.cta")} →
-                </a>
-              )}
-            </Reveal>
-          </div>
-        </section>
-
-        {/* 4 — Take it home: email capture */}
+        {/* 3 — Take it home: email capture */}
         <section className="relative bg-cream px-5 py-16 sm:py-20">
           <div className="pointer-events-none absolute inset-0 bg-mandi-gradient-soft opacity-30" />
           <div className="relative mx-auto max-w-xl">
@@ -1073,6 +1052,34 @@ export default function ExhibitionPage() {
                   {t("exhibition.email.skip")}
                 </button>
               </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* 4 — The end: don't count out your hormones + join the journey */}
+        <section className="relative overflow-hidden bg-mandi-gradient-dusk px-5 py-20 sm:py-24">
+          <AmbientBlobs intensity="soft" />
+          <div className="pointer-events-none absolute inset-0 bg-brown/30" />
+          <div className="relative z-10 mx-auto max-w-xl text-center">
+            <Reveal variant="rise">
+              <h2 className="font-display text-3xl leading-tight text-cream drop-shadow-md sm:text-4xl">
+                {t("exhibition.story.hormoneHook.title")}
+              </h2>
+              <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-cream/85">
+                {t("exhibition.story.hormoneHook.body")}
+              </p>
+              {kiosk ? (
+                <p className="mt-8 inline-block rounded-full bg-golden/20 px-7 py-3 text-sm font-semibold text-golden">
+                  {t("exhibition.story.hormoneHook.cta")}
+                </p>
+              ) : (
+                <a
+                  href="https://joinmandi.com"
+                  className="mt-8 inline-block rounded-full bg-golden px-7 py-3 text-sm font-semibold text-brown shadow-warm-lg transition-colors hover:bg-sun"
+                >
+                  {t("exhibition.story.hormoneHook.cta")} →
+                </a>
+              )}
             </Reveal>
           </div>
         </section>
