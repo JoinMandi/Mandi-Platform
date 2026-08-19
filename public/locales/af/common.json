@@ -922,6 +922,7 @@
   }
 ,
   "exhibition": {
+    "prevQuestion": "Vorige vraag",
     "restart": "Begin oor",
     "mode": {
       "title": "Hoe wil jy antwoord?",

@@ -922,6 +922,7 @@
   }
 ,
   "exhibition": {
+    "prevQuestion": "Umbuzo odlule",
     "restart": "Qala phansi",
     "mode": {
       "title": "Ungathanda ukuphendula kanjani?",

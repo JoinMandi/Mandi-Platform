@@ -720,19 +720,7 @@ export default function ExhibitionPage() {
           <div className="rounded-3xl border border-cream-deep/60 bg-cream-soft/80 p-2.5 opacity-75 shadow-warm backdrop-blur-sm">
             <Quilt patches={PATCHES} answered={answeredCount} variant="compact" className="mx-auto" />
           </div>
-          <div className="mt-3 flex items-center justify-between">
-            {chatIdx > 0 ? (
-              <button
-                onClick={chatBack}
-                type="button"
-                className="rounded-full border border-brown/15 bg-cream-soft/90 px-3.5 py-1.5 text-sm
-                  font-semibold text-brown/70 shadow-warm transition-colors hover:border-terra hover:text-terra"
-              >
-                ← {t("questionnaire.back")}
-              </button>
-            ) : (
-              <span />
-            )}
+          <div className="mt-3 flex items-center justify-end">
             <span className="text-[11px] uppercase tracking-[0.18em] text-brown/45 font-semibold">
               {t("questionnaire.progress", { current: Math.min(chatIdx + 1, TOTAL), total: TOTAL })}
             </span>
@@ -814,6 +802,19 @@ export default function ExhibitionPage() {
               </button>
             ))}
           </div>
+          {/* Go back and modify the previous answer — where her thumb is. */}
+          {chatIdx > 0 && (
+            <button
+              type="button"
+              disabled={chatBusy}
+              onClick={chatBack}
+              className={`mx-auto mt-2.5 block rounded-full border border-brown/20 px-5 py-2 text-xs
+                font-semibold text-brown/65 transition-colors hover:border-terra hover:text-terra
+                ${chatBusy ? "opacity-40" : ""}`}
+            >
+              ← {t("exhibition.prevQuestion")}
+            </button>
+          )}
         </div>
 
         {affirmation && (
