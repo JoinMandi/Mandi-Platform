@@ -938,16 +938,17 @@ export default function ExhibitionPage() {
                 <p className="text-center text-xs font-medium text-brown/55">
                   {t("exhibition.story.disclaimer")}
                 </p>
-                <div className="mt-4 text-brown/50">
-                  <p className="text-center text-[11px] font-semibold uppercase tracking-[0.18em]">
+                {/* Collapsed by default per product direction (2026-08-18). */}
+                <details className="mt-4 text-brown/50">
+                  <summary className="cursor-pointer text-center text-[11px] font-semibold uppercase tracking-[0.18em] underline decoration-brown/30 underline-offset-4">
                     Sources
-                  </p>
+                  </summary>
                   <ol className="mx-auto mt-3 max-w-md list-decimal space-y-1 pl-5 text-[11px] leading-relaxed">
                     {FACT_SOURCES.map((s) => (
                       <li key={s}>{s}</li>
                     ))}
                   </ol>
-                </div>
+                </details>
               </div>
             </Reveal>
           </div>

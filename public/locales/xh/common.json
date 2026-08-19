@@ -1019,11 +1019,11 @@
         "quality-of-life": "Ichaphazela izinto ozithandayo. Oko kubalulekile.",
         "mindset": "Ufikile. Ngowona mthungo mkhulu ke lowo."
       },
-      "factLabel": "Kutheni oku kusenzeka",
+      "factLabel": "Unxibelelwano ne-menopause",
       "hormoneHook": {
         "title": "Musa ukuzishiya ngaphandle ii-hormone zakho.",
         "body": "Abafazi abaninzi kakhulu baphila iminyaka neempawu ezifana nezi, bengazi ukuba ii-hormone zinokuba yinxalenye yebali. Nokuba ingubo yakho ibonakala njani, kufanelekile ukuba uziqonde. Yiloo nto uMandi ayakhayo: impilo yabafazi enenjongo, engenazintloni, ngolwimi lwakho, ngelizwi lase-Afrika.",
-        "cta": "Joyina uhambo lukaMandi"
+        "cta": "Jonga uhambo lukaMandi"
       },
       "none": {
         "title": "Ingubo yakho ibonakala izolile, unethamsanqa!",
@@ -1051,7 +1051,7 @@
     },
     "email": {
       "title": "Goduka nengubo yakho",
-      "body": "Shiya i-imeyile yakho uMandi akuthumelele ingubo yakho, ikhonkco lakho lovavanyo olupheleleyo lwemibuzo engama-56, kunye nendawo kuhambo, ukuze ugqibezele ingubo yakho ngexesha lakho, ekhayeni lakho.",
+      "body": "Uthunge amalaphu ambalwa namhlanje. Shiya i-imeyile yakho sikuthumelele iziphumo zakho nekhonkco lengubo epheleleyo yemibuzo engama-56, uyigqibezele ngexesha lakho, ufumane okungakumbi.",
       "placeholder": "eyakho@imeyile.com",
       "consent": "Gcina i-imeyile yam neempendulo zedemo ukuze uMandi andithumelele iziphumo zam neendaba zokusungulwa.",
       "cta": "Thumela ingubo yam",
