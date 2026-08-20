@@ -60,7 +60,8 @@ export default function MyJourneyPage() {
     })();
   }, []);
 
-  const firstName = email?.split("@")[0] ?? "friend";
+  // An email prefix is not a name — greet warmly without pretending to know it.
+  const firstName = null;
 
   const updateLog = async (date: string, domain: string, score: number) => {
     if (!loggedIn) return;
@@ -137,14 +138,16 @@ export default function MyJourneyPage() {
       <main className="min-h-screen bg-cream">
         {/* Hero greeting */}
         <section className="relative overflow-hidden bg-mandi-gradient-soft">
-          <div className="absolute inset-0 bg-cream/40" />
-          <div className="relative z-10 max-w-5xl mx-auto px-6 py-12">
+          <div className="absolute inset-0 bg-cream/25" />
+          <div className="relative z-10 max-w-5xl mx-auto px-6 py-16">
             <Reveal>
               <p className="text-terra text-[11px] uppercase tracking-[0.25em] font-semibold mb-2">
                 {t("journey.eyebrow")}
               </p>
-              <h1 className="font-display text-3xl sm:text-4xl text-brown leading-tight">
-                {t("journey.greeting", { name: firstName })}
+              <h1 className="font-display text-4xl sm:text-5xl text-brown leading-tight">
+                {firstName
+                  ? t("journey.greeting", { name: firstName })
+                  : t("journey.greetingNoName")}
               </h1>
               <p className="text-brown/70 text-sm mt-2">{t("journey.intro")}</p>
             </Reveal>
@@ -280,7 +283,7 @@ function SymptomTracker({
                     <td key={day} className="py-1 text-center align-top">
                       <button
                         onClick={() => setEditing({ date: day, domain: symptom })}
-                        className={`w-8 h-8 rounded-full inline-flex items-center justify-center font-semibold text-sm
+                        className={`w-11 h-11 rounded-full inline-flex items-center justify-center font-semibold text-sm
                           transition-colors
                           ${score === null ? "bg-cream border border-cream-deep text-brown/30" :
                             score === 0 ? "bg-cream-deep text-brown/50" :
@@ -307,14 +310,14 @@ function SymptomTracker({
                                     onChange(day, symptom, n);
                                     setEditing(null);
                                   }}
-                                  className="w-7 h-7 rounded-full text-xs font-semibold bg-cream hover:bg-terra hover:text-cream text-brown transition-colors"
+                                  className="w-10 h-10 rounded-full text-sm font-semibold bg-cream hover:bg-terra hover:text-cream text-brown transition-colors"
                                 >
                                   {n}
                                 </button>
                               ))}
                               <button
                                 onClick={() => setEditing(null)}
-                                className="w-7 h-7 rounded-full text-brown/50 hover:text-terra text-xs"
+                                className="w-10 h-10 rounded-full text-brown/50 hover:text-terra text-sm"
                                 aria-label="Cancel"
                               >
                                 ✕

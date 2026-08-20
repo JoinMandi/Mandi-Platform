@@ -38,15 +38,15 @@ export default function ConsentPage() {
       <NavBar />
       <main className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0 bg-mandi-gradient-soft" />
-        <div className="absolute inset-0 bg-cream/70" />
+        <div className="absolute inset-0 bg-cream/40" />
 
         <div className="relative z-10 flex items-center justify-center px-5 py-16 min-h-[calc(100vh-64px)]">
           <div className="w-full max-w-xl bg-cream-soft rounded-4xl shadow-warm-xl p-8 sm:p-12 flex flex-col gap-7">
             <Reveal delay={0}>
               <p className="text-[11px] uppercase tracking-[0.2em] text-terra font-semibold mb-3">
-                POPIA
+                {t("brand.name")}
               </p>
-              <h1 className="font-display text-2xl sm:text-3xl text-brown leading-tight mb-5">
+              <h1 className="font-display text-3xl sm:text-4xl text-brown leading-tight mb-5">
                 {t("consent.title")}
               </h1>
               <p className="text-brown/80 text-sm sm:text-base leading-relaxed mb-4">

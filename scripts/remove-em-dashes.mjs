@@ -29,6 +29,18 @@ for (const lang of ["en", "af", "zu", "xh"]) {
   // Whole questionnaire namespace: question texts, hints, facts, domains —
   // all rendered in the exhibition flow (and shared with the main app).
   collectStrings(obj.questionnaire, targets);
+  // Main-site namespaces (v2 of the sweep). roadmap.safety.* is clinically
+  // frozen — excluded byte-for-byte, even punctuation.
+  for (const ns of [
+    "landing", "about", "resources", "hrt", "mothers", "events", "doctor",
+    "journey", "auth", "consent", "transition", "footer", "brand", "nav", "language",
+  ]) {
+    collectStrings(obj[ns], targets);
+  }
+  if (obj.roadmap) {
+    const { safety, ...roadmapRest } = obj.roadmap;
+    collectStrings(roadmapRest, targets);
+  }
 
   let n = 0;
   for (const old of targets) {

@@ -19,6 +19,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import NavBar from "@/components/NavBar";
+import AmbientBlobs from "@/components/ui/AmbientBlobs";
 import Reveal from "@/components/ui/Reveal";
 import { logEngagement } from "@/server/actions/engagement";
 import { fetchPublicEvents } from "@/server/actions/public-content";
@@ -102,20 +103,22 @@ export default function EventsPage() {
     <>
       <NavBar />
       <main className="min-h-screen bg-cream">
-        <section className="relative overflow-hidden bg-mandi-gradient-soft">
-          <div className="max-w-4xl mx-auto px-6 py-16">
+        <section className="relative overflow-hidden bg-mandi-gradient">
+          <AmbientBlobs intensity="soft" />
+          <div className="pointer-events-none absolute inset-0 bg-brown/15" />
+          <div className="relative z-10 max-w-4xl mx-auto px-6 py-20">
             <Reveal>
-              <p className="text-terra text-[11px] uppercase tracking-[0.25em] font-semibold mb-3">
+              <p className="text-cream/85 text-[11px] uppercase tracking-[0.25em] font-semibold mb-3">
                 {t("events.eyebrow")}
               </p>
             </Reveal>
             <Reveal delay={110}>
-              <h1 className="font-display text-5xl sm:text-6xl text-brown leading-[1.05]">
+              <h1 className="font-display text-5xl sm:text-6xl text-cream leading-[1.05]">
                 {t("events.title")}
               </h1>
             </Reveal>
             <Reveal delay={210}>
-              <p className="text-brown/75 text-lg mt-5 max-w-xl leading-relaxed">
+              <p className="text-cream/85 text-lg mt-5 max-w-xl leading-relaxed">
                 {t("events.subhead")}
               </p>
             </Reveal>
@@ -124,9 +127,7 @@ export default function EventsPage() {
 
         <section className="max-w-4xl mx-auto px-6 py-14">
           {error && (
-            <p className="text-center py-10 text-terra text-sm">
-              {t("events.loadError")} ({error})
-            </p>
+            <p className="text-center py-10 text-terra text-sm">{t("events.loadError")}</p>
           )}
           {!error && upcoming === null && (
             <p className="text-center py-10 text-brown/50 text-sm">
@@ -220,7 +221,7 @@ export default function EventsPage() {
                                   meta: { format: e.format ?? undefined },
                                 })
                               }
-                              className="inline-flex items-center justify-center bg-terra text-cream font-semibold rounded-full px-5 py-2 text-xs hover:bg-terra-dark active:scale-95 transition-all shadow-warm self-start"
+                              className="inline-flex items-center justify-center bg-terra text-cream font-semibold rounded-full px-7 py-3 text-sm hover:bg-terra-dark active:scale-95 transition-all shadow-warm self-start"
                             >
                               {t("events.registerCta")} →
                             </a>

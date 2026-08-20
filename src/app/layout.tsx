@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Mandi — Your Menopause Companion",
   description:
     "A warm, multilingual South African women's health platform for menopause. Your health journey home starts here.",
-  keywords: ["menopause", "women's health", "South Africa", "HRT", "POPIA"],
+  keywords: ["menopause", "women's health", "South Africa", "HRT", "perimenopause"],
 };
 
 export default function RootLayout({

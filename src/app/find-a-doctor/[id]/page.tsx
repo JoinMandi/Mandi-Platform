@@ -19,6 +19,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import NavBar from "@/components/NavBar";
+import AmbientBlobs from "@/components/ui/AmbientBlobs";
 import Reveal from "@/components/ui/Reveal";
 import { logEngagement } from "@/server/actions/engagement";
 import { fetchDoctorProfile } from "@/server/actions/public-content";
@@ -88,17 +89,21 @@ export default function DoctorProfilePage({
     <>
       <NavBar />
       <main className="min-h-screen bg-cream">
-        <section className="max-w-3xl mx-auto px-6 pt-8">
-          <Link
-            href="/find-a-doctor"
-            className="text-terra text-sm font-semibold inline-flex items-center gap-1 mb-6 hover:gap-2 transition-all"
-          >
-            ← {t("doctor.profile.backToList")}
-          </Link>
-        </section>
+        {/* Gradient hero band — the profile used to be cream-on-cream only */}
+        <div className="relative overflow-hidden bg-mandi-gradient pb-10">
+          <AmbientBlobs intensity="soft" />
+          <div className="pointer-events-none absolute inset-0 bg-brown/15" />
+          <section className="relative z-10 max-w-3xl mx-auto px-6 pt-8">
+            <Link
+              href="/find-a-doctor"
+              className="text-cream text-sm font-semibold inline-flex items-center gap-1 mb-6 hover:gap-2 transition-all"
+            >
+              ← {t("doctor.profile.backToList")}
+            </Link>
+          </section>
 
         {/* Hero card */}
-        <section className="max-w-3xl mx-auto px-6 mb-8">
+        <section className="relative z-10 max-w-3xl mx-auto px-6">
           <Reveal>
             <div className="bg-cream-soft rounded-3xl shadow-warm p-8 sm:p-10 border-l-4 border-terra">
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
@@ -144,6 +149,7 @@ export default function DoctorProfilePage({
             </div>
           </Reveal>
         </section>
+        </div>
 
         {/* Bio */}
         {doctor.bio && (
