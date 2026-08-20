@@ -138,7 +138,7 @@ export default function LandingPage() {
           {/* Scroll hint */}
           <div className="relative z-10 flex justify-center pb-6">
             <svg
-              className="h-5 w-5 text-cream/70 animate-bounce"
+              className="h-5 w-5 text-cream/70 animate-pulse-warm"
               aria-hidden
               fill="none"
               viewBox="0 0 24 24"
