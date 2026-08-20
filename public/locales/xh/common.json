@@ -399,7 +399,9 @@
       "2": "Ukuzibonisa ngokwakho yinkalipho.",
       "3": "Awukho wedwa kule nto.",
       "4": "Oko ukuvayo kuyinyaniso, kwaye kubalulekile."
-    }
+    },
+    "saveExit": "Gcina uphume",
+    "autosaveNote": "Iimpendulo zakho zigcinwa ngokuzenzekelayo kule divayisi. Ungahamba uze uqhubeke nanini na."
   },
   "units": {
     "cm": "cm",

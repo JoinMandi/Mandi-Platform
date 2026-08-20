@@ -399,7 +399,9 @@
       "2": "Ukuvela wena uqobo yisibindi.",
       "3": "Awuwedwa kulokhu.",
       "4": "Lokho okuzwayo kuyiqiniso, futhi kubalulekile."
-    }
+    },
+    "saveExit": "Gcina uphume",
+    "autosaveNote": "Izimpendulo zakho zigcinwa ngokuzenzakalela kule divayisi. Ungahamba futhi uqhubeke noma nini."
   },
   "units": {
     "cm": "cm",

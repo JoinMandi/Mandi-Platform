@@ -403,7 +403,9 @@
       "2": "Showing up for yourself is the brave part.",
       "3": "You are not alone in this.",
       "4": "What you feel is real, and it matters."
-    }
+    },
+    "saveExit": "Save and exit",
+    "autosaveNote": "Your answers save automatically on this device. You can leave and pick up any time."
   },
   "units": {
     "cm": "cm",

@@ -399,7 +399,9 @@
       "2": "Om vir jouself op te daag is die dapper deel.",
       "3": "Jy is nie alleen hierin nie.",
       "4": "Wat jy voel is werklik, en dit maak saak."
-    }
+    },
+    "saveExit": "Stoor en verlaat",
+    "autosaveNote": "Jou antwoorde stoor outomaties op hierdie toestel. Jy kan enige tyd verlaat en later voortgaan."
   },
   "units": {
     "cm": "cm",
