@@ -946,7 +946,7 @@
         "60plus": "60+",
         "none": "Ndikhetha ukungatsho"
       },
-      "marketing": "Ewe, uMandi angandiqhagamshelana malunga novavanyo lwam olupheleleyo, imisitho nenkxaso. Ndingatsho nanini na ukuba mayeke.",
+      "marketing": "Ndigcine ndisazi, iindaba, imisitho nohambo lukaMandi.",
       "finePrint": "Asisoze sabelane ngeenkcukacha zakho. Ungacela ukuba sicime yonke into nanini na."
     },
     "chat": {
@@ -1053,7 +1053,7 @@
       "title": "Goduka nengubo yakho",
       "body": "Uthunge amalaphu ambalwa namhlanje. Shiya i-imeyile yakho sikuthumelele iziphumo zakho nekhonkco lengubo epheleleyo yemibuzo engama-56, uyigqibezele ngexesha lakho, ufumane okungakumbi.",
       "placeholder": "eyakho@imeyile.com",
-      "consent": "Gcina i-imeyile yam neempendulo zedemo ukuze uMandi andithumelele iziphumo zam neendaba zokusungulwa.",
+      "consent": "Ewe, uMandi angagcina iinkcukacha zam andithumelele ingubo yam neziphumo.",
       "cta": "Thumela ingubo yam",
       "skip": "Hayi enkosi"
     },

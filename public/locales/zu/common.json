@@ -946,7 +946,7 @@
         "60plus": "60+",
         "none": "Ngincamela ukungasho"
       },
-      "marketing": "Yebo, uMandi angangithinta mayelana nokuhlolwa kwami okuphelele, imicimbi nokwesekwa. Ngingasho noma nini ukuthi angabe esangithinta.",
+      "marketing": "Ngigcine ngaziswa, izindaba, imicimbi nohambo lukaMandi.",
       "finePrint": "Asisoze sabelane ngemininingwane yakho. Ungacela ukuthi sisule konke noma nini."
     },
     "chat": {
@@ -1053,7 +1053,7 @@
       "title": "Hamba nengubo yakho",
       "body": "Uthunge izingcephe ezimbalwa namuhla. Shiya i-imeyili yakho sikuthumelele imiphumela yakho nesixhumanisi sengubo ephelele yemibuzo engu-56, uyiqedele ngesikhathi sakho, uthole okwengeziwe.",
       "placeholder": "eyakho@imeyili.com",
-      "consent": "Gcina i-imeyili yami nezimpendulo zedemo ukuze uMandi angithumelele imiphumela yami nezindaba zokwethulwa.",
+      "consent": "Yebo, uMandi angagcina imininingwane yami angithumelele ingubo yami nemiphumela.",
       "cta": "Thumela ingubo yami",
       "skip": "Cha ngiyabonga"
     },

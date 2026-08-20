@@ -946,7 +946,7 @@
         "60plus": "60+",
         "none": "Verkies om nie te sê nie"
       },
-      "marketing": "Ja, Mandi mag my kontak oor my volledige assessering, geleenthede en ondersteuning. Ek kan enige tyd sê ek wil nie meer nie.",
+      "marketing": "Hou my op hoogte, nuus, geleenthede en die Mandi-reis.",
       "finePrint": "Ons deel nooit jou besonderhede nie. Jy kan enige tyd vra dat ons alles uitvee."
     },
     "chat": {
@@ -1053,7 +1053,7 @@
       "title": "Neem jou kombers huis toe",
       "body": "Jy het vandag 'n paar lappies gestik. Los jou e-pos en ons stuur jou resultate en die skakel na die volle 56-vraag-kombers, sodat jy dit in jou eie tyd kan voltooi en meer kan ontdek.",
       "placeholder": "jou@epos.com",
-      "consent": "Stoor my e-pos en demo-antwoorde sodat Mandi my resultate en loodsnuus kan stuur.",
+      "consent": "Ja, Mandi mag my besonderhede hou en my kombers en resultate vir my stuur.",
       "cta": "Stuur my kombers",
       "skip": "Nee dankie"
     },

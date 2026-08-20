@@ -982,7 +982,7 @@
         "60plus": "60+",
         "none": "Prefer not to say"
       },
-      "marketing": "Yes, Mandi may contact me about my full assessment, events and support. I can tell them to stop at any time.",
+      "marketing": "Keep me in the loop, news, events and the Mandi journey.",
       "finePrint": "We never share your details. You can ask us to erase everything at any time."
     },
     "chat": {
@@ -1089,7 +1089,7 @@
       "title": "Take your blanket home",
       "body": "You've stitched a few patches today. Leave your email and we'll send your results and the link to the full 56-question blanket, so you can finish it in your own time and discover more.",
       "placeholder": "your@email.com",
-      "consent": "Store my email and demo answers so Mandi can send me my results and launch news.",
+      "consent": "Yes, Mandi may keep my details and send me my blanket and results.",
       "cta": "Send my blanket",
       "skip": "No thanks"
     },
