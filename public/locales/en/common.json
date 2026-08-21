@@ -5,49 +5,51 @@
     "wordmark": "JoinMandi.com"
   },
   "landing": {
+    "mission": "Menopause understood, not endured. Intentional, destigmatised women's health, in your language, with an African voice.",
+    "footerLine": "JoinMandi.com · MrsKing Productions · August 2026",
     "eyebrow": "Talk to Mandi · Khuluma noMandi · Thetha noMandi · Praat met Mandi",
     "headline1": "Thank you for arriving.",
     "headline2": "Your health journey home starts here.",
-    "subhead": "A warm, private, ten-minute conversation about how you are feeling — in your language.",
+    "subhead": "A warm, private, ten-minute conversation about how you are feeling, in your language.",
     "cta": "Talk to Mandi",
-    "browseCta": "Browse the platform",
+    "browseCta": "Check out the Mandi journey",
     "browse": "Just browse the platform",
-    "reassurance": "POPIA compliant · Private · Free to use",
+    "reassurance": "Private. Free. We never share your details.",
     "how": {
       "eyebrow": "How it works",
       "title": "Three steps to a roadmap that fits you.",
       "step1": {
         "title": "Answer",
-        "body": "Spend ten minutes with Mandi. Fifty-six gentle questions about how you have been feeling — in your language."
+        "body": "Spend ten minutes with Mandi. Fifty-six gentle questions about how you have been feeling, in your language."
       },
       "step2": {
         "title": "Stitch your blanket",
-        "body": "Each answer is a patch. Together they become your personalised Mandi Blanket — a visual map of where you are."
+        "body": "Each answer is a patch. Together they become your personalised Mandi Blanket, a visual map of where you are."
       },
       "step3": {
         "title": "Get your roadmap",
-        "body": "Articles, resources, and doctors who speak your language — tailored to what you shared."
+        "body": "Articles, resources, and doctors who speak your language, tailored to what you shared."
       }
     },
     "peek": {
       "eyebrow": "Your Mandi Blanket",
       "title": "Built from your own answers.",
-      "caption": "This is what completion looks like — every patch a piece of your story."
+      "caption": "This is what completion looks like, every patch a piece of your story."
     },
     "inside": {
       "eyebrow": "What is inside Mandi",
       "title": "More than a questionnaire.",
       "read": {
         "title": "The Truth About HRT",
-        "body": "Plain-language education. Twenty-three years of misunderstanding, sorted."
+        "body": "Plain-language education. Twenty-three years of misunderstanding, finally being untangled."
       },
       "find": {
         "title": "Find a doctor",
-        "body": "HRT-informed practitioners who speak your language — across South Africa."
+        "body": "HRT-informed practitioners who speak your language, across South Africa."
       },
       "gather": {
         "title": "Mandi Events",
-        "body": "Screenings, Q&As, and Mandi Cafés. Menopause was private — this is communal."
+        "body": "Screenings, Q&As, and Mandi Cafés. Menopause was private, this is communal."
       },
       "honour": {
         "title": "Honour the Mothers",
@@ -63,7 +65,7 @@
       "line1": "A project from MrsKing Productions, founded by Hermi King.",
       "line2": "Clinical guidance from Dr Funeka Bango.",
       "line3": "Launching alongside the kykNET documentary Meer as Warm Gloede in August 2026.",
-      "line4": "POPIA compliant. Free to use. Always."
+      "line4": "Free to use. Your details stay yours. Always."
     },
     "close": {
       "title": "Ready when you are.",
@@ -86,12 +88,12 @@
     }
   },
   "consent": {
-    "title": "Before we begin — a few things you should know.",
-    "body": "The questions that follow are about your health and how you are feeling. We use your answers only to give you a personalised roadmap — articles, resources, and a doctor-ready summary tailored to you.",
-    "body2": "We do not sell your information. We do not share it with anyone without your permission. You can delete your data at any time. This platform is compliant with the Protection of Personal Information Act (POPIA).",
+    "title": "Ready when you are.",
+    "body": "Mandi will ask you fifty-six gentle questions about how you have been feeling. It takes about ten minutes, and every answer stitches a patch into a blanket that is yours alone.",
+    "body2": "Your answers stay yours. We never sell or share your details, and you can ask us to erase everything at any time. That is your right in law (POPIA), and our promise either way.",
     "control": "You are in control of your information. Always.",
-    "checkbox": "I understand and I agree to continue.",
-    "cta": "I'm ready — let's begin"
+    "checkbox": "Yes, Mandi may keep my answers to stitch my blanket and build my roadmap.",
+    "cta": "Let's stitch"
   },
   "questionnaire": {
     "progress": "Question {{current}} of {{total}}",
@@ -145,7 +147,7 @@
       },
       "mindset": {
         "title": "How you think and feel about this",
-        "description": "The last few questions — about you, not your symptoms."
+        "description": "The last few questions, about you, not your symptoms."
       }
     },
     "q1": {
@@ -171,113 +173,157 @@
     "q5": {
       "text": "Has a doctor ever spoken to you about menopause or hormones?"
     },
-    "q6": { "text": "Difficulty concentrating" },
+    "q6": {
+      "text": "Difficulty concentrating"
+    },
     "q7": {
-      "text": "Memory problems — forgetting names, words, or where you put things"
+      "text": "Memory problems, forgetting names, words, or where you put things"
     },
     "q8": {
-      "text": "Word-finding difficulty — knowing what you want to say but not being able to find the word"
+      "text": "Word-finding difficulty, knowing what you want to say but not being able to find the word"
     },
     "q9": {
-      "text": "Reduced ability to multitask — struggling to manage more than one thing at a time"
+      "text": "Reduced ability to multitask, struggling to manage more than one thing at a time"
     },
-    "q10": { "text": "Mood swings — feeling up and down for no clear reason" },
+    "q10": {
+      "text": "Mood swings, feeling up and down for no clear reason"
+    },
     "q11": {
-      "text": "Irritability — snapping or getting frustrated more easily than usual"
+      "text": "Irritability, snapping or getting frustrated more easily than usual"
     },
-    "q12": { "text": "Feeling anxious or worried more than usual" },
-    "q13": { "text": "Feeling low, flat, or depressed" },
+    "q12": {
+      "text": "Feeling anxious or worried more than usual"
+    },
+    "q13": {
+      "text": "Feeling low, flat, or depressed"
+    },
     "q14": {
-      "text": "Low motivation — struggling to find the energy or desire to do things you used to enjoy"
+      "text": "Low motivation, struggling to find the energy or desire to do things you used to enjoy"
     },
     "q15": {
-      "text": "Low self-worth — feeling less confident or less valuable than before"
+      "text": "Low self-worth, feeling less confident or less valuable than before"
     },
     "q16": {
-      "text": "Not feeling like yourself — not recognising the person you have become",
+      "text": "Not feeling like yourself, not recognising the person you have become",
       "hint": "This question catches many women for the first time. Trust what you feel."
     },
     "q17": {
       "text": "Thoughts of self-harm or suicide",
       "hint": "You can answer honestly. If you're struggling, Mandi will put support on your roadmap right away."
     },
-    "q18": { "text": "Hot flushes — sudden waves of heat through your body" },
-    "q19": { "text": "Night sweats — waking drenched or overheated" },
-    "q20": { "text": "Sleep problems — difficulty falling or staying asleep" },
+    "q18": {
+      "text": "Hot flushes, sudden waves of heat through your body"
+    },
+    "q19": {
+      "text": "Night sweats, waking drenched or overheated"
+    },
+    "q20": {
+      "text": "Sleep problems, difficulty falling or staying asleep"
+    },
     "q21": {
-      "text": "Heart palpitations — your heart racing or beating irregularly"
+      "text": "Heart palpitations, your heart racing or beating irregularly"
     },
     "q22": {
-      "text": "Headaches or migraines — more frequent or more severe than before"
+      "text": "Headaches or migraines, more frequent or more severe than before"
     },
-    "q23": { "text": "Dizziness or feeling faint" },
+    "q23": {
+      "text": "Dizziness or feeling faint"
+    },
     "q24": {
-      "text": "Restless legs — an uncomfortable urge to move your legs, especially at night"
+      "text": "Restless legs, an uncomfortable urge to move your legs, especially at night"
     },
-    "q25": { "text": "Tinnitus — ringing or buzzing in the ears" },
-    "q26": { "text": "Joint pain — aching, stiffness, or swelling in joints" },
-    "q27": { "text": "Muscle pain — generalised aching in muscles" },
+    "q25": {
+      "text": "Tinnitus, ringing or buzzing in the ears"
+    },
+    "q26": {
+      "text": "Joint pain, aching, stiffness, or swelling in joints"
+    },
+    "q27": {
+      "text": "Muscle pain, generalised aching in muscles"
+    },
     "q28": {
-      "text": "Frozen shoulder — pain or restricted movement in the shoulder",
+      "text": "Frozen shoulder, pain or restricted movement in the shoulder",
       "hint": "An under-recognised menopause symptom. If this is you, you are not imagining it."
     },
-    "q29": { "text": "Fatigue and low energy — exhausted even after rest" },
-    "q30": { "text": "Weight gain — especially around the middle" },
-    "q31": { "text": "Bloating or digestive discomfort" },
-    "q32": { "text": "Skin changes — dryness, itchiness, or texture changes" },
-    "q33": { "text": "Hair loss or thinning" },
-    "q34": { "text": "Dry eyes — persistent dryness, irritation, or blurry vision" },
+    "q29": {
+      "text": "Fatigue and low energy, exhausted even after rest"
+    },
+    "q30": {
+      "text": "Weight gain, especially around the middle"
+    },
+    "q31": {
+      "text": "Bloating or digestive discomfort"
+    },
+    "q32": {
+      "text": "Skin changes, dryness, itchiness, or texture changes"
+    },
+    "q33": {
+      "text": "Hair loss or thinning"
+    },
+    "q34": {
+      "text": "Dry eyes, persistent dryness, irritation, or blurry vision"
+    },
     "q35": {
-      "text": "Changes in your period — heavier, lighter, longer, shorter, or more irregular than before"
+      "text": "Changes in your period, heavier, lighter, longer, shorter, or more irregular than before"
     },
-    "q36": { "text": "Vaginal dryness or discomfort" },
-    "q37": { "text": "Painful sex" },
+    "q36": {
+      "text": "Vaginal dryness or discomfort"
+    },
+    "q37": {
+      "text": "Painful sex"
+    },
     "q38": {
-      "text": "Bladder issues — urgency, leaking, or needing to go more often, including at night"
+      "text": "Bladder issues, urgency, leaking, or needing to go more often, including at night"
     },
-    "q39": { "text": "Recurrent urinary tract infections" },
-    "q40": { "text": "Loss of interest in sex" },
+    "q39": {
+      "text": "Recurrent urinary tract infections"
+    },
+    "q40": {
+      "text": "Loss of interest in sex"
+    },
     "q41": {
-      "text": "Reduced alcohol tolerance — two glasses that used to be fine now feel like four",
-      "hint": "This is the question that makes women say: 'wait — that is menopause?'"
+      "text": "Reduced alcohol tolerance, two glasses that used to be fine now feel like four",
+      "hint": "This is the question that makes women say: 'wait, that is menopause?'"
     },
     "q42": {
-      "text": "New or worsening allergies — hay fever, food intolerances, or sensitivities you never had before"
+      "text": "New or worsening allergies, hay fever, food intolerances, or sensitivities you never had before"
     },
     "q43": {
-      "text": "Worsening of a long-term health condition — asthma, migraine, autoimmune condition, or similar",
+      "text": "Worsening of a long-term health condition, asthma, migraine, autoimmune condition, or similar",
       "hint": "If this is a strong yes, Mandi will route you to specialist-led care."
     },
     "q44": {
-      "text": "Impact on your ability to work — concentration, productivity, or confidence at work"
+      "text": "Impact on your ability to work, concentration, productivity, or confidence at work"
     },
     "q45": {
       "text": "Impact on your relationship with your partner"
     },
     "q46": {
-      "text": "Impact on your relationships with family — children, parents, close relatives"
+      "text": "Impact on your relationships with family, children, parents, close relatives"
     },
     "q47": {
-      "text": "Impact on your social life — withdrawing, not wanting to go out"
+      "text": "Impact on your social life, withdrawing, not wanting to go out"
     },
-    "q48": { "text": "Impact on your ability to stay active and exercise" },
+    "q48": {
+      "text": "Impact on your ability to stay active and exercise"
+    },
     "q49": {
-      "text": "When you think about what you have been experiencing — what is your gut feeling?",
+      "text": "When you think about what you have been experiencing, what is your gut feeling?",
       "a": "Something is wrong and I need help now.",
-      "b": "It is probably just ageing — I will manage.",
+      "b": "It is probably just ageing, I will manage.",
       "c": "I have tried everything. Nothing works for me.",
-      "d": "I have done my research — I know what is happening."
+      "d": "I have done my research, I know what is happening."
     },
     "q50": {
       "text": "How do you feel about hormone therapy (HRT)?",
       "a": "Open to it if a doctor recommends it.",
-      "b": "I prefer natural approaches — herbs, lifestyle, supplements.",
-      "c": "I am nervous — I have heard it can be risky.",
+      "b": "I prefer natural approaches, herbs, lifestyle, supplements.",
+      "c": "I am nervous, I have heard it can be risky.",
       "d": "I am already on HRT, or I have already tried it."
     },
     "q51": {
       "text": "How do you feel about the medical system when it comes to your health?",
-      "a": "I trust my doctor — I just need the right referral.",
+      "a": "I trust my doctor, I just need the right referral.",
       "b": "My symptoms have been dismissed. I feel unseen.",
       "c": "I prefer to research first before going to a doctor.",
       "d": "I honestly do not know where to start."
@@ -290,7 +336,7 @@
       "d": "I had not thought about it."
     },
     "q53": {
-      "text": "Do you ever feel like it might be too late to get help — that you missed the window?"
+      "text": "Do you ever feel like it might be too late to get help, that you missed the window?"
     },
     "q54": {
       "text": "Do you have any existing health conditions that make you worry about hormone treatment?",
@@ -300,13 +346,13 @@
       "autoimmune": "Autoimmune condition",
       "cardiovascular": "Diabetes or heart condition",
       "psychiatric": "Psychiatric condition",
-      "notSure": "Not sure — I would like guidance"
+      "notSure": "Not sure, I would like guidance"
     },
     "q55": {
       "text": "What would feel most useful to you today?",
       "a": "Understand what is happening in my body.",
       "b": "Know if what I am feeling is normal.",
-      "c": "Learn my options — HRT and alternatives.",
+      "c": "Learn my options, HRT and alternatives.",
       "d": "Find a doctor who speaks my language and understands hormones.",
       "e": "Something to take to my existing doctor."
     },
@@ -324,27 +370,27 @@
     "areaProgress": "Area {{current}} of {{total}}",
     "patchesStitched": "{{done}} of {{total}} patches stitched · tap to view",
     "continue": "Continue",
-    "bandComplete": "{{area}} — stitched",
+    "bandComplete": "{{area}}, stitched",
     "bandHeadline": "Another piece of your blanket.",
-    "nextArea": "Next — {{area}}.",
+    "nextArea": "Next, {{area}}.",
     "quiltHeading": "Your blanket so far",
     "quiltClose": "Close",
     "blanketComplete": "You have stitched your blanket.",
-    "blanketCompleteBody": "Every patch is something you shared. This blanket is yours — a piece of the one all South African women are stitching together.",
+    "blanketCompleteBody": "Every patch is something you shared. This blanket is yours, a piece of the one all South African women are stitching together.",
     "resumeTitle": "Welcome back.",
-    "resumeBody": "Your blanket is waiting — {{progress}} already stitched. You can pick up exactly where you left off.",
+    "resumeBody": "Your blanket is waiting, {{progress}} already stitched. You can pick up exactly where you left off.",
     "resumeContinue": "Continue stitching",
     "resumeFresh": "Start fresh instead",
     "facts": {
-      "context": "Perimenopause — the years of change before periods stop — most often lasts around 4 to 8 years, though for some women it is shorter or longer. Menopause itself is just one day.",
-      "mind-cognition": "Brain fog is one of the most common menopause symptoms — caused by shifting oestrogen, not by you losing your sharpness. For most women, it lifts.",
-      "mood": "Mood changes in menopause are physical, not a personal failing. Oestrogen interacts with serotonin, one of the brain's mood chemicals — so when hormone levels shift, mood can shift too.",
-      "nervous-system": "Hot flushes can begin years before your last period. Up to 8 in 10 women experience them — whatever you are feeling, you are far from alone.",
-      "body": "Joint and muscle aches are an under-recognised menopause symptom — oestrogen helps keep joints comfortable. Even frozen shoulder is linked to this change.",
-      "urogenital": "Unlike hot flushes, intimate and bladder symptoms tend not to fade on their own — but they respond very well to treatment. They are nothing to be ashamed of.",
-      "other": "Suddenly cannot tolerate alcohol the way you used to? Oestrogen interacts with histamine — the chemical behind allergy-type reactions — and some women notice new sensitivities in midlife. You are not imagining it.",
-      "quality-of-life": "Menopause symptoms ripple into work, sleep and relationships. Naming that impact is not complaining — it is the first step to getting the right support.",
-      "mindset": "It is never too late to ask for help. Some symptoms — including vaginal and bladder ones — respond well to treatment no matter how many years have passed since menopause."
+      "context": "Perimenopause, the years of change before periods stop, most often lasts around 4 to 8 years, though for some women it is shorter or longer. Menopause itself is just one day.",
+      "mind-cognition": "Brain fog is one of the most common menopause symptoms, caused by shifting oestrogen, not by you losing your sharpness. For most women, it lifts.",
+      "mood": "Mood changes in menopause are physical, not a personal failing. Oestrogen interacts with serotonin, one of the brain's mood chemicals, so when hormone levels shift, mood can shift too.",
+      "nervous-system": "Hot flushes can begin years before your last period. Up to 8 in 10 women experience them, whatever you are feeling, you are far from alone.",
+      "body": "Joint and muscle aches are an under-recognised menopause symptom, oestrogen helps keep joints comfortable. Even frozen shoulder is linked to this change.",
+      "urogenital": "Unlike hot flushes, intimate and bladder symptoms tend not to fade on their own, but they respond very well to treatment. They are nothing to be ashamed of.",
+      "other": "Suddenly cannot tolerate alcohol the way you used to? Oestrogen interacts with histamine, the chemical behind allergy-type reactions, and some women notice new sensitivities in midlife. You are not imagining it.",
+      "quality-of-life": "Menopause symptoms ripple into work, sleep and relationships. Naming that impact is not complaining, it is the first step to getting the right support.",
+      "mindset": "It is never too late to ask for help. Some symptoms, including vaginal and bladder ones, respond well to treatment no matter how many years have passed since menopause."
     },
     "loadingStages": {
       "1": "Listening to everything you have shared…",
@@ -356,8 +402,10 @@
       "1": "Every patch is a piece of your story.",
       "2": "Showing up for yourself is the brave part.",
       "3": "You are not alone in this.",
-      "4": "What you feel is real — and it matters."
-    }
+      "4": "What you feel is real, and it matters."
+    },
+    "saveExit": "Save and exit",
+    "autosaveNote": "Your answers save automatically on this device. You can leave and pick up any time."
   },
   "units": {
     "cm": "cm",
@@ -367,44 +415,46 @@
   },
   "transition": {
     "message": "Mandi is putting your roadmap together.",
-    "submessage": "Reading what you shared — with care.",
+    "submessage": "Reading what you shared, with care.",
     "done": "Your roadmap is ready."
   },
   "roadmap": {
+    "disclaimer": "Educational information only, not medical advice.",
+    "nextSteps": "Your next steps",
     "title": "Your Mandi Roadmap",
     "menoScore": "MenoScore",
     "outOf": "out of 100",
     "blanketLabel": "The blanket you stitched",
-    "blanketCaption": "Every patch is something you shared today — your story, held together.",
+    "blanketCaption": "Every patch is something you shared today, your story, held together.",
     "band": {
       "mild": {
         "label": "Early signals",
-        "line": "Your symptoms are present but manageable. This is a good time to get informed and take gentle steps."
+        "line": "Your answers suggest early signals. Staying curious now is a lovely head start."
       },
       "moderate": {
         "label": "Active hormonal change",
-        "line": "Your symptoms are affecting your daily life. You deserve proper support — not to be told to push through."
+        "line": "Your answers suggest this is touching your days. Support exists, and you deserve it."
       },
       "significant": {
         "label": "Significant impact",
-        "line": "Your symptoms are having a meaningful impact on your daily life. You deserve support now — and you can get it."
+        "line": "Your answers suggest a lot is going on. You do not have to carry it alone, real help exists."
       }
     },
     "persona": {
       "sally": {
         "headline": "You have been searching. Here are your answers.",
-        "body": "What you are feeling is real. It has a name. And there is support available to you — starting today."
+        "body": "What you are feeling is real, and so many women describe exactly this. There is support available to you, starting today."
       },
       "olga": {
-        "headline": "You may have more going on than you realised.",
-        "body": "Many of the things you have been putting down to stress or ageing are recognised symptoms of hormonal change."
+        "headline": "Your answers are worth a closer look.",
+        "body": "Many women put things down to stress or ageing, and later find that hormones were part of the story too."
       },
       "vicky": {
-        "headline": "You deserve to be heard — and helped.",
-        "body": "If you have been dismissed before, that was not okay. Mandi will walk with you to the right care."
+        "headline": "You deserve to be heard.",
+        "body": "If getting answers has been hard before, you are not alone, and it can go differently from here. Mandi will walk with you to the right care."
       },
       "nelly": {
-        "headline": "You know a lot. Here is what the latest evidence says.",
+        "headline": "You know a lot. Here is what research is saying now.",
         "body": "Your research has served you well. Mandi will make sure your next consultation is as informed as possible."
       },
       "nina": {
@@ -413,11 +463,11 @@
       },
       "retha": {
         "headline": "It is never too late to feel better.",
-        "body": "The evidence on late intervention is more positive than you may have heard. There are options worth exploring."
+        "body": "Research on starting support later in life is more encouraging than many women have been told. There are options worth exploring."
       },
       "colleen": {
         "headline": "Your situation deserves specialist input.",
-        "body": "With a complex history, the right care means the right doctor — one who understands both your conditions and your hormones."
+        "body": "With a complex history, the right care means the right doctor, one who understands both your conditions and your hormones."
       }
     },
     "safety": {
@@ -435,36 +485,36 @@
     "steps": {
       "book-first": {
         "title": "Book a consultation",
-        "body": "Based on what you shared, speaking to an HRT-informed doctor is the most important next step. Find one who speaks your language and understands hormones.",
+        "body": "Many women find that talking to an HRT-informed doctor changes everything. Find one who speaks your language and understands hormones.",
         "cta": "Find a doctor"
       },
       "education-first": {
         "title": "Understand what is happening",
-        "body": "Start with the basics — what hormonal change actually looks like, and why your symptoms make sense.",
+        "body": "Start with the basics, what hormonal change actually looks like, and why your symptoms make sense.",
         "cta": "Read: the truth about HRT"
       },
       "normalise-first": {
         "title": "You are not alone in this",
-        "body": "Hear from other South African women who have been exactly where you are — and found their way through.",
+        "body": "Hear from other South African women who have been exactly where you are, and found their way through.",
         "cta": "Read real stories"
       },
       "options-first": {
         "title": "Know your options",
-        "body": "Body-identical HRT, lifestyle approaches, integrative care — understand what is available and what the evidence says.",
+        "body": "Body-identical HRT, lifestyle approaches, integrative care. Understand what is available and what research is saying.",
         "cta": "Explore resources"
       },
       "clinic-first": {
         "title": "Find care near you",
-        "body": "Search our directory of HRT-friendly practitioners — filtered by your language and location, including telemedicine.",
+        "body": "Search our directory of HRT-friendly practitioners, filtered by your language and location, including telemedicine.",
         "cta": "Find a doctor"
       },
       "download-first": {
         "title": "Take it to your doctor",
-        "body": "Download a one-page summary of your symptom profile, MenoScore, and questions to ask — the document that changes your consultation.",
+        "body": "Download a one-page summary of your symptom profile, MenoScore, and questions to ask. Many women say it changed their consultation.",
         "cta": "Download your summary"
       }
     },
-    "retake": "Your symptoms may change over time.",
+    "retake": "Bodies change with time, and so do answers. You can stitch a fresh blanket whenever you like.",
     "retakeCta": "Retake the questionnaire",
     "feedback": {
       "title": "Does this roadmap feel right for you?",
@@ -473,7 +523,7 @@
       "notQuite": "Not quite",
       "missing": "Is there anything you expected to see that is missing?",
       "submit": "Send feedback",
-      "thanks": "Thank you — that helps us build something better for the next woman who arrives."
+      "thanks": "Thank you, that helps us build something better for the next woman who arrives."
     }
   },
   "nav": {
@@ -493,17 +543,17 @@
   },
   "auth": {
     "login": {
-      "title": "Welcome back.",
+      "title": "Good to see you.",
       "subtitle": "Sign in to see your roadmap, symptom log, and check-ins.",
-      "submit": "Welcome back",
+      "submit": "Sign in",
       "submitPending": "Signing you in…",
       "newPrompt": "New to Mandi?",
-      "newCta": "Join Mandi"
+      "newCta": "Join the Mandi journey"
     },
     "signup": {
-      "title": "Join Mandi.",
-      "subtitle": "Save your roadmap, track your symptoms, and see how you change over time.",
-      "submit": "Join Mandi",
+      "title": "Start your Mandi journey.",
+      "subtitle": "Keep your blanket safe, track how you feel, and watch your story unfold over time.",
+      "submit": "Join the Mandi journey",
       "submitPending": "Creating your account…",
       "havePrompt": "Already have an account?",
       "haveCta": "Sign in",
@@ -517,15 +567,15 @@
       "confirmPassword": "Confirm password"
     },
     "strength": {
-      "weak": "Weak",
+      "weak": "Not strong enough yet",
       "fair": "Getting there",
-      "strong": "Strong"
+      "strong": "Beautifully strong"
     },
     "error": {
       "passwordMismatch": "Your passwords don't match yet.",
       "passwordTooShort": "Choose a password that's at least 8 characters long.",
       "invalidLogin": "That email and password didn't match. Try again.",
-      "emailNotConfirmed": "Please confirm your email — check your inbox.",
+      "emailNotConfirmed": "Please confirm your email, check your inbox.",
       "rateLimit": "Too many attempts. Wait a minute and try again.",
       "alreadyRegistered": "That email already has an account. Try signing in instead.",
       "invalidEmail": "That email doesn't look quite right.",
@@ -539,28 +589,28 @@
     "name": {
       "eyebrow": "The Name",
       "heading": "Mandi is the common thread that runs through us all.",
-      "p1": "In Afrikaans, it is a short form of Amanda. In isiXhosa, it is drawn from Mandisa. Different languages, different communities, different lived experiences — and yet here we are, the same women, navigating the same bodies, deserving the same care.",
-      "p2": "We chose a name beginning with M to anchor this project in Menopause — the life stage that sparked this mission. But Mandi was always meant to grow beyond that first chapter. Because hormonal health does not begin and end with menopause. It is a lifelong journey, and every woman deserves a trusted companion for the entirety of it.",
-      "p3": "Mandi is that companion. For all of us."
+      "p1": "In Afrikaans, it is a short form of Amanda. In isiXhosa, it is drawn from Mandisa. Different languages, different communities, different lived experiences, and yet here we are, the same women, navigating the same bodies, deserving the same care.",
+      "p2": "We chose a name beginning with M to anchor this project in Menopause, the life stage that sparked this mission. But Mandi was always meant to grow beyond that first chapter. Because hormonal health does not begin and end with menopause. It is a lifelong journey, and every woman deserves a trusted companion for the entirety of it.",
+      "p3": "Mandi is that companion, a place to understand what your body is saying, in the language you feel most at home in."
     },
     "story": {
       "eyebrow": "Where This Began",
       "heading": "This platform was born from a personal story.",
-      "p1": "In my late 40s, I mentioned heart palpitations to two older colleagues over lunch. One immediately suggested I see a heart specialist. The other said it was just part of getting older. Neither mentioned menopause. Neither mentioned that heart palpitations are one of the over 100 recognised symptoms of hormonal change. I had no idea.",
-      "p2": "Soon thereafter I moved to Cape Town at the age of 50, ready for exciting new adventures. Instead, I ended up in hospital with a severe kidney infection caused by a bladder infection. I saw a urologist. My GP. A gynaecologist. Not one of them asked whether I was on HRT. Not one of them connected my recurring infections to my hormones — even though the link is well established. They treated my symptoms, not the cause.",
+      "p1": "In my late 40s, I mentioned heart palpitations to two older colleagues over lunch. One immediately suggested I see a heart specialist. The other said it was just part of getting older. Neither mentioned menopause. Neither mentioned that heart palpitations are one of the many recognised symptoms of hormonal change. I had no idea.",
+      "p2": "Soon thereafter I moved to Cape Town at the age of 50, ready for exciting new adventures. Instead, I ended up in hospital with a severe kidney infection caused by a bladder infection. I saw a urologist. My GP. A gynaecologist. Not one of them asked whether I was on HRT. Not one of them connected my recurring infections to my hormones, even though research keeps pointing to that link. They treated my symptoms, not the cause.",
       "p3": "I endured years of joint pain, brain fog, mood swings, UTIs, painful sex, hot flushes, dry eyes, and many more symptoms.",
       "p4": "Then I went online. I found Dr Louise Newson. Dr Mary Claire Haver. Dr Lisa Mosconi. And many more. I started telling all my friends to find help. My husband calls me a menopause evangelist.",
       "quote": "Once you know better, you can do better.",
       "quoteAuthor": "Maya Angelou",
-      "p5": "This motivated me to pitch a documentary series to kykNET called Meer As Warm Gloede — a four-part documentary series launching in August 2026. It breaks the silence around menopause in Afrikaans-speaking communities, tells real stories from real women, and gives viewers the knowledge and confidence to take their health into their own hands.",
-      "p6": "The documentary opened doors. More research led me to discover MIDI in the United States — a platform that has recently achieved unicorn status, serving hundreds of thousands of women across all 50 states. That realisation set something in motion.",
+      "p5": "This motivated me to pitch a documentary series to kykNET called Meer As Warm Gloede, a four-part documentary series launching in August 2026. It breaks the silence around menopause in Afrikaans-speaking communities, tells real stories from real women, and gives viewers the knowledge and confidence to take their health into their own hands.",
+      "p6": "The documentary opened doors. More research led me to discover MIDI in the United States, a platform that has recently achieved unicorn status, serving hundreds of thousands of women across all 50 states. That realisation set something in motion.",
       "p7": "I am now embarking on this journey with some incredible women to build our own South African equivalent: JoinMandi.com."
     },
     "vision": {
       "eyebrow": "The Vision",
       "heading": "JoinMandi.com is more than a website. It is a movement.",
-      "p1": "It is the belief that every South African woman — in Parow or Polokwane, in Soweto or Stellenbosch, whether she speaks Afrikaans, isiZulu, isiXhosa, or any of the other languages that make this country extraordinary — deserves to understand what is happening in her own body, in a language that feels like home.",
-      "p2": "South Africa has 11 official languages. Most digital health platforms offer one: English. That is not good enough. Mandi is built to grow with the country — into every community where women have been left without informed answers and proper medical care."
+      "p1": "It is the belief that every South African woman, in Parow or Polokwane, in Soweto or Stellenbosch, whether she speaks Afrikaans, isiZulu, isiXhosa, or any of the other languages that make this country extraordinary, deserves to understand what is happening in her own body, in a language that feels like home.",
+      "p2": "South Africa has twelve official languages. Most digital health platforms offer one: English. We can do so much better. Mandi is built to grow with the country, into every community where women have been left without informed answers and proper medical care."
     },
     "alone": {
       "headline": "No woman should feel alone, uninformed, or unsupported during menopause and beyond.",
@@ -568,18 +618,18 @@
     },
     "blanket": {
       "eyebrow": "The Mandi Blanket",
-      "body": "The central visual metaphor for Mandi is a quilt — a blanket made of different fabrics, different textures, different traditions, stitched together into something whole, warm, and beautiful. Just like Mandi. Just like South Africa."
+      "body": "The central visual metaphor for Mandi is a quilt, a blanket made of different fabrics, different textures, different traditions, stitched together into something whole, warm, and beautiful. Just like Mandi. Just like South Africa."
     },
     "cta": {
       "heading": "Ready to begin your journey?",
-      "button": "Talk to Mandi"
+      "button": "Start your blanket"
     }
   },
   "resources": {
     "eyebrow": "Resources",
-    "title": "Knowledge you can trust.",
-    "subhead": "Everything here is evidence-based, reviewed for accuracy, and written in plain language. No jargon. No judgment. No selling.",
-    "intro": "Everything here is evidence-based, reviewed for accuracy, and written in plain language. No jargon. No judgment. No selling you something. Just the information you deserve to have.",
+    "title": "Knowledge that meets you where you are.",
+    "subhead": "Everything here is written in plain language and grounded in research, no jargon, no judgment, no selling.",
+    "intro": "Take what you need, at your own pace. The information you deserve to have, in words that make sense.",
     "category": {
       "understanding": "Understanding Menopause",
       "hrt": "HRT & Treatment",
@@ -599,11 +649,11 @@
     "items": {
       "perimenopause": {
         "title": "What is perimenopause?",
-        "description": "A clear, evidence-based introduction to the years before menopause — what's happening in your body and why it matters."
+        "description": "A clear, evidence-based introduction to the years before menopause, what's happening in your body and why it matters."
       },
       "symptoms": {
-        "title": "The 100+ symptoms of hormonal change",
-        "description": "Heart palpitations. Joint pain. Brain fog. Dry eyes. This guide covers the full picture — so nothing gets missed."
+        "title": "The many symptoms of hormonal change",
+        "description": "Heart palpitations. Joint pain. Brain fog. Dry eyes. A guide to the whole landscape, so you can find yourself in it."
       },
       "bodyIdentical": {
         "title": "Body-identical HRT explained",
@@ -611,32 +661,32 @@
       },
       "routes": {
         "title": "HRT routes of administration",
-        "description": "Patches, gels, tablets, sprays, vaginal preparations — a plain-English guide to your options."
+        "description": "Patches, gels, tablets, sprays, vaginal preparations, a plain-English guide to your options."
       },
       "mood": {
         "title": "Hormones and your mood",
-        "description": "Anxiety, low mood, and rage that comes from nowhere. Understanding the hormonal connection — and what helps."
+        "description": "Anxiety, low mood, and rage that comes from nowhere. Understanding the hormonal connection, and what helps."
       },
       "nutrition": {
         "title": "Eating for hormonal health",
-        "description": "Practical nutrition guidance for perimenopause and beyond — what the evidence actually says about food and hormones."
+        "description": "Practical nutrition guidance for perimenopause and beyond, what the evidence actually says about food and hormones."
       },
       "whi": {
-        "title": "The WHI study — what actually happened",
-        "description": "The 2002 study that changed everything — and why the conclusions were misrepresented. A plain-language summary."
+        "title": "The WHI study, what actually happened",
+        "description": "The 2002 study that changed everything, and why the conclusions were misrepresented. A plain-language summary."
       },
       "brain": {
         "title": "Oestrogen and brain health",
-        "description": "New research on oestrogen's role in cognitive function and the importance of the 'critical window' of treatment."
+        "description": "New research on oestrogen and the brain, and why the timing of treatment is such an active conversation among researchers."
       }
     },
-    "notice1": "More resources are added regularly. All content is reviewed by clinical partner Dr Funeka Bango before publication.",
+    "notice1": "More resources are added regularly, prepared for review with our clinical partner Dr Funeka Bango.",
     "notice2": "Resources in isiZulu and isiXhosa are being developed. If you can help with translation, contact us."
   },
   "events": {
     "eyebrow": "Gather · Hlangana · Kom Saam",
     "title": "Mandi Events",
-    "subhead": "Where the JoinMandi community becomes real. Menopause was private — this is where it becomes communal.",
+    "subhead": "Where women meet, learn and laugh together. Menopause was private, this is where it becomes communal.",
     "format": {
       "online": "Online",
       "inperson": "In-person"
@@ -646,24 +696,24 @@
     "hostedBy": "Hosted by {{host}}",
     "loading": "Loading upcoming events…",
     "loadError": "We couldn't load upcoming events right now.",
-    "empty": "No upcoming Mandi gatherings just yet — check back soon.",
+    "empty": "No upcoming Mandi gatherings just yet, check back soon.",
     "registerCta": "Register",
     "contactToRegister": "Contact {{host}} to register.",
     "theHost": "the host",
     "host": {
       "heading": "Host an event on Mandi.",
-      "body": "Whether you are a gynaecologist running a monthly Q&A, an NGO hosting a community morning, or a workplace supporting your staff — Mandi Events is your platform too. Free to list.",
+      "body": "A gynaecologist running a monthly Q&A, an NGO hosting a community morning, a workplace supporting its people. If you would like to gather women with Mandi, this platform is yours too, free to list.",
       "cta": "Submit an event"
     },
     "principle": {
       "eyebrow": "Our Principle",
-      "line": "Community is always free. Expertise can carry a fee."
+      "line": "Community gatherings are always free. Expert sessions sometimes carry a fee."
     }
   },
   "doctor": {
     "eyebrow": "Find a Doctor",
     "title": "Care that speaks your language.",
-    "subhead": "HRT-informed practitioners across South Africa — private, public, and online. Filter by province, language, and format.",
+    "subhead": "HRT-informed practitioners across South Africa, private, public, and online. Filter by province, language, and format.",
     "filter": {
       "province": "Province",
       "language": "Language",
@@ -673,110 +723,110 @@
       "online": "Online",
       "both": "Both"
     },
-    "empty": "No clinics found for your selection. More are being added regularly.",
-    "emptyDoctors": "No doctors are listed just yet — more are being added.",
+    "empty": "No clinics match your selection yet. New practitioners join all the time, check back soon.",
+    "emptyDoctors": "No doctors are listed just yet, more are being added.",
     "loading": "Loading directory…",
     "loadError": "We couldn't load the directory right now.",
     "bookConsult": "Book consult",
     "bookWith": "Book with Dr {{name}}",
     "viewProfile": "View profile",
-    "hrtFriendly": "HRT-friendly",
+    "hrtFriendly": "Open to HRT conversations",
     "contactLabel": "Contact",
-    "contactBelow": "Contact details in the card",
+    "contactBelow": "Reach her practice directly:",
     "meetEyebrow": "Meet the Doctors",
-    "meetTitle": "Faces you can trust.",
+    "meetTitle": "Doctors who listen.",
     "profile": {
       "eyebrow": "Doctor profile",
       "aboutHeading": "About",
       "bookHeading": "Book with Dr {{name}}",
-      "bookBody": "Opens her booking page in a new tab. Mandi doesn't process the booking itself — your details go directly to her practice.",
+      "bookBody": "Booking happens directly with her practice, in a new tab. Your details go straight to them, never through Mandi.",
       "bookCta": "Book a consultation",
       "contactHeading": "Contact this doctor",
       "contactBody": "She doesn't have an online booking link yet. Head back to the directory for her practice's contact details.",
       "backToList": "Back to the directory",
       "notFoundTitle": "This doctor's profile isn't available right now.",
-      "notFoundBody": "She may have been moved or unlisted. Try the directory for the current list of practitioners."
+      "notFoundBody": "We could not find her profile just now. The directory has the current list of practitioners."
     }
   },
   "hrt": {
     "eyebrow": "Education",
     "title": "The Truth About HRT",
-    "subhead": "Fear travelled the world in 24 hours in 2002. The correction has taken 23 years. Here is what every woman deserves to know — in plain English.",
+    "subhead": "Fear travelled the world in 24 hours in 2002. The correction has taken 23 years. Here is what every woman deserves to know, in plain English.",
     "compare": {
       "heading": "Synthetic vs Body-identical",
-      "intro": "The most important thing women do not know is that not all HRT is the same. This distinction is the key to everything that follows.",
+      "intro": "Not all HRT is the same. That one distinction is the key to everything that follows.",
       "synthetic": {
         "label": "Synthetic / non-human HRT",
         "name": "Premarin · Provera",
-        "body": "Premarin — made from horse urine — contains estrogens the human body does not naturally produce. Provera (MPA) — a synthetic progestin. Not the same molecule as human progesterone.",
+        "body": "Premarin, made from horse urine, contains estrogens the human body does not naturally produce. Provera (MPA), a synthetic progestin. Not the same molecule as human progesterone.",
         "note": "This is what the 2002 WHI study tested."
       },
       "bodyIdentical": {
         "label": "Body-identical HRT",
         "name": "Estradiol · Micronised Progesterone",
-        "body": "Estradiol (17β-estradiol) — derived from plants. Chemically identical to human oestrogen. Micronised progesterone (Prometrium / Utrogestan) — identical to human progesterone.",
+        "body": "Estradiol (17β-estradiol), derived from plants. Chemically identical to human oestrogen. Micronised progesterone (Prometrium / Utrogestan), identical to human progesterone.",
         "note": "This is the recommended approach today."
       }
     },
     "timeline": {
-      "heading": "1992 — Today",
-      "intro": "A timeline of what actually happened — and what is changing now.",
+      "heading": "1992, Today",
+      "intro": "A timeline of what actually happened, and what is changing now.",
       "t1992": {
         "headline": "Premarin peaks.",
-        "body": "Premarin — made from the urine of pregnant mares — becomes the most prescribed drug in the US. The WHI study begins, testing Premarin plus Provera on 160,000 women."
+        "body": "Premarin, made from the urine of pregnant mares, becomes the most prescribed drug in the US. The WHI study begins, testing Premarin plus Provera on 160,000 women."
       },
       "t2002": {
-        "headline": "The study that changed everything — for the wrong reasons.",
-        "body": "The WHI trial is stopped early. Global headlines declare HRT causes breast cancer. Use collapses by 80%. The absolute risk — 4 cases per 1,000 women over 5 years — is rarely mentioned. Results are applied to all HRT, including body-identical hormones that were never studied."
+        "headline": "The study that changed everything, for the wrong reasons.",
+        "body": "The WHI trial is stopped early. Global headlines declare HRT causes breast cancer. Use collapses by 80%. The absolute risk, 4 cases per 1,000 women over 5 years, is rarely mentioned. Results are applied to all HRT, including body-identical hormones that were never studied."
       },
       "t2003": {
         "headline": "Black-box warnings applied.",
-        "body": "The FDA applies class-wide black-box warnings to all HRT products — including body-identical hormones that carry no such evidence of harm. A generation of women is denied treatment based on findings that do not apply to them."
+        "body": "The FDA applies class-wide black-box warnings to all HRT products, including body-identical hormones that were never part of the study. A generation of women is denied treatment based on findings that may not apply to them."
       },
       "t2008": {
         "headline": "The pivotal French finding.",
-        "body": "The E3N cohort study finds that body-identical progesterone does not increase breast cancer risk — unlike the synthetic progestin used in WHI. The problem in 2002 was never oestrogen — it was the specific synthetic used."
+        "body": "The E3N cohort study finds that body-identical progesterone does not carry the increased breast cancer risk seen with the synthetic progestin used in WHI. Researchers increasingly point to the specific synthetic used in 2002, rather than oestrogen itself."
       },
       "t2013": {
-        "headline": "Oestrogen alone reduces breast cancer risk.",
-        "body": "A decade of WHI follow-up confirms estrogen-only HRT significantly reduces breast cancer incidence and mortality. This directly contradicts the 2002 message — but it takes ten years to reach the public."
+        "headline": "Follow-up data tells a different story about oestrogen.",
+        "body": "A decade of WHI follow-up finds that oestrogen-only HRT was associated with lower breast cancer incidence and mortality in the women studied. It takes ten years for this to reach the public."
       },
       "t2015": {
         "headline": "UK NICE recommends body-identical HRT.",
-        "body": "Body-identical HRT — estradiol patches or gel with micronised progesterone — becomes the recommended approach. HRT prescriptions in England begin rising from this point."
+        "body": "Body-identical HRT, estradiol patches or gel with micronised progesterone, becomes the recommended approach. HRT prescriptions in England begin rising from this point."
       },
       "t2025": {
         "headline": "FDA removes the warnings.",
-        "body": "The US HHS and FDA announce the removal of broad black-box warnings. The FDA states: women who start HRT within 10 years of menopause may reduce cardiovascular risk by up to 50%, Alzheimer's risk by 35%, and fracture risk by 50–60%."
+        "body": "The US HHS and FDA announce the removal of broad black-box warnings. In its press release, the FDA suggests women who start HRT within 10 years of menopause may see substantially lower cardiovascular, Alzheimer's and fracture risk, figures researchers are still weighing."
       },
       "t2026": {
         "headline": "Meer as Warm Gloede airs. JoinMandi.com launches.",
-        "body": "Every South African woman deserves this history — in her language."
+        "body": "Every South African woman deserves this history, in her language."
       }
     },
     "sources": {
       "heading": "Sources",
-      "disclaimer": "Educational information only — not medical advice. Discuss your individual circumstances with a qualified healthcare provider."
+      "disclaimer": "Educational information only, not medical advice. Discuss your individual circumstances with a qualified healthcare provider."
     },
     "cta": {
       "heading": "Where does this leave you?",
       "body": "You deserve honest answers in your own language from practitioners who understand hormonal health.",
-      "questionnaire": "Take the questionnaire",
+      "questionnaire": "See what your symptoms say",
       "doctor": "Find a doctor"
     }
   },
   "mothers": {
     "eyebrow": "A Living Tribute",
     "title": "Honour the Mothers",
-    "subhead": "The moral centre of Mandi. A quiet, serious, deeply human acknowledgement that the platform women are using today stands on a foundation that has not always honoured women's bodies, voices, or choices.",
+    "subhead": "For the women who came before us, whose bodies built the medicine we have today, and whose voices were not always honoured. This page remembers them.",
     "historical": {
       "baartman": {
         "years": "c. 1789 – 1815 · Eastern Cape, South Africa",
-        "body": "A Khoikhoi woman taken from South Africa in 1810 and exhibited across Europe as a public spectacle. She died in Paris in 1815, aged 26. Her body remained on display in France until 1974. Nelson Mandela formally requested her return in 1994. On 9 August 2002 — National Women's Day — she was finally buried near her birthplace. She came home. She belongs to all of us."
+        "body": "A Khoikhoi woman taken from South Africa in 1810 and exhibited across Europe as a public spectacle. She died in Paris in 1815, aged 26. Her body remained on display in France until 1974. Nelson Mandela formally requested her return in 1994. On 9 August 2002, National Women's Day, she was finally buried near her birthplace. She came home. She belongs to all of us."
       },
       "anarcha": {
         "years": "Montgomery, Alabama · 1840s",
-        "body": "Three enslaved Black women whose names we know. Between 1845 and 1849 they were subjected to experimental surgery — Anarcha underwent at least 30 operations without anaesthesia — as the foundation of modern gynaecology was built on their suffering. In 2021, a 15-foot monument was erected in their honour. Their names are spoken now."
+        "body": "Three enslaved Black women whose names we know. Between 1845 and 1849 they were subjected to experimental surgery, Anarcha underwent at least 30 operations without anaesthesia, as the foundation of modern gynaecology was built on their suffering. In 2021, a 15-foot monument was erected in their honour. Their names are spoken now."
       }
     },
     "finding": {
@@ -786,32 +836,33 @@
     "wall": {
       "eyebrow": "The Living Wall",
       "heading": "Have you ever been dismissed? You are not alone.",
-      "intro": "Short stories submitted by Mandi users. Three sentences or less. Anonymous if they choose. Together they become something powerful.",
+      "intro": "Stories women have shared with us. Short, true, and kept anonymous.",
       "thandi": "For three years I thought I was losing my mind. My doctor said I was stressed. Nobody said menopause.",
-      "mariette": "Ek het vyf jaar simptome gehad en nie geweet nie. Ek was nie besig om gek te word nie — my hormoon het verander.",
+      "mariette": "Ek het vyf jaar simptome gehad en nie geweet nie. Ek was nie besig om gek te word nie, my hormoon het verander.",
       "nomsa": "My mother never spoke about this. Her mother never spoke about it. I want my daughter to have a different experience."
     },
     "closing": {
       "names": "Sarah Baartman. Anarcha. Betsey. Lucy. And every woman whose name was never written down.",
-      "body": "Their bodies carried the burden of a science that did not yet know how to treat them as human. Mandi is built in their honour. This page will keep growing — because there are more names to find, and more women to hear.",
+      "body": "Their bodies carried the burden of a science that did not yet know how to treat them as human. Mandi is built in their honour. This page will keep growing, because there are more names to find, and more women to hear.",
       "cta": "Share a story with Mandi"
     },
     "founder": {
-      "quote": "This platform was born from my own story — years of symptoms that nobody connected to my hormones. Once you know better, you can do better. And you can help others do the same.",
+      "quote": "This platform was born from my own story, years of symptoms that nobody connected to my hormones. Once you know better, you can do better. And you can help others do the same.",
       "role": "Founder · MrsKing Productions"
     }
   },
   "journey": {
+    "greetingNoName": "Welcome back.",
     "loading": "Loading your journey…",
     "signedOutTitle": "Sign in to see your journey.",
     "signedOutCta": "Sign in",
     "eyebrow": "My Journey",
     "greeting": "Welcome back, {{name}}.",
-    "intro": "This is where Mandi remembers what matters to you.",
+    "intro": "Your blanket, your notes, your pace. Kept safe here for you.",
     "roadmap": {
       "emptyEyebrow": "Roadmap",
       "emptyTitle": "You have not taken the questionnaire yet.",
-      "emptyBody": "Spend ten minutes with Mandi and get a personalised roadmap — articles, resources, and a doctor-ready summary tailored to you.",
+      "emptyBody": "Spend ten minutes with Mandi and get a personalised roadmap, articles, resources, and a doctor-ready summary tailored to you.",
       "emptyCta": "Take the questionnaire",
       "eyebrow": "Your last roadmap",
       "completed": "Completed {{date}}",
@@ -836,9 +887,9 @@
       "emptyBody": "Spend ten minutes with Mandi and get a personalised roadmap, MenoScore, and a doctor-ready summary tailored to you.",
       "emptyCta": "Take the questionnaire",
       "band": {
-        "mild": "Mild — early signals",
-        "moderate": "Moderate — active changes",
-        "significant": "Significant — high impact"
+        "mild": "Mild, early signals",
+        "moderate": "Moderate, active changes",
+        "significant": "Significant, high impact"
       },
       "domain": {
         "mind-cognition": "Mind & focus",
@@ -893,7 +944,7 @@
     "pdf": {
       "ctaEyebrow": "For your doctor",
       "ctaTitle": "Download a summary you can hand to your doctor.",
-      "ctaBody": "A one-document overview of your MenoScore, answers, and how you've been tracking — saved as a PDF from your browser.",
+      "ctaBody": "A one-document overview of your MenoScore, answers, and how you've been tracking, saved as a PDF from your browser.",
       "ctaButton": "Download for doctor",
       "barHint": "Your browser's print dialog will open in a second. Choose 'Save as PDF'.",
       "printButton": "Print / Save as PDF",
@@ -917,8 +968,8 @@
       "answersHeading": "Questionnaire answers",
       "answersBody": "All 56 questions, grouped by area, with your responses.",
       "answerLabel": "Answer",
-      "footerLine1": "Generated by JoinMandi. This summary is the patient's own data, downloaded by her at her request.",
-      "footerLine2": "POPIA compliant. Mandi does not share this document with anyone unless the patient does.",
+      "footerLine1": "Generated by JoinMandi. This summary is yours, made from your own answers, downloaded because you chose to.",
+      "footerLine2": "Mandi never shares this document. Only you decide who sees it.",
       "loading": "Preparing your summary…",
       "signedOutTitle": "Sign in to download your summary.",
       "signedOutCta": "Sign in",
@@ -929,17 +980,17 @@
     "checkins": {
       "eyebrow": "Check-ins",
       "title": "How your journey is going.",
-      "intro": "Two gentle moments to look back — and forward.",
+      "intro": "Two gentle moments to look back, and forward.",
       "sixWeek": "6-week check-in",
       "sixWeekSub": "Early changes, first actions taken.",
       "threeMonth": "3-month check-in",
-      "threeMonthSub": "Full review. Mirrors the NHS / NICE milestone.",
+      "threeMonthSub": "A full review, the three-month milestone specialists recommend.",
       "stateAvailable": "Available now",
       "stateCompleted": "Completed",
       "stateUpcoming": "Upcoming",
       "start": "Start check-in",
       "upcomingNote": "Mandi will surface this when the time is right.",
-      "completedNote": "Started at {{score}} — well done for showing up for yourself."
+      "completedNote": "Started at {{score}}, well done for showing up for yourself."
     },
     "persona": {
       "sally": "Searching Sally",
@@ -952,18 +1003,28 @@
     }
   },
   "footer": {
-    "privacy": "Your privacy — how we use your data",
+    "privacy": "Your privacy, how we use your data",
     "terms": "Terms",
     "contact": "Contact"
-  }
-,
+  },
   "exhibition": {
+    "prevQuestion": "Previous question",
+    "restart": "Start over",
+    "mode": {
+      "title": "How would you like to answer?",
+      "taps": "Quick taps",
+      "tapsSub": "One question at a time, under two minutes",
+      "chat": "Chat with Mandi",
+      "chatSub": "A gentle conversation, she answers back"
+    },
     "capture": {
       "pageGate": "Answer all four to continue.",
       "whatsapp": "WhatsApp number (optional)",
       "whatsappPlaceholder": "082 000 0000",
       "age": "Your age (optional)",
       "ages": {
+        "30-39": "30–39",
+        "20-29": "20–29",
         "40-44": "40–44",
         "45-49": "45–49",
         "50-54": "50–54",
@@ -971,18 +1032,19 @@
         "60plus": "60+",
         "none": "Prefer not to say"
       },
-      "marketing": "Yes, Mandi may contact me about my full assessment, events and support. I can tell them to stop at any time.",
+      "marketing": "Keep me in the loop, news, events and the Mandi journey.",
       "finePrint": "We never share your details. You can ask us to erase everything at any time."
     },
     "chat": {
+      "greeting": "Hi, I'm Mandi. I have eight quick questions about how you've been feeling lately, just tap the answer that fits.",
       "mind-cognition": {
         "hi": {
-          "1": "That word-finding feeling — it isn't your mind failing you.",
-          "2": "Your memory isn't broken. Hormones reach it too."
+          "1": "That word-finding feeling, it isn't your mind failing you.",
+          "2": "Your memory isn't broken. So many women describe exactly this."
         },
         "lo": {
           "1": "Good. Your clarity is holding.",
-          "2": "Thank you — useful to know."
+          "2": "Thank you, useful to know."
         }
       },
       "nervous-system": {
@@ -991,24 +1053,24 @@
           "2": "Your body is keeping you up at night. That counts."
         },
         "lo": {
-          "1": "Good — your nights are holding.",
+          "1": "Good, your nights are holding.",
           "2": "Thank you."
         }
       },
       "body": {
         "hi": {
-          "1": "Your body is talking. This isn't just getting older.",
+          "1": "Your body is telling you something, and it's worth listening to.",
           "2": "It's real, and it's well documented."
         },
         "lo": {
-          "1": "Thank you — noted.",
+          "1": "Thank you, noted.",
           "2": "Good."
         }
       },
       "other": {
         "hi": {
-          "1": "Yes — that one surprises almost everybody.",
-          "2": "It's menopause. Really."
+          "1": "Yes, that one surprises almost everybody.",
+          "2": "Many women only make that connection much later."
         },
         "lo": {
           "1": "Good to know.",
@@ -1027,31 +1089,31 @@
       }
     },
     "story": {
-      "disclaimer": "Educational information only — not medical advice.",
+      "disclaimer": "Educational information only, not medical advice.",
       "intro": {
         "title": "Your blanket tells a story",
-        "sub": "Scroll down — every patch you stitched has something to say."
+        "sub": "Scroll down, every patch you stitched has something to say."
       },
       "cute": {
         "context": "Every story starts somewhere.",
-        "mind-cognition": "Losing words mid-sentence? They're not lost — just on a tea break.",
+        "mind-cognition": "Losing words mid-sentence? They're not lost, just on a tea break.",
         "mood": "Feelings doing somersaults? There's a reason.",
         "nervous-system": "Your body has been sending you postcards.",
         "body": "Aches that arrived uninvited? We see them.",
-        "urogenital": "The things nobody talks about — we talk about them.",
+        "urogenital": "The things nobody talks about, we talk about them.",
         "other": "The 'wait, THAT's menopause?' section.",
         "quality-of-life": "It touches the things you love. That matters.",
         "mindset": "You showed up. That's the biggest stitch of all."
       },
-      "factLabel": "Why this happens",
+      "factLabel": "The menopause link",
       "hormoneHook": {
-        "title": "It's not you. It's your hormones.",
-        "body": "Almost everything you just read traces back to shifting oestrogen and progesterone. Understanding them is the key to feeling like yourself again — and that's exactly what Mandi is for.",
-        "cta": "Learn how hormones work on joinmandi.com"
+        "title": "Don't count out your hormones.",
+        "body": "So many women live with symptoms like these for years, never knowing hormones could be part of the story. Whatever your blanket looks like, they are worth understanding. That is what Mandi is building: intentional, destigmatised women's health, in your language, with an African voice.",
+        "cta": "Check out the Mandi journey"
       },
       "none": {
-        "title": "Your blanket looks calm — lucky you!",
-        "body": "No strong symptoms today. Menopause arrives differently for every woman — and knowing what to look for is the best head start there is."
+        "title": "Your blanket looks calm, lucky you!",
+        "body": "No strong symptoms today. Menopause arrives differently for every woman, and knowing what to look for is the best head start there is."
       }
     },
     "attract": {
@@ -1067,25 +1129,25 @@
       "heading": "Your blanket, so far",
       "scoreLabel": "Your demo MenoScore",
       "band": {
-        "mild": "Your symptoms look mild — staying informed is the best next stitch.",
-        "moderate": "Your symptoms look moderate — you are not imagining it, and you are not alone.",
-        "significant": "Your symptoms look significant — a doctor who understands menopause can change everything."
+        "mild": "Your symptoms look mild, staying informed is the best next stitch.",
+        "moderate": "Your symptoms look moderate, you are not imagining it, and you are not alone.",
+        "significant": "Your symptoms look significant, a doctor who understands menopause can change everything."
       },
       "cta": "Get my blanket"
     },
     "email": {
       "title": "Take your blanket home",
-      "body": "Leave your email and Mandi will send you your results — and let you know the moment we launch.",
+      "body": "You've stitched a few patches today. Leave your email and we'll send your results and the link to the full 56-question blanket, so you can finish it in your own time and discover more.",
       "placeholder": "your@email.com",
-      "consent": "Store my email and demo answers so Mandi can send me my results and launch news.",
+      "consent": "Yes, Mandi may keep my details and send me my blanket and results.",
       "cta": "Send my blanket",
       "skip": "No thanks"
     },
     "thanks": {
       "title": "Sala kahle. Totsiens. Goodbye, for now.",
-      "bodyKiosk": "Thank you for stitching with us — please hand the tablet back.",
-      "bodyPhone": "Watch your inbox. Your full blanket is waiting at joinmandi.com.",
-      "fullCta": "Stitch the full blanket"
+      "bodyKiosk": "Thank you for stitching your story with us, Mandi is building destigmatised women's health for South Africa, and you are part of it now. Please hand the tablet back.",
+      "bodyPhone": "Watch your inbox. Mandi is building a home for women's health in South Africa, menopause understood, not endured; every woman in her own language. Your blanket is the first stitch. Come finish it at joinmandi.com.",
+      "fullCta": "Join the Mandi journey"
     }
   }
 }

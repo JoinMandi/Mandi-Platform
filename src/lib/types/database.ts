@@ -61,7 +61,15 @@ export interface SessionRow {
   popia_consent_at: string | null;
 }
 
-export type AgeBand = "40-44" | "45-49" | "50-54" | "55-59" | "60plus" | "none";
+export type AgeBand =
+  | "20-29"
+  | "30-39"
+  | "40-44"
+  | "45-49"
+  | "50-54"
+  | "55-59"
+  | "60plus"
+  | "none";
 
 export interface ExhibitionSignupRow {
   id: string;

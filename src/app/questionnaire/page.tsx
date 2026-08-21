@@ -234,6 +234,18 @@ export default function QuestionnairePage() {
 
   return (
     <>
+      {/* Visible way out — saving is automatic, so exiting is always safe.
+          Same chip recipe as the exhibition's start-over control. */}
+      <button
+        type="button"
+        onClick={() => router.push("/")}
+        className="fixed right-4 top-4 z-[60] rounded-full border border-brown/15 bg-cream-soft/90 px-4 py-2
+          text-xs font-semibold text-brown/60 shadow-warm backdrop-blur-sm transition-colors
+          hover:border-terra hover:text-terra"
+      >
+        {t("questionnaire.saveExit")}
+      </button>
+
       {domainTransition && (
         <DomainTransition
           key={`domain-${domainTransition.nextDomain}`}
@@ -279,6 +291,9 @@ export default function QuestionnairePage() {
               >
                 {currentIndex < total - 1 ? t("questionnaire.next") : t("questionnaire.finish")}
               </Button>
+              <p className="text-center text-xs text-brown/50">
+                {t("questionnaire.autosaveNote")}
+              </p>
             </div>
         </div>
       </QuestionScreen>

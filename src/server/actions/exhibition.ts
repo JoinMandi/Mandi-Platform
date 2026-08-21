@@ -8,7 +8,16 @@ import type { AgeBand, ScoreBand } from "@/lib/types/database";
 
 const KNOWN_LANGS = new Set(["en", "zu", "xh", "af"]);
 const BANDS = new Set<ScoreBand>(["mild", "moderate", "significant"]);
-const AGE_BANDS = new Set<AgeBand>(["40-44", "45-49", "50-54", "55-59", "60plus", "none"]);
+const AGE_BANDS = new Set<AgeBand>([
+  "20-29",
+  "30-39",
+  "40-44",
+  "45-49",
+  "50-54",
+  "55-59",
+  "60plus",
+  "none",
+]);
 const EMAIL_RE = /^\S+@\S+\.\S+$/;
 const WHATSAPP_RE = /^[+0-9][0-9 ()-]{5,19}$/;
 

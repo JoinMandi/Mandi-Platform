@@ -108,22 +108,22 @@ export default function LandingPage() {
               </div>
             </Reveal>
 
-            {/* Dual CTAs — equally prominent */}
+            {/* CTA ladder: curiosity first, commitment second */}
             <Reveal delay={380}>
               <div className="mt-10 flex flex-col sm:flex-row gap-3 w-full max-w-md sm:max-w-none sm:w-auto justify-center">
                 <button
-                  onClick={() => router.push("/consent")}
+                  onClick={() => router.push("/about")}
                   className="bg-cream text-terra font-semibold rounded-full px-9 py-4 text-base
                     shadow-warm-xl hover:bg-golden hover:scale-105 active:scale-100 transition-all"
                 >
-                  {t("landing.cta")} →
+                  {t("landing.browseCta")} →
                 </button>
                 <button
-                  onClick={() => router.push("/about")}
+                  onClick={() => router.push("/consent")}
                   className="border-2 border-cream text-cream font-semibold rounded-full px-9 py-4 text-base
                     hover:bg-cream hover:text-terra active:scale-[0.98] transition-all"
                 >
-                  {t("landing.browseCta")} →
+                  {t("landing.cta")} →
                 </button>
               </div>
             </Reveal>
@@ -138,7 +138,7 @@ export default function LandingPage() {
           {/* Scroll hint */}
           <div className="relative z-10 flex justify-center pb-6">
             <svg
-              className="h-5 w-5 text-cream/70 animate-bounce"
+              className="h-5 w-5 text-cream/70 animate-pulse-warm"
               aria-hidden
               fill="none"
               viewBox="0 0 24 24"
@@ -294,12 +294,16 @@ export default function LandingPage() {
 
         {/* ─── CLOSE ────────────────────────────────────────────── */}
         <section className="relative overflow-hidden bg-mandi-gradient-dusk">
+          <AmbientBlobs intensity="soft" />
           <div className="absolute inset-0 bg-brown/15" />
           <div className="relative z-10 max-w-2xl mx-auto px-6 py-20 text-center">
             <Reveal>
-              <h2 className="font-display text-4xl sm:text-5xl text-cream leading-tight mb-8">
+              <h2 className="font-display text-4xl sm:text-5xl text-cream leading-tight mb-6">
                 {t("landing.close.title")}
               </h2>
+              <p className="mx-auto mb-8 max-w-lg text-base leading-relaxed text-cream/85">
+                {t("landing.mission")}
+              </p>
               <button
                 onClick={() => router.push("/consent")}
                 className="bg-cream text-terra font-semibold rounded-full px-10 py-4 text-base
@@ -313,9 +317,7 @@ export default function LandingPage() {
 
         {/* Tiny footer */}
         <footer className="text-center py-6 px-4">
-          <p className="text-brown/50 text-xs">
-            JoinMandi.com · MrsKing Productions · Hermi King · March 2026
-          </p>
+          <p className="text-brown/50 text-xs">{t("landing.footerLine")}</p>
         </footer>
       </main>
     </>

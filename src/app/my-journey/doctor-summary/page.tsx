@@ -242,6 +242,14 @@ export default function DoctorSummaryPage() {
                 )}
               </div>
             )}
+            {/* Crisis resource travels WITH the flag — a bare pill on a
+                printed document helps nobody. Copy is the clinically frozen
+                SADAG string; addition flagged for clinical review. */}
+            {latest.self_harm_flag && (
+              <p className="mt-2 text-xs text-brown/80 print:text-black">
+                {t("roadmap.safety.selfHarm.sadag")}
+              </p>
+            )}
           </section>
 
           {/* Recent symptom tracker summary */}
@@ -315,7 +323,7 @@ export default function DoctorSummaryPage() {
                           <span className="font-semibold">
                             {t("journey.pdf.answerLabel")}:
                           </span>{" "}
-                          {renderAnswer(answer)}
+                          {renderAnswer(answer, t("questionnaire.yes"), t("questionnaire.no"))}
                         </div>
                       </li>
                     );
@@ -339,10 +347,10 @@ export default function DoctorSummaryPage() {
  *  produced by the questionnaire: scale (0–4), yes/no/notsure
  *  strings, multi-select arrays, number/measurement objects, plain
  *  strings, and missing answers. */
-function renderAnswer(answer: unknown): string {
+function renderAnswer(answer: unknown, yesLabel = "Yes", noLabel = "No"): string {
   if (answer == null || answer === "") return "—";
   if (typeof answer === "number") return String(answer);
-  if (typeof answer === "boolean") return answer ? "Yes" : "No";
+  if (typeof answer === "boolean") return answer ? yesLabel : noLabel;
   if (typeof answer === "string") return answer;
   if (Array.isArray(answer)) {
     return answer.length === 0 ? "—" : answer.map(String).join(", ");
@@ -353,7 +361,8 @@ function renderAnswer(answer: unknown): string {
     if ("value" in obj && "unit" in obj) {
       return `${String(obj.value)} ${String(obj.unit)}`;
     }
-    return JSON.stringify(answer);
+    // Never let raw JSON reach a document handed to a clinician.
+    return "—";
   }
   return String(answer);
 }

@@ -1,5 +1,5 @@
 /**
- * Server-only email sending via the Resend HTTP API — no SDK dependency,
+ * Server-only email sending via the Resend HTTP API, no SDK dependency,
  * one endpoint. Best-effort by design: every failure path returns false so
  * a mail outage can never block a funnel.
  *
@@ -15,7 +15,7 @@ import xh from "../../public/locales/xh/common.json";
 type Lang = "en" | "zu" | "xh" | "af";
 
 // The server can't use the client i18next instance, but it CAN import the
-// same locale JSONs — so the per-domain facts in the email stay identical to
+// same locale JSONs, so the per-domain facts in the email stay identical to
 // (and clinically reviewed with) the ones on the results page.
 interface LocaleDict {
   questionnaire: {
@@ -25,40 +25,55 @@ interface LocaleDict {
 }
 const LOCALES: Record<Lang, LocaleDict> = { en, af, zu, xh };
 
-// Email chrome copy lives here — 4×4 short strings don't justify wiring
+// Email chrome copy lives here, 4×4 short strings don't justify wiring
 // i18next server-side. zu/xh/af drafts pending translator review (same path
 // as public/locales/CLINICAL-REVIEW.md).
 const COPY: Record<
   Lang,
-  { subject: string; greeting: string; highlights: string; cta: string; disclaimer: string }
+  {
+    subject: string;
+    greeting: string;
+    highlights: string;
+    invite: string;
+    cta: string;
+    disclaimer: string;
+  }
 > = {
   en: {
     subject: "Your Mandi blanket is waiting",
     greeting: "Thank you for stitching with us at the Silwerskermfees.",
-    highlights: "Your blanket highlighted these areas — and why they happen:",
-    cta: "Your full blanket is waiting — finish it at joinmandi.com",
-    disclaimer: "Educational information only — not medical advice.",
+    highlights: "Your blanket highlighted these areas, and why they happen:",
+    invite:
+      "Your full blanket is waiting on Mandi: the complete 56-question assessment, deeper information, and a place on the journey.",
+    cta: "Finish your blanket at joinmandi.com",
+    disclaimer: "Educational information only, not medical advice.",
   },
   af: {
     subject: "Jou Mandi-kombers wag vir jou",
     greeting: "Dankie dat jy saam met ons gestik het by die Silwerskermfees.",
-    highlights: "Jou kombers het hierdie areas uitgelig — en hoekom dit gebeur:",
-    cta: "Jou volle kombers wag — voltooi dit by joinmandi.com",
-    disclaimer: "Slegs opvoedkundige inligting — nie mediese advies nie.",
+    highlights: "Jou kombers het hierdie areas uitgelig, en hoekom dit gebeur:",
+    invite:
+      "Jou volle kombers wag op Mandi: die volledige 56-vraag-assessering, dieper inligting, en 'n plek op die reis.",
+    cta: "Voltooi jou kombers by joinmandi.com",
+    disclaimer: "Slegs opvoedkundige inligting, nie mediese advies nie.",
   },
   zu: {
     subject: "Ingubo yakho yeMandi ikulindile",
     greeting: "Siyabonga ngokuthunga nathi eSilwerskermfees.",
-    highlights: "Ingubo yakho igqamise lezi zindawo — nokuthi kungani zenzeka:",
-    cta: "Ingubo yakho ephelele ikulindile — yiqedele ku-joinmandi.com",
-    disclaimer: "Ulwazi lwemfundo kuphela — akusiyo iseluleko sezokwelapha.",
+    highlights: "Ingubo yakho igqamise lezi zindawo, nokuthi kungani zenzeka:",
+    invite:
+      "Ingubo yakho ephelele ikulindile kuMandi: ukuhlolwa okuphelele kwemibuzo engu-56, ulwazi olujulile, kanye nendawo ohambweni.",
+    cta: "Qedela ingubo yakho ku-joinmandi.com",
+    disclaimer: "Ulwazi lwemfundo kuphela, akusiyo iseluleko sezokwelapha.",
   },
   xh: {
     subject: "Ingubo yakho yeMandi ikulindile",
     greeting: "Enkosi ngokuthunga nathi eSilwerskermfees.",
-    highlights: "Ingubo yakho iqaqambise ezi ndawo — nokuba kutheni zisenzeka:",
-    cta: "Ingubo yakho epheleleyo ikulindile — yigqibezele ku-joinmandi.com",
-    disclaimer: "Lulwazi lwemfundo kuphela — ayisosiluleko sonyango.",
+    highlights: "Ingubo yakho iqaqambise ezi ndawo, nokuba kutheni zisenzeka:",
+    invite:
+      "Ingubo yakho epheleleyo ikulindile kuMandi: uvavanyo olupheleleyo lwemibuzo engama-56, ulwazi olunzulu, kunye nendawo kuhambo.",
+    cta: "Gqibezela ingubo yakho ku-joinmandi.com",
+    disclaimer: "Lulwazi lwemfundo kuphela, ayisosiluleko sonyango.",
   },
 };
 
@@ -69,7 +84,7 @@ function escapeHtml(s: string): string {
 export async function sendExhibitionResultsEmail(args: {
   to: string;
   lang: Lang;
-  /** Symptom domains the visitor actually felt — derived server-side. */
+  /** Symptom domains the visitor actually felt, derived server-side. */
   domains: string[];
 }): Promise<boolean> {
   const apiKey = process.env.RESEND_API_KEY;
@@ -98,7 +113,8 @@ export async function sendExhibitionResultsEmail(args: {
     <h1 style="color:#C94A2B; font-size:24px; margin:0 0 16px;">Mandi</h1>
     <p style="font-size:16px; line-height:1.6; margin:0 0 16px;">${c.greeting}</p>
     ${factBlocks ? `<p style="font-size:15px; font-weight:600; margin:0 0 12px;">${c.highlights}</p>${factBlocks}` : ""}
-    <a href="https://joinmandi.com" style="display:inline-block; margin-top:8px; background:#C94A2B; color:#F4ECE4; text-decoration:none; padding:12px 24px; border-radius:9999px; font-weight:600;">${c.cta}</a>
+    <p style="font-size:15px; line-height:1.6; margin:12px 0 0;">${c.invite}</p>
+    <a href="https://joinmandi.com" style="display:inline-block; margin-top:12px; background:#C94A2B; color:#F4ECE4; text-decoration:none; padding:12px 24px; border-radius:9999px; font-weight:600;">${c.cta}</a>
     <p style="font-size:11px; color:#673C33; opacity:0.6; margin:20px 0 0;">${c.disclaimer}</p>
   </div>
 </div>`;

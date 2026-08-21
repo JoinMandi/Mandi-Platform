@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { createBrowserClient } from "@/server/supabase/browser";
 import { seedUserProfile } from "@/server/actions/account";
+import NavBar from "@/components/NavBar";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import PetalBurst from "@/components/ui/PetalBurst";
@@ -80,10 +81,11 @@ export default function SignupPage() {
 
   return (
     <main className="relative min-h-screen overflow-hidden">
-      <div className="absolute inset-0 bg-mandi-gradient-soft" />
-      <div className="absolute inset-0 bg-cream/70" />
+      <NavBar />
+      <div className="absolute inset-0 -z-10 bg-mandi-gradient-soft" />
+      <div className="absolute inset-0 -z-10 bg-cream/40" />
 
-      <div className="relative z-10 flex items-center justify-center px-5 py-16 min-h-screen">
+      <div className="relative z-10 flex items-center justify-center px-5 py-16 min-h-[calc(100vh-64px)]">
         <div className="w-full max-w-md bg-cream-soft rounded-4xl shadow-warm-xl p-8 sm:p-10">
           <Reveal>
             <Link href="/" className="flex justify-center mb-6">
@@ -100,7 +102,7 @@ export default function SignupPage() {
           {!confirmEmailNotice ? (
             <>
               <Reveal delay={90}>
-                <h1 className="font-display text-3xl text-brown text-center mb-2">
+                <h1 className="font-display text-3xl sm:text-4xl text-brown text-center mb-2">
                   {t("auth.signup.title")}
                 </h1>
                 <p className="text-center text-brown/65 text-sm mb-8">

@@ -368,6 +368,38 @@ const captureBlocks = {
   },
 };
 
+// v4 — phone onboarding mode choice: quick taps (one per screen) vs chat.
+const modeBlocks = {
+  en: {
+    title: "How would you like to answer?",
+    taps: "Quick taps",
+    tapsSub: "One question at a time — under two minutes",
+    chat: "Chat with Mandi",
+    chatSub: "A gentle conversation — she answers back",
+  },
+  af: {
+    title: "Hoe wil jy antwoord?",
+    taps: "Vinnige tikke",
+    tapsSub: "Een vraag op 'n slag — onder twee minute",
+    chat: "Gesels met Mandi",
+    chatSub: "'n Sagte gesprek — sy antwoord terug",
+  },
+  zu: {
+    title: "Ungathanda ukuphendula kanjani?",
+    taps: "Ukuthepha okusheshayo",
+    tapsSub: "Umbuzo owodwa ngesikhathi — ngaphansi kwemizuzu emibili",
+    chat: "Xoxa noMandi",
+    chatSub: "Ingxoxo emnene — uyaphendula naye",
+  },
+  xh: {
+    title: "Ungathanda ukuphendula njani?",
+    taps: "Ukucofa okukhawulezayo",
+    tapsSub: "Umbuzo omnye ngexesha — ngaphantsi kwemizuzu emibini",
+    chat: "Ncokola noMandi",
+    chatSub: "Incoko ethambileyo — uyaphendula naye",
+  },
+};
+
 /** Insert a named sub-block into the exhibition object if missing. */
 function mergeSub(raw, name, obj) {
   if (JSON.parse(raw).exhibition[name]) return { raw, added: false };
@@ -398,6 +430,7 @@ for (const [lang, block] of Object.entries(blocks)) {
     ["story", storyBlocks],
     ["chat", chatBlocks],
     ["capture", captureBlocks],
+    ["mode", modeBlocks],
   ]) {
     const r = mergeSub(raw, name, source[lang]);
     raw = r.raw;

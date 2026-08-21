@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import NavBar from "@/components/NavBar";
+import AmbientBlobs from "@/components/ui/AmbientBlobs";
 import Reveal from "@/components/ui/Reveal";
 import StitchDivider from "@/components/ui/StitchDivider";
 
@@ -43,6 +44,8 @@ export default function TruthAboutHRTPage() {
       <main className="min-h-screen bg-cream">
         {/* Hero */}
         <section className="relative overflow-hidden bg-mandi-gradient-dusk">
+          <AmbientBlobs intensity="soft" />
+          <div className="pointer-events-none absolute inset-0 bg-brown/20" />
           <div className="max-w-4xl mx-auto px-6 py-20 relative z-10 text-center">
             <Reveal>
               <p className="text-golden text-[11px] uppercase tracking-[0.25em] font-semibold mb-4">
@@ -162,14 +165,16 @@ export default function TruthAboutHRTPage() {
         </div>
 
         {/* CTA */}
-        <section className="bg-mandi-gradient py-16">
-          <div className="max-w-2xl mx-auto px-6 text-center">
+        <section className="relative overflow-hidden bg-mandi-gradient py-16">
+          <AmbientBlobs intensity="soft" />
+          <div className="pointer-events-none absolute inset-0 bg-brown/15" />
+          <div className="relative z-10 max-w-2xl mx-auto px-6 text-center">
             <Reveal>
-              <h2 className="font-display text-3xl text-cream mb-4">{t("hrt.cta.heading")}</h2>
+              <h2 className="font-display text-3xl sm:text-4xl text-cream mb-4">{t("hrt.cta.heading")}</h2>
               <p className="text-cream/90 mb-8 max-w-xl mx-auto">{t("hrt.cta.body")}</p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link
-                  href="/questionnaire"
+                  href="/consent"
                   className="bg-cream text-terra font-semibold rounded-full px-7 py-4 hover:bg-golden transition-colors shadow-warm-lg"
                 >
                   {t("hrt.cta.questionnaire")} →

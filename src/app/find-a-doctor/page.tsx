@@ -16,6 +16,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import NavBar from "@/components/NavBar";
+import AmbientBlobs from "@/components/ui/AmbientBlobs";
 import Reveal from "@/components/ui/Reveal";
 import { logEngagement } from "@/server/actions/engagement";
 import { fetchFindADoctor } from "@/server/actions/public-content";
@@ -116,20 +117,22 @@ export default function FindADoctorPage() {
       <NavBar />
       <main className="min-h-screen bg-cream">
         {/* Hero */}
-        <section className="relative overflow-hidden bg-mandi-gradient-soft">
-          <div className="max-w-4xl mx-auto px-6 py-16 relative z-10">
+        <section className="relative overflow-hidden bg-mandi-gradient">
+          <AmbientBlobs intensity="soft" />
+          <div className="pointer-events-none absolute inset-0 bg-brown/15" />
+          <div className="max-w-4xl mx-auto px-6 py-20 relative z-10">
             <Reveal>
-              <p className="text-terra text-[11px] uppercase tracking-[0.25em] font-semibold mb-3">
+              <p className="text-cream/85 text-[11px] uppercase tracking-[0.25em] font-semibold mb-3">
                 {t("doctor.eyebrow")}
               </p>
             </Reveal>
             <Reveal delay={110}>
-              <h1 className="font-display text-4xl sm:text-5xl text-brown leading-[1.1] max-w-2xl">
+              <h1 className="font-display text-5xl sm:text-6xl text-cream leading-[1.05] max-w-2xl">
                 {t("doctor.title")}
               </h1>
             </Reveal>
             <Reveal delay={210}>
-              <p className="text-brown/75 text-base mt-5 max-w-xl">
+              <p className="text-cream/85 text-base mt-5 max-w-xl">
                 {t("doctor.subhead")}
               </p>
             </Reveal>
@@ -166,9 +169,7 @@ export default function FindADoctorPage() {
         {/* Clinic directory */}
         <section className="max-w-4xl mx-auto px-6 pb-12">
           {error && (
-            <p className="text-center py-10 text-terra text-sm">
-              {t("doctor.loadError")} ({error})
-            </p>
+            <p className="text-center py-10 text-terra text-sm">{t("doctor.loadError")}</p>
           )}
           {!error && filteredClinics === null && (
             <p className="text-center py-10 text-brown/50 text-sm">
@@ -219,6 +220,25 @@ export default function FindADoctorPage() {
                 ))}
               </div>
             )}
+          </div>
+        </section>
+
+        {/* Closer — the page used to dead-end on the grid */}
+        <section className="relative overflow-hidden bg-mandi-gradient-dusk py-16">
+          <AmbientBlobs intensity="soft" />
+          <div className="pointer-events-none absolute inset-0 bg-brown/25" />
+          <div className="relative z-10 max-w-2xl mx-auto px-6 text-center">
+            <Reveal>
+              <h2 className="font-display text-3xl sm:text-4xl text-cream leading-tight mb-6">
+                {t("hrt.cta.heading")}
+              </h2>
+              <Link
+                href="/consent"
+                className="inline-block bg-cream text-terra font-semibold rounded-full px-9 py-4 text-base shadow-warm-xl hover:bg-golden transition-colors"
+              >
+                {t("hrt.cta.questionnaire")} →
+              </Link>
+            </Reveal>
           </div>
         </section>
       </main>

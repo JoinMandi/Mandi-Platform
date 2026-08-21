@@ -5,49 +5,51 @@
     "wordmark": "JoinMandi.com"
   },
   "landing": {
+    "mission": "Menopouse verstaan, nie verduur nie. Doelgerigte, gedestigmatiseerde vrouegesondheid, in jou taal, met 'n Afrika-stem.",
+    "footerLine": "JoinMandi.com · MrsKing Productions · Augustus 2026",
     "eyebrow": "Talk to Mandi · Khuluma noMandi · Thetha noMandi · Praat met Mandi",
     "headline1": "Dankie dat jy hier is.",
     "headline2": "Jou gesondheidsreis begin hier.",
-    "subhead": "'n Warm, private gesprek van tien minute oor hoe jy voel — in jou taal.",
+    "subhead": "'n Warm, private gesprek van tien minute oor hoe jy voel, in jou taal.",
     "cta": "Begin my reis",
-    "browseCta": "Verken die platform",
+    "browseCta": "Loer na die Mandi-reis",
     "browse": "Verken net die platform",
-    "reassurance": "POPIA-gevolglik · Privaat · Gratis om te gebruik",
+    "reassurance": "Privaat. Gratis. Ons deel nooit jou besonderhede nie.",
     "how": {
       "eyebrow": "Hoe dit werk",
       "title": "Drie stappe na 'n padkaart wat by jou pas.",
       "step1": {
         "title": "Antwoord",
-        "body": "Spandeer tien minute saam met Mandi. Ses-en-vyftig sagte vrae oor hoe jy voel — in jou taal."
+        "body": "Spandeer tien minute saam met Mandi. Ses-en-vyftig sagte vrae oor hoe jy voel, in jou taal."
       },
       "step2": {
         "title": "Stik jou kombers",
-        "body": "Elke antwoord is 'n lappie. Saam word hulle jou persoonlike Mandi Kombers — 'n visuele kaart van waar jy is."
+        "body": "Elke antwoord is 'n lappie. Saam word hulle jou persoonlike Mandi Kombers, 'n visuele kaart van waar jy is."
       },
       "step3": {
         "title": "Kry jou padkaart",
-        "body": "Artikels, hulpbronne en dokters wat jou taal praat — pasgemaak vir wat jy gedeel het."
+        "body": "Artikels, hulpbronne en dokters wat jou taal praat, pasgemaak vir wat jy gedeel het."
       }
     },
     "peek": {
       "eyebrow": "Jou Mandi Kombers",
       "title": "Gebou uit jou eie antwoorde.",
-      "caption": "So lyk voltooiing — elke lappie 'n stukkie van jou storie."
+      "caption": "So lyk voltooiing, elke lappie 'n stukkie van jou storie."
     },
     "inside": {
       "eyebrow": "Wat binne Mandi is",
       "title": "Meer as net 'n vraelys.",
       "read": {
         "title": "Die Waarheid Oor HRT",
-        "body": "Eenvoudige verduideliking. Drie-en-twintig jaar se wanopvattings, reggestel."
+        "body": "Opvoeding in gewone taal. Drie en twintig jaar se misverstand wat uiteindelik ontrafel word."
       },
       "find": {
         "title": "Vind 'n dokter",
-        "body": "HRT-ingeligte praktisyns wat jou taal praat — oor heel Suid-Afrika."
+        "body": "HRT-ingeligte praktisyns wat jou taal praat, oor heel Suid-Afrika."
       },
       "gather": {
         "title": "Mandi Byeenkomste",
-        "body": "Vertonings, Q&A's en Mandi Kafees. Menopouse was privaat — dít is gemeenskaplik."
+        "body": "Vertonings, Q&A's en Mandi Kafees. Menopouse was privaat, dít is gemeenskaplik."
       },
       "honour": {
         "title": "Eer die Moeders",
@@ -63,7 +65,7 @@
       "line1": "'n Projek van MrsKing Productions, gestig deur Hermi King.",
       "line2": "Kliniese leiding van Dr Funeka Bango.",
       "line3": "Word saam met die kykNET-dokumentêr Meer as Warm Gloede in Augustus 2026 bekendgestel.",
-      "line4": "POPIA-gevolglik. Gratis om te gebruik. Altyd."
+      "line4": "Gratis om te gebruik. Jou besonderhede bly joune. Altyd."
     },
     "close": {
       "title": "Reg wanneer jy is.",
@@ -82,12 +84,12 @@
     "afrikaansSub": "Afrikaans"
   },
   "consent": {
-    "title": "Voordat ons begin — 'n paar dinge wat jy moet weet.",
-    "body": "Die vrae wat volg handel oor jou gesondheid en hoe jy voel. Ons gebruik jou antwoorde slegs om 'n persoonlike padkaart vir jou te skep. Ons verkoop nie jou inligting nie. Ons deel dit nie sonder jou toestemming nie. Jy kan jou data te eniger tyd uitvee. Hierdie platform voldoen aan die Wet op Beskerming van Persoonlike Inligting (POPIA).",
-    "body2": "Ons verkoop nie jou inligting nie. Ons deel dit nie sonder jou toestemming nie. Jy kan jou data te eniger tyd uitvee. Hierdie platform voldoen aan die Wet op Beskerming van Persoonlike Inligting (POPIA).",
+    "title": "Gereed wanneer jy is.",
+    "body": "Mandi gaan jou ses en vyftig sagte vrae vra oor hoe jy voel. Dit neem omtrent tien minute, en elke antwoord stik 'n lappie in 'n kombers wat net joune is.",
+    "body2": "Jou antwoorde bly joune. Ons verkoop of deel nooit jou besonderhede nie, en jy kan enige tyd vra dat ons alles uitvee. Dit is jou reg in die wet (POPIA), en in elk geval ons belofte.",
     "control": "Jy het altyd beheer oor jou inligting.",
-    "checkbox": "Ek verstaan en stem in om voort te gaan.",
-    "cta": "Ek is gereed — kom ons begin"
+    "checkbox": "Ja, Mandi mag my antwoorde hou om my kombers te stik en my padkaart te bou.",
+    "cta": "Kom ons stik"
   },
   "questionnaire": {
     "progress": "Vraag {{current}} van {{total}}",
@@ -141,7 +143,7 @@
       },
       "mindset": {
         "title": "Hoe jy hieroor dink en voel",
-        "description": "Die laaste paar vrae — oor jou, nie jou simptome nie."
+        "description": "Die laaste paar vrae, oor jou, nie jou simptome nie."
       }
     },
     "q1": {
@@ -171,19 +173,19 @@
       "text": "Probleme om te konsentreer"
     },
     "q7": {
-      "text": "Geheueprobleme — vergeet name, woorde, of waar jy goed neersit"
+      "text": "Geheueprobleme, vergeet name, woorde, of waar jy goed neersit"
     },
     "q8": {
-      "text": "Sukkel om woorde te vind — jy weet wat jy wil sê maar kry nie die woord nie"
+      "text": "Sukkel om woorde te vind, jy weet wat jy wil sê maar kry nie die woord nie"
     },
     "q9": {
-      "text": "Verminderde vermoë om meertaakwerk te doen — sukkel om meer as een ding op 'n slag te bestuur"
+      "text": "Verminderde vermoë om meertaakwerk te doen, sukkel om meer as een ding op 'n slag te bestuur"
     },
     "q10": {
-      "text": "Buierighede — sonder rede op en af voel"
+      "text": "Buierighede, sonder rede op en af voel"
     },
     "q11": {
-      "text": "Prikkelbaarheid — vinniger as gewoonlik snou of gefrustreerd raak"
+      "text": "Prikkelbaarheid, vinniger as gewoonlik snou of gefrustreerd raak"
     },
     "q12": {
       "text": "Angstig of bekommerd voel meer as gewoonlik"
@@ -192,13 +194,13 @@
       "text": "Laag, plat of depressief voel"
     },
     "q14": {
-      "text": "Lae motivering — sukkel om die energie of begeerte te vind vir dinge wat jy vroeër geniet het"
+      "text": "Lae motivering, sukkel om die energie of begeerte te vind vir dinge wat jy vroeër geniet het"
     },
     "q15": {
-      "text": "Lae selfwaarde — voel minder selfversekerd of minder waardevol as voorheen"
+      "text": "Lae selfwaarde, voel minder selfversekerd of minder waardevol as voorheen"
     },
     "q16": {
-      "text": "Nie soos jouself voel nie — herken nie die persoon wat jy geword het nie",
+      "text": "Nie soos jouself voel nie, herken nie die persoon wat jy geword het nie",
       "hint": "Hierdie vraag tref baie vroue vir die eerste keer. Vertrou wat jy voel."
     },
     "q17": {
@@ -206,59 +208,59 @@
       "hint": "Jy kan eerlik antwoord. As jy sukkel, sal Mandi onmiddellik ondersteuning op jou padkaart sit."
     },
     "q18": {
-      "text": "Warmgloede — skielike golwe van hitte deur jou liggaam"
+      "text": "Warmgloede, skielike golwe van hitte deur jou liggaam"
     },
     "q19": {
-      "text": "Nagtelike sweet — wakker word deurnat of oorverhit"
+      "text": "Nagtelike sweet, wakker word deurnat of oorverhit"
     },
     "q20": {
-      "text": "Slaapprobleme — sukkel om aan die slaap te raak of te bly slaap"
+      "text": "Slaapprobleme, sukkel om aan die slaap te raak of te bly slaap"
     },
     "q21": {
-      "text": "Hartkloppings — jou hart wat jaag of onreëlmatig klop"
+      "text": "Hartkloppings, jou hart wat jaag of onreëlmatig klop"
     },
     "q22": {
-      "text": "Hoofpyne of migraine — gereelder of erger as voorheen"
+      "text": "Hoofpyne of migraine, gereelder of erger as voorheen"
     },
     "q23": {
       "text": "Duiseligheid of flou voel"
     },
     "q24": {
-      "text": "Rustelose bene — 'n ongemaklike drang om jou bene te beweeg, veral snags"
+      "text": "Rustelose bene, 'n ongemaklike drang om jou bene te beweeg, veral snags"
     },
     "q25": {
-      "text": "Tinnitus — gerinkel of gegons in die ore"
+      "text": "Tinnitus, gerinkel of gegons in die ore"
     },
     "q26": {
-      "text": "Gewrigspyn — pyn, styfheid of swelling in gewrigte"
+      "text": "Gewrigspyn, pyn, styfheid of swelling in gewrigte"
     },
     "q27": {
-      "text": "Spierpyn — algemene pyn in spiere"
+      "text": "Spierpyn, algemene pyn in spiere"
     },
     "q28": {
-      "text": "Gevriesde skouer — pyn of beperkte beweging in die skouer",
+      "text": "Gevriesde skouer, pyn of beperkte beweging in die skouer",
       "hint": "'n Onder-erkende simptoom van menopouse. As dit jy is, verbeel jy jou dit nie."
     },
     "q29": {
-      "text": "Vermoeidheid en lae energie — uitgeput selfs na rus"
+      "text": "Vermoeidheid en lae energie, uitgeput selfs na rus"
     },
     "q30": {
-      "text": "Gewigstoename — veral om die middel"
+      "text": "Gewigstoename, veral om die middel"
     },
     "q31": {
       "text": "Opgeblaasheid of spysverteringsongemak"
     },
     "q32": {
-      "text": "Vel-veranderinge — droogheid, jeuk of tekstuur-veranderinge"
+      "text": "Vel-veranderinge, droogheid, jeuk of tekstuur-veranderinge"
     },
     "q33": {
       "text": "Haarverlies of haaruitdunning"
     },
     "q34": {
-      "text": "Droë oë — volgehoue droogheid, irritasie of wasige sig"
+      "text": "Droë oë, volgehoue droogheid, irritasie of wasige sig"
     },
     "q35": {
-      "text": "Veranderinge in jou maandstonde — swaarder, ligter, langer, korter of meer ongereeld as voorheen"
+      "text": "Veranderinge in jou maandstonde, swaarder, ligter, langer, korter of meer ongereeld as voorheen"
     },
     "q36": {
       "text": "Vaginale droogheid of ongemak"
@@ -267,7 +269,7 @@
       "text": "Pynlike seks"
     },
     "q38": {
-      "text": "Blaasprobleme — dringendheid, lekkasies of meer dikwels moet gaan, ook snags"
+      "text": "Blaasprobleme, dringendheid, lekkasies of meer dikwels moet gaan, ook snags"
     },
     "q39": {
       "text": "Herhalende urineweë-infeksies"
@@ -276,48 +278,48 @@
       "text": "Verlies van belangstelling in seks"
     },
     "q41": {
-      "text": "Verminderde alkoholverdraagsaamheid — twee glasies wat voorheen fyn was, voel nou soos vier",
-      "hint": "Dit is die vraag wat vroue laat sê: 'wag — is dít menopouse?'"
+      "text": "Verminderde alkoholverdraagsaamheid, twee glasies wat voorheen fyn was, voel nou soos vier",
+      "hint": "Dit is die vraag wat vroue laat sê: 'wag, is dít menopouse?'"
     },
     "q42": {
-      "text": "Nuwe of vererger allergieë — hooikoors, voedselonverdraagsaamheid, of sensitiwiteite wat jy nooit voorheen gehad het nie"
+      "text": "Nuwe of vererger allergieë, hooikoors, voedselonverdraagsaamheid, of sensitiwiteite wat jy nooit voorheen gehad het nie"
     },
     "q43": {
-      "text": "Verergering van 'n langtermyn-gesondheidstoestand — asma, migraine, outo-immuun-toestand of soortgelyks",
+      "text": "Verergering van 'n langtermyn-gesondheidstoestand, asma, migraine, outo-immuun-toestand of soortgelyks",
       "hint": "As dit 'n sterk ja is, sal Mandi jou na spesialis-geleide sorg verwys."
     },
     "q44": {
-      "text": "Impak op jou vermoë om te werk — konsentrasie, produktiwiteit of selfvertroue by die werk"
+      "text": "Impak op jou vermoë om te werk, konsentrasie, produktiwiteit of selfvertroue by die werk"
     },
     "q45": {
       "text": "Impak op jou verhouding met jou maat"
     },
     "q46": {
-      "text": "Impak op jou verhoudings met familie — kinders, ouers, naby familielede"
+      "text": "Impak op jou verhoudings met familie, kinders, ouers, naby familielede"
     },
     "q47": {
-      "text": "Impak op jou sosiale lewe — onttrekking, nie wil uitgaan nie"
+      "text": "Impak op jou sosiale lewe, onttrekking, nie wil uitgaan nie"
     },
     "q48": {
       "text": "Impak op jou vermoë om aktief te bly en oefen"
     },
     "q49": {
-      "text": "Wanneer jy dink aan wat jy ervaar het — wat is jou onderbuikgevoel?",
+      "text": "Wanneer jy dink aan wat jy ervaar het, wat is jou onderbuikgevoel?",
       "a": "Iets is verkeerd en ek het nou hulp nodig.",
-      "b": "Dit is waarskynlik net ouer word — ek sal regkom.",
+      "b": "Dit is waarskynlik net ouer word, ek sal regkom.",
       "c": "Ek het alles probeer. Niks werk vir my nie.",
-      "d": "Ek het my navorsing gedoen — ek weet wat aangaan."
+      "d": "Ek het my navorsing gedoen, ek weet wat aangaan."
     },
     "q50": {
       "text": "Hoe voel jy oor hormoonterapie (HRT)?",
       "a": "Oop daarvoor as 'n dokter dit aanbeveel.",
-      "b": "Ek verkies natuurlike benaderings — kruie, leefstyl, aanvullings.",
-      "c": "Ek is senuweeagtig — ek het gehoor dit kan riskant wees.",
+      "b": "Ek verkies natuurlike benaderings, kruie, leefstyl, aanvullings.",
+      "c": "Ek is senuweeagtig, ek het gehoor dit kan riskant wees.",
       "d": "Ek is reeds op HRT, of het dit al probeer."
     },
     "q51": {
       "text": "Hoe voel jy oor die mediese stelsel as dit by jou gesondheid kom?",
-      "a": "Ek vertrou my dokter — ek het net die regte verwysing nodig.",
+      "a": "Ek vertrou my dokter, ek het net die regte verwysing nodig.",
       "b": "My simptome is van die hand gewys. Ek voel ongesien.",
       "c": "Ek verkies om eers navorsing te doen voordat ek 'n dokter besoek.",
       "d": "Ek weet eerlikwaar nie waar om te begin nie."
@@ -330,7 +332,7 @@
       "d": "Ek het nie daaraan gedink nie."
     },
     "q53": {
-      "text": "Voel jy ooit dat dit dalk te laat is om hulp te kry — dat jy die geleentheid mis?"
+      "text": "Voel jy ooit dat dit dalk te laat is om hulp te kry, dat jy die geleentheid mis?"
     },
     "q54": {
       "text": "Het jy enige bestaande gesondheidstoestande wat jou bekommer oor hormoonbehandeling?",
@@ -340,13 +342,13 @@
       "autoimmune": "Outo-immuun-toestand",
       "cardiovascular": "Diabetes of hart-toestand",
       "psychiatric": "Psigiatriese toestand",
-      "notSure": "Nie seker nie — ek wil graag leiding hê"
+      "notSure": "Nie seker nie, ek wil graag leiding hê"
     },
     "q55": {
       "text": "Wat sal die nuttigste vir jou wees vandag?",
       "a": "Verstaan wat in my liggaam aangaan.",
       "b": "Weet of wat ek voel normaal is.",
-      "c": "Leer my opsies — HRT en alternatiewe.",
+      "c": "Leer my opsies, HRT en alternatiewe.",
       "d": "Vind 'n dokter wat my taal praat en hormone verstaan.",
       "e": "Iets om saam met my te neem na my huidige dokter."
     },
@@ -364,27 +366,27 @@
     "areaProgress": "Area {{current}} van {{total}}",
     "patchesStitched": "{{done}} van {{total}} lappies vasgestik · tik om te sien",
     "continue": "Gaan voort",
-    "bandComplete": "{{area}} — vasgestik",
+    "bandComplete": "{{area}}, vasgestik",
     "bandHeadline": "Nog 'n stukkie van jou kombers.",
-    "nextArea": "Volgende — {{area}}.",
+    "nextArea": "Volgende, {{area}}.",
     "quiltHeading": "Jou kombers tot dusver",
     "quiltClose": "Maak toe",
     "blanketComplete": "Jy het jou kombers vasgestik.",
-    "blanketCompleteBody": "Elke lappie is iets wat jy gedeel het. Hierdie kombers is joune — 'n stukkie van die een wat alle Suid-Afrikaanse vroue saam stik.",
+    "blanketCompleteBody": "Elke lappie is iets wat jy gedeel het. Hierdie kombers is joune, 'n stukkie van die een wat alle Suid-Afrikaanse vroue saam stik.",
     "resumeTitle": "Welkom terug.",
-    "resumeBody": "Jou kombers wag — {{progress}} reeds vasgestik. Jy kan presies opgaan waar jy gestop het.",
+    "resumeBody": "Jou kombers wag, {{progress}} reeds vasgestik. Jy kan presies opgaan waar jy gestop het.",
     "resumeContinue": "Gaan voort met stik",
     "resumeFresh": "Begin liewer van voor af",
     "facts": {
-      "context": "Perimenopouse — die jare van verandering voordat maandstondes ophou — duur meestal ongeveer 4 tot 8 jaar, hoewel dit vir sommige vroue korter of langer is. Menopouse self is net een dag.",
-      "mind-cognition": "Breinmist is een van die mees algemene simptome van menopouse — veroorsaak deur veranderende estrogeen, nie deurdat jy jou skerpheid verloor nie. Vir die meeste vroue lig dit op.",
-      "mood": "Buiveranderinge in menopouse is fisies, nie 'n persoonlike mislukking nie. Estrogeen werk in op serotonien, een van die brein se buichemikalieë — so wanneer hormoonvlakke verskuif, kan jou bui ook verskuif.",
-      "nervous-system": "Warmgloede kan jare voor jou laaste maandstonde begin. Tot 8 uit 10 vroue ervaar dit — wat ook al jy voel, jy is ver van alleen nie.",
-      "body": "Gewrigs- en spierpyn is 'n onder-erkende simptoom van menopouse — estrogeen help om gewrigte gemaklik te hou. Selfs gevriesde skouer is hieraan gekoppel.",
-      "urogenital": "Anders as warmgloede, vervaag intieme en blaas-simptome neig nie vanself nie — maar hulle reageer baie goed op behandeling. Daar is niks om vir skaam te wees nie.",
-      "other": "Kan jy skielik nie alkohol verdra soos vroeër nie? Estrogeen werk in op histamien — die chemikalie agter allergie-tipe reaksies — en sommige vroue merk nuwe sensitiwiteite in die middeljare op. Jy verbeel jou nie.",
-      "quality-of-life": "Menopouse-simptome strek na werk, slaap en verhoudings. Om daardie impak te benoem is nie kla nie — dit is die eerste stap om die regte ondersteuning te kry.",
-      "mindset": "Dit is nooit te laat om hulp te vra nie. Sommige simptome — insluitend vaginale en blaassimptome — reageer goed op behandeling, maak nie saak hoeveel jare sedert menopouse verby is nie."
+      "context": "Perimenopouse, die jare van verandering voordat maandstondes ophou, duur meestal ongeveer 4 tot 8 jaar, hoewel dit vir sommige vroue korter of langer is. Menopouse self is net een dag.",
+      "mind-cognition": "Breinmist is een van die mees algemene simptome van menopouse, veroorsaak deur veranderende estrogeen, nie deurdat jy jou skerpheid verloor nie. Vir die meeste vroue lig dit op.",
+      "mood": "Buiveranderinge in menopouse is fisies, nie 'n persoonlike mislukking nie. Estrogeen werk in op serotonien, een van die brein se buichemikalieë, so wanneer hormoonvlakke verskuif, kan jou bui ook verskuif.",
+      "nervous-system": "Warmgloede kan jare voor jou laaste maandstonde begin. Tot 8 uit 10 vroue ervaar dit, wat ook al jy voel, jy is ver van alleen nie.",
+      "body": "Gewrigs- en spierpyn is 'n onder-erkende simptoom van menopouse, estrogeen help om gewrigte gemaklik te hou. Selfs gevriesde skouer is hieraan gekoppel.",
+      "urogenital": "Anders as warmgloede, vervaag intieme en blaas-simptome neig nie vanself nie, maar hulle reageer baie goed op behandeling. Daar is niks om vir skaam te wees nie.",
+      "other": "Kan jy skielik nie alkohol verdra soos vroeër nie? Estrogeen werk in op histamien, die chemikalie agter allergie-tipe reaksies, en sommige vroue merk nuwe sensitiwiteite in die middeljare op. Jy verbeel jou nie.",
+      "quality-of-life": "Menopouse-simptome strek na werk, slaap en verhoudings. Om daardie impak te benoem is nie kla nie, dit is die eerste stap om die regte ondersteuning te kry.",
+      "mindset": "Dit is nooit te laat om hulp te vra nie. Sommige simptome, insluitend vaginale en blaassimptome, reageer goed op behandeling, maak nie saak hoeveel jare sedert menopouse verby is nie."
     },
     "loadingStages": {
       "1": "Luister na alles wat jy gedeel het…",
@@ -396,8 +398,10 @@
       "1": "Elke lappie is 'n stukkie van jou storie.",
       "2": "Om vir jouself op te daag is die dapper deel.",
       "3": "Jy is nie alleen hierin nie.",
-      "4": "Wat jy voel is werklik — en dit maak saak."
-    }
+      "4": "Wat jy voel is werklik, en dit maak saak."
+    },
+    "saveExit": "Stoor en verlaat",
+    "autosaveNote": "Jou antwoorde stoor outomaties op hierdie toestel. Jy kan enige tyd verlaat en later voortgaan."
   },
   "units": {
     "cm": "cm",
@@ -407,44 +411,46 @@
   },
   "transition": {
     "message": "Mandi stel jou padkaart saam.",
-    "submessage": "Lees wat jy gedeel het — met sorg.",
+    "submessage": "Lees wat jy gedeel het, met sorg.",
     "done": "Jou padkaart is gereed."
   },
   "roadmap": {
+    "disclaimer": "Slegs opvoedkundige inligting, nie mediese advies nie.",
+    "nextSteps": "Jou volgende treë",
     "title": "Jou Mandi Padkaart",
     "menoScore": "MenoScore",
     "outOf": "uit 100",
     "blanketLabel": "Die kombers wat jy gestik het",
-    "blanketCaption": "Elke lappie is iets wat jy vandag gedeel het — jou storie, saamgehou.",
+    "blanketCaption": "Elke lappie is iets wat jy vandag gedeel het, jou storie, saamgehou.",
     "band": {
       "mild": {
         "label": "Vroeë seine",
-        "line": "Jou simptome is teenwoordig maar hanteerbaar. Dit is 'n goeie tyd om ingelig te raak en sagte stappe te neem."
+        "line": "Jou antwoorde dui op vroeë tekens. Om nou nuuskierig te bly is 'n pragtige voorsprong."
       },
       "moderate": {
         "label": "Aktiewe hormonale verandering",
-        "line": "Jou simptome raak jou daaglikse lewe. Jy verdien behoorlike ondersteuning — nie om aangesê te word om deur te druk nie."
+        "line": "Jou antwoorde dui daarop dat dit aan jou dae raak. Ondersteuning bestaan, en jy verdien dit."
       },
       "significant": {
         "label": "Beduidende impak",
-        "line": "Jou simptome het 'n betekenisvolle impak op jou daaglikse lewe. Jy verdien nou ondersteuning — en jy kan dit kry."
+        "line": "Jou antwoorde dui daarop dat daar baie aangaan. Jy hoef dit nie alleen te dra nie, daar is regte hulp."
       }
     },
     "persona": {
       "sally": {
         "headline": "Jy was op soek. Hier is jou antwoorde.",
-        "body": "Wat jy voel is werklik. Dit het 'n naam. En daar is ondersteuning beskikbaar — vandag nog."
+        "body": "Wat jy voel is eg, en soveel vroue beskryf presies dit. Daar is ondersteuning vir jou beskikbaar, van vandag af."
       },
       "olga": {
-        "headline": "Daar mag meer aangaan as wat jy besef het.",
-        "body": "Baie van die dinge wat jy aan stres of ouer word toegeskryf het, is erkende simptome van hormonale verandering."
+        "headline": "Jou antwoorde is 'n nadere kyk werd.",
+        "body": "Baie vroue skryf dinge aan stres of ouer word toe, en vind later dat hormone ook deel van die storie was."
       },
       "vicky": {
-        "headline": "Jy verdien om gehoor te word — en gehelp te word.",
-        "body": "As jy voorheen van die hand gewys is, was dit nie reg nie. Mandi sal saam met jou stap na die regte sorg."
+        "headline": "Jy verdien om gehoor te word.",
+        "body": "As dit voorheen moeilik was om antwoorde te kry, is jy nie alleen nie, en dit kan van hier af anders verloop. Mandi stap saam met jou na die regte sorg."
       },
       "nelly": {
-        "headline": "Jy weet baie. Hier is wat die nuutste bewyse sê.",
+        "headline": "Jy weet baie. Hier is wat navorsing nou sê.",
         "body": "Jou navorsing het jou goed bedien. Mandi sal seker maak jou volgende konsultasie is so ingelig as moontlik."
       },
       "nina": {
@@ -453,11 +459,11 @@
       },
       "retha": {
         "headline": "Dit is nooit te laat om beter te voel nie.",
-        "body": "Die bewyse oor latere ingrype is meer positief as wat jy dalk gehoor het. Daar is opsies werd om te verken."
+        "body": "Navorsing oor ondersteuning wat later in die lewe begin, is meer bemoedigend as wat baie vroue vertel is. Daar is opsies wat die moeite werd is om te verken."
       },
       "colleen": {
         "headline": "Jou situasie verdien spesialis-insette.",
-        "body": "Met 'n komplekse geskiedenis beteken die regte sorg die regte dokter — een wat beide jou toestande en jou hormone verstaan."
+        "body": "Met 'n komplekse geskiedenis beteken die regte sorg die regte dokter, een wat beide jou toestande en jou hormone verstaan."
       }
     },
     "safety": {
@@ -475,36 +481,36 @@
     "steps": {
       "book-first": {
         "title": "Bespreek 'n konsultasie",
-        "body": "Gebaseer op wat jy gedeel het, is dit die belangrikste volgende stap om met 'n HRT-ingeligte dokter te praat. Vind een wat jou taal praat en hormone verstaan.",
+        "body": "Baie vroue vind dat 'n gesprek met 'n HRT-ingeligte dokter alles verander. Vind een wat jou taal praat en hormone verstaan.",
         "cta": "Vind 'n dokter"
       },
       "education-first": {
         "title": "Verstaan wat aangaan",
-        "body": "Begin met die basiese — hoe hormonale verandering werklik lyk, en waarom jou simptome sin maak.",
+        "body": "Begin met die basiese, hoe hormonale verandering werklik lyk, en waarom jou simptome sin maak.",
         "cta": "Lees: die waarheid oor HRT"
       },
       "normalise-first": {
         "title": "Jy is nie alleen hierin nie",
-        "body": "Hoor van ander Suid-Afrikaanse vroue wat presies was waar jy is — en hul weg deur dit gevind het.",
+        "body": "Hoor van ander Suid-Afrikaanse vroue wat presies was waar jy is, en hul weg deur dit gevind het.",
         "cta": "Lees ware stories"
       },
       "options-first": {
         "title": "Ken jou opsies",
-        "body": "Liggaam-identiese HRT, leefstyl-benaderings, integratiewe sorg — verstaan wat beskikbaar is en wat die bewyse sê.",
+        "body": "Liggaamsidentiese HRT, leefstylbenaderings, integrerende sorg. Verstaan wat beskikbaar is en wat navorsing sê.",
         "cta": "Verken hulpbronne"
       },
       "clinic-first": {
         "title": "Vind sorg naby jou",
-        "body": "Soek deur ons gids van HRT-vriendelike praktisyns — gefiltreer volgens jou taal en ligging, insluitend telegeneeskunde.",
+        "body": "Soek deur ons gids van HRT-vriendelike praktisyns, gefiltreer volgens jou taal en ligging, insluitend telegeneeskunde.",
         "cta": "Vind 'n dokter"
       },
       "download-first": {
         "title": "Neem dit na jou dokter",
-        "body": "Laai 'n een-bladsy opsomming van jou simptoomprofiel, MenoScore, en vrae om te vra af — die dokument wat jou konsultasie verander.",
+        "body": "Laai 'n eenbladsy-opsomming af van jou simptoomprofiel, MenoScore, en vrae om te vra. Baie vroue sê dit het hul konsultasie verander.",
         "cta": "Laai jou opsomming af"
       }
     },
-    "retake": "Jou simptome kan met tyd verander.",
+    "retake": "Liggame verander met tyd, en so ook antwoorde. Jy kan enige tyd 'n vars kombers stik.",
     "retakeCta": "Doen die vraelys oor",
     "feedback": {
       "title": "Voel hierdie padkaart reg vir jou?",
@@ -513,7 +519,7 @@
       "notQuite": "Nie heeltemal nie",
       "missing": "Is daar iets wat jy verwag het om te sien wat ontbreek?",
       "submit": "Stuur terugvoer",
-      "thanks": "Dankie — dit help ons om iets beter te bou vir die volgende vrou wat aankom."
+      "thanks": "Dankie, dit help ons om iets beter te bou vir die volgende vrou wat aankom."
     }
   },
   "nav": {
@@ -531,17 +537,17 @@
   },
   "auth": {
     "login": {
-      "title": "Welkom terug.",
+      "title": "Goed om jou te sien.",
       "subtitle": "Teken in om jou padkaart, simptoom-rekord en in-meldings te sien.",
-      "submit": "Welkom terug",
+      "submit": "Teken in",
       "submitPending": "Teken jou in…",
       "newPrompt": "Nuut by Mandi?",
-      "newCta": "Sluit aan by Mandi"
+      "newCta": "Sluit aan by die Mandi-reis"
     },
     "signup": {
-      "title": "Sluit aan by Mandi.",
-      "subtitle": "Stoor jou padkaart, hou jou simptome dop, en sien hoe jy oor tyd verander.",
-      "submit": "Sluit aan by Mandi",
+      "title": "Begin jou Mandi-reis.",
+      "subtitle": "Hou jou kombers veilig, hou boek van hoe jy voel, en sien hoe jou storie oor tyd ontvou.",
+      "submit": "Sluit aan by die Mandi-reis",
       "submitPending": "Skep jou rekening…",
       "havePrompt": "Het reeds 'n rekening?",
       "haveCta": "Teken in",
@@ -555,15 +561,15 @@
       "confirmPassword": "Bevestig wagwoord"
     },
     "strength": {
-      "weak": "Swak",
+      "weak": "Nog nie sterk genoeg nie",
       "fair": "Op pad daar",
-      "strong": "Sterk"
+      "strong": "Pragtig sterk"
     },
     "error": {
       "passwordMismatch": "Jou wagwoorde stem nog nie ooreen nie.",
       "passwordTooShort": "Kies 'n wagwoord van minstens 8 karakters.",
       "invalidLogin": "Daardie e-pos en wagwoord het nie ooreengestem nie. Probeer weer.",
-      "emailNotConfirmed": "Bevestig asseblief jou e-pos — kyk in jou inkassie.",
+      "emailNotConfirmed": "Bevestig asseblief jou e-pos, kyk in jou inkassie.",
       "rateLimit": "Te veel pogings. Wag 'n minuut en probeer weer.",
       "alreadyRegistered": "Daardie e-pos het reeds 'n rekening. Probeer eerder inteken.",
       "invalidEmail": "Daardie e-pos lyk nie heeltemal reg nie.",
@@ -577,28 +583,28 @@
     "name": {
       "eyebrow": "Die Naam",
       "heading": "Mandi is die gemeenskaplike draad wat deur ons almal loop.",
-      "p1": "In Afrikaans is dit 'n verkorte vorm van Amanda. In isiXhosa is dit ontleen aan Mandisa. Verskillende tale, verskillende gemeenskappe, verskillende lewenservarings — en tog is ons hier, dieselfde vroue, wat dieselfde liggame navigeer, dieselfde sorg verdien.",
-      "p2": "Ons het 'n naam wat met M begin gekies om hierdie projek in Menopouse te anker — die lewensfase wat hierdie missie aangewakker het. Maar Mandi was altyd bedoel om buite daardie eerste hoofstuk te groei. Want hormonale gesondheid begin en eindig nie by menopouse nie. Dit is 'n lewenslange reis, en elke vrou verdien 'n vertroude metgesel vir die hele duur daarvan.",
-      "p3": "Mandi is daardie metgesel. Vir ons almal."
+      "p1": "In Afrikaans is dit 'n verkorte vorm van Amanda. In isiXhosa is dit ontleen aan Mandisa. Verskillende tale, verskillende gemeenskappe, verskillende lewenservarings, en tog is ons hier, dieselfde vroue, wat dieselfde liggame navigeer, dieselfde sorg verdien.",
+      "p2": "Ons het 'n naam wat met M begin gekies om hierdie projek in Menopouse te anker, die lewensfase wat hierdie missie aangewakker het. Maar Mandi was altyd bedoel om buite daardie eerste hoofstuk te groei. Want hormonale gesondheid begin en eindig nie by menopouse nie. Dit is 'n lewenslange reis, en elke vrou verdien 'n vertroude metgesel vir die hele duur daarvan.",
+      "p3": "Mandi is daardie metgesel, 'n plek om te verstaan wat jou liggaam sê, in die taal waarin jy die meeste tuis voel."
     },
     "story": {
       "eyebrow": "Waar Dit Begin Het",
       "heading": "Hierdie platform is uit 'n persoonlike storie gebore.",
-      "p1": "In my laat 40's het ek hartkloppings genoem aan twee ouer kollegas oor middagete. Een het dadelik voorgestel dat ek 'n hartspesialis sien. Die ander het gesê dit is net deel van ouer word. Geen het menopouse genoem nie. Geen het genoem dat hartkloppings een van die meer as 100 erkende simptome van hormonale verandering is nie. Ek het geen idee gehad nie.",
-      "p2": "Kort daarna het ek na Kaapstad verhuis op die ouderdom van 50, gereed vir opwindende nuwe avonture. In plaas daarvan het ek in die hospitaal beland met 'n ernstige nierinfeksie veroorsaak deur 'n blaasinfeksie. Ek het 'n uroloog gesien. My huisarts. 'n Ginekoloog. Nie een van hulle het gevra of ek op HRT is nie. Nie een het my herhalende infeksies aan my hormone gekoppel nie — selfs al is die verband goed gevestig. Hulle het my simptome behandel, nie die oorsaak nie.",
+      "p1": "In my laat 40's het ek hartkloppings teenoor twee ouer kollegas oor middagete genoem. Een het dadelik voorgestel ek sien 'n hartspesialis. Die ander het gesê dis net deel van ouer word. Nie een het menopouse genoem nie. Nie een het genoem dat hartkloppings een van die baie erkende simptome van hormonale verandering is nie. Ek het geen idee gehad nie.",
+      "p2": "Kort daarna het ek op 50 na Kaapstad getrek, gereed vir opwindende nuwe avonture. In plaas daarvan het ek in die hospitaal beland met 'n ernstige nierinfeksie wat deur 'n blaasinfeksie veroorsaak is. Ek het 'n uroloog gesien. My huisarts. 'n Ginekoloog. Nie een het gevra of ek op HRT is nie. Nie een het my herhalende infeksies met my hormone verbind nie, al wys navorsing aanhoudend na daardie verband. Hulle het my simptome behandel, nie die oorsaak nie.",
       "p3": "Ek het jare lank gewrigspyn, breinmist, buierighede, urineweë-infeksies, pynlike seks, warmgloede, droë oë en baie meer simptome verduur.",
       "p4": "Toe het ek aanlyn gegaan. Ek het Dr Louise Newson gevind. Dr Mary Claire Haver. Dr Lisa Mosconi. En baie meer. Ek het al my vriende begin vertel om hulp te kry. My man noem my 'n menopouse-evangelis.",
       "quote": "Sodra jy beter weet, kan jy beter doen.",
       "quoteAuthor": "Maya Angelou",
-      "p5": "Dit het my gemotiveer om 'n dokumentêre reeks aan kykNET voor te stel genaamd Meer As Warm Gloede — 'n vierdelige dokumentêre reeks wat in Augustus 2026 bekendgestel word. Dit breek die stilte rondom menopouse in Afrikaanssprekende gemeenskappe, vertel ware stories van ware vroue, en gee kykers die kennis en selfvertroue om hul gesondheid in eie hande te neem.",
-      "p6": "Die dokumentêr het deure oopgemaak. Meer navorsing het my gelei om MIDI in die Verenigde State te ontdek — 'n platform wat onlangs eenhoorn-status bereik het, en honderde duisende vroue oor al 50 state dien. Daardie besef het iets aan die gang gesit.",
+      "p5": "Dit het my gemotiveer om 'n dokumentêre reeks aan kykNET voor te stel genaamd Meer As Warm Gloede, 'n vierdelige dokumentêre reeks wat in Augustus 2026 bekendgestel word. Dit breek die stilte rondom menopouse in Afrikaanssprekende gemeenskappe, vertel ware stories van ware vroue, en gee kykers die kennis en selfvertroue om hul gesondheid in eie hande te neem.",
+      "p6": "Die dokumentêr het deure oopgemaak. Meer navorsing het my gelei om MIDI in die Verenigde State te ontdek, 'n platform wat onlangs eenhoorn-status bereik het, en honderde duisende vroue oor al 50 state dien. Daardie besef het iets aan die gang gesit.",
       "p7": "Ek onderneem nou hierdie reis saam met 'n paar ongelooflike vroue om ons eie Suid-Afrikaanse ekwivalent te bou: JoinMandi.com."
     },
     "vision": {
       "eyebrow": "Die Visie",
       "heading": "JoinMandi.com is meer as 'n webwerf. Dit is 'n beweging.",
-      "p1": "Dit is die oortuiging dat elke Suid-Afrikaanse vrou — in Parow of Polokwane, in Soweto of Stellenbosch, hetsy sy Afrikaans, isiZulu, isiXhosa of enige van die ander tale wat hierdie land buitengewoon maak, praat — verdien om te verstaan wat in haar eie liggaam aangaan, in 'n taal wat soos tuis voel.",
-      "p2": "Suid-Afrika het 11 amptelike tale. Die meeste digitale gesondheidsplatforms bied een: Engels. Dit is nie goed genoeg nie. Mandi is gebou om saam met die land te groei — in elke gemeenskap waar vroue sonder ingeligte antwoorde en behoorlike mediese sorg gelaat is."
+      "p1": "Dit is die oortuiging dat elke Suid-Afrikaanse vrou, in Parow of Polokwane, in Soweto of Stellenbosch, hetsy sy Afrikaans, isiZulu, isiXhosa of enige van die ander tale wat hierdie land buitengewoon maak, praat, verdien om te verstaan wat in haar eie liggaam aangaan, in 'n taal wat soos tuis voel.",
+      "p2": "Suid-Afrika het twaalf amptelike tale. Die meeste digitale gesondheidsplatforms bied een: Engels. Ons kan soveel beter doen. Mandi is gebou om saam met die land te groei, tot in elke gemeenskap waar vroue sonder ingeligte antwoorde en behoorlike mediese sorg gelaat is."
     },
     "alone": {
       "headline": "Geen vrou behoort alleen, oningelig of ongesteun te voel tydens menopouse en daarna nie.",
@@ -606,18 +612,18 @@
     },
     "blanket": {
       "eyebrow": "Die Mandi Kombers",
-      "body": "Die sentrale visuele metafoor vir Mandi is 'n kombers — 'n kombers van verskillende stowwe, verskillende teksture, verskillende tradisies, saamgestik tot iets heel, warm en mooi. Net soos Mandi. Net soos Suid-Afrika."
+      "body": "Die sentrale visuele metafoor vir Mandi is 'n kombers, 'n kombers van verskillende stowwe, verskillende teksture, verskillende tradisies, saamgestik tot iets heel, warm en mooi. Net soos Mandi. Net soos Suid-Afrika."
     },
     "cta": {
       "heading": "Gereed om jou reis te begin?",
-      "button": "Praat met Mandi"
+      "button": "Begin jou kombers"
     }
   },
   "resources": {
     "eyebrow": "Hulpbronne",
-    "title": "Kennis wat jy kan vertrou.",
-    "subhead": "Alles hier is bewysgebaseer, hersien vir akkuraatheid, en in eenvoudige taal geskryf. Geen jargon. Geen oordeel. Geen verkoop nie.",
-    "intro": "Alles hier is bewysgebaseer, hersien vir akkuraatheid, en in eenvoudige taal geskryf. Geen jargon. Geen oordeel. Geen verkoping van iets aan jou nie. Net die inligting wat jy verdien om te hê.",
+    "title": "Kennis wat jou ontmoet waar jy is.",
+    "subhead": "Alles hier is in gewone taal geskryf en in navorsing gegrond, geen jargon, geen oordeel, geen verkopery nie.",
+    "intro": "Neem wat jy nodig het, teen jou eie pas. Die inligting wat jy verdien om te hê, in woorde wat sin maak.",
     "category": {
       "understanding": "Verstaan Menopouse",
       "hrt": "HRT & Behandeling",
@@ -637,11 +643,11 @@
     "items": {
       "perimenopause": {
         "title": "Wat is perimenopouse?",
-        "description": "'n Duidelike, bewysgebaseerde inleiding tot die jare voor menopouse — wat in jou liggaam aangaan en hoekom dit saak maak."
+        "description": "'n Duidelike, bewysgebaseerde inleiding tot die jare voor menopouse, wat in jou liggaam aangaan en hoekom dit saak maak."
       },
       "symptoms": {
-        "title": "Die 100+ simptome van hormonale verandering",
-        "description": "Hartkloppings. Gewrigspyn. Breinmist. Droë oë. Hierdie gids dek die hele prentjie — sodat niks gemis word nie."
+        "title": "Die baie simptome van hormonale verandering",
+        "description": "Hartkloppings. Gewrigspyn. Breinmis. Droë oë. 'n Gids tot die hele landskap, sodat jy jouself daarin kan vind."
       },
       "bodyIdentical": {
         "title": "Liggaam-identiese HRT verduidelik",
@@ -649,32 +655,32 @@
       },
       "routes": {
         "title": "HRT-toedieningsroetes",
-        "description": "Plakkers, gels, tablette, sproeie, vaginale preparate — 'n eenvoudige gids tot jou opsies."
+        "description": "Plakkers, gels, tablette, sproeie, vaginale preparate, 'n eenvoudige gids tot jou opsies."
       },
       "mood": {
         "title": "Hormone en jou bui",
-        "description": "Angs, lae bui, en woede uit niks. Verstaan die hormonale verband — en wat help."
+        "description": "Angs, lae bui, en woede uit niks. Verstaan die hormonale verband, en wat help."
       },
       "nutrition": {
         "title": "Eet vir hormonale gesondheid",
-        "description": "Praktiese voedingsleiding vir perimenopouse en verder — wat die bewyse werklik sê oor kos en hormone."
+        "description": "Praktiese voedingsleiding vir perimenopouse en verder, wat die bewyse werklik sê oor kos en hormone."
       },
       "whi": {
-        "title": "Die WHI-studie — wat werklik gebeur het",
-        "description": "Die 2002-studie wat alles verander het — en hoekom die gevolgtrekkings verkeerd voorgestel is. 'n Eenvoudige opsomming."
+        "title": "Die WHI-studie, wat werklik gebeur het",
+        "description": "Die 2002-studie wat alles verander het, en hoekom die gevolgtrekkings verkeerd voorgestel is. 'n Eenvoudige opsomming."
       },
       "brain": {
         "title": "Estrogeen en breingesondheid",
-        "description": "Nuwe navorsing oor estrogeen se rol in kognitiewe funksie en die belangrikheid van die 'kritieke venster' van behandeling."
+        "description": "Nuwe navorsing oor estrogeen en die brein, en hoekom die tydsberekening van behandeling so 'n lewendige gesprek onder navorsers is."
       }
     },
-    "notice1": "Meer hulpbronne word gereeld bygevoeg. Alle inhoud word deur kliniese vennoot Dr Funeka Bango hersien voor publikasie.",
+    "notice1": "Meer hulpbronne word gereeld bygevoeg, voorberei vir hersiening saam met ons kliniese vennoot Dr Funeka Bango.",
     "notice2": "Hulpbronne in isiZulu en isiXhosa word ontwikkel. As jy met vertaling kan help, kontak ons."
   },
   "events": {
     "eyebrow": "Gather · Hlangana · Kom Saam",
     "title": "Mandi Byeenkomste",
-    "subhead": "Waar die JoinMandi-gemeenskap werklik word. Menopouse was privaat — dit is waar dit gemeenskaplik word.",
+    "subhead": "Waar vroue mekaar ontmoet, leer en saam lag. Menopouse was privaat, hier word dit gemeenskaplik.",
     "format": {
       "online": "Aanlyn",
       "inperson": "In persoon"
@@ -683,17 +689,17 @@
     "hostedBy": "Aangebied deur {{host}}",
     "items": {
       "screening": {
-        "title": "Meer as Warm Gloede — Gemeenskapsvertoning",
-        "description": "Die kykNET-dokumentêr op die groot skerm. Gemeenskapsvertonings gevolg deur 'n gefasiliteerde gesprek — op 'n plek naby jou.",
+        "title": "Meer as Warm Gloede, Gemeenskapsvertoning",
+        "description": "Die kykNET-dokumentêr op die groot skerm. Gemeenskapsvertonings gevolg deur 'n gefasiliteerde gesprek, op 'n plek naby jou.",
         "host": "MrsKing Productions"
       },
       "askspecialist": {
-        "title": "Vra 'n Menopouse-spesialis — Lewendig Aanlyn",
+        "title": "Vra 'n Menopouse-spesialis, Lewendig Aanlyn",
         "description": "'n Lewendige Q&A met 'n integratiewe dokter. Bring jou vrae oor HRT, liggaam-identiese hormone, en praktiese volgende stappe.",
         "host": "Dr Funeka Bango"
       },
       "cafe": {
-        "title": "Mandi Kafee — Menopouse oor Koffie",
+        "title": "Mandi Kafee, Menopouse oor Koffie",
         "description": "Geen agenda, geen druk nie. Net vroue wat eerlik oor hul liggame praat oor koffie. Loer in enige tyd.",
         "host": "Mandi Community"
       },
@@ -705,18 +711,18 @@
     },
     "host": {
       "heading": "Bied 'n byeenkoms op Mandi aan.",
-      "body": "Hetsy jy 'n ginekoloog is wat 'n maandelikse Q&A doen, 'n NRO wat 'n gemeenskaps-oggend hou, of 'n werkplek wat jou personeel ondersteun — Mandi Byeenkomste is ook jou platform. Gratis om te lys.",
+      "body": "'n Ginekoloog met 'n maandelikse vraesessie, 'n NRO wat 'n gemeenskapsoggend aanbied, 'n werkplek wat sy mense ondersteun. As jy vroue saam met Mandi wil bymekaarbring, is hierdie platform ook joune, gratis om te lys.",
       "cta": "Stuur 'n byeenkoms in"
     },
     "principle": {
       "eyebrow": "Ons Beginsel",
-      "line": "Gemeenskap is altyd gratis. Kundigheid mag 'n fooi dra."
+      "line": "Gemeenskapsbyeenkomste is altyd gratis. Kundige sessies kan soms 'n fooi dra."
     }
   },
   "doctor": {
     "eyebrow": "Vind 'n Dokter",
     "title": "Sorg wat jou taal praat.",
-    "subhead": "HRT-ingeligte praktisyns oor Suid-Afrika — privaat, openbaar, en aanlyn. Filtreer volgens provinsie, taal en formaat.",
+    "subhead": "HRT-ingeligte praktisyns oor Suid-Afrika, privaat, openbaar, en aanlyn. Filtreer volgens provinsie, taal en formaat.",
     "filter": {
       "province": "Provinsie",
       "language": "Taal",
@@ -726,7 +732,7 @@
       "online": "Aanlyn",
       "both": "Albei"
     },
-    "empty": "Geen klinieke gevind vir jou keuse nie. Meer word gereeld bygevoeg.",
+    "empty": "Geen klinieke pas nog by jou keuse nie. Nuwe praktisyns sluit heeltyd aan, kom loer gou weer.",
     "bookConsult": "Bespreek konsultasie",
     "clinics": {
       "newson": {
@@ -743,7 +749,7 @@
       }
     },
     "meetEyebrow": "Ontmoet die Dokters",
-    "meetTitle": "Gesigte wat jy kan vertrou.",
+    "meetTitle": "Dokters wat luister.",
     "doctors": {
       "bango": {
         "practice": "Integratiewe Medisyne",
@@ -759,82 +765,82 @@
   "hrt": {
     "eyebrow": "Opvoeding",
     "title": "Die Waarheid Oor HRT",
-    "subhead": "Vrees het in 24 uur in 2002 die wêreld omgereis. Die regstelling het 23 jaar geneem. Hier is wat elke vrou verdien om te weet — in eenvoudige Afrikaans.",
+    "subhead": "Vrees het in 24 uur in 2002 die wêreld omgereis. Die regstelling het 23 jaar geneem. Hier is wat elke vrou verdien om te weet, in eenvoudige Afrikaans.",
     "compare": {
       "heading": "Sinteties teenoor Liggaam-identies",
-      "intro": "Die belangrikste ding wat vroue nie weet nie, is dat nie alle HRT dieselfde is nie. Hierdie onderskeid is die sleutel tot alles wat volg.",
+      "intro": "Nie alle HRT is dieselfde nie. Daardie een onderskeid is die sleutel tot alles wat volg.",
       "synthetic": {
         "label": "Sintetiese / nie-menslike HRT",
         "name": "Premarin · Provera",
-        "body": "Premarin — gemaak van perde-urine — bevat estrogene wat die menslike liggaam nie natuurlik produseer nie. Provera (MPA) — 'n sintetiese progestien. Nie dieselfde molekule as menslike progesteroon nie.",
+        "body": "Premarin, gemaak van perde-urine, bevat estrogene wat die menslike liggaam nie natuurlik produseer nie. Provera (MPA), 'n sintetiese progestien. Nie dieselfde molekule as menslike progesteroon nie.",
         "note": "Dit is wat die 2002 WHI-studie getoets het."
       },
       "bodyIdentical": {
         "label": "Liggaam-identiese HRT",
         "name": "Estradiol · Gemikroniseerde Progesteroon",
-        "body": "Estradiol (17β-estradiol) — afgelei van plante. Chemies identies aan menslike estrogeen. Gemikroniseerde progesteroon (Prometrium / Utrogestan) — identies aan menslike progesteroon.",
+        "body": "Estradiol (17β-estradiol), afgelei van plante. Chemies identies aan menslike estrogeen. Gemikroniseerde progesteroon (Prometrium / Utrogestan), identies aan menslike progesteroon.",
         "note": "Dit is die aanbevole benadering vandag."
       }
     },
     "timeline": {
-      "heading": "1992 — Vandag",
-      "intro": "'n Tydlyn van wat werklik gebeur het — en wat nou verander.",
+      "heading": "1992, Vandag",
+      "intro": "'n Tydlyn van wat werklik gebeur het, en wat nou verander.",
       "t1992": {
         "headline": "Premarin piek.",
-        "body": "Premarin — gemaak van die urine van dragtige merries — word die mees voorgeskrewe middel in die VSA. Die WHI-studie begin, en toets Premarin plus Provera op 160 000 vroue."
+        "body": "Premarin, gemaak van die urine van dragtige merries, word die mees voorgeskrewe middel in die VSA. Die WHI-studie begin, en toets Premarin plus Provera op 160 000 vroue."
       },
       "t2002": {
-        "headline": "Die studie wat alles verander het — om die verkeerde redes.",
-        "body": "Die WHI-toets word vroeg gestop. Wêreldwye opskrifte verklaar HRT veroorsaak borskanker. Gebruik val met 80%. Die absolute risiko — 4 gevalle per 1 000 vroue oor 5 jaar — word selde genoem. Resultate word op alle HRT toegepas, insluitend liggaam-identiese hormone wat nooit bestudeer is nie."
+        "headline": "Die studie wat alles verander het, om die verkeerde redes.",
+        "body": "Die WHI-toets word vroeg gestop. Wêreldwye opskrifte verklaar HRT veroorsaak borskanker. Gebruik val met 80%. Die absolute risiko, 4 gevalle per 1 000 vroue oor 5 jaar, word selde genoem. Resultate word op alle HRT toegepas, insluitend liggaam-identiese hormone wat nooit bestudeer is nie."
       },
       "t2003": {
         "headline": "Swart-omraamde waarskuwings toegepas.",
-        "body": "Die FDA pas klas-wye swart-omraamde waarskuwings toe op alle HRT-produkte — insluitend liggaam-identiese hormone wat geen sodanige bewyse van skade dra nie. 'n Generasie vroue word behandeling ontsê op grond van bevindinge wat nie op hulle van toepassing is nie."
+        "body": "Die FDA plaas omvattende waarskuwings op alle HRT-produkte, insluitend liggaamsidentiese hormone wat nooit deel van die studie was nie. 'n Generasie vroue word behandeling geweier op grond van bevindings wat dalk nie op hulle van toepassing is nie."
       },
       "t2008": {
         "headline": "Die deurslaggewende Franse bevinding.",
-        "body": "Die E3N-kohortstudie vind dat liggaam-identiese progesteroon nie borskankerrisiko verhoog nie — anders as die sintetiese progestien wat in WHI gebruik is. Die probleem in 2002 was nooit estrogeen nie — dit was die spesifieke sintetiese wat gebruik is."
+        "body": "Die E3N-kohortstudie vind dat liggaamsidentiese progesteroon nie die verhoogde borskankerrisiko dra wat by die sintetiese progestien in WHI gesien is nie. Navorsers wys al hoe meer na die spesifieke sintetiese middel wat in 2002 gebruik is, eerder as estrogeen self."
       },
       "t2013": {
-        "headline": "Estrogeen alleen verminder borskankerrisiko.",
-        "body": "'n Dekade se WHI-opvolg bevestig estrogeen-slegs HRT verminder borskankerinsidensie en sterfte beduidend. Dit weerspreek direk die 2002-boodskap — maar dit neem tien jaar om die publiek te bereik."
+        "headline": "Opvolgdata vertel 'n ander storie oor estrogeen.",
+        "body": "'n Dekade se WHI-opvolg vind dat estrogeen-alleen-HRT geassosieer was met laer borskankervoorkoms en -sterftes by die vroue wat bestudeer is. Dit neem tien jaar om die publiek te bereik."
       },
       "t2015": {
         "headline": "VK NICE beveel liggaam-identiese HRT aan.",
-        "body": "Liggaam-identiese HRT — estradiol-plakkers of -gel met gemikroniseerde progesteroon — word die aanbevole benadering. HRT-voorskrifte in Engeland begin van hierdie punt af styg."
+        "body": "Liggaam-identiese HRT, estradiol-plakkers of -gel met gemikroniseerde progesteroon, word die aanbevole benadering. HRT-voorskrifte in Engeland begin van hierdie punt af styg."
       },
       "t2025": {
         "headline": "FDA verwyder die waarskuwings.",
-        "body": "Die VSA HHS en FDA kondig die verwydering van breë swart-omraamde waarskuwings aan. Die FDA verklaar: vroue wat HRT binne 10 jaar na menopouse begin, mag kardiovaskulêre risiko tot 50%, Alzheimer-risiko met 35%, en breukrisiko met 50–60% verminder."
+        "body": "Die Amerikaanse HHS en FDA kondig die verwydering van breë waarskuwings aan. In sy persverklaring stel die FDA voor dat vroue wat HRT binne 10 jaar ná menopouse begin, aansienlik laer kardiovaskulêre, Alzheimer- en fraktuurrisiko kan sien, syfers wat navorsers nog weeg."
       },
       "t2026": {
         "headline": "Meer as Warm Gloede speel. JoinMandi.com word bekendgestel.",
-        "body": "Elke Suid-Afrikaanse vrou verdien hierdie geskiedenis — in haar taal."
+        "body": "Elke Suid-Afrikaanse vrou verdien hierdie geskiedenis, in haar taal."
       }
     },
     "sources": {
       "heading": "Bronne",
-      "disclaimer": "Slegs opvoedkundige inligting — nie mediese advies nie. Bespreek jou individuele omstandighede met 'n gekwalifiseerde gesondheidsorgverskaffer."
+      "disclaimer": "Slegs opvoedkundige inligting, nie mediese advies nie. Bespreek jou individuele omstandighede met 'n gekwalifiseerde gesondheidsorgverskaffer."
     },
     "cta": {
       "heading": "Waar laat dit jou?",
       "body": "Jy verdien eerlike antwoorde in jou eie taal van praktisyns wat hormonale gesondheid verstaan.",
-      "questionnaire": "Doen die vraelys",
+      "questionnaire": "Kyk wat jou simptome sê",
       "doctor": "Vind 'n dokter"
     }
   },
   "mothers": {
     "eyebrow": "'n Lewende Huldeblyk",
     "title": "Eer die Moeders",
-    "subhead": "Die morele kern van Mandi. 'n Stille, ernstige, diep menslike erkenning dat die platform wat vroue vandag gebruik op 'n fondament staan wat nie altyd vroue se liggame, stemme of keuses geëer het nie.",
+    "subhead": "Vir die vroue wat voor ons gekom het, wie se liggame die medisyne gebou het wat ons vandag het, en wie se stemme nie altyd geëer is nie. Hierdie bladsy onthou hulle.",
     "historical": {
       "baartman": {
         "years": "c. 1789 – 1815 · Oos-Kaap, Suid-Afrika",
-        "body": "'n Khoikhoi-vrou wat in 1810 uit Suid-Afrika geneem is en oor Europa as openbare skouspel uitgestal is. Sy is in 1815 in Parys oorlede, 26 jaar oud. Haar liggaam het tot 1974 in Frankryk uitgestal gebly. Nelson Mandela het haar terugkeer in 1994 amptelik versoek. Op 9 Augustus 2002 — Nasionale Vrouedag — is sy uiteindelik naby haar geboorteplek begrawe. Sy het tuis gekom. Sy behoort aan ons almal."
+        "body": "'n Khoikhoi-vrou wat in 1810 uit Suid-Afrika geneem is en oor Europa as openbare skouspel uitgestal is. Sy is in 1815 in Parys oorlede, 26 jaar oud. Haar liggaam het tot 1974 in Frankryk uitgestal gebly. Nelson Mandela het haar terugkeer in 1994 amptelik versoek. Op 9 Augustus 2002, Nasionale Vrouedag, is sy uiteindelik naby haar geboorteplek begrawe. Sy het tuis gekom. Sy behoort aan ons almal."
       },
       "anarcha": {
         "years": "Montgomery, Alabama · 1840's",
-        "body": "Drie geslaafde Swart vroue wie se name ons ken. Tussen 1845 en 1849 is hulle aan eksperimentele chirurgie onderwerp — Anarcha het minstens 30 operasies sonder narkose ondergaan — terwyl die fondament van moderne ginekologie op hul lyding gebou is. In 2021 is 'n 15-voet monument tot hul eer opgerig. Hul name word nou uitgespreek."
+        "body": "Drie geslaafde Swart vroue wie se name ons ken. Tussen 1845 en 1849 is hulle aan eksperimentele chirurgie onderwerp, Anarcha het minstens 30 operasies sonder narkose ondergaan, terwyl die fondament van moderne ginekologie op hul lyding gebou is. In 2021 is 'n 15-voet monument tot hul eer opgerig. Hul name word nou uitgespreek."
       }
     },
     "finding": {
@@ -844,32 +850,33 @@
     "wall": {
       "eyebrow": "Die Lewende Muur",
       "heading": "Is jy al ooit van die hand gewys? Jy is nie alleen nie.",
-      "intro": "Kort stories wat deur Mandi-gebruikers ingedien word. Drie sinne of minder. Anoniem as hulle wil. Saam word hulle iets kragtig.",
+      "intro": "Stories wat vroue met ons gedeel het. Kort, waar, en anoniem gehou.",
       "thandi": "Vir drie jaar het ek gedink ek verloor my verstand. My dokter het gesê ek is gestres. Niemand het menopouse genoem nie.",
-      "mariette": "Ek het vyf jaar simptome gehad en nie geweet nie. Ek was nie besig om gek te word nie — my hormoon het verander.",
+      "mariette": "Ek het vyf jaar simptome gehad en nie geweet nie. Ek was nie besig om gek te word nie, my hormoon het verander.",
       "nomsa": "My ma het nooit hieroor gepraat nie. Haar ma het nooit daaroor gepraat nie. Ek wil hê my dogter moet 'n ander ervaring hê."
     },
     "closing": {
       "names": "Sarah Baartman. Anarcha. Betsey. Lucy. En elke vrou wie se naam nooit opgeskryf is nie.",
-      "body": "Hul liggame het die las gedra van 'n wetenskap wat nog nie geweet het hoe om hulle as menslik te behandel nie. Mandi is in hul eer gebou. Hierdie bladsy sal aanhou groei — want daar is meer name om te vind, en meer vroue om te hoor.",
+      "body": "Hul liggame het die las gedra van 'n wetenskap wat nog nie geweet het hoe om hulle as menslik te behandel nie. Mandi is in hul eer gebou. Hierdie bladsy sal aanhou groei, want daar is meer name om te vind, en meer vroue om te hoor.",
       "cta": "Deel 'n storie met Mandi"
     },
     "founder": {
-      "quote": "Hierdie platform is uit my eie storie gebore — jare van simptome wat niemand aan my hormone gekoppel het nie. Sodra jy beter weet, kan jy beter doen. En jy kan ander help om dieselfde te doen.",
+      "quote": "Hierdie platform is uit my eie storie gebore, jare van simptome wat niemand aan my hormone gekoppel het nie. Sodra jy beter weet, kan jy beter doen. En jy kan ander help om dieselfde te doen.",
       "role": "Stigter · MrsKing Productions"
     }
   },
   "journey": {
+    "greetingNoName": "Welkom terug.",
     "loading": "Laai jou reis…",
     "signedOutTitle": "Teken in om jou reis te sien.",
     "signedOutCta": "Teken in",
     "eyebrow": "My Reis",
     "greeting": "Welkom terug, {{name}}.",
-    "intro": "Dit is waar Mandi onthou wat vir jou saak maak.",
+    "intro": "Jou kombers, jou notas, jou pas. Hier veilig gehou vir jou.",
     "roadmap": {
       "emptyEyebrow": "Padkaart",
       "emptyTitle": "Jy het nog nie die vraelys gedoen nie.",
-      "emptyBody": "Spandeer tien minute saam met Mandi en kry 'n persoonlike padkaart — artikels, hulpbronne en 'n dokter-gereed-opsomming pasgemaak vir jou.",
+      "emptyBody": "Spandeer tien minute saam met Mandi en kry 'n persoonlike padkaart, artikels, hulpbronne en 'n dokter-gereed-opsomming pasgemaak vir jou.",
       "emptyCta": "Doen die vraelys",
       "eyebrow": "Jou laaste padkaart",
       "completed": "Voltooi {{date}}",
@@ -893,17 +900,17 @@
     "checkins": {
       "eyebrow": "In-meldings",
       "title": "Hoe jou reis vorder.",
-      "intro": "Twee sagte oomblikke om terug te kyk — en vorentoe.",
+      "intro": "Twee sagte oomblikke om terug te kyk, en vorentoe.",
       "sixWeek": "6-week in-melding",
       "sixWeekSub": "Vroeë veranderinge, eerste aksies geneem.",
       "threeMonth": "3-maand in-melding",
-      "threeMonthSub": "Volledige hersiening. Weerspieël die NHS / NICE-mylpaal.",
+      "threeMonthSub": "'n Volle hersiening, die drie-maande-mylpaal wat spesialiste aanbeveel.",
       "stateAvailable": "Nou beskikbaar",
       "stateCompleted": "Voltooi",
       "stateUpcoming": "Komende",
       "start": "Begin in-melding",
       "upcomingNote": "Mandi sal dit oplig wanneer die tyd reg is.",
-      "completedNote": "Begin by {{score}} — mooi dat jy vir jouself opdaag."
+      "completedNote": "Begin by {{score}}, mooi dat jy vir jouself opdaag."
     },
     "persona": {
       "sally": "Soekende Sally",
@@ -916,18 +923,28 @@
     }
   },
   "footer": {
-    "privacy": "Jou privaatheid — hoe ons jou data gebruik",
+    "privacy": "Jou privaatheid, hoe ons jou data gebruik",
     "terms": "Voorwaardes",
     "contact": "Kontak"
-  }
-,
+  },
   "exhibition": {
+    "prevQuestion": "Vorige vraag",
+    "restart": "Begin oor",
+    "mode": {
+      "title": "Hoe wil jy antwoord?",
+      "taps": "Vinnige tikke",
+      "tapsSub": "Een vraag op 'n slag, onder twee minute",
+      "chat": "Gesels met Mandi",
+      "chatSub": "'n Sagte gesprek, sy antwoord terug"
+    },
     "capture": {
       "pageGate": "Antwoord al vier om voort te gaan.",
       "whatsapp": "WhatsApp-nommer (opsioneel)",
       "whatsappPlaceholder": "082 000 0000",
       "age": "Jou ouderdom (opsioneel)",
       "ages": {
+        "30-39": "30–39",
+        "20-29": "20–29",
         "40-44": "40–44",
         "45-49": "45–49",
         "50-54": "50–54",
@@ -935,18 +952,19 @@
         "60plus": "60+",
         "none": "Verkies om nie te sê nie"
       },
-      "marketing": "Ja, Mandi mag my kontak oor my volledige assessering, geleenthede en ondersteuning. Ek kan enige tyd sê ek wil nie meer nie.",
+      "marketing": "Hou my op hoogte, nuus, geleenthede en die Mandi-reis.",
       "finePrint": "Ons deel nooit jou besonderhede nie. Jy kan enige tyd vra dat ons alles uitvee."
     },
     "chat": {
+      "greeting": "Hallo, ek is Mandi. Ek het agt vinnige vrae oor hoe jy die laaste tyd voel, tik net die antwoord wat pas.",
       "mind-cognition": {
         "hi": {
-          "1": "Daai woord-soek gevoel — dis nie jou kop wat jou faal nie.",
-          "2": "Jou geheue is nie stukkend nie. Hormone raak dit ook."
+          "1": "Daai woord-soek gevoel, dis nie jou kop wat jou faal nie.",
+          "2": "Jou geheue is nie stukkend nie. Soveel vroue beskryf presies dit."
         },
         "lo": {
           "1": "Goed so. Jou helderheid hou nog stand.",
-          "2": "Dankie — dis nuttig om te weet."
+          "2": "Dankie, dis nuttig om te weet."
         }
       },
       "nervous-system": {
@@ -955,24 +973,24 @@
           "2": "Jou lyf hou jou snags wakker. Dit tel."
         },
         "lo": {
-          "1": "Goed — jou nagte hou nog.",
+          "1": "Goed, jou nagte hou nog.",
           "2": "Dankie."
         }
       },
       "body": {
         "hi": {
-          "1": "Jou lyf praat. Dit is nie sommer net ouer word nie.",
+          "1": "Jou lyf vertel jou iets, en dis die moeite werd om te luister.",
           "2": "Dit is regtig, en dit is bekend."
         },
         "lo": {
-          "1": "Dankie — genoteer.",
+          "1": "Dankie, genoteer.",
           "2": "Goed so."
         }
       },
       "other": {
         "hi": {
-          "1": "Ja — daai een verras byna almal.",
-          "2": "Dis menopouse. Regtig."
+          "1": "Ja, daai een verras byna almal.",
+          "2": "Baie vroue maak daardie verband eers baie later."
         },
         "lo": {
           "1": "Goed om te weet.",
@@ -991,31 +1009,31 @@
       }
     },
     "story": {
-      "disclaimer": "Slegs opvoedkundige inligting — nie mediese advies nie.",
+      "disclaimer": "Slegs opvoedkundige inligting, nie mediese advies nie.",
       "intro": {
         "title": "Jou kombers vertel 'n storie",
-        "sub": "Rol af — elke lappie wat jy gestik het, het iets te sê."
+        "sub": "Rol af, elke lappie wat jy gestik het, het iets te sê."
       },
       "cute": {
         "context": "Elke storie begin êrens.",
-        "mind-cognition": "Woorde wat wegraak? Hulle is nie weg nie — net gou op 'n teepouse.",
+        "mind-cognition": "Woorde wat wegraak? Hulle is nie weg nie, net gou op 'n teepouse.",
         "mood": "Gevoelens wat bollemakiesie slaan? Daar is 'n rede.",
         "nervous-system": "Jou liggaam stuur vir jou poskaarte.",
         "body": "Pyne wat ongenooid opgedaag het? Ons sien hulle.",
-        "urogenital": "Die dinge waaroor niemand praat nie — ons praat daaroor.",
+        "urogenital": "Die dinge waaroor niemand praat nie, ons praat daaroor.",
         "other": "Die 'wag, is DIT menopouse?'-afdeling.",
         "quality-of-life": "Dit raak die dinge wat jy liefhet. Dit maak saak.",
         "mindset": "Jy het opgedaag. Dis die grootste steek van almal."
       },
-      "factLabel": "Hoekom dit gebeur",
+      "factLabel": "Die menopouse-skakel",
       "hormoneHook": {
-        "title": "Dis nie jy nie. Dis jou hormone.",
-        "body": "Byna alles wat jy nou net gelees het, kom van veranderende estrogeen en progesteroon. Om hulle te verstaan is die sleutel om weer soos jouself te voel — en dis presies waarvoor Mandi daar is.",
-        "cta": "Leer hoe hormone werk op joinmandi.com"
+        "title": "Moenie jou hormone uitsluit nie.",
+        "body": "Soveel vroue leef jare lank met simptome soos hierdie, sonder om te weet dat hormone deel van die storie kan wees. Hoe jou kombers ook al lyk, dit is die moeite werd om hulle te verstaan. Dit is wat Mandi bou: doelgerigte, gedestigmatiseerde vrouegesondheid, in jou taal, met 'n Afrika-stem.",
+        "cta": "Loer na die Mandi-reis"
       },
       "none": {
-        "title": "Jou kombers lyk rustig — gelukkige jy!",
-        "body": "Geen sterk simptome vandag nie. Menopouse kom vir elke vrou anders — en om te weet waarna om te kyk, is die beste voorsprong wat daar is."
+        "title": "Jou kombers lyk rustig, gelukkige jy!",
+        "body": "Geen sterk simptome vandag nie. Menopouse kom vir elke vrou anders, en om te weet waarna om te kyk, is die beste voorsprong wat daar is."
       }
     },
     "attract": {
@@ -1031,25 +1049,25 @@
       "heading": "Jou kombers, tot dusver",
       "scoreLabel": "Jou demo-MenoScore",
       "band": {
-        "mild": "Jou simptome lyk lig — om ingelig te bly is die beste volgende steek.",
-        "moderate": "Jou simptome lyk matig — jy verbeel jou nie, en jy is nie alleen nie.",
-        "significant": "Jou simptome lyk beduidend — 'n dokter wat menopouse verstaan, kan alles verander."
+        "mild": "Jou simptome lyk lig, om ingelig te bly is die beste volgende steek.",
+        "moderate": "Jou simptome lyk matig, jy verbeel jou nie, en jy is nie alleen nie.",
+        "significant": "Jou simptome lyk beduidend, 'n dokter wat menopouse verstaan, kan alles verander."
       },
       "cta": "Kry my kombers"
     },
     "email": {
       "title": "Neem jou kombers huis toe",
-      "body": "Los jou e-pos en Mandi stuur jou resultate — en laat weet jou die oomblik wat ons loods.",
+      "body": "Jy het vandag 'n paar lappies gestik. Los jou e-pos en ons stuur jou resultate en die skakel na die volle 56-vraag-kombers, sodat jy dit in jou eie tyd kan voltooi en meer kan ontdek.",
       "placeholder": "jou@epos.com",
-      "consent": "Stoor my e-pos en demo-antwoorde sodat Mandi my resultate en loodsnuus kan stuur.",
+      "consent": "Ja, Mandi mag my besonderhede hou en my kombers en resultate vir my stuur.",
       "cta": "Stuur my kombers",
       "skip": "Nee dankie"
     },
     "thanks": {
       "title": "Totsiens, vir eers.",
-      "bodyKiosk": "Dankie dat jy saam met ons gestik het — gee asseblief die tablet terug.",
-      "bodyPhone": "Hou jou inboks dop. Jou volle kombers wag by joinmandi.com.",
-      "fullCta": "Stik die volle kombers"
+      "bodyKiosk": "Dankie dat jy jou storie saam met ons gestik het, Mandi bou gedestigmatiseerde vrouegesondheid vir Suid-Afrika, en jy is nou deel daarvan. Gee asseblief die tablet terug.",
+      "bodyPhone": "Hou jou inboks dop. Mandi bou 'n tuiste vir vrouegesondheid in Suid-Afrika, menopouse verstaan, nie verduur nie; elke vrou in haar eie taal. Jou kombers is die eerste steek. Kom voltooi dit by joinmandi.com.",
+      "fullCta": "Sluit aan by die Mandi-reis"
     }
   }
 }

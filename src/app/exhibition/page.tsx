@@ -18,8 +18,10 @@ import ConsentCheckbox from "@/components/ui/ConsentCheckbox";
 import PetalBurst from "@/components/ui/PetalBurst";
 import AmbientBlobs from "@/components/ui/AmbientBlobs";
 import ProgressBar from "@/components/ui/ProgressBar";
+import QuestionScreen from "@/components/ui/QuestionScreen";
 import Quilt from "@/components/ui/Quilt";
 import Reveal from "@/components/ui/Reveal";
+import ScaleInput from "@/components/ui/ScaleInput";
 import StitchDivider from "@/components/ui/StitchDivider";
 import type { AgeBand } from "@/lib/types/database";
 import {
@@ -39,6 +41,11 @@ type Step =
   | "story"
   | "thanks";
 
+/** How the 8 questions are presented. Kiosk uses "pages" (variant B); phone
+ *  uses "chat" — the taps cadence stays reachable via ?mode=taps for
+ *  side-by-side comparison during rehearsal, with no visitor-facing chooser. */
+type QMode = "pages" | "taps" | "chat";
+
 const LANGUAGES = [
   { code: "en", label: "Talk to Mandi", sub: "English" },
   { code: "zu", label: "Khuluma noMandi", sub: "isiZulu" },
@@ -51,10 +58,21 @@ const ATTRACT_CTAS = ["Tap to begin", "Tik om te begin", "Thepha ukuqala", "Cofa
 
 const IDLE_RESET_MS = 90_000;
 const THANKS_RESET_MS = 12_000;
-const CHAT_PAUSE_MS = 900; // prototype variant C pacing
+const CHAT_PAUSE_MS = 700; // typing-indicator pause before the next question
 const KIOSK_PAGE_SIZE = 4; // prototype variant B: four cards per screen
 
-const AGE_BANDS: AgeBand[] = ["40-44", "45-49", "50-54", "55-59", "60plus", "none"];
+// Oldest to youngest, per product direction — 20s/30s included so younger
+// visitors can join the journey without the form implying they don't belong.
+const AGE_BANDS: AgeBand[] = [
+  "60plus",
+  "55-59",
+  "50-54",
+  "45-49",
+  "40-44",
+  "30-39",
+  "20-29",
+  "none",
+];
 
 type ChatEntry = { role: "me" | "mandi"; text: string };
 
@@ -128,9 +146,13 @@ export default function ExhibitionPage() {
   const [score, setScore] = useState<ExhibitionScoreResult | null>(null);
   const [affirmation, setAffirmation] = useState<string | null>(null);
   const [bursting, setBursting] = useState<string | null>(null);
+  const [qMode, setQMode] = useState<QMode>("chat");
   // Variant B (kiosk): paged cards
   const [page, setPage] = useState(0);
-  // Variant C (phone): chat
+  // Variant A (phone "taps"): one question per screen
+  const [tapIdx, setTapIdx] = useState(0);
+  const [expanded, setExpanded] = useState(false);
+  // Variant C (phone "chat")
   const [chatIdx, setChatIdx] = useState(0);
   const [chatLog, setChatLog] = useState<ChatEntry[]>([]);
   const [chatBusy, setChatBusy] = useState(false);
@@ -143,6 +165,7 @@ export default function ExhibitionPage() {
   const [sending, setSending] = useState(false);
 
   const chatTimer = useRef<number | undefined>(undefined);
+  const advanceTimer = useRef<number | undefined>(undefined);
   const answersRef = useRef(answers);
   answersRef.current = answers;
   const chatEndRef = useRef<HTMLDivElement | null>(null);
@@ -152,22 +175,30 @@ export default function ExhibitionPage() {
 
   // ── Boot: kiosk detection + language-remount handoff ─────────
   useEffect(() => {
-    const isKiosk = new URLSearchParams(window.location.search).has("kiosk");
+    const params = new URLSearchParams(window.location.search);
+    const isKiosk = params.has("kiosk");
     setKiosk(isKiosk);
+    setQMode(isKiosk ? "pages" : params.get("mode") === "taps" ? "taps" : "chat");
     // Idempotent under StrictMode's double-run: consume bootStep once, and
     // never overwrite a step that a previous run (or handoff) already set.
     const handoff = bootStep;
     bootStep = null;
-    setStep((prev) => prev ?? handoff ?? (isKiosk ? "attract" : "language"));
+    // Everyone opens on the full-bleed gradient attract screen — it's the
+    // brand moment; a phone visitor taps once to reach the language picker.
+    setStep((prev) => prev ?? handoff ?? "attract");
   }, []);
 
   const resetAll = () => {
     window.clearTimeout(chatTimer.current);
+    window.clearTimeout(advanceTimer.current);
     setAnswers({});
     setScore(null);
     setAffirmation(null);
     setBursting(null);
+    // qMode is URL-derived (kiosk/mode params) — survives reset untouched.
     setPage(0);
+    setTapIdx(0);
+    setExpanded(false);
     setChatIdx(0);
     setChatLog([]);
     setChatBusy(false);
@@ -177,7 +208,7 @@ export default function ExhibitionPage() {
     setEmailConsent(false);
     setMarketingOptIn(false);
     setSending(false);
-    const target: Step = kiosk ? "attract" : "language";
+    const target: Step = "attract";
     if (i18n.language !== "en") {
       bootStep = target; // changeLanguage remounts; fresh mount lands on target
       void i18n.changeLanguage("en");
@@ -186,6 +217,19 @@ export default function ExhibitionPage() {
   };
   const resetRef = useRef(resetAll);
   resetRef.current = resetAll;
+
+  // Every step except attract carries an escape hatch back to the start.
+  const restartChip = (
+    <button
+      type="button"
+      onClick={() => resetRef.current()}
+      className="fixed right-4 top-4 z-[60] rounded-full border border-brown/15 bg-cream-soft/90 px-4 py-2
+        text-xs font-semibold text-brown/60 shadow-warm backdrop-blur-sm transition-colors
+        hover:border-terra hover:text-terra"
+    >
+      ↺ {t("exhibition.restart")}
+    </button>
+  );
 
   // ── Kiosk: idle auto-reset ───────────────────────────────────
   useEffect(() => {
@@ -299,8 +343,11 @@ export default function ExhibitionPage() {
     const q = chatQuestion;
     setAnswers((prev) => ({ ...prev, [q.id]: value }));
     maybeAffirm(q.id);
+    // The asked question enters the transcript too — a WhatsApp-style
+    // permanent log, not a disappearing prompt.
     setChatLog((log) => [
       ...log,
+      { role: "mandi", text: t(`questionnaire.${q.textKey}`) },
       { role: "me", text: t(`questionnaire.scale.${value}`) },
       { role: "mandi", text: replyFor(q.domain, value) },
     ]);
@@ -315,9 +362,31 @@ export default function ExhibitionPage() {
 
   const chatBack = () => {
     if (chatBusy || chatIdx === 0) return;
-    // Prototype rule: pop TWO entries — her echo and Mandi's reply.
-    setChatLog((log) => log.slice(0, -2));
+    // Pop the whole exchange: question, her echo, and Mandi's reply.
+    setChatLog((log) => log.slice(0, -3));
     setChatIdx((i) => i - 1);
+  };
+
+  // ── Variant A (phone "taps"): one question per screen ────────
+  const tapQuestion = exhibitionQuestions[Math.min(tapIdx, TOTAL - 1)];
+
+  const tapNext = () => {
+    window.clearTimeout(advanceTimer.current);
+    const q = exhibitionQuestions[tapIdx];
+    if (!q || typeof answersRef.current[q.id] !== "number") return;
+    if (tapIdx >= TOTAL - 1) return finish();
+    setTapIdx((i) => i + 1);
+  };
+  const tapNextRef = useRef(tapNext);
+  tapNextRef.current = tapNext;
+
+  const tapAnswer = (value: number) => {
+    const q = exhibitionQuestions[tapIdx];
+    if (!q) return;
+    setAnswers((prev) => ({ ...prev, [q.id]: value }));
+    maybeAffirm(q.id);
+    window.clearTimeout(advanceTimer.current);
+    advanceTimer.current = window.setTimeout(() => tapNextRef.current(), 430);
   };
 
   const submitEmail = async () => {
@@ -379,6 +448,7 @@ export default function ExhibitionPage() {
       <main className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0 bg-mandi-gradient-soft" />
         <div className="absolute inset-0 bg-cream/55" />
+        {restartChip}
         <div className="relative z-10 flex min-h-screen items-center justify-center px-5 py-16">
           <div className="w-full max-w-xl bg-cream-soft rounded-4xl shadow-warm-xl p-8 sm:p-10">
             <Reveal>
@@ -422,6 +492,7 @@ export default function ExhibitionPage() {
       <main className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0 bg-mandi-gradient-soft" />
         <div className="absolute inset-0 bg-cream/70" />
+        {restartChip}
         <div className="relative z-10 flex min-h-screen items-center justify-center px-5 py-16">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -452,12 +523,98 @@ export default function ExhibitionPage() {
     );
   }
 
-  if (step === "question" && kiosk) {
+  if (step === "question" && qMode === "taps" && tapQuestion) {
+    // Variant A — one question per screen, 430ms auto-advance (the v2 cadence).
+    const currentAnswer = answers[tapQuestion.id];
+    return (
+      <>
+        {restartChip}
+        <QuestionScreen
+          current={tapIdx + 1}
+          total={TOTAL}
+          domain={tapQuestion.domain}
+          onBack={() => {
+            window.clearTimeout(advanceTimer.current);
+            if (tapIdx > 0) setTapIdx((i) => i - 1);
+          }}
+          showBack={tapIdx > 0}
+          patches={PATCHES}
+          answeredCount={answeredCount}
+          onQuiltTap={() => setExpanded(true)}
+          showTime={false}
+        >
+          <div key={tapQuestion.id} className="flex flex-col gap-6 animate-rise-in">
+            <div className="text-center">
+              <h2 className="font-display text-2xl sm:text-3xl text-brown leading-tight px-2">
+                {t(`questionnaire.${tapQuestion.textKey}`)}
+              </h2>
+              {tapQuestion.hintKey && (
+                <p className="mt-3 text-sm text-brown/60 italic leading-relaxed max-w-md mx-auto">
+                  {t(`questionnaire.${tapQuestion.hintKey}`)}
+                </p>
+              )}
+            </div>
+
+            <ScaleInput
+              value={typeof currentAnswer === "number" ? currentAnswer : null}
+              onChange={tapAnswer}
+            />
+
+            <div className="flex flex-col gap-3 mt-2">
+              <Button
+                variant="primary"
+                size="lg"
+                onClick={tapNext}
+                disabled={typeof currentAnswer !== "number"}
+                className="w-full"
+              >
+                {tapIdx < TOTAL - 1 ? t("questionnaire.next") : t("questionnaire.finish")}
+              </Button>
+            </div>
+          </div>
+        </QuestionScreen>
+
+        {expanded && (
+          <div
+            onClick={() => setExpanded(false)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-brown/70 backdrop-blur-sm px-6 animate-fade-in"
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-lg rounded-4xl bg-cream-soft p-6 shadow-warm-xl animate-rise-in"
+            >
+              <p className="text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-terra">
+                {t("questionnaire.quiltHeading")}
+              </p>
+              <div className="mt-5">
+                <Quilt patches={PATCHES} answered={answeredCount} variant="full" className="mx-auto" />
+              </div>
+              <button
+                onClick={() => setExpanded(false)}
+                className="mx-auto mt-6 block rounded-full bg-terra px-9 py-2.5 text-sm font-semibold text-cream hover:bg-terra-dark transition-colors"
+              >
+                {t("questionnaire.quiltClose")}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {affirmation && (
+          <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-brown px-5 py-3 text-sm font-medium text-cream shadow-warm-xl animate-rise-in">
+            <span className="text-golden">✦</span> {affirmation}
+          </div>
+        )}
+      </>
+    );
+  }
+
+  if (step === "question" && qMode === "pages") {
     // Variant B — four cards per screen, gate until all answered.
     return (
       <div className="relative min-h-screen bg-cream overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-mandi-gradient-soft opacity-40" />
         <div className="pointer-events-none absolute inset-0 bg-cream/60" />
+        {restartChip}
         <ProgressBar variant="top" current={answeredCount} total={TOTAL} />
         <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-2xl flex-col px-5 pt-6 pb-10">
           <div className="rounded-3xl border border-cream-deep/60 bg-cream-soft/80 p-3 shadow-warm backdrop-blur-sm">
@@ -546,50 +703,61 @@ export default function ExhibitionPage() {
     );
   }
 
-  if (step === "question" && chatQuestion) {
-    // Variant C — chat: Mandi asks, she answers, Mandi replies.
+  if (step === "question" && qMode === "chat" && chatQuestion) {
+    // Variant C — chat: messenger layout. Header and chips are pinned; only
+    // the conversation scrolls (100dvh lock so phone keyboards/chrome don't
+    // push the chips off-screen).
     return (
-      <div className="relative min-h-screen bg-cream overflow-hidden">
+      <div className="relative flex h-[100dvh] flex-col overflow-hidden bg-cream">
         <div className="pointer-events-none absolute inset-0 bg-mandi-gradient-soft opacity-40" />
         <div className="pointer-events-none absolute inset-0 bg-cream/60" />
+        {restartChip}
         <ProgressBar variant="top" current={answeredCount} total={TOTAL} />
-        <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-xl flex-col px-5 pt-6 pb-8">
+
+        {/* Pinned header */}
+        <div className="relative z-10 mx-auto w-full max-w-xl shrink-0 px-5 pt-5">
           {/* Quilt dimmed until the story reveals it in full — prototype rule */}
-          <div className="rounded-3xl border border-cream-deep/60 bg-cream-soft/80 p-3 opacity-75 shadow-warm backdrop-blur-sm">
+          <div className="rounded-3xl border border-cream-deep/60 bg-cream-soft/80 p-2.5 opacity-75 shadow-warm backdrop-blur-sm">
             <Quilt patches={PATCHES} answered={answeredCount} variant="compact" className="mx-auto" />
           </div>
-
-          <div className="mt-4 mb-2 flex items-center justify-between">
-            {chatIdx > 0 ? (
-              <button
-                onClick={chatBack}
-                type="button"
-                className="text-sm font-medium text-brown/60 hover:text-terra transition-colors"
-              >
-                ← {t("questionnaire.back")}
-              </button>
-            ) : (
-              <span />
-            )}
+          <div className="mt-3 flex items-center justify-end">
             <span className="text-[11px] uppercase tracking-[0.18em] text-brown/45 font-semibold">
               {t("questionnaire.progress", { current: Math.min(chatIdx + 1, TOTAL), total: TOTAL })}
             </span>
           </div>
+        </div>
 
-          <div className="flex flex-1 flex-col gap-3 overflow-y-auto py-2">
+        {/* The conversation — the only scrolling region */}
+        <div className="relative z-10 mx-auto w-full max-w-xl flex-1 overflow-y-auto overscroll-contain px-5 py-3">
+          <div className="flex min-h-full flex-col justify-end gap-3">
+            {/* Lead-in — Mandi introduces herself before the first question */}
+            <div className="max-w-[85%] self-start rounded-3xl rounded-bl-lg border border-cream-deep/50 bg-cream-soft px-4 py-3 text-sm leading-relaxed text-brown shadow-warm">
+              {t("exhibition.chat.greeting")}
+            </div>
             {chatLog.map((entry, i) => (
               <div
                 key={i}
                 className={`max-w-[85%] rounded-3xl px-4 py-3 text-sm leading-relaxed animate-rise-in ${
                   entry.role === "me"
-                    ? "self-end rounded-br-lg bg-terra text-cream"
+                    ? "self-end rounded-br-lg bg-terra text-cream shadow-warm"
                     : "self-start rounded-bl-lg bg-cream-soft text-brown border border-cream-deep/50 shadow-warm"
                 }`}
               >
                 {entry.text}
               </div>
             ))}
-            {!chatBusy && (
+            {chatBusy ? (
+              /* Typing indicator — Mandi is "thinking" before the next question */
+              <div className="flex max-w-[85%] items-center gap-1.5 self-start rounded-3xl rounded-bl-lg border border-cream-deep/50 bg-cream-soft px-4 py-3.5 shadow-warm animate-rise-in">
+                {[0, 1, 2].map((d) => (
+                  <span
+                    key={d}
+                    className="h-2 w-2 rounded-full bg-terra/60 animate-pulse-warm"
+                    style={{ animationDelay: `${d * 180}ms` }}
+                  />
+                ))}
+              </div>
+            ) : (
               <div
                 key={`q-${chatQuestion.id}`}
                 className="max-w-[85%] self-start rounded-3xl rounded-bl-lg border border-cream-deep/50 bg-cream-soft px-4 py-3 shadow-warm animate-rise-in"
@@ -606,16 +774,25 @@ export default function ExhibitionPage() {
             )}
             <div ref={chatEndRef} />
           </div>
+        </div>
 
-          <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+        {/* Pinned answer chips — keyed by question so the buttons remount
+            fresh each time: mobile browsers keep :hover on a tapped element,
+            which made the previous answer's colour linger onto the next
+            question. New DOM per question = every value starts clear. */}
+        <div className="relative z-10 mx-auto w-full max-w-xl shrink-0 border-t border-cream-deep/40 bg-cream/85 px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-sm">
+          <div key={`chips-${chatQuestion.id}`} className="grid grid-cols-4 gap-2">
             {[0, 1, 2, 3].map((s) => (
               <button
                 key={s}
                 type="button"
                 disabled={chatBusy}
-                onClick={() => answerChat(s)}
+                onClick={(e) => {
+                  e.currentTarget.blur();
+                  answerChat(s);
+                }}
                 className={`flex flex-col items-center gap-0.5 rounded-2xl border-2 border-coral/30 bg-white
-                  px-3 py-3.5 text-xs font-semibold text-brown transition-all hover:border-terra
+                  px-2 py-3 text-xs font-semibold text-brown transition-all hover:border-terra
                   hover:bg-terra hover:text-cream active:scale-95 ${chatBusy ? "opacity-40" : ""}`}
               >
                 <span className="font-display text-xl leading-none">{s}</span>
@@ -625,10 +802,23 @@ export default function ExhibitionPage() {
               </button>
             ))}
           </div>
+          {/* Go back and modify the previous answer — where her thumb is. */}
+          {chatIdx > 0 && (
+            <button
+              type="button"
+              disabled={chatBusy}
+              onClick={chatBack}
+              className={`mx-auto mt-2.5 block rounded-full border border-brown/20 px-5 py-2 text-xs
+                font-semibold text-brown/65 transition-colors hover:border-terra hover:text-terra
+                ${chatBusy ? "opacity-40" : ""}`}
+            >
+              ← {t("exhibition.prevQuestion")}
+            </button>
+          )}
         </div>
 
         {affirmation && (
-          <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-brown px-5 py-3 text-sm font-medium text-cream shadow-warm-xl animate-rise-in">
+          <div className="fixed bottom-24 left-1/2 z-50 -translate-x-1/2 rounded-full bg-brown px-5 py-3 text-sm font-medium text-cream shadow-warm-xl animate-rise-in">
             <span className="text-golden">✦</span> {affirmation}
           </div>
         )}
@@ -640,6 +830,7 @@ export default function ExhibitionPage() {
     const story = exhibitionStory(answers);
     return (
       <main className="relative">
+        {restartChip}
         {/* 1 — Hero: the finished blanket */}
         <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-mandi-gradient px-5 py-16">
           <div className="pointer-events-none absolute inset-0 bg-brown/20" />
@@ -747,8 +938,9 @@ export default function ExhibitionPage() {
                 <p className="text-center text-xs font-medium text-brown/55">
                   {t("exhibition.story.disclaimer")}
                 </p>
-                <details className="mt-3 text-brown/50">
-                  <summary className="cursor-pointer text-center text-[11px] font-semibold uppercase tracking-[0.18em]">
+                {/* Collapsed by default per product direction (2026-08-18). */}
+                <details className="mt-4 text-brown/50">
+                  <summary className="cursor-pointer text-center text-[11px] font-semibold uppercase tracking-[0.18em] underline decoration-brown/30 underline-offset-4">
                     Sources
                   </summary>
                   <ol className="mx-auto mt-3 max-w-md list-decimal space-y-1 pl-5 text-[11px] leading-relaxed">
@@ -762,35 +954,7 @@ export default function ExhibitionPage() {
           </div>
         </section>
 
-        {/* 3 — The hormone hook */}
-        <section className="relative overflow-hidden bg-mandi-gradient-dusk px-5 py-20 sm:py-24">
-          <AmbientBlobs intensity="soft" />
-          <div className="pointer-events-none absolute inset-0 bg-brown/30" />
-          <div className="relative z-10 mx-auto max-w-xl text-center">
-            <Reveal variant="rise">
-              <h2 className="font-display text-3xl leading-tight text-cream drop-shadow-md sm:text-4xl">
-                {t("exhibition.story.hormoneHook.title")}
-              </h2>
-              <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-cream/85">
-                {t("exhibition.story.hormoneHook.body")}
-              </p>
-              {kiosk ? (
-                <p className="mt-8 inline-block rounded-full bg-golden/20 px-7 py-3 text-sm font-semibold text-golden">
-                  {t("exhibition.story.hormoneHook.cta")}
-                </p>
-              ) : (
-                <a
-                  href="https://joinmandi.com"
-                  className="mt-8 inline-block rounded-full bg-golden px-7 py-3 text-sm font-semibold text-brown shadow-warm-lg transition-colors hover:bg-sun"
-                >
-                  {t("exhibition.story.hormoneHook.cta")} →
-                </a>
-              )}
-            </Reveal>
-          </div>
-        </section>
-
-        {/* 4 — Take it home: email capture */}
+        {/* 3 — Take it home: email capture */}
         <section className="relative bg-cream px-5 py-16 sm:py-20">
           <div className="pointer-events-none absolute inset-0 bg-mandi-gradient-soft opacity-30" />
           <div className="relative mx-auto max-w-xl">
@@ -894,6 +1058,34 @@ export default function ExhibitionPage() {
           </div>
         </section>
 
+        {/* 4 — The end: don't count out your hormones + join the journey */}
+        <section className="relative overflow-hidden bg-mandi-gradient-dusk px-5 py-20 sm:py-24">
+          <AmbientBlobs intensity="soft" />
+          <div className="pointer-events-none absolute inset-0 bg-brown/30" />
+          <div className="relative z-10 mx-auto max-w-xl text-center">
+            <Reveal variant="rise">
+              <h2 className="font-display text-3xl leading-tight text-cream drop-shadow-md sm:text-4xl">
+                {t("exhibition.story.hormoneHook.title")}
+              </h2>
+              <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-cream/85">
+                {t("exhibition.story.hormoneHook.body")}
+              </p>
+              {kiosk ? (
+                <p className="mt-8 inline-block rounded-full bg-golden/20 px-7 py-3 text-sm font-semibold text-golden">
+                  {t("exhibition.story.hormoneHook.cta")}
+                </p>
+              ) : (
+                <a
+                  href="https://joinmandi.com"
+                  className="mt-8 inline-block rounded-full bg-golden px-7 py-3 text-sm font-semibold text-brown shadow-warm-lg transition-colors hover:bg-sun"
+                >
+                  {t("exhibition.story.hormoneHook.cta")} →
+                </a>
+              )}
+            </Reveal>
+          </div>
+        </section>
+
         {/* Golden-patch affirmation — Q46 is the last question, so the toast
             fires as the story opens; render it here so it isn't lost. */}
         {affirmation && (
@@ -908,6 +1100,7 @@ export default function ExhibitionPage() {
   // thanks
   return (
     <main className="relative min-h-screen overflow-hidden bg-mandi-gradient-dusk">
+      {restartChip}
       <AmbientBlobs intensity="soft" />
       <div className="pointer-events-none absolute inset-0 bg-brown/30" />
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-16 text-center">

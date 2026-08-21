@@ -26,6 +26,7 @@ export default function AboutPage() {
         <div className="relative">
           {/* Hero */}
           <section className="relative overflow-hidden bg-mandi-gradient">
+            <AmbientBlobs intensity="full" />
             <div className="absolute inset-0 bg-brown/15" />
             <div className="relative z-10 w-full max-w-3xl mx-auto px-6 py-20 text-center">
               <Reveal>
@@ -185,16 +186,21 @@ export default function AboutPage() {
             </Reveal>
           </section>
 
-          {/* Footer CTA */}
-          <section className="bg-brown py-16">
-            <div className="max-w-3xl mx-auto px-6 text-center">
+          {/* Footer CTA — mission closer */}
+          <section className="relative overflow-hidden bg-mandi-gradient-dusk py-20">
+            <AmbientBlobs intensity="soft" />
+            <div className="absolute inset-0 bg-brown/25" />
+            <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
               <Reveal>
-                <p className="font-display text-cream text-3xl mb-6">{t("about.cta.heading")}</p>
+                <p className="font-display text-cream text-3xl sm:text-4xl mb-4">{t("about.cta.heading")}</p>
+                <p className="mx-auto mb-8 max-w-lg text-base leading-relaxed text-cream/85">
+                  {t("landing.mission")}
+                </p>
                 <a
-                  href="/"
-                  className="inline-block bg-terra text-cream font-semibold rounded-full px-10 py-4 text-base hover:bg-terra-dark transition-colors shadow-warm-lg"
+                  href="/consent"
+                  className="inline-block bg-cream text-terra font-semibold rounded-full px-10 py-4 text-base hover:bg-golden transition-colors shadow-warm-xl"
                 >
-                  {t("about.cta.button")}
+                  {t("about.cta.button")} →
                 </a>
               </Reveal>
             </div>
