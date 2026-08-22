@@ -25,6 +25,14 @@ Core product: a 56-question menopause assessment → normalized MenoScore (0–1
 
 - **#5 AAL2 on admin health-data reads** — *not applied.* The `qr_admin_read` / `users_admin_read` policies use `is_admin()`, not `is_admin_aal2()`. Tightening them to AAL2 is the right posture for health data, **but `is_admin_aal2()` hard-requires the `aal2` JWT claim with no escape hatch** — so it would lock admins out of reading user/health data whenever MFA isn't enforced at the Supabase project level, contradicting the codebase's deliberate "never lock admins out on a config gap" stance (see `auth.ts`). **Precondition: enforce MFA project-side first**, then switch those two read policies to `is_admin_aal2()`. Decision left to the team.
 
+## Status update 2026-08-22
+
+- **#2 consent** — resolved: `recordConsent()` writes a `sessions` row server-side; `mandi-consent` is now only a client mirror.
+- **#3 RLS write** — resolved earlier (`qr_insert_any` binds `user_id`). The **read** side had the same gap (`qr_select_own … or user_id is null` exposed every anonymous health row to the anon key) — fixed today; migration in `supabase/migrations/2026-08-22-launch-analytics-rls.sql`.
+- **#7 superadmin delete** — resolved.
+- **#10 erasure** — `exhibition_signups` (no FK to `auth.users`) is now erased by email inside the delete-user route. Self-service erasure still open.
+- Data inventory, flows, processors and retention are now mapped in [`DATA-FLOW.md`](DATA-FLOW.md).
+
 ## Findings (prioritized)
 
 | # | Sev | Area | File | What exists / what's missing |

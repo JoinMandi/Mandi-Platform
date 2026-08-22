@@ -23,6 +23,11 @@ const ALLOWED: ReadonlySet<EngagementEventType> = new Set<EngagementEventType>([
   "content_link_click",
   "event_view",
   "event_rsvp_click",
+  "page_view",
+  "questionnaire_start",
+  "questionnaire_domain",
+  "questionnaire_complete",
+  "keep_submit",
 ]);
 
 export async function logEngagement(input: {

@@ -152,7 +152,13 @@ export type EngagementEventType =
   | "content_view"
   | "content_link_click"
   | "event_view"
-  | "event_rsvp_click";
+  | "event_rsvp_click"
+  // Funnel analytics (page impressions + questionnaire drop-off)
+  | "page_view"
+  | "questionnaire_start"
+  | "questionnaire_domain"
+  | "questionnaire_complete"
+  | "keep_submit";
 
 export interface EngagementEventInput {
   event_type: EngagementEventType;
@@ -198,6 +204,48 @@ export async function eventCountsByTarget(
     counts.set(key, (counts.get(key) ?? 0) + 1);
   }
   return counts;
+}
+
+/** Funnel counts for the trailing window: events and distinct sessions per type. */
+export async function funnelCounts(
+  db: SupabaseClient,
+  days: number = 30,
+): Promise<Record<string, { events: number; sessions: number }>> {
+  const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString();
+  const { data } = await db
+    .from("engagement_events")
+    .select("event_type, target_id, session_id")
+    .in("event_type", [
+      "page_view",
+      "questionnaire_start",
+      "questionnaire_complete",
+      "keep_submit",
+    ])
+    .gte("created_at", since);
+  const out: Record<string, { events: number; sessions: number }> = {};
+  const seen = new Map<string, Set<string>>();
+  for (const row of (data ?? []) as {
+    event_type: string;
+    target_id: string | null;
+    session_id: string | null;
+  }[]) {
+    // Exhibition scans are reported as their own funnel line.
+    const key =
+      row.event_type === "page_view" && row.target_id === "/exhibition"
+        ? "exhibition_view"
+        : row.event_type;
+    const bucket = (out[key] ??= { events: 0, sessions: 0 });
+    bucket.events += 1;
+    if (row.session_id) {
+      const s = seen.get(key) ?? new Set<string>();
+      if (!s.has(row.session_id)) {
+        s.add(row.session_id);
+        bucket.sessions += 1;
+      }
+      seen.set(key, s);
+    }
+  }
+  return out;
 }
 
 /** Recent engagement events for one user (default last 20). */

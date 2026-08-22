@@ -19,6 +19,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import NavBar from "@/components/NavBar";
+import Footer, { CONTACT_EMAIL } from "@/components/Footer";
 import AmbientBlobs from "@/components/ui/AmbientBlobs";
 import Reveal from "@/components/ui/Reveal";
 import { logEngagement } from "@/server/actions/engagement";
@@ -253,12 +254,15 @@ export default function EventsPage() {
                   {t("events.host.body")}
                 </p>
               </div>
-              <Link
-                href="mailto:hermi@mrsking.co.za"
-                className="flex-shrink-0 bg-terra text-cream font-semibold rounded-full px-8 py-4 text-sm hover:bg-terra-dark transition-colors shadow-warm whitespace-nowrap"
-              >
-                {t("events.host.cta")} →
-              </Link>
+              <div className="flex-shrink-0 text-center">
+                <Link
+                  href={`mailto:${CONTACT_EMAIL}?subject=An event for Mandi`}
+                  className="inline-block bg-terra text-cream font-semibold rounded-full px-8 py-4 text-sm hover:bg-terra-dark transition-colors shadow-warm whitespace-nowrap"
+                >
+                  {t("events.host.cta")} →
+                </Link>
+                <p className="mt-2 text-xs text-brown/60">{CONTACT_EMAIL}</p>
+              </div>
             </div>
           </Reveal>
         </section>
@@ -276,6 +280,7 @@ export default function EventsPage() {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

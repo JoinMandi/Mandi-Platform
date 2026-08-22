@@ -1,6 +1,8 @@
-/** Data access — exhibition_signups (festival email capture). */
+/** Data access — exhibition_signups (festival + roadmap contact capture). */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { AgeBand, ScoreBand } from "@/lib/types/database";
+
+export type SignupSource = "exhibition" | "roadmap";
 
 export interface ExhibitionSignupInput {
   email: string;
@@ -12,9 +14,10 @@ export interface ExhibitionSignupInput {
   answers: Record<string, unknown> | null;
   consent: boolean;
   marketing_opt_in: boolean;
+  source: SignupSource;
 }
 
-/** Inserts a festival signup and returns its id (or null if blocked). */
+/** Inserts a signup and returns its id (or null if blocked). */
 export async function insertExhibitionSignup(
   db: SupabaseClient,
   input: ExhibitionSignupInput,
@@ -25,4 +28,12 @@ export async function insertExhibitionSignup(
     .select("id")
     .single();
   return (data as { id: string } | null)?.id ?? null;
+}
+
+/** POPIA erasure: signups have no FK to auth.users, so delete by email (service role). */
+export async function deleteExhibitionSignupsByEmail(
+  db: SupabaseClient,
+  email: string,
+): Promise<void> {
+  await db.from("exhibition_signups").delete().eq("email", email);
 }

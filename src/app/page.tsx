@@ -8,8 +8,25 @@ import Reveal from "@/components/ui/Reveal";
 import AmbientBlobs from "@/components/ui/AmbientBlobs";
 import StitchDivider from "@/components/ui/StitchDivider";
 import Quilt from "@/components/ui/Quilt";
+import Footer from "@/components/Footer";
 import { buildQuilt } from "@/lib/domain/quilt";
 import { questions } from "@/lib/domain/questions";
+import { logEngagement } from "@/server/actions/engagement";
+
+// "In the media": external links only (no embeds — CSP blocks them and they
+// would add third-party tracking). Copy lives in landing.media.*.
+const MEDIA = [
+  {
+    id: "series",
+    href: "https://silwerskermfees.co.za/film/?2026/meer_as_warm_gloede",
+    accent: "border-t-golden",
+  },
+  {
+    id: "radio",
+    href: "https://www.facebook.com/reel/1062861042835271",
+    accent: "border-t-coral",
+  },
+] as const;
 
 // Each tile's label stays in its own language — that is the point. A visitor
 // sees all four welcomes simultaneously, taps one, and the rest of the UI
@@ -290,6 +307,45 @@ export default function LandingPage() {
               <span className="text-brown/55 text-sm">{t("landing.built.line4")}</span>
             </Reveal>
           </div>
+
+          {/* In the media */}
+          <Reveal>
+            <p className="mt-14 mb-6 text-[11px] uppercase tracking-[0.25em] text-terra font-semibold">
+              {t("landing.media.eyebrow")}
+            </p>
+          </Reveal>
+          <div className="grid sm:grid-cols-2 gap-5 text-left">
+            {MEDIA.map((m, i) => (
+              <Reveal key={m.id} delay={i * 90}>
+                <a
+                  href={m.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() =>
+                    void logEngagement({
+                      eventType: "content_link_click",
+                      targetId: `media:${m.id}`,
+                      meta: { lang: activeLang, source: "landing" },
+                    })
+                  }
+                  className={`block h-full bg-cream-soft rounded-3xl border-t-4 ${m.accent} px-6 py-6 shadow-warm hover:shadow-warm-lg transition-shadow`}
+                >
+                  <h3 className="font-display text-lg text-brown leading-snug mb-2">
+                    {t(`landing.media.${m.id}Title`)}
+                  </h3>
+                  <p className="text-sm text-brown/75 leading-relaxed mb-3">
+                    {t(`landing.media.${m.id}Body`)}
+                  </p>
+                  {m.id === "series" && (
+                    <p className="text-xs text-brown/50 mb-3">{t("landing.media.seriesCredits")}</p>
+                  )}
+                  <span className="link-warm text-sm text-terra">
+                    {t(`landing.media.${m.id}Cta`)} →
+                  </span>
+                </a>
+              </Reveal>
+            ))}
+          </div>
         </section>
 
         {/* ─── CLOSE ────────────────────────────────────────────── */}
@@ -315,10 +371,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Tiny footer */}
-        <footer className="text-center py-6 px-4">
-          <p className="text-brown/50 text-xs">{t("landing.footerLine")}</p>
-        </footer>
+        <Footer />
       </main>
     </>
   );

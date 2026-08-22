@@ -70,6 +70,16 @@
     "close": {
       "title": "Uma usulungile.",
       "cta": "Khuluma noMandi"
+    },
+    "media": {
+      "eyebrow": "Emithonjeni yezindaba",
+      "seriesTitle": "Meer as warm gloede (More Than Hot Flushes)",
+      "seriesBody": "Uchungechunge lwedokhumentari yesi-Afrikaans olunezingxenye ezine ku-kykNET oluphula ukuthula mayelana nokuphela kokuya esikhathini, lulandela u-Antoinette Louw nabesifazane baseNingizimu Afrika nochwepheshe abakhuluma ngokukhululekile ngalokho okushintsha ngempela.",
+      "seriesCredits": "MrsKing Productions · produced by Hermi King · directed by Hanneke Schutte · Silwerskermfees 2026",
+      "seriesCta": "Bona uchungechunge e-Silwerskermfees",
+      "radioTitle": "Channel Africa: Cultural Spotlight",
+      "radioBody": "Umkhiqizi u-Hermi King exoxa no-Mmatsheko Mosito ngokuthi kungani ukuphela kokuya esikhathini, ngeso lase-Afrika, kuyindaba okwakufanele ixoxwe.",
+      "radioCta": "Lalela ingxoxo"
     }
   },
   "language": {
@@ -520,6 +530,15 @@
       "missing": "Ikhona into obulindele ukuyibona engekho?",
       "submit": "Thumela impendulo",
       "thanks": "Siyabonga, kusisiza ukwakha okungcono komunye wesifazane ozofika."
+    },
+    "keep": {
+      "eyebrow": "Gcina ingubo yakho",
+      "title": "Gcina i-MenoScore yakho nengubo yakho kuphephile",
+      "body": "Njengamanje ingubo yakho ihlala kuphela kule divayisi. Shiya i-imeyili yakho, ne-WhatsApp uma uthanda, uMandi uzoyigcina iphephile. Uzozwa kuqala njengoba uhambo lukaMandi lukhula.",
+      "consent": "Yebo, uMandi angagcina imininingwane yami nengubo yami, angithinte ngazo.",
+      "submit": "Gcina ingubo yami",
+      "thanksTitle": "Ingubo yakho iphephile kuMandi.",
+      "thanksBody": "Siyabonga ngokujoyina uhambo lukaMandi. Sizoxhumana nawe, ngolimi lwakho."
     }
   },
   "nav": {
@@ -925,7 +944,8 @@
   "footer": {
     "privacy": "Ubumfihlo bakho, indlela esisebenzisa idatha yakho",
     "terms": "Imibandela",
-    "contact": "Xhumana"
+    "contact": "Xhumana",
+    "getInvolved": "Imibuzo, indaba ongayabelana, noma ufuna ukubamba iqhaza? Sibhalele ku"
   },
   "exhibition": {
     "prevQuestion": "Umbuzo odlule",

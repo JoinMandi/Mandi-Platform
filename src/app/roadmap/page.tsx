@@ -10,6 +10,8 @@ import CountUp from "@/components/ui/CountUp";
 import Quilt from "@/components/ui/Quilt";
 import Reveal from "@/components/ui/Reveal";
 import StitchDivider from "@/components/ui/StitchDivider";
+import KeepBlanketCard from "@/components/ui/KeepBlanketCard";
+import Footer from "@/components/Footer";
 import { questions } from "@/lib/domain/questions";
 import { buildQuilt } from "@/lib/domain/quilt";
 import type { ScoreBand, Persona, RoadmapSlot } from "@/lib/domain/scoring";
@@ -208,6 +210,15 @@ export default function RoadmapPage() {
             </Reveal>
           )}
 
+          {/* Keep the score, keep the woman — an invitation, below the safety flags */}
+          <Reveal delay={140}>
+            <KeepBlanketCard
+              menoScore={data.menoScore}
+              scoreBand={data.scoreBand}
+              answers={answers}
+            />
+          </Reveal>
+
           <div className="mt-10">
             <StitchDivider tone="gold" />
           </div>
@@ -281,6 +292,7 @@ export default function RoadmapPage() {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

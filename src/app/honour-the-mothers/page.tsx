@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import NavBar from "@/components/NavBar";
+import Footer, { CONTACT_EMAIL } from "@/components/Footer";
 import Reveal from "@/components/ui/Reveal";
 import StitchDivider from "@/components/ui/StitchDivider";
 
@@ -115,11 +116,13 @@ export default function HonourTheMothersPage() {
               {t("mothers.closing.body")}
             </p>
             <Link
-              href="mailto:hermi@mrsking.co.za?subject=A story for Honour the Mothers"
+              href={`mailto:${CONTACT_EMAIL}?subject=A story for Honour the Mothers`}
               className="inline-block bg-cream text-brown font-semibold rounded-full px-8 py-4 hover:bg-golden transition-colors shadow-warm-lg"
             >
               {t("mothers.closing.cta")} →
             </Link>
+            {/* Visible address: mailto: is inert on kiosks and mail-less browsers. */}
+            <p className="mt-4 text-cream/70 text-sm">{CONTACT_EMAIL}</p>
           </Reveal>
         </section>
 
@@ -147,6 +150,7 @@ export default function HonourTheMothersPage() {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

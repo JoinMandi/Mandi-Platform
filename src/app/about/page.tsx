@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 import Reveal from "@/components/ui/Reveal";
 import AmbientBlobs from "@/components/ui/AmbientBlobs";
 import StitchDivider from "@/components/ui/StitchDivider";
@@ -207,6 +208,7 @@ export default function AboutPage() {
           </section>
         </div>
       </main>
+      <Footer />
     </>
   );
 }

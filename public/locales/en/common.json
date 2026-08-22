@@ -70,6 +70,16 @@
     "close": {
       "title": "Ready when you are.",
       "cta": "Talk to Mandi"
+    },
+    "media": {
+      "eyebrow": "In the media",
+      "seriesTitle": "Meer as warm gloede (More Than Hot Flushes)",
+      "seriesBody": "A four-part Afrikaans documentary series on kykNET that breaks the silence around menopause, following Antoinette Louw and the South African women and experts who speak openly about what really changes.",
+      "seriesCredits": "MrsKing Productions · produced by Hermi King · directed by Hanneke Schutte · Silwerskermfees 2026",
+      "seriesCta": "See the series at Silwerskermfees",
+      "radioTitle": "Channel Africa: Cultural Spotlight",
+      "radioBody": "Producer Hermi King in conversation with Mmatsheko Mosito on why menopause, seen through an African lens, is a story that needed telling.",
+      "radioCta": "Listen to the interview"
     }
   },
   "language": {
@@ -524,6 +534,15 @@
       "missing": "Is there anything you expected to see that is missing?",
       "submit": "Send feedback",
       "thanks": "Thank you, that helps us build something better for the next woman who arrives."
+    },
+    "keep": {
+      "eyebrow": "Keep your blanket",
+      "title": "Keep your MenoScore and your Blanket safe",
+      "body": "Right now your blanket lives only on this device. Leave your email, and WhatsApp if you like, and Mandi will keep it safe for you. You'll also be first to hear as the Mandi journey grows.",
+      "consent": "Yes, Mandi may keep my details and my blanket, and get in touch with me about them.",
+      "submit": "Keep my blanket",
+      "thanksTitle": "Your blanket is safe with Mandi.",
+      "thanksBody": "Thank you for joining the Mandi journey. We'll be in touch, in your language."
     }
   },
   "nav": {
@@ -1005,7 +1024,8 @@
   "footer": {
     "privacy": "Your privacy, how we use your data",
     "terms": "Terms",
-    "contact": "Contact"
+    "contact": "Contact",
+    "getInvolved": "Questions, a story to share, or want to get involved? Write to us at"
   },
   "exhibition": {
     "prevQuestion": "Previous question",
