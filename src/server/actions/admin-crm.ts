@@ -14,6 +14,7 @@ import {
   checkinUserIdsByType,
   checkinsForUser,
   eventCountsByTarget,
+  funnelCounts,
   latestResponsePerUser,
   recentEngagementForUser,
   recentLogsForUser,
@@ -56,6 +57,8 @@ export interface CrmOverview {
   topByEvent: Partial<
     Record<EngagementEventType, { targetId: string; count: number }[]>
   >;
+  /** Visitor funnel (page views, starts, completions, keeps) — last 30 days. */
+  funnelEvents: Record<string, { events: number; sessions: number }>;
 }
 
 /** Powers the main `/admin` CRM dashboard. */
@@ -127,6 +130,13 @@ export async function fetchCrmOverview(): Promise<CrmOverview> {
     ),
   );
 
+  let funnelEvents: Record<string, { events: number; sessions: number }> = {};
+  try {
+    funnelEvents = await funnelCounts(db, 30);
+  } catch {
+    /* migration not applied yet — empty funnel */
+  }
+
   return {
     funnel,
     byPersona,
@@ -134,6 +144,7 @@ export async function fetchCrmOverview(): Promise<CrmOverview> {
     byLanguage,
     compliance,
     topByEvent,
+    funnelEvents,
   };
 }
 

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 import AmbientBlobs from "@/components/ui/AmbientBlobs";
 import Reveal from "@/components/ui/Reveal";
 import StitchDivider from "@/components/ui/StitchDivider";
@@ -190,6 +191,7 @@ export default function TruthAboutHRTPage() {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

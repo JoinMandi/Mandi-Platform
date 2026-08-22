@@ -35,6 +35,13 @@ const BAND_ACCENT: Record<string, "golden" | "coral" | "terra"> = {
   moderate: "coral",
   significant: "terra",
 };
+const FUNNEL_STEPS: [string, string][] = [
+  ["page_view", "Page views"],
+  ["exhibition_view", "Exhibition scans"],
+  ["questionnaire_start", "Started"],
+  ["questionnaire_complete", "Completed"],
+  ["keep_submit", "Blankets kept"],
+];
 const LANGUAGE_LABEL: Record<string, string> = {
   en: "English",
   zu: "isiZulu",
@@ -196,6 +203,30 @@ export default function AdminDashboard() {
             items={data.topByEvent.event_rsvp_click}
             emptyLabel="No RSVP clicks yet"
           />
+        </div>
+      </section>
+
+      {/* Visitor funnel — first-party page views + questionnaire drop-off */}
+      <section className="bg-cream-soft rounded-3xl shadow-warm p-7 mb-8">
+        <h2 className="font-display text-2xl text-brown mb-1">Visitor funnel (last 30 days)</h2>
+        <p className="text-brown/60 text-sm mb-6">
+          Page views, questionnaire starts and completions, blankets kept. Sessions = distinct
+          consented visitors. Daily rows for export live in the{" "}
+          <code className="text-xs">analytics_daily</code> view.
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
+          {FUNNEL_STEPS.map(([key, label]) => {
+            const v = data.funnelEvents?.[key];
+            return (
+              <div key={key} className="rounded-2xl bg-cream px-4 py-4">
+                <p className="text-[11px] uppercase tracking-[0.18em] text-brown/55 font-semibold">
+                  {label}
+                </p>
+                <p className="font-display text-3xl text-brown mt-1">{v?.events ?? 0}</p>
+                <p className="text-xs text-brown/50">{v?.sessions ?? 0} sessions</p>
+              </div>
+            );
+          })}
         </div>
       </section>
 

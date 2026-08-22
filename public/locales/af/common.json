@@ -70,6 +70,16 @@
     "close": {
       "title": "Reg wanneer jy is.",
       "cta": "Praat met Mandi"
+    },
+    "media": {
+      "eyebrow": "In die media",
+      "seriesTitle": "Meer as warm gloede",
+      "seriesBody": "'n Vierdelige Afrikaanse dokumentêre reeks op kykNET wat die stilte rondom menopouse oopbreek, saam met Antoinette Louw en die Suid-Afrikaanse vroue en kenners wat eerlik praat oor wat werklik verander.",
+      "seriesCredits": "MrsKing Productions · vervaardig deur Hermi King · regie Hanneke Schutte · Silwerskermfees 2026",
+      "seriesCta": "Sien die reeks by Silwerskermfees",
+      "radioTitle": "Channel Africa: Cultural Spotlight",
+      "radioBody": "Vervaardiger Hermi King in gesprek met Mmatsheko Mosito oor hoekom menopouse, deur 'n Afrika-lens, 'n storie is wat vertel moes word.",
+      "radioCta": "Luister na die onderhoud"
     }
   },
   "language": {
@@ -520,6 +530,15 @@
       "missing": "Is daar iets wat jy verwag het om te sien wat ontbreek?",
       "submit": "Stuur terugvoer",
       "thanks": "Dankie, dit help ons om iets beter te bou vir die volgende vrou wat aankom."
+    },
+    "keep": {
+      "eyebrow": "Hou jou kombers",
+      "title": "Hou jou MenoScore en jou Kombers veilig",
+      "body": "Op die oomblik leef jou kombers net op hierdie toestel. Los jou e-pos, en WhatsApp as jy wil, en Mandi hou dit veilig vir jou. Jy hoor ook eerste soos die Mandi-reis groei.",
+      "consent": "Ja, Mandi mag my besonderhede en my kombers hou, en my daaroor kontak.",
+      "submit": "Hou my kombers",
+      "thanksTitle": "Jou kombers is veilig by Mandi.",
+      "thanksBody": "Dankie dat jy by die Mandi-reis aansluit. Ons sal in verbinding tree, in jou taal."
     }
   },
   "nav": {
@@ -925,7 +944,8 @@
   "footer": {
     "privacy": "Jou privaatheid, hoe ons jou data gebruik",
     "terms": "Voorwaardes",
-    "contact": "Kontak"
+    "contact": "Kontak",
+    "getInvolved": "Vrae, 'n storie om te deel, of wil jy betrokke raak? Skryf aan ons by"
   },
   "exhibition": {
     "prevQuestion": "Vorige vraag",

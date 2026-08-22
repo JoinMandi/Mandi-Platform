@@ -438,7 +438,7 @@ drop policy if exists "sessions_select_own"  on sessions;
 create policy "sessions_insert_any" on sessions for insert with check (true);
 create policy "sessions_select_own" on sessions for select using (true);
 
--- questionnaire_responses: insert for anyone; read own (or anon null)
+-- questionnaire_responses: insert for anyone; read own only
 drop policy if exists "qr_insert_any" on questionnaire_responses;
 drop policy if exists "qr_select_own" on questionnaire_responses;
 drop policy if exists "qr_admin_read" on questionnaire_responses;
@@ -446,8 +446,11 @@ drop policy if exists "qr_admin_read" on questionnaire_responses;
 -- row; anonymous funnel submissions (no session) use a null user_id.
 create policy "qr_insert_any" on questionnaire_responses for insert
   with check (user_id = auth.uid() or user_id is null);
+-- Anonymous rows are NOT readable back: the roadmap is served from the
+-- client's localStorage, so nothing needs them, and `or user_id is null`
+-- would expose every anonymous health row to any anon-key caller.
 create policy "qr_select_own" on questionnaire_responses for select
-  using (user_id = auth.uid() or user_id is null);
+  using (user_id = auth.uid());
 create policy "qr_admin_read" on questionnaire_responses for select using (public.is_admin());
 
 -- users: manage own row (role changes are blocked by trg_protect_user_role)
@@ -603,7 +606,10 @@ create table if not exists engagement_events (
   event_type  text not null check (event_type in (
     'doctor_view',  'doctor_book_click',
     'content_view', 'content_link_click',
-    'event_view',   'event_rsvp_click'
+    'event_view',   'event_rsvp_click',
+    -- Funnel analytics (first-party; target_id = path or domain, never PII)
+    'page_view', 'questionnaire_start', 'questionnaire_domain',
+    'questionnaire_complete', 'keep_submit'
   )),
   user_id     uuid references auth.users(id) on delete set null,
   session_id  text,
@@ -627,6 +633,19 @@ create policy "engagement_insert_any" on engagement_events
 drop policy if exists "engagement_admin_read" on engagement_events;
 create policy "engagement_admin_read" on engagement_events
   for select using (public.is_admin());
+
+-- Daily funnel export (Supabase dashboard → CSV). security_invoker keeps the
+-- admin-only RLS of the underlying table in force.
+create or replace view analytics_daily
+  with (security_invoker = true) as
+  select
+    created_at::date            as day,
+    event_type,
+    target_id,
+    count(*)                    as events,
+    count(distinct session_id)  as sessions
+  from engagement_events
+  group by 1, 2, 3;
 
 -- ═════════════════════════════════════════════════════════════
 -- 10. admin_audit_log + is_admin_aal2 (Phase 9 — admin auth hardening)
@@ -723,6 +742,8 @@ create table if not exists exhibition_signups (
   -- Separate, explicit, unticked-by-default marketing opt-in — never bundled
   -- with the POPIA consent to store the answers.
   marketing_opt_in boolean not null default false,
+  -- 'exhibition' (festival demo, curated answers) | 'roadmap' (post-score
+  -- "keep my blanket" on the main site, full answer set).
   source           text not null default 'exhibition'
 );
 

@@ -23,8 +23,8 @@ const config: Config = {
         "brown-deep":"#4A2A23",
       },
       fontFamily: {
-        sans:    ["Montserrat", "ui-sans-serif", "system-ui", "sans-serif"],
-        display: ["Carmos", "Montserrat", "ui-serif", "serif"],
+        sans:    ["var(--font-montserrat)", "Montserrat", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["Carmos", "var(--font-montserrat)", "ui-serif", "serif"],
       },
       fontSize: {
         "display-xl": ["clamp(2.75rem, 6vw, 4.5rem)", { lineHeight: "1.05", letterSpacing: "-0.01em" }],

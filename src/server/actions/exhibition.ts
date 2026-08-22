@@ -1,7 +1,10 @@
 "use server";
 
 import { createActionClient } from "@/server/supabase/server";
-import { insertExhibitionSignup } from "@/server/data/exhibition-signups";
+import {
+  insertExhibitionSignup,
+  type SignupSource,
+} from "@/server/data/exhibition-signups";
 import { sendExhibitionResultsEmail } from "@/server/email";
 import { EXHIBITION_QUESTION_IDS, exhibitionStory } from "@/lib/domain/exhibition";
 import type { AgeBand, ScoreBand } from "@/lib/types/database";
@@ -37,8 +40,11 @@ export async function submitExhibitionSignup(args: {
   answers: Record<string, unknown>;
   consent: boolean;
   marketingOptIn?: boolean;
+  /** "roadmap" = post-score capture on the main site: full blanket, no email. */
+  source?: SignupSource;
 }): Promise<{ saved: boolean; emailed: boolean }> {
   if (!args.consent) return { saved: false, emailed: false };
+  const source: SignupSource = args.source === "roadmap" ? "roadmap" : "exhibition";
   const email = (args.email ?? "").trim();
   if (!EMAIL_RE.test(email) || email.length > 254) {
     return { saved: false, emailed: false };
@@ -51,12 +57,16 @@ export async function submitExhibitionSignup(args: {
   const whatsappRaw = (args.whatsapp ?? "").trim();
   const whatsapp = WHATSAPP_RE.test(whatsappRaw) ? whatsappRaw : null;
   const ageBand = args.ageBand && AGE_BANDS.has(args.ageBand) ? args.ageBand : null;
-  // Data minimisation: persist only the curated demo answers, nothing else.
-  const answers = Object.fromEntries(
-    (EXHIBITION_QUESTION_IDS as readonly number[])
-      .map((id) => [id, args.answers?.[String(id)] ?? args.answers?.[id as never]])
-      .filter(([, v]) => v !== undefined),
-  ) as Record<string, unknown>;
+  // Exhibition: data minimisation, persist only the curated demo answers.
+  // Roadmap: the full answer set IS her blanket; that is what she asked us to keep.
+  const answers =
+    source === "roadmap"
+      ? (args.answers ?? {})
+      : (Object.fromEntries(
+          (EXHIBITION_QUESTION_IDS as readonly number[])
+            .map((id) => [id, args.answers?.[String(id)] ?? args.answers?.[id as never]])
+            .filter(([, v]) => v !== undefined),
+        ) as Record<string, unknown>);
 
   let saved = false;
   try {
@@ -72,10 +82,14 @@ export async function submitExhibitionSignup(args: {
         answers,
         consent: true,
         marketing_opt_in: args.marketingOptIn === true,
+        source,
       })) !== null;
   } catch {
     /* best-effort — never strand a visitor at the stand */
   }
+
+  // The results email is exhibition copy; roadmap signups get no email.
+  if (source === "roadmap") return { saved, emailed: false };
 
   let emailed = false;
   try {

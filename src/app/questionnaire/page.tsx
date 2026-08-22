@@ -12,6 +12,7 @@ import {
 import { calculateScore } from "@/lib/domain/scoring";
 import { buildQuilt } from "@/lib/domain/quilt";
 import { submitQuestionnaire } from "@/server/actions/questionnaire";
+import { logEngagement } from "@/server/actions/engagement";
 import { loadProgress, saveProgress, clearProgress } from "@/lib/questionnaire-progress";
 import QuestionScreen from "@/components/ui/QuestionScreen";
 import ScaleInput from "@/components/ui/ScaleInput";
@@ -71,6 +72,20 @@ async function persistResponse(
 
 type Phase = "loading" | "resume" | "question" | "final";
 
+/** Funnel analytics: fire-and-forget, no answers, no PII. */
+function track(
+  eventType: "questionnaire_start" | "questionnaire_domain" | "questionnaire_complete",
+  targetId: string | null,
+  meta?: Record<string, unknown>,
+) {
+  void logEngagement({
+    eventType,
+    targetId,
+    sessionId: localStorage.getItem("mandi-session"),
+    meta: { lang: localStorage.getItem("mandi-lang") ?? "en", ...meta },
+  });
+}
+
 export default function QuestionnairePage() {
   const router = useRouter();
   const { t } = useTranslation("common");
@@ -106,6 +121,7 @@ export default function QuestionnairePage() {
     const saved = loadProgress();
     savedRef.current = saved;
     setPhase(saved ? "resume" : "question");
+    if (!saved) track("questionnaire_start", "/questionnaire");
   }, []);
 
   // ── Persist progress while answering ─────────────────────────
@@ -133,11 +149,13 @@ export default function QuestionnairePage() {
       }
       clearProgress();
       void persistResponse(answers, result);
+      track("questionnaire_complete", "/questionnaire", { score_band: result.scoreBand });
       setPhase("final");
       return;
     }
 
     if (nextQuestion && nextQuestion.domain !== q.domain) {
+      track("questionnaire_domain", q.domain);
       setDomainTransition({ completedDomain: q.domain, nextDomain: nextQuestion.domain });
       return;
     }

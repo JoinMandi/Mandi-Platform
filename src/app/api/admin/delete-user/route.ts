@@ -4,6 +4,7 @@ import { createServiceClient } from "@/server/supabase/service";
 import { getUserAccount } from "@/server/data/users";
 import { insertDeletionLog } from "@/server/data/deletion-log";
 import { insertAuditLog } from "@/server/data/audit";
+import { deleteExhibitionSignupsByEmail } from "@/server/data/exhibition-signups";
 
 export const runtime = "nodejs";
 
@@ -51,8 +52,12 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: delErr.message }, { status: 500 });
   }
 
-  // 4. POPIA audit log (long-term legal record) + admin audit log (operational).
+  // 4. POPIA audit log (long-term legal record) + admin audit log (operational)
+  //    + erase contact captures, which have no FK to auth.users (by email).
   await Promise.all([
+    body.userEmail
+      ? deleteExhibitionSignupsByEmail(service, body.userEmail)
+      : Promise.resolve(),
     insertDeletionLog(service, {
       user_email: body.userEmail ?? null,
       deleted_by: user.id,
