@@ -43,3 +43,7 @@ translations.csv
 # Generated team Word docs — Phase 22 starting templates the team edits
 # locally. Regenerate with: node scripts/generate-team-docs.mjs
 docs/team/
+
+# Session notes stay local, never committed
+SESSION-NOTES*.md
+docs/SESSION-NOTES*.md
