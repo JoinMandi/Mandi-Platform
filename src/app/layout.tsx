@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import I18nProvider from "@/components/I18nProvider";
 import PageView from "@/components/PageView";
 
-// Self-hosted, subsetted woff2 at build time (replaces the 688 KB variable TTF).
-const montserrat = Montserrat({
-  subsets: ["latin"],
+// Self-hosted: no build-time fetch to Google Fonts (Docker/CI can build offline).
+const montserrat = localFont({
+  src: "../../public/fonts/Montserrat-VariableFont_wght.ttf",
   display: "swap",
   variable: "--font-montserrat",
+  weight: "100 900",
 });
 
 export const metadata: Metadata = {
