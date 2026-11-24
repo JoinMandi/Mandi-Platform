@@ -1,20 +1,14 @@
 "use server";
 
-import { createActionClient } from "@/server/supabase/server";
 import { getSessionUser } from "@/server/auth";
 import { seedUser } from "@/server/data/users";
+import { withUser } from "@/server/db/withUser";
 
-/**
- * Seeds the `public.users` row for the signed-in account. Called after sign-up.
- * No-ops if there is no session yet (e.g. the email-confirmation flow).
- */
+/** Seeds the web.users row for the signed-in account (no-op without a session). */
 export async function seedUserProfile(languageCode: string | null): Promise<void> {
-  const db = createActionClient();
-  const user = await getSessionUser(db);
+  const user = await getSessionUser();
   if (!user) return;
-  await seedUser(db, {
-    id: user.id,
-    email: user.email ?? null,
-    language_code: languageCode,
-  });
+  await withUser({ id: user.id, role: user.role }, (db) =>
+    seedUser(db, { id: user.id, email: user.email, language_code: languageCode }),
+  );
 }

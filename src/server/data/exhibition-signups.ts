@@ -1,5 +1,6 @@
 /** Data access — exhibition_signups (festival + roadmap contact capture). */
-import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Db } from "@/server/db/pool";
+import { run } from "@/server/db/sql";
 import type { AgeBand, ScoreBand } from "@/lib/types/database";
 
 export type SignupSource = "exhibition" | "roadmap";
@@ -17,23 +18,43 @@ export interface ExhibitionSignupInput {
   source: SignupSource;
 }
 
-/** Inserts a signup and returns its id (or null if blocked). */
+/**
+ * Inserts a signup. No RETURNING clause: the table's SELECT policy is
+ * admin-only, so asking for the row back would make the insert fail for an
+ * anonymous visitor.
+ */
 export async function insertExhibitionSignup(
-  db: SupabaseClient,
+  db: Db,
   input: ExhibitionSignupInput,
-): Promise<string | null> {
-  const { data } = await db
-    .from("exhibition_signups")
-    .insert(input)
-    .select("id")
-    .single();
-  return (data as { id: string } | null)?.id ?? null;
+): Promise<boolean> {
+  const affected = await run(
+    db,
+    `insert into web.exhibition_signups
+       (email, whatsapp, age_band, language_code, meno_score, score_band,
+        answers, consent, marketing_opt_in, source)
+     values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`,
+    [
+      input.email,
+      input.whatsapp,
+      input.age_band,
+      input.language_code,
+      input.meno_score,
+      input.score_band,
+      input.answers,
+      input.consent,
+      input.marketing_opt_in,
+      input.source,
+    ],
+  );
+  return affected > 0;
 }
 
-/** POPIA erasure: signups have no FK to auth.users, so delete by email (service role). */
+/** POPIA erasure: signups have no FK to users, so delete by email (service). */
 export async function deleteExhibitionSignupsByEmail(
-  db: SupabaseClient,
+  db: Db,
   email: string,
 ): Promise<void> {
-  await db.from("exhibition_signups").delete().eq("email", email);
+  await run(db, `delete from web.exhibition_signups where lower(email) = lower($1)`, [
+    email,
+  ]);
 }

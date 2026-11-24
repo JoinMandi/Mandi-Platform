@@ -1,19 +1,24 @@
 "use server";
 
-import { createActionClient } from "@/server/supabase/server";
+import { getSessionUser } from "@/server/auth";
 import { insertConsentSession } from "@/server/data/sessions";
+import { withUser } from "@/server/db/withUser";
 
 const KNOWN_LANGS = new Set(["en", "zu", "xh", "af"]);
 
 /**
- * Records POPIA consent server-side when the user accepts on the consent
- * screen. Returns the new session id so the client can attach it to the
- * questionnaire submission (links consent → response). Best-effort: returns
- * null rather than throwing so a DB hiccup never hard-stops the funnel.
+ * Records POPIA consent server-side when she accepts on the consent screen.
+ * Returns the new session id, or null on a database hiccup.
  */
 export async function recordConsent(languageCode: string | null): Promise<string | null> {
-  const db = createActionClient();
-  // Guard the FK to languages(code) — an unknown code would fail the insert.
   const lang = languageCode && KNOWN_LANGS.has(languageCode) ? languageCode : null;
-  return insertConsentSession(db, lang);
+  const user = await getSessionUser();
+  try {
+    return await withUser(
+      user ? { id: user.id, role: user.role } : null,
+      (db) => insertConsentSession(db, lang),
+    );
+  } catch {
+    return null;
+  }
 }

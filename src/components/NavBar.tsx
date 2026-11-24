@@ -2,12 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import type { AuthChangeEvent, Session } from "@supabase/supabase-js";
-import { createBrowserClient } from "@/server/supabase/browser";
-import { fetchCurrentUserRole } from "@/server/actions/me";
 import Button from "@/components/ui/Button";
 import LanguageMenu from "@/components/ui/LanguageMenu";
 import type { UserRole } from "@/lib/types/database";
@@ -31,7 +27,6 @@ const LINK_CLASS =
 
 export default function NavBar() {
   const { t } = useTranslation("common");
-  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [hasSession, setHasSession] = useState(false);
   const [role, setRole] = useState<UserRole | null>(null);
@@ -42,31 +37,32 @@ export default function NavBar() {
   const isAdminTier = role === "admin" || role === "superadmin";
 
   useEffect(() => {
-    const supabase = createBrowserClient();
-    const sync = async (signedIn: boolean) => {
-      setHasSession(signedIn);
-      if (!signedIn) {
-        setRole(null);
-        return;
-      }
-      // Self-read via RLS users_select_own — safe for any signed-in user.
-      try {
-        const { role } = await fetchCurrentUserRole();
-        setRole(role);
-      } catch {
-        setRole(null);
-      }
-    };
+    let cancelled = false;
     void (async () => {
-      const { data } = await supabase.auth.getSession();
-      await sync(!!data.session);
+      try {
+        const response = await fetch("/api/auth/me", { cache: "no-store" });
+        if (cancelled) return;
+        if (!response.ok) {
+          setHasSession(false);
+          setRole(null);
+          return;
+        }
+        const data = (await response.json()) as {
+          signedIn?: boolean;
+          role?: UserRole | null;
+        };
+        setHasSession(!!data.signedIn);
+        setRole(data.role ?? null);
+      } catch {
+        if (!cancelled) {
+          setHasSession(false);
+          setRole(null);
+        }
+      }
     })();
-    const { data: listener } = supabase.auth.onAuthStateChange(
-      (_e: AuthChangeEvent, session: Session | null) => {
-        void sync(!!session);
-      },
-    );
-    return () => listener.subscription.unsubscribe();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   useEffect(() => {
@@ -76,12 +72,9 @@ export default function NavBar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const signOut = async () => {
-    const supabase = createBrowserClient();
-    await supabase.auth.signOut();
+  const signOut = () => {
     setMenuOpen(false);
-    router.push("/");
-    router.refresh();
+    window.location.href = "/auth/logout";
   };
 
   return (

@@ -1,0 +1,139 @@
+#!/bin/bash
+set -euxo pipefail
+
+# ── Docker + Compose ─────────────────────────────────────────
+dnf install -y docker
+systemctl enable --now docker
+usermod -aG docker ec2-user
+
+mkdir -p /usr/local/lib/docker/cli-plugins
+curl -fsSL "https://github.com/docker/compose/releases/download/v2.32.4/docker-compose-linux-aarch64" \
+  -o /usr/local/lib/docker/cli-plugins/docker-compose
+chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+
+# ── Runtime environment from Secrets Manager ─────────────────
+mkdir -p /opt/mandi
+cd /opt/mandi
+
+aws secretsmanager get-secret-value \
+  --region "${region}" \
+  --secret-id "${secret_arn}" \
+  --query SecretString \
+  --output text > /tmp/mandi-secret.json
+
+python3 - <<'PY'
+import json
+with open('/tmp/mandi-secret.json') as fh:
+    data = json.load(fh)
+
+app_keys = {
+    'NODE_ENV', 'DATABASE_APP_URL', 'DATABASE_SERVICE_URL', 'SESSION_SECRET',
+    'COGNITO_REGION', 'COGNITO_USER_POOL_ID', 'COGNITO_CLIENT_ID',
+    'COGNITO_CLIENT_SECRET', 'COGNITO_DOMAIN', 'APP_URL', 'APP_DOMAIN',
+    'AWS_REGION', 'S3_BUCKET', 'RESEND_API_KEY', 'RESEND_FROM',
+}
+migrate_keys = {
+    'DATABASE_URL', 'DATABASE_APP_PASSWORD', 'DATABASE_SERVICE_PASSWORD',
+    'COGNITO_REGION', 'COGNITO_USER_POOL_ID', 'AWS_REGION',
+}
+
+with open('/opt/mandi/.env', 'w') as fh:
+    for key, value in data.items():
+        if key in app_keys:
+            fh.write(f"{key}={value}\n")
+
+with open('/opt/mandi/migrate.env', 'w') as fh:
+    for key, value in data.items():
+        if key in migrate_keys:
+            fh.write(f"{key}={value}\n")
+PY
+chmod 600 /opt/mandi/.env /opt/mandi/migrate.env
+rm -f /tmp/mandi-secret.json
+
+# ── Caddy + Compose ──────────────────────────────────────────
+cat > /opt/mandi/Caddyfile <<'CADDY'
+{$APP_DOMAIN} {
+    encode zstd gzip
+    reverse_proxy app:3000
+}
+CADDY
+
+cat > /opt/mandi/docker-compose.yml <<'COMPOSE'
+services:
+  app:
+    image: $${IMAGE}
+    restart: unless-stopped
+    env_file:
+      - /opt/mandi/.env
+    expose:
+      - "3000"
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: ${region}
+        awslogs-group: ${log_group}
+        awslogs-stream: app
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    environment:
+      APP_DOMAIN: $${APP_DOMAIN}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
+
+volumes:
+  caddy_data:
+  caddy_config:
+COMPOSE
+
+cat > /opt/mandi/deploy.sh <<'DEPLOY'
+#!/bin/bash
+set -euo pipefail
+TAG="$${1:?usage: deploy.sh <sha>}"
+REGION="${region}"
+ECR="${ecr_repo}"
+cd /opt/mandi
+
+aws ecr get-login-password --region "$REGION" \
+  | docker login --username AWS --password-stdin "$${ECR%%/*}"
+
+docker pull "$ECR:$TAG-migrator"
+docker run --rm \
+  --env-file /opt/mandi/migrate.env \
+  -e PGSSLMODE=require \
+  "$ECR:$TAG-migrator"
+
+docker pull "$ECR:$TAG"
+if grep -q '^IMAGE=' /opt/mandi/.env; then
+  sed -i "s|^IMAGE=.*|IMAGE=$ECR:$TAG|" /opt/mandi/.env
+else
+  echo "IMAGE=$ECR:$TAG" >> /opt/mandi/.env
+fi
+
+docker compose -f /opt/mandi/docker-compose.yml up -d
+DEPLOY
+
+chmod +x /opt/mandi/deploy.sh
+
+cat > /opt/mandi/seed-staff.sh <<'SEED'
+#!/bin/bash
+set -euo pipefail
+cd /opt/mandi
+IMAGE=$(grep '^IMAGE=' .env | cut -d= -f2)
+docker run --rm --network host --env-file migrate.env \
+  -e PGSSLMODE=require \
+  "$${IMAGE}-migrator" \
+  node db/seed-staff.mjs "$@"
+SEED
+
+chmod +x /opt/mandi/seed-staff.sh
+
+echo "mandi ${environment} bootstrap complete" > /var/log/mandi-bootstrap.log

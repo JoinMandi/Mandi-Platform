@@ -1,5 +1,7 @@
 /** Data access — stories. */
-import type { SupabaseClient } from "@supabase/supabase-js";
+import { randomUUID } from "node:crypto";
+import type { Db } from "@/server/db/pool";
+import { all, count, run } from "@/server/db/sql";
 import type { StoryRow, StoryStatus } from "@/lib/types/database";
 
 export interface StoryFilters {
@@ -8,30 +10,37 @@ export interface StoryFilters {
 }
 
 export async function listStories(
-  db: SupabaseClient,
+  db: Db,
   filters: StoryFilters = {},
 ): Promise<StoryRow[]> {
-  let q = db.from("stories").select("*").order("created_at", { ascending: false });
-  if (filters.status) q = q.eq("status", filters.status);
-  if (filters.languageCode) q = q.eq("language_code", filters.languageCode);
-  const { data } = await q;
-  return (data ?? []) as StoryRow[];
+  const clauses: string[] = [];
+  const params: unknown[] = [];
+  if (filters.status) {
+    params.push(filters.status);
+    clauses.push(`status = $${params.length}`);
+  }
+  if (filters.languageCode) {
+    params.push(filters.languageCode);
+    clauses.push(`language_code = $${params.length}`);
+  }
+  const where = clauses.length ? `where ${clauses.join(" and ")}` : "";
+  return all<StoryRow>(
+    db,
+    `select * from web.stories ${where} order by created_at desc`,
+    params,
+  );
 }
 
 export async function setStoryStatus(
-  db: SupabaseClient,
+  db: Db,
   id: string,
   status: StoryStatus,
 ): Promise<void> {
-  await db.from("stories").update({ status }).eq("id", id);
+  await run(db, `update web.stories set status = $2 where id = $1`, [id, status]);
 }
 
-export async function countPendingStories(db: SupabaseClient): Promise<number> {
-  const { count } = await db
-    .from("stories")
-    .select("id", { count: "exact", head: true })
-    .eq("status", "pending");
-  return count ?? 0;
+export async function countPendingStories(db: Db): Promise<number> {
+  return count(db, `select count(*)::int as n from web.stories where status = 'pending'`);
 }
 
 export interface InsertStoryInput {
@@ -40,30 +49,40 @@ export interface InsertStoryInput {
   languageCode: string | null;
   symptomTags: string[] | null;
   consent: boolean;
-  /** Defaults to 'pending' — admin-created stories still flow through the
-   *  moderation queue per the Phase-20 user decision. */
   status?: StoryStatus;
 }
 
-/** Insert a new story. Used by both anonymous public submissions (when
- *  we eventually replace the mailto flow) and admin-authored creation
- *  via /admin/stories. Returns the new row's id. */
+/**
+ * Insert a story. The id is generated here rather than with RETURNING: the
+ * table's SELECT policy is admin/approved-only, so an anonymous insert that
+ * asked for the row back would be refused.
+ */
 export async function insertStory(
-  db: SupabaseClient,
+  db: Db,
   input: InsertStoryInput,
 ): Promise<{ ok: true; id: string } | { ok: false; error: string }> {
-  const { data, error } = await db
-    .from("stories")
-    .insert({
-      content: input.content,
-      author_name: input.authorName,
-      language_code: input.languageCode,
-      symptom_tags: input.symptomTags,
-      consent: input.consent,
-      status: input.status ?? "pending",
-    })
-    .select("id")
-    .single();
-  if (error) return { ok: false, error: error.message };
-  return { ok: true, id: (data as { id: string }).id };
+  const id = randomUUID();
+  try {
+    await run(
+      db,
+      `insert into web.stories
+         (id, content, author_name, language_code, symptom_tags, consent, status)
+       values ($1,$2,$3,$4,$5,$6,$7)`,
+      [
+        id,
+        input.content,
+        input.authorName,
+        input.languageCode,
+        input.symptomTags,
+        input.consent,
+        input.status ?? "pending",
+      ],
+    );
+    return { ok: true, id };
+  } catch (error) {
+    return {
+      ok: false,
+      error: error instanceof Error ? error.message : "Insert failed",
+    };
+  }
 }

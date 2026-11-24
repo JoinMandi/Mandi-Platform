@@ -1,14 +1,15 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-// vi.mock is hoisted above imports, so the mocks it references must be too.
 const { insert, send } = vi.hoisted(() => ({
-  insert: vi.fn<(db: unknown, row: Record<string, unknown>) => Promise<string | null>>(
-    async () => "id-1",
+  insert: vi.fn<(db: unknown, row: Record<string, unknown>) => Promise<boolean>>(
+    async () => true,
   ),
   send: vi.fn<(args: unknown) => Promise<boolean>>(async () => true),
 }));
 
-vi.mock("@/server/supabase/server", () => ({ createActionClient: () => ({}) }));
+vi.mock("@/server/db/withUser", () => ({
+  withAnon: (fn: (db: unknown) => Promise<unknown>) => fn({}),
+}));
 vi.mock("@/server/data/exhibition-signups", () => ({ insertExhibitionSignup: insert }));
 vi.mock("@/server/email", () => ({ sendExhibitionResultsEmail: send }));
 
@@ -19,7 +20,6 @@ const base = {
   languageCode: "af",
   menoScore: 57,
   scoreBand: "moderate" as const,
-  // 1 and 2 are curated exhibition questions; 99 is not.
   answers: { "1": 3, "2": 2, "99": 1 },
   consent: true,
 };
@@ -49,7 +49,11 @@ describe("submitExhibitionSignup", () => {
   });
 
   it("no consent: stores nothing", async () => {
-    const res = await submitExhibitionSignup({ ...base, consent: false, source: "roadmap" });
+    const res = await submitExhibitionSignup({
+      ...base,
+      consent: false,
+      source: "roadmap",
+    });
     expect(res).toEqual({ saved: false, emailed: false });
     expect(insert).not.toHaveBeenCalled();
   });

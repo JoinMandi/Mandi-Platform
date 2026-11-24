@@ -1,3 +1,12 @@
+> **Phase 0 update (24 Nov 2026):** the running stack is now AWS `af-south-1` —
+> one EC2 instance (Docker Compose: Next.js + Caddy), RDS Postgres, Cognito
+> with TOTP MFA, S3 for media, Secrets Manager, CloudWatch, all in Terraform.
+> Supabase Auth/PostgREST/Storage and Netlify are no longer used. Identity is a
+> sealed Cognito session cookie (`src/server/auth/`), and data access is native
+> `pg` (`src/server/data/`, `src/server/db/`). The detailed sections below
+> describe the pre-cutover architecture and should be read with that in mind.
+> See `docs/adr/0001-phase-0-stack.md` and `docs/PHASE-0-RUNBOOK.md`.
+
 # Mandi-Platform — Data flow map (POPIA)
 
 **Date:** 2026-08-22 · **Audience:** Legal / POPIA sign-off, Dr Bango, engineering.

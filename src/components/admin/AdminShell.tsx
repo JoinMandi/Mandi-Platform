@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { createBrowserClient } from "@/server/supabase/browser";
 import { fetchAdminContext } from "@/server/actions/admin";
 
 type NavItem = {
@@ -122,11 +121,8 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
     }
   }, [status, pathname, router]);
 
-  const signOut = async () => {
-    const supabase = createBrowserClient();
-    await supabase.auth.signOut();
-    router.push("/");
-    router.refresh();
+  const signOut = () => {
+    window.location.href = "/auth/logout";
   };
 
   if (status.kind === "loading") {
@@ -167,21 +163,15 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
             Account row missing
           </p>
           <p className="font-display text-2xl text-brown mb-3">
-            Signed in as {status.email ?? "your account"}, but no <code>public.users</code> row.
+            Signed in as {status.email ?? "your account"}, but no Mandi profile row.
           </p>
-          <p className="text-brown/75 text-sm mb-4 leading-relaxed">
-            Run this in the Supabase SQL editor to bootstrap your admin role:
+          <p className="text-brown/75 text-sm mb-6 leading-relaxed">
+            Ask a superadmin to create your <code>web.users</code> row with the right
+            role. Staff accounts are provisioned, never self-created.
           </p>
-          <pre className="bg-brown text-cream text-xs rounded-2xl p-4 mb-6 overflow-x-auto">
-{`insert into public.users (id, email, role)
-select id, email, 'admin'
-from auth.users
-where email = '${status.email ?? "you@example.com"}'
-on conflict (id) do update set role = 'admin';`}
-          </pre>
           <div className="flex gap-3">
             <button onClick={() => window.location.reload()} className="link-warm text-terra text-sm">
-              I&rsquo;ve run it — retry
+              Retry
             </button>
             <button onClick={signOut} className="link-warm text-terra text-sm">Sign out</button>
           </div>
@@ -318,7 +308,7 @@ function MobileNav({
   pathname: string;
   badges: { pendingStories: number; pendingEvents: number };
   isSuperadmin: boolean;
-  onSignOut: () => Promise<void>;
+  onSignOut: () => void;
 }) {
   const [open, setOpen] = useState(false);
   const visibleNav = NAV.filter((item) => isSuperadmin || !item.requiresSuperadmin);
@@ -366,7 +356,7 @@ function MobileNav({
             <button
               onClick={() => {
                 setOpen(false);
-                void onSignOut();
+                onSignOut();
               }}
               className="text-golden hover:text-cream"
             >

@@ -1,0 +1,119 @@
+name: Deploy staging
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build, migrate and deploy
+    runs-on: ubuntu-latest
+    environment: staging
+    env:
+      AWS_REGION: af-south-1
+      APP_DOMAIN: ${{ vars.APP_DOMAIN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: af-south-1
+
+      - uses: docker/setup-qemu-action@v3
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Resolve ECR repository, instance and tag
+        id: target
+        run: |
+          set -euo pipefail
+          REPO=$(aws ecr describe-repositories \
+            --repository-names mandi-staging \
+            --query 'repositories[0].repositoryUri' --output text)
+          INSTANCE=$(aws ec2 describe-instances \
+            --filters 'Name=tag:Name,Values=mandi-staging' 'Name=instance-state-name,Values=running' \
+            --query 'Reservations[0].Instances[0].InstanceId' --output text)
+          echo "repo=$REPO" >> "$GITHUB_OUTPUT"
+          echo "instance=$INSTANCE" >> "$GITHUB_OUTPUT"
+          echo "tag=${GITHUB_SHA::12}" >> "$GITHUB_OUTPUT"
+
+      - name: Log in to ECR
+        run: |
+          set -euo pipefail
+          aws ecr get-login-password --region "$AWS_REGION" \
+            | docker login --username AWS --password-stdin "${{ steps.target.outputs.repo }}"
+
+      - name: Build and push app image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          target: runner
+          platforms: linux/arm64
+          push: true
+          tags: ${{ steps.target.outputs.repo }}:${{ steps.target.outputs.tag }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build and push migrator image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          target: migrator
+          platforms: linux/arm64
+          push: true
+          tags: ${{ steps.target.outputs.repo }}:${{ steps.target.outputs.tag }}-migrator
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Run migrations and restart the service
+        run: |
+          set -euo pipefail
+          COMMAND_ID=$(aws ssm send-command \
+            --instance-ids "${{ steps.target.outputs.instance }}" \
+            --document-name AWS-RunShellScript \
+            --comment "Deploy ${GITHUB_SHA}" \
+            --parameters "commands=/opt/mandi/deploy.sh ${{ steps.target.outputs.tag }}" \
+            --query 'Command.CommandId' --output text)
+          echo "SSM command $COMMAND_ID"
+
+          for _ in $(seq 1 60); do
+            STATUS=$(aws ssm get-command-invocation \
+              --command-id "$COMMAND_ID" \
+              --instance-id "${{ steps.target.outputs.instance }}" \
+              --query 'Status' --output text)
+            echo "status: $STATUS"
+            case "$STATUS" in
+              Success) exit 0 ;;
+              Failed|Cancelled|TimedOut)
+                aws ssm get-command-invocation \
+                  --command-id "$COMMAND_ID" \
+                  --instance-id "${{ steps.target.outputs.instance }}" \
+                  --query '{out:StandardOutputContent,err:StandardErrorContent}' --output json
+                exit 1 ;;
+            esac
+            sleep 10
+          done
+          echo "deploy command did not finish in 10 minutes"
+          exit 1
+
+      - name: Health check
+        run: |
+          set -euo pipefail
+          for _ in $(seq 1 30); do
+            if curl -fsS "https://${APP_DOMAIN}/api/health"; then
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "health check failed"
+          exit 1

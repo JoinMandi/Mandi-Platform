@@ -1,13 +1,11 @@
 /**
  * Data access — admin_audit_log.
  *
- * INSERT path is service-role only (no RLS insert policy on the table). Callers
- * obtain a service client via `createServiceClient()` and call `insertAuditLog`
- * after their app-layer guard (`requireAdminAal2`) has passed.
- *
- * READ path uses the signed-in admin's session (RLS gates SELECT to AAL2).
+ * Writes go through the service role (no INSERT policy on the table);
+ * reads are superadmin-only via RLS.
  */
-import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Db } from "@/server/db/pool";
+import { all, run } from "@/server/db/sql";
 import type {
   AdminAuditAction,
   AdminAuditLogRow,
@@ -21,20 +19,25 @@ export interface AuditLogInput {
   meta?: Record<string, unknown>;
 }
 
-/** Insert one audit row. Never throws — the audit trail must never break the
- *  underlying admin action itself; bad inserts are logged but swallowed. */
+/** Never throws — the audit trail must not break the admin action itself. */
 export async function insertAuditLog(
-  service: SupabaseClient,
+  service: Db,
   input: AuditLogInput,
 ): Promise<void> {
   try {
-    await service.from("admin_audit_log").insert({
-      action: input.action,
-      actor_id: input.actorId,
-      actor_email: input.actorEmail,
-      target_id: input.targetId ?? null,
-      meta: input.meta ?? {},
-    });
+    await run(
+      service,
+      `insert into web.admin_audit_log
+         (action, actor_id, actor_email, target_id, meta)
+       values ($1,$2,$3,$4,$5)`,
+      [
+        input.action,
+        input.actorId,
+        input.actorEmail,
+        input.targetId ?? null,
+        input.meta ?? {},
+      ],
+    );
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error("[audit] insertAuditLog failed:", err);
@@ -48,22 +51,32 @@ export interface AuditLogQuery {
   sinceDays?: number;
 }
 
-/** List recent audit rows for the /admin/audit viewer. */
 export async function listAuditLog(
-  db: SupabaseClient,
+  db: Db,
   q: AuditLogQuery = {},
 ): Promise<AdminAuditLogRow[]> {
-  let query = db
-    .from("admin_audit_log")
-    .select("*")
-    .order("created_at", { ascending: false })
-    .limit(q.limit ?? 200);
-  if (q.action) query = query.eq("action", q.action);
-  if (q.actorId) query = query.eq("actor_id", q.actorId);
-  if (q.sinceDays) {
-    const since = new Date(Date.now() - q.sinceDays * 24 * 60 * 60 * 1000).toISOString();
-    query = query.gte("created_at", since);
+  const clauses: string[] = [];
+  const params: unknown[] = [];
+  if (q.action) {
+    params.push(q.action);
+    clauses.push(`action = $${params.length}`);
   }
-  const { data } = await query;
-  return (data ?? []) as AdminAuditLogRow[];
+  if (q.actorId) {
+    params.push(q.actorId);
+    clauses.push(`actor_id = $${params.length}`);
+  }
+  if (q.sinceDays) {
+    params.push(new Date(Date.now() - q.sinceDays * 86_400_000).toISOString());
+    clauses.push(`created_at >= $${params.length}`);
+  }
+  params.push(q.limit ?? 200);
+  const where = clauses.length ? `where ${clauses.join(" and ")}` : "";
+  return all<AdminAuditLogRow>(
+    db,
+    `select * from web.admin_audit_log
+     ${where}
+     order by created_at desc
+     limit $${params.length}`,
+    params,
+  );
 }
