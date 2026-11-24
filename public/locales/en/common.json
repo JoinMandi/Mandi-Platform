@@ -440,7 +440,9 @@
       "emergency": "In an emergency, call 112 from any cellphone.",
       "note": "This number also appears on your results and your doctor summary, so you can find it again.",
       "cta": "Carry on to my results"
-    }
+    },
+    "saveLink": "Save & come back",
+    "saveLinkCopied": "Link copied"
   },
   "units": {
     "cm": "cm",
