@@ -458,7 +458,7 @@
   "roadmap": {
     "disclaimer": "Educational information only, not medical advice.",
     "nextSteps": "Your next steps",
-    "title": "Your Mandi Roadmap",
+    "title": "Your Menopause Results",
     "menoScore": "MenoScore",
     "outOf": "out of 100",
     "blanketLabel": "The blanket you stitched",
@@ -593,7 +593,8 @@
     "print": "Print / save as PDF",
     "summaryTitle": "My doctor summary",
     "summaryNote": "Self-reported with Mandi's 56-question check-in. Not a diagnosis.",
-    "resultsDate": "Your check-in"
+    "resultsDate": "Your check-in",
+    "moreAbout": "More about {{area}}"
   },
   "nav": {
     "about": "About Mandi",

@@ -186,6 +186,15 @@ export default function RoadmapPage() {
                         style={{ width: `${d.percent}%` }}
                       />
                     </div>
+                    <Link
+                      href="/resources"
+                      className="mt-1 inline-block text-xs font-semibold text-terra hover:text-terra-dark"
+                    >
+                      {t("roadmap.moreAbout", {
+                        area: t(`questionnaire.domain.${d.domain}.title`),
+                      })}{" "}
+                      →
+                    </Link>
                   </div>
                 ))}
               </div>

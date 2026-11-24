@@ -183,8 +183,8 @@ export default function SummaryPage() {
             Summary for my doctor
           </h2>
           <p className="mt-2 text-sm text-brown/70">
-            Prepared with Mandi&apos;s 56-question check-in on {date}. Self-reported;
-            not a diagnosis.
+            Prepared with Mandi&apos;s 56-question menopause check-in on {date}.
+            Self-reported; not a diagnosis.
           </p>
           <div className="mt-5 space-y-3 text-sm">
             <p>
