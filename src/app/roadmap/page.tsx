@@ -14,6 +14,7 @@ import KeepBlanketCard from "@/components/ui/KeepBlanketCard";
 import Footer from "@/components/Footer";
 import { questions } from "@/lib/domain/questions";
 import { buildQuilt } from "@/lib/domain/quilt";
+import { domainScores } from "@/lib/domain/scoring";
 import type { ScoreBand, Persona, RoadmapSlot } from "@/lib/domain/scoring";
 
 interface RoadmapData {
@@ -27,24 +28,6 @@ interface RoadmapData {
 }
 
 // Section accent colour per slot (matches brief — different brand colour per card)
-const SLOT_ACCENT: Record<RoadmapSlot, string> = {
-  "book-first":       "border-terra",
-  "download-first":   "border-brown",
-  "education-first":  "border-golden",
-  "options-first":    "border-coral",
-  "normalise-first":  "border-pink-mandi",
-  "clinic-first":     "border-sun",
-};
-
-const SLOT_HREFS: Record<RoadmapSlot, string> = {
-  "book-first":      "/find-a-doctor",
-  "download-first":  "/my-journey#download",
-  "education-first": "/truth-about-hrt",
-  "options-first":   "/resources",
-  "normalise-first": "/honour-the-mothers",
-  "clinic-first":    "/find-a-doctor",
-};
-
 const BAND_COLOR: Record<ScoreBand, { fg: string; bg: string; ring: string }> = {
   mild:        { fg: "text-golden", bg: "bg-golden/15", ring: "ring-golden/30" },
   moderate:    { fg: "text-coral",  bg: "bg-coral/15",  ring: "ring-coral/30" },
@@ -56,6 +39,7 @@ export default function RoadmapPage() {
   const { t } = useTranslation("common");
   const [data, setData] = useState<RoadmapData | null>(null);
   const [answers, setAnswers] = useState<Record<number, unknown> | null>(null);
+  const [pdfLang, setPdfLang] = useState("en");
 
   useEffect(() => {
     const stored =
@@ -88,6 +72,16 @@ export default function RoadmapPage() {
     return buildQuilt(visible);
   }, [answers]);
 
+  const domains = useMemo(
+    () =>
+      answers
+        ? domainScores(answers)
+            .filter((d) => d.total > 0)
+            .slice(0, 3)
+        : [],
+    [answers],
+  );
+
   if (!data) {
     return (
       <>
@@ -100,7 +94,6 @@ export default function RoadmapPage() {
   }
 
   const band = BAND_COLOR[data.scoreBand];
-  const steps = data.roadmapOrder.slice(0, 4);
 
   return (
     <>
@@ -158,6 +151,68 @@ export default function RoadmapPage() {
             </div>
           </Reveal>
 
+          {/* Where it presses hardest, and the two things to take to a doctor */}
+          <Reveal delay={100}>
+            <div className="mt-6 bg-cream-soft rounded-4xl shadow-warm p-7 sm:p-9">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-terra font-semibold">
+                {t("roadmap.topEyebrow")}
+              </p>
+              <h2 className="mt-1 font-display text-2xl text-brown">
+                {t("roadmap.topTitle")}
+              </h2>
+              <div className="mt-5 space-y-4">
+                {domains.map((d) => (
+                  <div key={d.domain}>
+                    <div className="flex items-baseline justify-between text-sm">
+                      <span className="font-medium text-brown">
+                        {t(`questionnaire.domain.${d.domain}.title`)}
+                      </span>
+                      <span className="font-display text-lg text-terra">
+                        {d.percent}%
+                      </span>
+                    </div>
+                    <div className="mt-1 h-2 overflow-hidden rounded-full bg-cream-deep/50">
+                      <div
+                        className="h-full rounded-full bg-terra"
+                        style={{ width: `${d.percent}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                <Link
+                  href="/summary"
+                  className="rounded-2xl border border-cream-deep/60 bg-white/70 p-4 transition-colors hover:border-terra"
+                >
+                  <p className="text-sm font-semibold text-brown">
+                    {t("roadmap.doctorSummaryTitle")}
+                  </p>
+                  <p className="mt-1 text-xs text-brown/60">
+                    {t("roadmap.doctorSummaryBody")}
+                  </p>
+                  <span className="mt-2 inline-block text-xs font-semibold text-terra">
+                    {t("roadmap.view")} →
+                  </span>
+                </Link>
+                <Link
+                  href="/summary#guidance"
+                  className="rounded-2xl border border-cream-deep/60 bg-white/70 p-4 transition-colors hover:border-terra"
+                >
+                  <p className="text-sm font-semibold text-brown">
+                    {t("roadmap.guidanceTitle")}
+                  </p>
+                  <p className="mt-1 text-xs text-brown/60">
+                    {t("roadmap.guidanceBody")}
+                  </p>
+                  <span className="mt-2 inline-block text-xs font-semibold text-terra">
+                    {t("roadmap.view")} →
+                  </span>
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+
           {/* The blanket she stitched */}
           {patches.length > 0 && (
             <Reveal delay={120}>
@@ -210,62 +265,96 @@ export default function RoadmapPage() {
             </Reveal>
           )}
 
+          {/* Two ways forward, instead of the old six-step roadmap */}
+          <section className="mt-8">
+            <h2 className="mb-4 font-display text-2xl text-brown">
+              {t("roadmap.nextTitle")}
+            </h2>
+            <div className="grid gap-4">
+              <div className="rounded-4xl border-l-4 border-golden bg-gradient-to-br from-golden/25 via-cream-soft to-cream-soft p-7 shadow-warm">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-terra">
+                  {t("roadmap.joinEyebrow")}
+                </p>
+                <h3 className="mt-1 font-display text-xl text-brown">
+                  {t("roadmap.joinTitle")}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-brown/70">
+                  {t("roadmap.joinBody")}
+                </p>
+                <Link
+                  href="/find-a-doctor"
+                  className="mt-4 inline-block rounded-full bg-terra px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-terra-dark"
+                >
+                  {t("roadmap.joinCta")} →
+                </Link>
+              </div>
+
+              <div className="rounded-4xl border-l-4 border-brown bg-cream-soft p-7 shadow-warm">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brown/60">
+                  {t("roadmap.or")}
+                </p>
+                <h3 className="mt-1 font-display text-xl text-brown">
+                  {t("roadmap.emailTitle")}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-brown/70">
+                  {t("roadmap.emailBody")}
+                </p>
+                <div className="mt-4 flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-semibold text-brown/60">
+                    {t("roadmap.pdfLanguage")}
+                  </span>
+                  {[
+                    { code: "en", label: t("language.english") },
+                    { code: "zu", label: t("language.zulu") },
+                    { code: "xh", label: t("language.xhosa") },
+                    { code: "af", label: t("language.afrikaans") },
+                  ].map((l) => (
+                    <button
+                      key={l.code}
+                      type="button"
+                      onClick={() => setPdfLang(l.code)}
+                      className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-colors ${
+                        pdfLang === l.code
+                          ? "bg-terra text-cream"
+                          : "border border-cream-deep bg-white text-brown"
+                      }`}
+                    >
+                      {l.label}
+                    </button>
+                  ))}
+                </div>
+                <div className="mt-4 flex flex-wrap items-center gap-4">
+                  <a
+                    href="#keep"
+                    className="inline-block rounded-full border-2 border-brown px-6 py-3 text-sm font-semibold text-brown"
+                  >
+                    {t("roadmap.emailCta")} →
+                  </a>
+                  <Link
+                    href={`/summary?lang=${pdfLang}`}
+                    className="text-sm font-semibold text-terra underline"
+                  >
+                    {t("roadmap.download")}
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Keep the score, keep the woman — an invitation, below the safety flags */}
-          <Reveal delay={140}>
-            <KeepBlanketCard
-              menoScore={data.menoScore}
-              scoreBand={data.scoreBand}
-              answers={answers}
-            />
-          </Reveal>
+          <div id="keep">
+            <Reveal delay={140}>
+              <KeepBlanketCard
+                menoScore={data.menoScore}
+                scoreBand={data.scoreBand}
+                answers={answers}
+              />
+            </Reveal>
+          </div>
 
           <div className="mt-10">
             <StitchDivider tone="gold" />
           </div>
-
-          {/* Roadmap steps */}
-          <section className="mt-8 mb-16">
-            <Reveal variant="fade">
-              <h2 className="font-display text-xl sm:text-2xl text-brown mb-5">
-                {t("roadmap.nextSteps")}
-              </h2>
-            </Reveal>
-
-            <div className="space-y-4">
-              {steps.map((slot, i) => {
-                const isPrimary = i === 0;
-                const cardBg =
-                  slot === "book-first" && i === 0
-                    ? "bg-gradient-to-br from-golden/25 via-cream-soft to-cream-soft"
-                    : "bg-cream-soft";
-                return (
-                  <Reveal key={slot} delay={i * 90}>
-                    <div
-                      className={`${cardBg} rounded-3xl border-l-4 ${SLOT_ACCENT[slot]} px-6 py-5 shadow-warm flex items-start gap-5`}
-                    >
-                      <span className="w-9 h-9 rounded-full bg-brown text-cream font-display text-base flex items-center justify-center flex-shrink-0 mt-0.5 shadow-warm">
-                        {i + 1}
-                      </span>
-                      <div className="flex-1">
-                        <h3 className="font-display text-lg text-brown mb-1 leading-snug">
-                          {t(`roadmap.steps.${slot}.title`)}
-                        </h3>
-                        <p className="text-sm text-brown/75 leading-relaxed mb-3">
-                          {t(`roadmap.steps.${slot}.body`)}
-                        </p>
-                        <Link
-                          href={SLOT_HREFS[slot]}
-                          className={`link-warm inline-flex items-center gap-1 text-sm ${isPrimary ? "text-terra" : "text-brown"}`}
-                        >
-                          {t(`roadmap.steps.${slot}.cta`)} →
-                        </Link>
-                      </div>
-                    </div>
-                  </Reveal>
-                );
-              })}
-            </div>
-          </section>
 
           {/* Retake */}
           <section className="pb-16 text-center">
