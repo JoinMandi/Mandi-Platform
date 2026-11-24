@@ -50,19 +50,14 @@ function isAnsweredFor(q: Question, v: unknown): boolean {
 
 async function persistResponse(
   answers: Record<number, unknown>,
-  result: ReturnType<typeof calculateScore>,
+  responseId: string,
 ) {
   try {
     const sessionId =
       typeof window !== "undefined" ? localStorage.getItem("mandi-session") : null;
     await submitQuestionnaire({
       answers: answers as Record<string, unknown>,
-      menoScore: result.menoScore,
-      scoreBand: result.scoreBand,
-      persona: result.persona,
-      selfHarmFlag: result.selfHarmFlag,
-      colleenFlag: result.colleenFlag,
-      topDomains: result.topDomains,
+      responseId,
       sessionId,
     });
   } catch {
@@ -70,7 +65,7 @@ async function persistResponse(
   }
 }
 
-type Phase = "loading" | "resume" | "question" | "final";
+type Phase = "loading" | "welcome" | "resume" | "question" | "safety" | "final";
 
 /** Funnel analytics: fire-and-forget, no answers, no PII. */
 function track(
@@ -100,6 +95,9 @@ export default function QuestionnairePage() {
   const [expanded, setExpanded] = useState(false);
   const [affirmation, setAffirmation] = useState<string | null>(null);
   const savedRef = useRef<ReturnType<typeof loadProgress>>(null);
+  // Stable id for this attempt: a retry reuses it, so the server insert is
+  // idempotent. (shortcut: parity table PK; move to questionnaire_runs in Phase 1)
+  const responseIdRef = useRef<string | null>(null);
 
   const visibleQuestions = useMemo<Question[]>(
     () => questions.filter((q) => !q.skipCondition || !q.skipCondition(answers)),
@@ -118,9 +116,10 @@ export default function QuestionnairePage() {
 
   // ── Load saved progress on mount ─────────────────────────────
   useEffect(() => {
+    if (!responseIdRef.current) responseIdRef.current = crypto.randomUUID();
     const saved = loadProgress();
     savedRef.current = saved;
-    setPhase(saved ? "resume" : "question");
+    setPhase(saved ? "resume" : "welcome");
     if (!saved) track("questionnaire_start", "/questionnaire");
   }, []);
 
@@ -148,9 +147,11 @@ export default function QuestionnairePage() {
         localStorage.setItem("mandi-answers", JSON.stringify(answers));
       }
       clearProgress();
-      void persistResponse(answers, result);
+      const responseId = responseIdRef.current ?? crypto.randomUUID();
+      responseIdRef.current = responseId;
+      void persistResponse(answers, responseId);
       track("questionnaire_complete", "/questionnaire", { score_band: result.scoreBand });
-      setPhase("final");
+      setPhase(result.selfHarmFlag ? "safety" : "final");
       return;
     }
 
@@ -195,6 +196,52 @@ export default function QuestionnairePage() {
   // ── Render ───────────────────────────────────────────────────
   if (phase === "loading") return null;
 
+  if (phase === "welcome") {
+    return (
+      <main className="relative min-h-screen overflow-hidden bg-mandi-gradient-soft flex items-center justify-center px-5 py-12">
+        <div className="absolute inset-0 bg-cream/45" />
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="relative z-10 w-full max-w-xl rounded-5xl border border-cream-deep/60 bg-cream-soft/95 p-8 sm:p-10 shadow-warm-xl"
+        >
+          <p className="text-[11px] uppercase tracking-[0.28em] text-terra font-semibold">
+            {t("questionnaire.welcome.eyebrow")}
+          </p>
+          <h1 className="mt-3 font-display text-3xl sm:text-4xl text-brown leading-tight">
+            {t("questionnaire.welcome.title")}
+          </h1>
+          <p className="mt-3 text-sm text-brown/70 leading-relaxed">
+            {t("questionnaire.welcome.sub")}
+          </p>
+          <p className="mt-4 text-sm text-brown/75 leading-relaxed">
+            {t("questionnaire.welcome.body")}
+          </p>
+          <ul className="mt-5 space-y-2">
+            {[
+              "point1", "point2", "point3", "point4",
+              "point5", "point6", "point7",
+            ].map((key) => (
+              <li key={key} className="flex gap-2 text-sm text-brown/70">
+                <span className="text-golden">✦</span>
+                <span>{t(`questionnaire.welcome.${key}`)}</span>
+              </li>
+            ))}
+          </ul>
+          <Button
+            variant="primary"
+            size="lg"
+            className="w-full mt-7"
+            onClick={() => setPhase("question")}
+          >
+            {t("questionnaire.welcome.cta")} →
+          </Button>
+        </motion.div>
+      </main>
+    );
+  }
+
   if (phase === "resume") {
     const saved = savedRef.current;
     const count = saved ? Object.keys(saved.answers).length : 0;
@@ -233,6 +280,7 @@ export default function QuestionnairePage() {
           <button
             onClick={() => {
               clearProgress();
+              responseIdRef.current = crypto.randomUUID();
               setPhase("question");
             }}
             className="mt-3 text-sm font-medium text-brown/55 hover:text-terra"
@@ -240,6 +288,53 @@ export default function QuestionnairePage() {
             {t("questionnaire.resumeFresh")}
           </button>
         </motion.div>
+      </main>
+    );
+  }
+
+  if (phase === "safety") {
+    return (
+      <main className="relative min-h-screen overflow-hidden bg-mandi-gradient flex items-center justify-center px-5 py-12">
+        <div className="absolute inset-0 bg-brown/10" />
+        <div className="relative z-10 w-full max-w-lg rounded-5xl border border-cream/30 bg-cream-soft/95 p-8 sm:p-10 text-center shadow-warm-xl">
+          <p className="text-[11px] uppercase tracking-[0.25em] text-terra font-semibold">
+            {t("questionnaire.safety.eyebrow")}
+          </p>
+          <h1 className="mt-3 font-display text-3xl text-brown leading-tight">
+            {t("questionnaire.safety.title")}
+          </h1>
+          <p className="mt-3 text-sm text-brown/70 leading-relaxed">
+            {t("questionnaire.safety.body")}
+          </p>
+          <div className="mt-6 rounded-3xl border-l-4 border-terra bg-white p-5 text-left shadow-warm">
+            <p className="font-semibold text-brown">
+              {t("questionnaire.safety.sadagLabel")}
+            </p>
+            <p className="mt-1 text-sm text-brown/70">
+              {t("questionnaire.safety.sadagNote")}
+            </p>
+            <a
+              href="tel:0800567567"
+              className="mt-2 inline-block font-display text-2xl text-terra hover:text-terra-dark"
+            >
+              0800 567 567
+            </a>
+            <p className="mt-2 text-xs text-brown/60">
+              {t("questionnaire.safety.emergency")}
+            </p>
+          </div>
+          <p className="mt-4 text-xs leading-relaxed text-brown/60">
+            {t("questionnaire.safety.note")}
+          </p>
+          <Button
+            variant="primary"
+            size="lg"
+            className="w-full mt-6"
+            onClick={() => setPhase("final")}
+          >
+            {t("questionnaire.safety.cta")} →
+          </Button>
+        </div>
       </main>
     );
   }

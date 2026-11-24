@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import NavBar from "@/components/NavBar";
+import WelcomeSplash from "@/components/ui/WelcomeSplash";
 import Reveal from "@/components/ui/Reveal";
 import AmbientBlobs from "@/components/ui/AmbientBlobs";
 import StitchDivider from "@/components/ui/StitchDivider";
@@ -59,6 +61,7 @@ const PEEK_PATCHES = buildQuilt(questions);
 export default function LandingPage() {
   const router = useRouter();
   const { t, i18n } = useTranslation("common");
+  const [showSplash, setShowSplash] = useState(true);
 
   const activeLang = i18n.language?.slice(0, 2) ?? "en";
 
@@ -71,6 +74,7 @@ export default function LandingPage() {
 
   return (
     <>
+      {showSplash && <WelcomeSplash onDone={() => setShowSplash(false)} />}
       <NavBar />
       <main className="bg-cream">
 

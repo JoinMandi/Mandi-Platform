@@ -10,12 +10,13 @@ import Reveal from "@/components/ui/Reveal";
 import { recordConsent } from "@/server/actions/consent";
 
 export default function ConsentPage() {
+  const [ageConfirmed, setAgeConfirmed] = useState(false);
   const [agreed, setAgreed] = useState(false);
   const router = useRouter();
   const { t } = useTranslation("common");
 
   const handleBegin = async () => {
-    if (!agreed) return;
+    if (!ageConfirmed || !agreed) return;
     const lang = typeof window !== "undefined" ? localStorage.getItem("mandi-lang") : null;
     try {
       // Durable, auditable POPIA consent record (localStorage alone isn't
@@ -66,12 +67,20 @@ export default function ConsentPage() {
             </Reveal>
 
             <Reveal delay={180}>
-              <ConsentCheckbox
-                label={t("consent.checkbox")}
-                checked={agreed}
-                onChange={setAgreed}
-                required
-              />
+              <div className="flex flex-col gap-4">
+                <ConsentCheckbox
+                  label={t("consent.age")}
+                  checked={ageConfirmed}
+                  onChange={setAgeConfirmed}
+                  required
+                />
+                <ConsentCheckbox
+                  label={t("consent.checkbox")}
+                  checked={agreed}
+                  onChange={setAgreed}
+                  required
+                />
+              </div>
             </Reveal>
 
             <Reveal delay={260}>
@@ -79,8 +88,8 @@ export default function ConsentPage() {
                 variant="primary"
                 size="lg"
                 onClick={() => void handleBegin()}
-                disabled={!agreed}
-                className={`w-full ${agreed ? "animate-pulse-warm" : ""}`}
+                disabled={!ageConfirmed || !agreed}
+                className={`w-full ${ageConfirmed && agreed ? "animate-pulse-warm" : ""}`}
               >
                 {t("consent.cta")} →
               </Button>
