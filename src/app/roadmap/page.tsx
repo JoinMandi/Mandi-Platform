@@ -39,6 +39,7 @@ export default function RoadmapPage() {
   const { t } = useTranslation("common");
   const [data, setData] = useState<RoadmapData | null>(null);
   const [answers, setAnswers] = useState<Record<number, unknown> | null>(null);
+  const [previousAnswers, setPreviousAnswers] = useState<Record<number, unknown> | null>(null);
   const [pdfLang, setPdfLang] = useState("en");
 
   useEffect(() => {
@@ -62,6 +63,14 @@ export default function RoadmapPage() {
         /* the quilt motif is optional — skip it if answers are unreadable */
       }
     }
+    const storedPrevious = localStorage.getItem("mandi-previous-answers");
+    if (storedPrevious) {
+      try {
+        setPreviousAnswers(JSON.parse(storedPrevious) as Record<number, unknown>);
+      } catch {
+        /* no comparison blanket if the previous answers are unreadable */
+      }
+    }
   }, [router]);
 
   const patches = useMemo(() => {
@@ -69,8 +78,8 @@ export default function RoadmapPage() {
     const visible = questions.filter(
       (q) => !q.skipCondition || !q.skipCondition(answers),
     );
-    return buildQuilt(visible);
-  }, [answers]);
+    return buildQuilt(visible, answers, previousAnswers);
+  }, [answers, previousAnswers]);
 
   const domains = useMemo(
     () =>
@@ -177,6 +186,15 @@ export default function RoadmapPage() {
                         style={{ width: `${d.percent}%` }}
                       />
                     </div>
+                    <Link
+                      href="/resources"
+                      className="mt-1 inline-block text-xs font-semibold text-terra hover:text-terra-dark"
+                    >
+                      {t("roadmap.moreAbout", {
+                        area: t(`questionnaire.domain.${d.domain}.title`),
+                      })}{" "}
+                      →
+                    </Link>
                   </div>
                 ))}
               </div>

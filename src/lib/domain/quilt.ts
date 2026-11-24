@@ -125,8 +125,29 @@ function pick<T>(rand: () => number, arr: T[]): T {
 }
 
 /** Builds the quilt layout for the given visible questions. */
-export function buildQuilt(visible: Question[]): QuiltPatch[] {
+export function buildQuilt(
+  visible: Question[],
+  currentAnswers?: Record<number, unknown> | null,
+  previousAnswers?: Record<number, unknown> | null,
+): QuiltPatch[] {
   const rand = mulberry32(0x4d414e44); // seed: "MAND"
+
+  // Patches that improved on a re-run turn golden (never the sensitive ones).
+  const improved = new Set<number>();
+  if (currentAnswers && previousAnswers) {
+    for (const q of visible) {
+      if (q.type !== "scale" && q.type !== "scale-optional") continue;
+      const current = currentAnswers[q.id];
+      const previous = previousAnswers[q.id];
+      if (
+        typeof current === "number" &&
+        typeof previous === "number" &&
+        current < previous
+      ) {
+        improved.add(q.id);
+      }
+    }
+  }
 
   // The golden easter-egg patch — Q46 (a calm, non-sensitive question).
   const goldenId = visible.some((q) => q.id === 46) ? 46 : -1;
@@ -144,7 +165,8 @@ export function buildQuilt(visible: Question[]): QuiltPatch[] {
     const variant = Math.floor(rand() * 4);
     const scale: 2 | 3 = rand() < 0.5 ? 2 : 3;
 
-    const isGolden = q.id === goldenId;
+    const isGolden =
+      q.id === goldenId || (improved.has(q.id) && !SENSITIVE_IDS.has(q.id));
 
     if (isGolden) {
       weave = "shweshwe";

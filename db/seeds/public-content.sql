@@ -104,3 +104,8 @@ on conflict (id) do nothing;
 --   select count(*) from event_translations;                     -- expect 4
 --   select count(*) from clinic_directory where published=true;  -- expect 3
 --   select count(*) from doctor_profiles where published=true;   -- expect 2
+
+-- ── Questionnaire version (for cross-device resume) ────────────────────
+insert into web.questionnaire_versions (id, version, definition, published_at)
+values ('00000000-0000-4000-8000-000000000001', 'v1', '{}'::jsonb, now())
+on conflict (version) do nothing;

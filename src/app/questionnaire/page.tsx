@@ -12,6 +12,12 @@ import {
 import { calculateScore } from "@/lib/domain/scoring";
 import { buildQuilt } from "@/lib/domain/quilt";
 import { submitQuestionnaire } from "@/server/actions/questionnaire";
+import {
+  completeRun,
+  loadRun,
+  saveRunAnswer,
+  startRun,
+} from "@/server/actions/questionnaire-run";
 import { logEngagement } from "@/server/actions/engagement";
 import { loadProgress, saveProgress, clearProgress } from "@/lib/questionnaire-progress";
 import QuestionScreen from "@/components/ui/QuestionScreen";
@@ -98,6 +104,10 @@ export default function QuestionnairePage() {
   // Stable id for this attempt: a retry reuses it, so the server insert is
   // idempotent. (shortcut: parity table PK; move to questionnaire_runs in Phase 1)
   const responseIdRef = useRef<string | null>(null);
+  // Cross-device resume token (opaque bearer secret, no PII).
+  const resumeTokenRef = useRef<string | null>(null);
+  const [resumeToken, setResumeToken] = useState<string | null>(null);
+  const [saveCopied, setSaveCopied] = useState(false);
 
   const visibleQuestions = useMemo<Question[]>(
     () => questions.filter((q) => !q.skipCondition || !q.skipCondition(answers)),
@@ -117,11 +127,67 @@ export default function QuestionnairePage() {
   // ── Load saved progress on mount ─────────────────────────────
   useEffect(() => {
     if (!responseIdRef.current) responseIdRef.current = crypto.randomUUID();
-    const saved = loadProgress();
-    savedRef.current = saved;
-    setPhase(saved ? "resume" : "welcome");
-    if (!saved) track("questionnaire_start", "/questionnaire");
+    void (async () => {
+      const params = new URLSearchParams(window.location.search);
+      const urlToken = params.get("resume");
+      const storedToken = localStorage.getItem("mandi-resume-token");
+      const token = urlToken ?? storedToken;
+
+      if (token) {
+        const remote = await loadRun(token);
+        if (remote && Object.keys(remote.answers).length > 0) {
+          const remoteAnswers = remote.answers as Record<number, unknown>;
+          resumeTokenRef.current = token;
+          setResumeToken(token);
+          localStorage.setItem("mandi-resume-token", token);
+          setAnswers(remoteAnswers);
+          const visible = questions.filter(
+            (q) => !q.skipCondition || !q.skipCondition(remoteAnswers),
+          );
+          const firstUnanswered = visible.findIndex(
+            (q) => !isAnsweredFor(q, remoteAnswers[q.id]),
+          );
+          setCurrentIndex(
+            firstUnanswered < 0
+              ? Math.max(0, visible.length - 1)
+              : firstUnanswered,
+          );
+          setPhase("question");
+          track("questionnaire_start", "/questionnaire");
+          return;
+        }
+      }
+
+      const saved = loadProgress();
+      savedRef.current = saved;
+      setPhase(saved ? "resume" : "welcome");
+      if (!saved) {
+        track("questionnaire_start", "/questionnaire");
+        void startRun()
+          .then((newToken) => {
+            if (!newToken) return;
+            resumeTokenRef.current = newToken;
+            localStorage.setItem("mandi-resume-token", newToken);
+            setResumeToken(newToken);
+          })
+          .catch(() => {});
+      }
+    })();
+    // Runs once; the remote/local resume decision is made from storage.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  /** Creates the server run lazily if the mount call failed or was cleared. */
+  const ensureRun = async (): Promise<string | null> => {
+    if (resumeTokenRef.current) return resumeTokenRef.current;
+    const token = await startRun().catch(() => null);
+    if (token) {
+      resumeTokenRef.current = token;
+      localStorage.setItem("mandi-resume-token", token);
+      setResumeToken(token);
+    }
+    return token;
+  };
 
   // ── Persist progress while answering ─────────────────────────
   useEffect(() => {
@@ -143,10 +209,19 @@ export default function QuestionnairePage() {
     if (currentIndex >= total - 1) {
       const result = calculateScore(answers);
       if (typeof window !== "undefined") {
+        const previous = localStorage.getItem("mandi-answers");
+        if (previous) localStorage.setItem("mandi-previous-answers", previous);
         localStorage.setItem("mandi-score", JSON.stringify(result));
         localStorage.setItem("mandi-answers", JSON.stringify(answers));
       }
       clearProgress();
+      const finishedToken = resumeTokenRef.current;
+      resumeTokenRef.current = null;
+      setResumeToken(null);
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("mandi-resume-token");
+      }
+      if (finishedToken) void completeRun(finishedToken);
       const responseId = responseIdRef.current ?? crypto.randomUUID();
       responseIdRef.current = responseId;
       void persistResponse(answers, responseId);
@@ -175,6 +250,9 @@ export default function QuestionnairePage() {
     const q = visibleQuestions[currentIndex];
     if (!q) return;
     setAnswers((prev) => ({ ...prev, [q.id]: value }));
+    void ensureRun().then((token) => {
+      if (token) void saveRunAnswer(token, String(q.id), value);
+    });
     if (q.id === goldenId) {
       const n = 1 + Math.floor(Math.random() * 4);
       setAffirmation(t(`questionnaire.affirmations.${n}`));
@@ -281,7 +359,18 @@ export default function QuestionnairePage() {
             onClick={() => {
               clearProgress();
               responseIdRef.current = crypto.randomUUID();
+              resumeTokenRef.current = null;
+              setResumeToken(null);
+              localStorage.removeItem("mandi-resume-token");
               setPhase("question");
+              void startRun()
+                .then((token) => {
+                  if (!token) return;
+                  resumeTokenRef.current = token;
+                  localStorage.setItem("mandi-resume-token", token);
+                  setResumeToken(token);
+                })
+                .catch(() => {});
             }}
             className="mt-3 text-sm font-medium text-brown/55 hover:text-terra"
           >
@@ -347,6 +436,28 @@ export default function QuestionnairePage() {
 
   return (
     <>
+      {/* Cross-device save: copy a bearer link she can open elsewhere. */}
+      {resumeToken && (
+        <button
+          type="button"
+          onClick={async () => {
+            const link = `${window.location.origin}/questionnaire?resume=${resumeToken}`;
+            try {
+              await navigator.clipboard.writeText(link);
+              setSaveCopied(true);
+              window.setTimeout(() => setSaveCopied(false), 2500);
+            } catch {
+              /* clipboard unavailable — on-device resume still works */
+            }
+          }}
+          className="fixed left-4 top-4 z-[60] rounded-full border border-brown/15 bg-cream-soft/90 px-4 py-2
+            text-xs font-semibold text-brown/60 shadow-warm backdrop-blur-sm transition-colors
+            hover:border-terra hover:text-terra"
+        >
+          {saveCopied ? t("questionnaire.saveLinkCopied") : t("questionnaire.saveLink")}
+        </button>
+      )}
+
       {/* Visible way out — saving is automatic, so exiting is always safe.
           Same chip recipe as the exhibition's start-over control. */}
       <button

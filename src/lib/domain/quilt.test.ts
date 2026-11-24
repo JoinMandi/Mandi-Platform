@@ -66,4 +66,17 @@ describe("buildQuilt", () => {
       expect(p.variant).toBeLessThanOrEqual(3);
     }
   });
+
+  it("turns improved symptom patches golden on a re-run", () => {
+    const previous: Record<number, unknown> = {};
+    const current: Record<number, unknown> = {};
+    for (const q of questions) {
+      previous[q.id] = 3;
+      current[q.id] = 1;
+    }
+    const rerun = buildQuilt(questions, current, previous);
+    const golden = rerun.filter((p) => p.isGolden);
+    expect(golden.length).toBeGreaterThan(1);
+    expect(golden.some((p) => p.questionId === 16 || p.questionId === 17)).toBe(false);
+  });
 });

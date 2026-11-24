@@ -132,7 +132,7 @@ export default function NavBar() {
                 {t("nav.signOut")}
               </button>
             )}
-            <Button variant="primary" size="sm" onClick={() => (window.location.href = "/find-a-doctor")}>
+            <Button variant="primary" size="sm" onClick={() => (window.location.href = "/book")}>
               {t("nav.book")}
             </Button>
           </div>
@@ -214,7 +214,7 @@ export default function NavBar() {
               variant="primary"
               size="sm"
               onClick={() => {
-                window.location.href = "/find-a-doctor";
+                window.location.href = "/book";
                 setMenuOpen(false);
               }}
             >

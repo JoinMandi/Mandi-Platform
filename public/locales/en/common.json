@@ -10,7 +10,7 @@
     "eyebrow": "Talk to Mandi · Khuluma noMandi · Thetha noMandi · Praat met Mandi",
     "headline1": "Thank you for arriving.",
     "headline2": "Your health journey home starts here.",
-    "subhead": "A warm, private, ten-minute conversation about how you are feeling, in your language.",
+    "subhead": "A warm, private, ten-minute conversation about menopause and how you are feeling, in your language.",
     "cta": "Talk to Mandi",
     "browseCta": "Check out the Mandi journey",
     "browse": "Just browse the platform",
@@ -440,7 +440,9 @@
       "emergency": "In an emergency, call 112 from any cellphone.",
       "note": "This number also appears on your results and your doctor summary, so you can find it again.",
       "cta": "Carry on to my results"
-    }
+    },
+    "saveLink": "Save & come back",
+    "saveLinkCopied": "Link copied"
   },
   "units": {
     "cm": "cm",
@@ -456,7 +458,7 @@
   "roadmap": {
     "disclaimer": "Educational information only, not medical advice.",
     "nextSteps": "Your next steps",
-    "title": "Your Mandi Roadmap",
+    "title": "Your Menopause Results",
     "menoScore": "MenoScore",
     "outOf": "out of 100",
     "blanketLabel": "The blanket you stitched",
@@ -591,7 +593,8 @@
     "print": "Print / save as PDF",
     "summaryTitle": "My doctor summary",
     "summaryNote": "Self-reported with Mandi's 56-question check-in. Not a diagnosis.",
-    "resultsDate": "Your check-in"
+    "resultsDate": "Your check-in",
+    "moreAbout": "More about {{area}}"
   },
   "nav": {
     "about": "About Mandi",
@@ -1220,5 +1223,23 @@
   },
   "splash": {
     "tagline": "Your companion through menopause and hormone health"
+  },
+  "book": {
+    "eyebrow": "REQUEST A CONSULTATION",
+    "title": "Let's find the right doctor for you.",
+    "subhead": "Tell us a little about what you need. Mandi will WhatsApp you to confirm a time.",
+    "name": "Your name",
+    "email": "Email address",
+    "whatsapp": "WhatsApp number (optional)",
+    "language": "Language",
+    "concern": "What would you like help with? (optional)",
+    "consent": "Mandi may contact me about this request.",
+    "cta": "Request a consultation",
+    "pending": "Sending…",
+    "successTitle": "Thank you. We have your request.",
+    "successBody": "Mandi will WhatsApp you within one working day to confirm a time.",
+    "whatsappCta": "Message Mandi on WhatsApp",
+    "emergency": "Mandi is not an emergency service. If you are in danger, call 112. SADAG: 0800 567 567.",
+    "error": "Something went wrong. Please try again."
   }
 }

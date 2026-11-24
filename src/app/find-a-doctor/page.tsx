@@ -233,12 +233,20 @@ export default function FindADoctorPage() {
               <h2 className="font-display text-3xl sm:text-4xl text-cream leading-tight mb-6">
                 {t("hrt.cta.heading")}
               </h2>
-              <Link
-                href="/consent"
-                className="inline-block bg-cream text-terra font-semibold rounded-full px-9 py-4 text-base shadow-warm-xl hover:bg-golden transition-colors"
-              >
-                {t("hrt.cta.questionnaire")} →
-              </Link>
+              <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <Link
+                  href="/book"
+                  className="inline-block bg-cream text-terra font-semibold rounded-full px-9 py-4 text-base shadow-warm-xl hover:bg-golden transition-colors"
+                >
+                  {t("book.cta")} →
+                </Link>
+                <Link
+                  href="/consent"
+                  className="inline-block border-2 border-cream text-cream font-semibold rounded-full px-9 py-4 text-base hover:bg-cream/10 transition-colors"
+                >
+                  {t("hrt.cta.questionnaire")} →
+                </Link>
+              </div>
             </Reveal>
           </div>
         </section>
