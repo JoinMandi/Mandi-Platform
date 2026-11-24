@@ -10,7 +10,7 @@
   font-display: swap;
 }
 
-/* Montserrat is served by next/font/google (see app/layout.tsx) as --font-montserrat. */
+/* Montserrat is self-hosted by next/font/local (see app/layout.tsx) as --font-montserrat. */
 
 :root {
   /* ─── Mandi brand tokens ─────────────────────────────────── */
