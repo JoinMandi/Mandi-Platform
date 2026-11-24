@@ -304,10 +304,10 @@ export default function RoadmapPage() {
                     {t("roadmap.pdfLanguage")}
                   </span>
                   {[
-                    { code: "en", label: t("language.english") },
-                    { code: "zu", label: t("language.zulu") },
-                    { code: "xh", label: t("language.xhosa") },
-                    { code: "af", label: t("language.afrikaans") },
+                    { code: "en", label: t("language.englishSub") },
+                    { code: "zu", label: t("language.zuluSub") },
+                    { code: "xh", label: t("language.xhosaSub") },
+                    { code: "af", label: t("language.afrikaansSub") },
                   ].map((l) => (
                     <button
                       key={l.code}
