@@ -209,6 +209,8 @@ export default function QuestionnairePage() {
     if (currentIndex >= total - 1) {
       const result = calculateScore(answers);
       if (typeof window !== "undefined") {
+        const previous = localStorage.getItem("mandi-answers");
+        if (previous) localStorage.setItem("mandi-previous-answers", previous);
         localStorage.setItem("mandi-score", JSON.stringify(result));
         localStorage.setItem("mandi-answers", JSON.stringify(answers));
       }

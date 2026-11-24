@@ -35,6 +35,7 @@ function formatAnswer(q: Question, value: unknown): string {
 export default function SummaryPage() {
   const { t } = useTranslation("common");
   const [answers, setAnswers] = useState<Record<number, unknown> | null>(null);
+  const [previousAnswers, setPreviousAnswers] = useState<Record<number, unknown> | null>(null);
   const [stored, setStored] = useState<StoredScore | null>(null);
   const [lang, setLang] = useState("en");
 
@@ -46,6 +47,10 @@ export default function SummaryPage() {
       if (rawAnswers) setAnswers(JSON.parse(rawAnswers) as Record<number, unknown>);
       const rawScore = localStorage.getItem("mandi-score");
       if (rawScore) setStored(JSON.parse(rawScore) as StoredScore);
+      const rawPrevious = localStorage.getItem("mandi-previous-answers");
+      if (rawPrevious) {
+        setPreviousAnswers(JSON.parse(rawPrevious) as Record<number, unknown>);
+      }
     } catch {
       /* leave the page in its empty state */
     }
@@ -61,9 +66,11 @@ export default function SummaryPage() {
       answers
         ? buildQuilt(
             questions.filter((q) => !q.skipCondition || !q.skipCondition(answers)),
+            answers,
+            previousAnswers,
           )
         : [],
-    [answers],
+    [answers, previousAnswers],
   );
 
   const domains = useMemo(
