@@ -5,7 +5,7 @@ import type { QuestionnaireResponseRow } from "@/lib/types/database";
 
 export type QuestionnaireResponseInput = Omit<
   QuestionnaireResponseRow,
-  "id" | "completed_at"
+  "completed_at"
 > & { completed_at?: string };
 
 export async function insertResponse(
@@ -15,10 +15,12 @@ export async function insertResponse(
   await run(
     db,
     `insert into care.questionnaire_responses
-       (session_id, user_id, language_code, answers, meno_score, score_band,
+       (id, session_id, user_id, language_code, answers, meno_score, score_band,
         persona, self_harm_flag, colleen_flag, top_domains, completed_at)
-     values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
+     values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
+     on conflict (id) do nothing`,
     [
+      input.id,
       input.session_id,
       input.user_id,
       input.language_code,

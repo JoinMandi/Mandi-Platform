@@ -158,3 +158,31 @@ export function calculateScore(answers: Record<number, unknown>): ScoreResult {
     topDomains,
   };
 }
+
+export interface DomainScore {
+  domain: string;
+  total: number;
+  max: number;
+  percent: number;
+}
+
+/** Per-domain weighted percentage, highest first. Pure, no I/O. */
+export function domainScores(
+  answers: Record<number, unknown>,
+): DomainScore[] {
+  return Object.entries(DOMAIN_Q_IDS)
+    .map(([domain, ids]) => {
+      const total = ids.reduce((acc, id) => {
+        const value = answers[id];
+        return typeof value === "number" ? acc + value : acc;
+      }, 0);
+      const max = ids.length * 3;
+      return {
+        domain,
+        total,
+        max,
+        percent: max > 0 ? Math.round((total / max) * 100) : 0,
+      };
+    })
+    .sort((a, b) => b.percent - a.percent);
+}

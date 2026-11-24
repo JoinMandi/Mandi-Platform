@@ -98,12 +98,13 @@
     }
   },
   "consent": {
-    "title": "Ready when you are.",
-    "body": "Mandi will ask you fifty-six gentle questions about how you have been feeling. It takes about ten minutes, and every answer stitches a patch into a blanket that is yours alone.",
-    "body2": "Your answers stay yours. We never sell or share your details, and you can ask us to erase everything at any time. That is your right in law (POPIA), and our promise either way.",
-    "control": "You are in control of your information. Always.",
-    "checkbox": "Yes, Mandi may keep my answers to stitch my blanket and build my roadmap.",
-    "cta": "Let's stitch"
+    "title": "Your story can help change care for women",
+    "body": "Every answer you give, without your name, helps us show doctors and researchers what menopause really does to women in South Africa. The more we know, the better care can become.",
+    "body2": "Kept safe in South Africa, on servers in Cape Town. Seen by you and a small Mandi team; by a doctor only if you choose. Only used for research and for you. No targeted adverts, ever. Yours to delete, any time.",
+    "control": "Your answers are yours. You can ask us to delete them at any time.",
+    "age": "I am 18 or older.",
+    "checkbox": "I have read this and agree that Mandi uses my answers this way.",
+    "cta": "Continue"
   },
   "questionnaire": {
     "progress": "Question {{current}} of {{total}}",
@@ -415,7 +416,31 @@
       "4": "What you feel is real, and it matters."
     },
     "saveExit": "Save and exit",
-    "autosaveNote": "Your answers save automatically on this device. You can leave and pick up any time."
+    "autosaveNote": "Your answers save automatically on this device. You can leave and pick up any time.",
+    "welcome": {
+      "eyebrow": "Before we start",
+      "title": "Make yourself a cup of tea, and let's start.",
+      "sub": "There is no rush. This is your time.",
+      "body": "We'll ask you 56 questions about your body, your sleep, your mood, your work and your relationships. About ten minutes.",
+      "point1": "No right or wrong answers.",
+      "point2": "Answer for how the last month has been.",
+      "point3": "Pause whenever you like.",
+      "point4": "Your answers wait for you on this device.",
+      "point5": "Works without signal.",
+      "point6": "We save when you're back online.",
+      "point7": "Every answer becomes a patch in your own Mandi blanket.",
+      "cta": "I'm ready"
+    },
+    "safety": {
+      "eyebrow": "A gentle pause",
+      "title": "What you shared takes courage.",
+      "body": "You are not alone in this, and you do not have to face it alone. Please reach out.",
+      "sadagLabel": "Talk to someone at SADAG today",
+      "sadagNote": "Free and confidential, 24 hours a day.",
+      "emergency": "In an emergency, call 112 from any cellphone.",
+      "note": "This number also appears on your results and your doctor summary, so you can find it again.",
+      "cta": "Carry on to my results"
+    }
   },
   "units": {
     "cm": "cm",
@@ -543,7 +568,30 @@
       "submit": "Keep my blanket",
       "thanksTitle": "Your blanket is safe with Mandi.",
       "thanksBody": "Thank you for joining the Mandi journey. We'll be in touch, in your language."
-    }
+    },
+    "topEyebrow": "YOUR RESULTS",
+    "topTitle": "Where it presses hardest",
+    "doctorSummaryTitle": "Your doctor summary",
+    "doctorSummaryBody": "One page to take to any doctor.",
+    "guidanceTitle": "Guidance for the conversation",
+    "guidanceBody": "What to ask, and what your doctor may ask you.",
+    "view": "View",
+    "nextTitle": "What would you like to do next?",
+    "or": "or",
+    "joinEyebrow": "WALK THIS WITH US",
+    "joinTitle": "Meet our Mandi-educated doctors",
+    "joinBody": "A GP who understands hormones, speaks your language and reads your story before you talk.",
+    "joinCta": "Show me what joining includes",
+    "emailTitle": "Email me my results for free",
+    "emailBody": "One PDF with your blanket, your doctor summary, guidance for the conversation, and more about your three hardest areas.",
+    "emailCta": "Email me my results",
+    "pdfLanguage": "PDF language",
+    "download": "Download it here too",
+    "downloadCta": "Download your PDF",
+    "print": "Print / save as PDF",
+    "summaryTitle": "My doctor summary",
+    "summaryNote": "Self-reported with Mandi's 56-question check-in. Not a diagnosis.",
+    "resultsDate": "Your check-in"
   },
   "nav": {
     "about": "About Mandi",
@@ -1169,5 +1217,8 @@
       "bodyPhone": "Watch your inbox. Mandi is building a home for women's health in South Africa, menopause understood, not endured; every woman in her own language. Your blanket is the first stitch. Come finish it at joinmandi.com.",
       "fullCta": "Join the Mandi journey"
     }
+  },
+  "splash": {
+    "tagline": "Your companion through menopause and hormone health"
   }
 }
