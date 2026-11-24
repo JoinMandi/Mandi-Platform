@@ -1,0 +1,28 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "RdsServiceLinkedRole",
+      "Effect": "Allow",
+      "Action": "iam:CreateServiceLinkedRole",
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "iam:AWSServiceName": "rds.amazonaws.com"
+        }
+      }
+    },
+    {
+      "Sid": "ApplyReadBacks",
+      "Effect": "Allow",
+      "Action": [
+        "sns:GetSubscriptionAttributes",
+        "sns:SetTopicAttributes",
+        "sns:SetSubscriptionAttributes",
+        "secretsmanager:GetResourcePolicy",
+        "secretsmanager:ListSecretVersionIds"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

@@ -1,39 +1,29 @@
 "use server";
 
-import { createActionClient } from "@/server/supabase/server";
-import { createServiceClient } from "@/server/supabase/service";
 import { requireAdminAal2, requireSuperadmin } from "@/server/auth";
-import { insertAuditLog } from "@/server/data/audit";
-import { getUserAccount } from "@/server/data/users";
+import {
+  insertAuditLog,
+  listAuditLog,
+  type AuditLogQuery,
+} from "@/server/data/audit";
+import {
+  getUserAccount,
+  setUserRole as setUserRoleRow,
+} from "@/server/data/users";
+import { withService, withUser } from "@/server/db/withUser";
 import type { UserRole } from "@/lib/types/database";
-import { listAuditLog, type AuditLogQuery } from "@/server/data/audit";
 
 const VALID_ROLES: ReadonlySet<UserRole> = new Set<UserRole>([
-  "member",
-  "clinician",
-  "admin",
-  "superadmin",
+  "member", "clinician", "admin", "superadmin",
 ]);
-
 const PRIVILEGED_TIER: ReadonlySet<UserRole> = new Set<UserRole>([
-  "admin",
-  "superadmin",
+  "admin", "superadmin",
 ]);
 
 /**
- * Promote / demote a user.
- *
- * Tier rules (defence in depth — same logic enforced by
- * `trg_protect_user_role` at the DB level):
- *  - Touching the privileged tier (target's current role is superadmin,
- *    OR the new role is admin/superadmin) → requires superadmin.
- *  - Otherwise (member ↔ clinician) → requires admin (any admin tier,
- *    including superadmin via the widened `requireAdmin`). MFA enforced
- *    when the project has MFA enabled.
- *
- * Runs the actual UPDATE via the service client so the trigger's
- * `auth.uid() is null` bypass kicks in. The app-layer guard is the real
- * authorisation check; the trigger is the durable backstop.
+ * Promote / demote a user. Tier rules mirror `trg_protect_user_role`:
+ *  - touching admin/superadmin (either side) requires superadmin;
+ *  - member ↔ clinician requires an admin with MFA.
  */
 export async function setUserRole(
   userId: string,
@@ -42,19 +32,11 @@ export async function setUserRole(
   if (!VALID_ROLES.has(newRole)) {
     return { ok: false, error: "Invalid role" };
   }
-  const db = createActionClient();
 
-  // Look up the target's current role first — gating depends on both
-  // sides of the transition. Use the action client (RLS-friendly read).
-  const service = createServiceClient();
-  const target = await getUserAccount(service, userId);
-  if (!target) {
-    return { ok: false, error: "User not found" };
-  }
+  const target = await withService((db) => getUserAccount(db, userId));
+  if (!target) return { ok: false, error: "User not found" };
   const previousRole = target.role;
-  if (previousRole === newRole) {
-    return { ok: true }; // no-op
-  }
+  if (previousRole === newRole) return { ok: true };
 
   const touchesPrivilegedTier =
     PRIVILEGED_TIER.has(newRole) || previousRole === "superadmin";
@@ -62,8 +44,8 @@ export async function setUserRole(
   let actor;
   try {
     actor = touchesPrivilegedTier
-      ? await requireSuperadmin(db)
-      : await requireAdminAal2(db);
+      ? await requireSuperadmin()
+      : await requireAdminAal2();
   } catch (e) {
     return { ok: false, error: e instanceof Error ? e.message : "Unauthorized" };
   }
@@ -71,17 +53,16 @@ export async function setUserRole(
     return { ok: false, error: "Refusing to change your own role" };
   }
 
-  const { error: updErr } = await service
-    .from("users")
-    .update({ role: newRole })
-    .eq("id", userId);
-  if (updErr) {
-    return { ok: false, error: updErr.message };
+  try {
+    await withService((db) => setUserRoleRow(db, userId, newRole));
+  } catch (e) {
+    return {
+      ok: false,
+      error: e instanceof Error ? e.message : "Role update failed",
+    };
   }
 
-  // Sanity check: the DB trigger may have reverted the change (e.g. the
-  // last-superadmin safeguard). Re-read and confirm.
-  const after = await getUserAccount(service, userId);
+  const after = await withService((db) => getUserAccount(db, userId));
   if (after?.role !== newRole) {
     return {
       ok: false,
@@ -89,27 +70,21 @@ export async function setUserRole(
     };
   }
 
-  await insertAuditLog(service, {
-    action: "role_change",
-    actorId: actor.id,
-    actorEmail: actor.email ?? null,
-    targetId: userId,
-    meta: {
-      from: previousRole,
-      to: newRole,
-      target_email: target.email ?? null,
-    },
-  });
+  await withService((db) =>
+    insertAuditLog(db, {
+      action: "role_change",
+      actorId: actor.id,
+      actorEmail: actor.email,
+      targetId: userId,
+      meta: { from: previousRole, to: newRole, target_email: target.email },
+    }),
+  );
 
   return { ok: true };
 }
 
-/** Read recent audit log entries for /admin/audit. Superadmin-only (RLS
- *  also enforces this via `is_superadmin_aal2()` — defence in depth). */
-export async function fetchAuditLog(
-  q: AuditLogQuery = {},
-): Promise<ReturnType<typeof listAuditLog> extends Promise<infer T> ? T : never> {
-  const db = createActionClient();
-  await requireSuperadmin(db);
-  return await listAuditLog(db, q);
+/** Recent audit entries for /admin/audit. Superadmin only. */
+export async function fetchAuditLog(q: AuditLogQuery = {}) {
+  const actor = await requireSuperadmin();
+  return withUser({ id: actor.id, role: actor.role }, (db) => listAuditLog(db, q));
 }

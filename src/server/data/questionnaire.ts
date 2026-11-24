@@ -1,5 +1,6 @@
-/** Data access — questionnaire_responses. */
-import type { SupabaseClient } from "@supabase/supabase-js";
+/** Data access — questionnaire_responses (parity table for Phase 0/1). */
+import type { Db } from "@/server/db/pool";
+import { all, count, one, run } from "@/server/db/sql";
 import type { QuestionnaireResponseRow } from "@/lib/types/database";
 
 export type QuestionnaireResponseInput = Omit<
@@ -8,36 +9,54 @@ export type QuestionnaireResponseInput = Omit<
 > & { completed_at?: string };
 
 export async function insertResponse(
-  db: SupabaseClient,
+  db: Db,
   input: QuestionnaireResponseInput,
 ): Promise<void> {
-  await db.from("questionnaire_responses").insert(input);
+  await run(
+    db,
+    `insert into care.questionnaire_responses
+       (session_id, user_id, language_code, answers, meno_score, score_band,
+        persona, self_harm_flag, colleen_flag, top_domains, completed_at)
+     values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
+    [
+      input.session_id,
+      input.user_id,
+      input.language_code,
+      input.answers,
+      input.meno_score,
+      input.score_band,
+      input.persona,
+      input.self_harm_flag,
+      input.colleen_flag,
+      input.top_domains,
+      input.completed_at ?? new Date().toISOString(),
+    ],
+  );
 }
 
 export async function latestResponseForUser(
-  db: SupabaseClient,
+  db: Db,
   userId: string,
 ): Promise<QuestionnaireResponseRow | null> {
-  const { data } = await db
-    .from("questionnaire_responses")
-    .select("*")
-    .eq("user_id", userId)
-    .order("completed_at", { ascending: false })
-    .limit(1);
-  return ((data ?? [])[0] as QuestionnaireResponseRow | undefined) ?? null;
+  return one<QuestionnaireResponseRow>(
+    db,
+    `select * from care.questionnaire_responses
+     where user_id = $1
+     order by completed_at desc
+     limit 1`,
+    [userId],
+  );
 }
 
-export async function countResponses(db: SupabaseClient): Promise<number> {
-  const { count } = await db
-    .from("questionnaire_responses")
-    .select("id", { count: "exact", head: true });
-  return count ?? 0;
+export async function countResponses(db: Db): Promise<number> {
+  return count(db, `select count(*)::int as n from care.questionnaire_responses`);
 }
 
-/** Returns the user_id of every response — used to tally responses per user. */
-export async function listResponseUserIds(db: SupabaseClient): Promise<string[]> {
-  const { data } = await db.from("questionnaire_responses").select("user_id");
-  return (data ?? [])
-    .map((r) => (r as { user_id: string | null }).user_id)
-    .filter((id): id is string => !!id);
+/** User ids of every response — used to tally responses per user. */
+export async function listResponseUserIds(db: Db): Promise<string[]> {
+  const rows = await all<{ user_id: string | null }>(
+    db,
+    `select user_id from care.questionnaire_responses`,
+  );
+  return rows.map((r) => r.user_id).filter((id): id is string => !!id);
 }

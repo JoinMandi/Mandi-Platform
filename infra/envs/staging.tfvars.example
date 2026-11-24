@@ -1,0 +1,11 @@
+# Usage:
+#   terraform init -backend-config=backend.hcl
+#   terraform apply -var-file=envs/staging.tfvars
+#
+# Copy envs/staging.tfvars.example to envs/staging.tfvars (ignored by git) and
+# fill in the values before applying.
+
+environment      = "staging"
+app_domain       = "staging.joinmandi.co.za"
+alert_email      = "info@joinmandi.com"
+budget_limit_usd = 50

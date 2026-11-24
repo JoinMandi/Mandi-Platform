@@ -1,39 +1,37 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { createMiddlewareSupabase } from "@/server/supabase/middleware";
 
-export async function middleware(req: NextRequest) {
-  const res = NextResponse.next();
-  const supabase = createMiddlewareSupabase(req, res);
+const SESSION_COOKIE = "mandi_session";
 
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
+/**
+ * Coarse gate only: checks that a sealed session cookie exists and preserves
+ * `?next=`. Real role, MFA and ownership checks happen in the server guards
+ * and in RLS.
+ */
+export function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
+  const signedIn = req.cookies.has(SESSION_COOKIE);
 
-  const isProtected = path.startsWith("/my-journey") || path.startsWith("/admin");
-  if (isProtected && !session) {
+  const isProtected =
+    path.startsWith("/my-journey") || path.startsWith("/admin");
+
+  if (isProtected && !signedIn) {
     const url = req.nextUrl.clone();
     url.pathname = "/auth/login";
     url.searchParams.set("next", path);
     return NextResponse.redirect(url);
   }
 
-  // If already logged in, keep users out of login/signup pages — but
-  // honour `?next=` so a redirect chain like /admin → /auth/login → … lands
-  // back on /admin instead of dumping the user on /my-journey.
-  if (session && (path === "/auth/login" || path === "/auth/signup")) {
+  if (signedIn && (path === "/auth/login" || path === "/auth/signup")) {
     const url = req.nextUrl.clone();
     const next = req.nextUrl.searchParams.get("next");
-    const safeNext =
+    url.pathname =
       next && next.startsWith("/") && !next.startsWith("//") ? next : "/my-journey";
-    url.pathname = safeNext;
-    url.search = ""; // strip `?next=` so we don't loop
+    url.search = "";
     return NextResponse.redirect(url);
   }
 
-  return res;
+  return NextResponse.next();
 }
 
 export const config = {

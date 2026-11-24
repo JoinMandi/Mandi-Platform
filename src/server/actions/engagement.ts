@@ -1,33 +1,16 @@
 "use server";
 
-/**
- * Application layer — log a UI engagement event (doctor click, content click,
- * RSVP click, …). Fire-and-forget from the client; never throws to the caller.
- *
- * Anonymous + signed-in supported. If signed in, `user_id` is recorded;
- * otherwise the caller may pass `sessionId` (the platform's POPIA session id).
- *
- * No PII allowed in `meta` — see TRANSLATION-NOTES.md / CLAUDE.md.
- */
-import { createActionClient } from "@/server/supabase/server";
 import { getSessionUser } from "@/server/auth";
 import {
   insertEngagementEvent,
   type EngagementEventType,
 } from "@/server/data/engagement";
+import { withUser } from "@/server/db/withUser";
 
 const ALLOWED: ReadonlySet<EngagementEventType> = new Set<EngagementEventType>([
-  "doctor_view",
-  "doctor_book_click",
-  "content_view",
-  "content_link_click",
-  "event_view",
-  "event_rsvp_click",
-  "page_view",
-  "questionnaire_start",
-  "questionnaire_domain",
-  "questionnaire_complete",
-  "keep_submit",
+  "doctor_view", "doctor_book_click", "content_view", "content_link_click",
+  "event_view", "event_rsvp_click", "page_view", "questionnaire_start",
+  "questionnaire_domain", "questionnaire_complete", "keep_submit",
 ]);
 
 export async function logEngagement(input: {
@@ -38,28 +21,23 @@ export async function logEngagement(input: {
 }): Promise<void> {
   try {
     if (!ALLOWED.has(input.eventType)) return;
-    const db = createActionClient();
-    const user = await getSessionUser(db);
-    await insertEngagementEvent(db, {
-      event_type: input.eventType,
-      user_id: user?.id ?? null,
-      session_id: input.sessionId ?? null,
-      target_id: input.targetId ?? null,
-      meta: sanitiseMeta(input.meta ?? {}),
-    });
+    const user = await getSessionUser();
+    await withUser(user ? { id: user.id, role: user.role } : null, (db) =>
+      insertEngagementEvent(db, {
+        event_type: input.eventType,
+        user_id: user?.id ?? null,
+        session_id: input.sessionId ?? null,
+        target_id: input.targetId ?? null,
+        meta: sanitiseMeta(input.meta ?? {}),
+      }),
+    );
   } catch {
     /* swallow — tracking must never break the UX */
   }
 }
 
-/** Whitelist of small, non-PII meta keys. Anything else is dropped. */
 const META_ALLOWED_KEYS = new Set([
-  "lang",
-  "score_band",
-  "persona",
-  "format",
-  "province",
-  "source",
+  "lang", "score_band", "persona", "format", "province", "source",
 ]);
 
 function sanitiseMeta(meta: Record<string, unknown>): Record<string, unknown> {

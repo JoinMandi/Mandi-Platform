@@ -13,11 +13,11 @@ const csp = [
   "form-action 'self'",
   "frame-ancestors 'none'",
   "object-src 'none'",
-  "img-src 'self' data: blob: https://*.supabase.co",
+  "img-src 'self' data: blob:",
   "font-src 'self' data:",
   "style-src 'self' 'unsafe-inline'",
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
-  `connect-src 'self' https://*.supabase.co wss://*.supabase.co${isDev ? " ws:" : ""}`,
+  `connect-src 'self'${isDev ? " ws:" : ""}`,
   "upgrade-insecure-requests",
 ].join("; ");
 
@@ -32,11 +32,12 @@ const securityHeaders = [
 
 const nextConfig = {
   reactStrictMode: true,
-  images: {
-    unoptimized: true,
-    remotePatterns: [
-      { protocol: "https", hostname: "*.supabase.co", pathname: "/storage/v1/object/public/**" },
-    ],
+  output: "standalone",
+  poweredByHeader: false,
+  images: { unoptimized: true },
+  experimental: {
+    // pg opens sockets/native bindings that should not be bundled.
+    serverComponentsExternalPackages: ["pg"],
   },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];

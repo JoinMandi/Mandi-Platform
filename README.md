@@ -26,8 +26,8 @@ missing.
 
 ## The live test URL
 
-> `https://joinmandi-staging.netlify.app` *(updated once Netlify is
-> connected — fill in once known)*
+> `https://staging.joinmandi.co.za` *(available once the Phase 0 staging
+> stack and DNS are live)*
 
 Pick a strong password. The platform is POPIA-compliant; the test
 deployment uses the same security posture as production.
@@ -85,11 +85,11 @@ You're the founder; you get the keys.
   always a way back in.
 
 ### MFA (two-factor)
-- For the test phase MFA is **optional** (won't be turned on at
-  the Supabase project level until pre-launch).
-- You can voluntarily set one up: sidebar footer → **Two-factor
-  auth →**. Once enabled, you'll be prompted for a 6-digit code
-  on subsequent sign-ins.
+- MFA is **required** for everyone. On first sign-in Cognito asks you to
+  enrol an authenticator app (TOTP), and every later sign-in asks for the
+  6-digit code.
+- Staff accounts are created by a superadmin; there is no self-service
+  staff sign-up.
 
 ---
 
@@ -105,7 +105,7 @@ We need your eyes on the **clinical content** above everything else.
 ### What to review (in priority order)
 
 1. **The 56-question questionnaire** — visit
-   [`/questionnaire`](https://joinmandi-staging.netlify.app/questionnaire)
+   [`/questionnaire`](https://staging.joinmandi.co.za/questionnaire)
    from the public site (sign out first if needed; it works
    anonymously).
    - Wording of each question (especially Q16 "not feeling like
@@ -201,15 +201,12 @@ King", "Dr Funeka Bango", "Sarah Baartman", "Anarcha", "Betsey",
 
 ## Known limits during the test phase
 
-- **Two-factor auth (MFA) is optional** — we won't turn on
-  enforcement until pre-launch. The admin surface degrades
-  gracefully without it; if you visit `/admin/security` you'll
-  see a panel saying "Two-factor auth isn't set up on this
-  workspace yet" — that's intentional for now.
-- **Invite emails are rate-limited** to ~3 per hour on Supabase's
-  default SMTP. If you don't get an invite within a minute, give
-  it 20 minutes or message Hermi. Real SMTP (no rate limit) is a
-  pre-launch task.
+- **Two-factor auth (MFA) is required** — Cognito enforces TOTP for every
+  account. `/admin/security` shows your session's MFA state; enrolment and
+  recovery happen in the Cognito hosted UI.
+- **Invite emails come from Cognito's default sender** during Phase 0,
+  which has a daily cap. If an invite doesn't arrive within a few minutes,
+  check spam or ask for a re-invite. Amazon SES is a Phase 1 task.
 - **Some pages fall back to English** in zu/xh/af — the
   translations are still being filled in. That's what the
   moderator sheet is for.
@@ -246,54 +243,28 @@ Urgent (clinical / safety / data) — message Hermi directly.
 
 ### One-time setup (per environment)
 
-#### 1. Netlify
+Staging runs on **AWS `af-south-1`**: one EC2 instance with Docker Compose
+(Next.js + Caddy), RDS Postgres, Cognito for sign-in, S3 for media,
+CloudWatch for logs, and Terraform for everything.
 
-1. Push `main` to GitHub.
-2. netlify.com → Sites → **Add new site** → **Import from Git**
-   → pick the joinmandi repo. Netlify auto-detects Next.js via
-   the existing `netlify.toml` (Node 20 pinned in
-   `[build.environment]`).
-3. **Environment variables** (Site settings → Environment
-   variables) — add all four from `.env.local.example`:
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-   - `SUPABASE_SERVICE_ROLE_KEY`  *(privileged — don't share)*
-   - `NEXT_PUBLIC_SITE_URL` *(the netlify URL, e.g.
-     `https://joinmandi-staging.netlify.app`)*
-4. **Trigger deploy.** First build ~3 min.
-5. Optional: Site settings → General → **Change site name** →
-   `joinmandi-staging`.
+The full operational sequence — IAM identity, Terraform state bootstrap,
+staging apply, the GoDaddy A record, GitHub secrets and the first staff
+accounts — is in **[`docs/PHASE-0-RUNBOOK.md`](docs/PHASE-0-RUNBOOK.md)**.
 
-#### 2. Supabase
+Short version:
 
-In Supabase Dashboard for your project:
+1. Create the `mandi-terraform` IAM user with
+   [`infra/iam/terraform-bootstrap-policy.json`](infra/iam/terraform-bootstrap-policy.json).
+2. `terraform apply` in `infra/bootstrap`, then in `infra` with
+   `-var-file=envs/staging.tfvars`.
+3. Add the A record for `staging.joinmandi.co.za` → the Elastic IP.
+4. Set `AWS_DEPLOY_ROLE_ARN` (secret) and `APP_DOMAIN` (variable) in GitHub
+   Actions; push to `main`.
+5. Create the first superadmin with `/opt/mandi/seed-staff.sh` (runbook §6).
 
-1. **Authentication → URL Configuration**:
-   - Site URL = the Netlify URL.
-   - Redirect URLs include `…/admin`, `…/auth/callback`,
-     `…/my-journey`.
-2. **Authentication → SMTP** — leave Supabase default for the
-   test phase (3/hr cap). Wire SendGrid/Postmark/Resend
-   pre-launch.
-3. **Authentication → Multi-Factor Auth** — leave OFF for the
-   test phase. Turn ON pre-launch.
-4. **Apply the latest schema** — paste the contents of
-   `supabase/schema.sql` into the SQL editor and run.
-   Idempotent (`create or replace`, `drop ... if exists`); safe
-   to re-run.
-
-#### 3. Bootstrap superadmin
-
-After signing up on the live URL:
-
-```sql
-update public.users
-  set role = 'superadmin'
-  where email = 'YOUR-EMAIL';
-```
-
-Sign out and back in. `/admin` works. Now invite the team via
-`/admin/users` → + Invite user.
+Cognito enforces TOTP MFA for every account. Roles are `member`,
+`clinician`, `admin`, `superadmin`; staff accounts are created by a
+superadmin, never self-service.
 
 ### Translator sheet workflow
 
@@ -314,14 +285,19 @@ volume.
 ### Local development
 
 ```sh
-cp .env.local.example .env.local   # fill in the four vars
+cp .env.example .env.local        # fill in the values
+docker compose up -d db
+npm run db:setup                  # roles, migrations, seed
 npm install
-npm run dev                        # http://localhost:3000
+npm run dev                       # http://localhost:3000
 ```
 
 Other useful scripts:
 - `npm run lint`         ESLint
+- `npx tsc --noEmit`     typecheck
 - `npm test`             Vitest unit tests
+- `npm run test:db`      database authorisation tests (needs the local db)
+- `npm run db:migrate` / `npm run db:rollback`
 - `npm run build`        production build (clobbers `.next/` — DO
   NOT run while `npm run dev` is running; restart dev after if
   you do)
@@ -333,5 +309,4 @@ Other useful scripts:
 [`CLAUDE.md`](CLAUDE.md) at the repo root describe the layered
 architecture (`src/app` → server actions in `src/server/actions`
 → pure domain logic in `src/lib/domain` → data layer in
-`src/server/data` which is the only place that calls
-`supabase.from(...)`).
+`src/server/data`, the only place that runs SQL).

@@ -1,8 +1,8 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { createActionClient } from "@/server/supabase/server";
 import { requireAdmin } from "@/server/auth";
+import { withUser } from "@/server/db/withUser";
 import {
   listClinics,
   insertClinic,
@@ -14,26 +14,25 @@ import {
 import type { ClinicRow } from "@/lib/types/database";
 
 export async function fetchClinics(): Promise<ClinicRow[]> {
-  const db = createActionClient();
-  await requireAdmin(db);
-  return listClinics(db);
+  const actor = await requireAdmin();
+  return withUser({ id: actor.id, role: actor.role }, (db) => listClinics(db));
 }
 
 export async function saveClinic(
   id: string | null,
   input: ClinicInput,
 ): Promise<void> {
-  const db = createActionClient();
-  await requireAdmin(db);
-  if (id) await updateClinic(db, id, input);
-  else await insertClinic(db, input);
+  const actor = await requireAdmin();
+  await withUser({ id: actor.id, role: actor.role }, async (db) => {
+    if (id) await updateClinic(db, id, input);
+    else await insertClinic(db, input);
+  });
   revalidatePath("/admin/clinics");
 }
 
 export async function removeClinic(id: string): Promise<void> {
-  const db = createActionClient();
-  await requireAdmin(db);
-  await deleteClinic(db, id);
+  const actor = await requireAdmin();
+  await withUser({ id: actor.id, role: actor.role }, (db) => deleteClinic(db, id));
   revalidatePath("/admin/clinics");
 }
 
@@ -41,8 +40,9 @@ export async function toggleClinicPublished(
   id: string,
   published: boolean,
 ): Promise<void> {
-  const db = createActionClient();
-  await requireAdmin(db);
-  await setClinicPublished(db, id, published);
+  const actor = await requireAdmin();
+  await withUser({ id: actor.id, role: actor.role }, (db) =>
+    setClinicPublished(db, id, published),
+  );
   revalidatePath("/admin/clinics");
 }

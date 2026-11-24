@@ -1,29 +1,33 @@
 /** Data access — symptom_logs. */
-import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Db } from "@/server/db/pool";
+import { all, one } from "@/server/db/sql";
 import type { SymptomLogRow } from "@/lib/types/database";
 
 export async function recentLogsForUser(
-  db: SupabaseClient,
+  db: Db,
   userId: string,
   sinceDate: string,
 ): Promise<SymptomLogRow[]> {
-  const { data } = await db
-    .from("symptom_logs")
-    .select("*")
-    .eq("user_id", userId)
-    .gte("logged_date", sinceDate)
-    .order("logged_date", { ascending: false });
-  return (data ?? []) as SymptomLogRow[];
+  return all<SymptomLogRow>(
+    db,
+    `select * from care.symptom_logs
+     where user_id = $1 and logged_date >= $2
+     order by logged_date desc`,
+    [userId, sinceDate],
+  );
 }
 
 export async function upsertSymptomLog(
-  db: SupabaseClient,
+  db: Db,
   input: { user_id: string; logged_date: string; domain: string; score: number },
 ): Promise<SymptomLogRow | null> {
-  const { data } = await db
-    .from("symptom_logs")
-    .upsert(input, { onConflict: "user_id,logged_date,domain" })
-    .select()
-    .single();
-  return (data as SymptomLogRow | null) ?? null;
+  return one<SymptomLogRow>(
+    db,
+    `insert into care.symptom_logs (user_id, logged_date, domain, score)
+     values ($1,$2,$3,$4)
+     on conflict (user_id, logged_date, domain)
+     do update set score = excluded.score
+     returning *`,
+    [input.user_id, input.logged_date, input.domain, input.score],
+  );
 }

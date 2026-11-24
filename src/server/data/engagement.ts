@@ -1,19 +1,11 @@
 /**
  * Data access — engagement & CRM queries.
  *
- * Two surfaces:
- *
- *   1. Aggregations over EXISTING tables (users, questionnaire_responses,
- *      symptom_logs, checkins) to power the admin CRM dashboard and per-user
- *      drill-down. No schema changes required.
- *
- *   2. CRUD over the NEW `engagement_events` table (added in this phase) to
- *      track UI interactions like doctor-card clicks, content-link clicks,
- *      event RSVP clicks. RLS gates select to admins.
- *
- * Per CLAUDE.md, this is the only layer allowed to call `db.from(...)`.
+ * Aggregations over existing tables (users, questionnaire_responses,
+ * symptom_logs, checkins) plus CRUD over engagement_events.
  */
-import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Db } from "@/server/db/pool";
+import { all, one, run } from "@/server/db/sql";
 import type {
   CheckinRow,
   QuestionnaireResponseRow,
@@ -26,122 +18,120 @@ import type {
 
 /** One row per user_id for the most recent questionnaire response. */
 export async function latestResponsePerUser(
-  db: SupabaseClient,
+  db: Db,
 ): Promise<Map<string, QuestionnaireResponseRow>> {
-  const { data } = await db
-    .from("questionnaire_responses")
-    .select("*")
-    .order("completed_at", { ascending: false });
+  const rows = await all<QuestionnaireResponseRow>(
+    db,
+    `select distinct on (user_id) *
+     from care.questionnaire_responses
+     where user_id is not null
+     order by user_id, completed_at desc`,
+  );
   const out = new Map<string, QuestionnaireResponseRow>();
-  for (const r of (data ?? []) as QuestionnaireResponseRow[]) {
-    if (!r.user_id) continue;
-    if (!out.has(r.user_id)) out.set(r.user_id, r); // ordered desc → first kept = latest
+  for (const row of rows) {
+    if (row.user_id) out.set(row.user_id, row);
   }
   return out;
 }
 
-/** Unique user_ids that have at least one symptom log. */
-export async function symptomLogUserIds(db: SupabaseClient): Promise<Set<string>> {
-  const { data } = await db.from("symptom_logs").select("user_id");
-  return new Set(
-    ((data ?? []) as { user_id: string | null }[])
-      .map((r) => r.user_id)
-      .filter((id): id is string => !!id),
+export async function symptomLogUserIds(db: Db): Promise<Set<string>> {
+  const rows = await all<{ user_id: string }>(
+    db,
+    `select distinct user_id from care.symptom_logs where user_id is not null`,
   );
+  return new Set(rows.map((r) => r.user_id));
 }
 
-/** Unique user_ids that have completed each check-in type. */
 export async function checkinUserIdsByType(
-  db: SupabaseClient,
+  db: Db,
 ): Promise<{ sixWeek: Set<string>; threeMonth: Set<string> }> {
-  const { data } = await db
-    .from("checkins")
-    .select("user_id, type, completed_at")
-    .not("completed_at", "is", null);
+  const rows = await all<{ user_id: string; type: string }>(
+    db,
+    `select distinct user_id, type
+     from care.checkins
+     where completed_at is not null and user_id is not null`,
+  );
   const sixWeek = new Set<string>();
   const threeMonth = new Set<string>();
-  for (const row of (data ?? []) as Pick<CheckinRow, "user_id" | "type" | "completed_at">[]) {
-    if (!row.user_id) continue;
+  for (const row of rows) {
     if (row.type === "6week") sixWeek.add(row.user_id);
     else if (row.type === "3month") threeMonth.add(row.user_id);
   }
   return { sixWeek, threeMonth };
 }
 
-/** All check-ins for one user. */
 export async function checkinsForUser(
-  db: SupabaseClient,
+  db: Db,
   userId: string,
 ): Promise<CheckinRow[]> {
-  const { data } = await db
-    .from("checkins")
-    .select("*")
-    .eq("user_id", userId)
-    .order("completed_at", { ascending: false });
-  return (data ?? []) as CheckinRow[];
+  return all<CheckinRow>(
+    db,
+    `select * from care.checkins where user_id = $1
+     order by completed_at desc nulls last`,
+    [userId],
+  );
 }
 
-/** Recent symptom logs for one user (default 30 days). */
+/** Check-in rows for a set of users (admin CRM cohort view). */
+export async function checkinsForUsers(
+  db: Db,
+  userIds: string[],
+): Promise<CheckinRow[]> {
+  if (userIds.length === 0) return [];
+  return all<CheckinRow>(
+    db,
+    `select * from care.checkins where user_id = any($1::uuid[])`,
+    [userIds],
+  );
+}
+
 export async function recentLogsForUser(
-  db: SupabaseClient,
+  db: Db,
   userId: string,
   days: number = 30,
 ): Promise<SymptomLogRow[]> {
-  const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000)
-    .toISOString()
-    .slice(0, 10);
-  const { data } = await db
-    .from("symptom_logs")
-    .select("*")
-    .eq("user_id", userId)
-    .gte("logged_date", since)
-    .order("logged_date", { ascending: false });
-  return (data ?? []) as SymptomLogRow[];
+  const since = new Date(Date.now() - days * 86_400_000).toISOString().slice(0, 10);
+  return all<SymptomLogRow>(
+    db,
+    `select * from care.symptom_logs
+     where user_id = $1 and logged_date >= $2
+     order by logged_date desc`,
+    [userId, since],
+  );
 }
 
-/** Top N users by symptom-log count in the trailing `days` window. */
 export async function topEngagedUsers(
-  db: SupabaseClient,
+  db: Db,
   days: number = 7,
   limit: number = 10,
 ): Promise<{ userId: string; logCount: number }[]> {
-  const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000)
-    .toISOString()
-    .slice(0, 10);
-  const { data } = await db
-    .from("symptom_logs")
-    .select("user_id")
-    .gte("logged_date", since);
-  const counts = new Map<string, number>();
-  for (const row of (data ?? []) as { user_id: string | null }[]) {
-    if (!row.user_id) continue;
-    counts.set(row.user_id, (counts.get(row.user_id) ?? 0) + 1);
-  }
-  const rows: { userId: string; logCount: number }[] = [];
-  counts.forEach((logCount, userId) => rows.push({ userId, logCount }));
-  return rows.sort((a, b) => b.logCount - a.logCount).slice(0, limit);
+  const since = new Date(Date.now() - days * 86_400_000).toISOString().slice(0, 10);
+  const rows = await all<{ user_id: string; n: number }>(
+    db,
+    `select user_id, count(*)::int as n
+     from care.symptom_logs
+     where logged_date >= $1 and user_id is not null
+     group by user_id
+     order by n desc
+     limit $2`,
+    [since, limit],
+  );
+  return rows.map((r) => ({ userId: r.user_id, logCount: Number(r.n) }));
 }
 
-/** Stories submitted by a user. */
 export async function storiesForUser(
-  db: SupabaseClient,
+  db: Db,
   userId: string,
 ): Promise<StoryRow[]> {
-  const { data } = await db
-    .from("stories")
-    .select("*")
-    .eq("user_id", userId)
-    .order("created_at", { ascending: false });
-  return (data ?? []) as StoryRow[];
+  return all<StoryRow>(
+    db,
+    `select * from web.stories where user_id = $1 order by created_at desc`,
+    [userId],
+  );
 }
 
-/** One specific user. */
-export async function userById(
-  db: SupabaseClient,
-  id: string,
-): Promise<UserRow | null> {
-  const { data } = await db.from("users").select("*").eq("id", id).maybeSingle();
-  return (data as UserRow | null) ?? null;
+export async function userById(db: Db, id: string): Promise<UserRow | null> {
+  return one<UserRow>(db, `select * from web.users where id = $1`, [id]);
 }
 
 // ── (2) engagement_events table ──────────────────────────────────
@@ -153,7 +143,6 @@ export type EngagementEventType =
   | "content_link_click"
   | "event_view"
   | "event_rsvp_click"
-  // Funnel analytics (page impressions + questionnaire drop-off)
   | "page_view"
   | "questionnaire_start"
   | "questionnaire_domain"
@@ -170,66 +159,66 @@ export interface EngagementEventInput {
 
 /** Insert one engagement event. Best-effort: never throws to the caller. */
 export async function insertEngagementEvent(
-  db: SupabaseClient,
+  db: Db,
   input: EngagementEventInput,
 ): Promise<void> {
   try {
-    await db.from("engagement_events").insert({
-      event_type: input.event_type,
-      user_id: input.user_id,
-      session_id: input.session_id,
-      target_id: input.target_id,
-      meta: input.meta ?? {},
-    });
+    await run(
+      db,
+      `insert into web.engagement_events
+         (event_type, user_id, session_id, target_id, meta)
+       values ($1,$2,$3,$4,$5)`,
+      [
+        input.event_type,
+        input.user_id,
+        input.session_id,
+        input.target_id,
+        input.meta ?? {},
+      ],
+    );
   } catch {
     /* swallow — tracking must never break the UX */
   }
 }
 
-/** Count events grouped by (event_type, target_id) within the trailing window. */
 export async function eventCountsByTarget(
-  db: SupabaseClient,
+  db: Db,
   eventType: EngagementEventType,
   days: number = 30,
 ): Promise<Map<string, number>> {
-  const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString();
-  const { data } = await db
-    .from("engagement_events")
-    .select("target_id")
-    .eq("event_type", eventType)
-    .gte("created_at", since);
+  const since = new Date(Date.now() - days * 86_400_000).toISOString();
+  const rows = await all<{ target_id: string | null; n: number }>(
+    db,
+    `select target_id, count(*)::int as n
+     from web.engagement_events
+     where event_type = $1 and created_at >= $2
+     group by target_id`,
+    [eventType, since],
+  );
   const counts = new Map<string, number>();
-  for (const row of (data ?? []) as { target_id: string | null }[]) {
-    const key = row.target_id ?? "(none)";
-    counts.set(key, (counts.get(key) ?? 0) + 1);
-  }
+  for (const row of rows) counts.set(row.target_id ?? "(none)", Number(row.n));
   return counts;
 }
 
-/** Funnel counts for the trailing window: events and distinct sessions per type. */
 export async function funnelCounts(
-  db: SupabaseClient,
+  db: Db,
   days: number = 30,
 ): Promise<Record<string, { events: number; sessions: number }>> {
-  const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString();
-  const { data } = await db
-    .from("engagement_events")
-    .select("event_type, target_id, session_id")
-    .in("event_type", [
-      "page_view",
-      "questionnaire_start",
-      "questionnaire_complete",
-      "keep_submit",
-    ])
-    .gte("created_at", since);
-  const out: Record<string, { events: number; sessions: number }> = {};
-  const seen = new Map<string, Set<string>>();
-  for (const row of (data ?? []) as {
+  const since = new Date(Date.now() - days * 86_400_000).toISOString();
+  const rows = await all<{
     event_type: string;
     target_id: string | null;
     session_id: string | null;
-  }[]) {
-    // Exhibition scans are reported as their own funnel line.
+  }>(
+    db,
+    `select event_type, target_id, session_id
+     from web.engagement_events
+     where event_type = any($1::text[]) and created_at >= $2`,
+    [["page_view", "questionnaire_start", "questionnaire_complete", "keep_submit"], since],
+  );
+  const out: Record<string, { events: number; sessions: number }> = {};
+  const seen = new Map<string, Set<string>>();
+  for (const row of rows) {
     const key =
       row.event_type === "page_view" && row.target_id === "/exhibition"
         ? "exhibition_view"
@@ -248,9 +237,8 @@ export async function funnelCounts(
   return out;
 }
 
-/** Recent engagement events for one user (default last 20). */
 export async function recentEngagementForUser(
-  db: SupabaseClient,
+  db: Db,
   userId: string,
   limit: number = 20,
 ): Promise<
@@ -262,17 +250,13 @@ export async function recentEngagementForUser(
     meta: Record<string, unknown> | null;
   }[]
 > {
-  const { data } = await db
-    .from("engagement_events")
-    .select("id, created_at, event_type, target_id, meta")
-    .eq("user_id", userId)
-    .order("created_at", { ascending: false })
-    .limit(limit);
-  return (data ?? []) as {
-    id: number;
-    created_at: string;
-    event_type: EngagementEventType;
-    target_id: string | null;
-    meta: Record<string, unknown> | null;
-  }[];
+  return all(
+    db,
+    `select id, created_at, event_type, target_id, meta
+     from web.engagement_events
+     where user_id = $1
+     order by created_at desc
+     limit $2`,
+    [userId, limit],
+  );
 }

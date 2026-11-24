@@ -1,15 +1,17 @@
 /** Data access — checkins. */
-import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Db } from "@/server/db/pool";
+import { all } from "@/server/db/sql";
 import type { CheckinRow } from "@/lib/types/database";
 
 export async function listCheckinsForUser(
-  db: SupabaseClient,
+  db: Db,
   userId: string,
 ): Promise<CheckinRow[]> {
-  const { data } = await db
-    .from("checkins")
-    .select("*")
-    .eq("user_id", userId)
-    .order("completed_at", { ascending: false });
-  return (data ?? []) as CheckinRow[];
+  return all<CheckinRow>(
+    db,
+    `select * from care.checkins
+     where user_id = $1
+     order by completed_at desc nulls last`,
+    [userId],
+  );
 }

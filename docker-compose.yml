@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: mandi_admin
+      POSTGRES_PASSWORD: localdev
+      POSTGRES_DB: mandi
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mandi_admin -d mandi"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  app:
+    profiles: ["app"]
+    build: .
+    env_file:
+      - .env.local
+    environment:
+      DATABASE_URL: postgres://mandi_admin:localdev@db:5432/mandi
+      DATABASE_APP_URL: postgres://mandi_app:localdev@db:5432/mandi
+      DATABASE_SERVICE_URL: postgres://mandi_service:localdev@db:5432/mandi
+      DATABASE_SSL: "false"
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:

@@ -1,18 +1,14 @@
 "use server";
 
-/**
- * Application layer — CRM dashboard data for the admin surface.
- * All actions enforce `requireAdmin`.
- */
-import { createActionClient } from "@/server/supabase/server";
-import { createServiceClient } from "@/server/supabase/service";
-import { requireAdmin, getAdminAuthStatus } from "@/server/auth";
+/** Application layer — CRM dashboard data for the admin surface. */
+import { requireAdmin } from "@/server/auth";
 import { insertAuditLog } from "@/server/data/audit";
 import { maskEmail } from "@/lib/domain/privacy";
 import { listUsers } from "@/server/data/users";
 import {
   checkinUserIdsByType,
   checkinsForUser,
+  checkinsForUsers,
   eventCountsByTarget,
   funnelCounts,
   latestResponsePerUser,
@@ -22,11 +18,6 @@ import {
   symptomLogUserIds,
   userById,
 } from "@/server/data/engagement";
-// Phase 20: `topEngagedUsers` import dropped from this file — the
-// dashboard's per-user "Most engaged this week" card was a POPIA
-// concern and is gone. The data helper itself stays exported from
-// `@/server/data/engagement` for potential reuse on the per-user
-// drill-down.
 import {
   aggregateCompliance,
   funnelStats,
@@ -46,6 +37,7 @@ import type {
   UserRow,
 } from "@/lib/types/database";
 import type { EngagementEventType } from "@/server/data/engagement";
+import { withService, withUser } from "@/server/db/withUser";
 
 export interface CrmOverview {
   funnel: FunnelCounts;
@@ -53,99 +45,67 @@ export interface CrmOverview {
   byBand: Record<ScoreBand, number>;
   byLanguage: Record<string, number>;
   compliance: ComplianceCohort;
-  /** Optional Half B sections — only populated if engagement_events exists. */
   topByEvent: Partial<
     Record<EngagementEventType, { targetId: string; count: number }[]>
   >;
-  /** Visitor funnel (page views, starts, completions, keeps) — last 30 days. */
   funnelEvents: Record<string, { events: number; sessions: number }>;
 }
 
 /** Powers the main `/admin` CRM dashboard. */
 export async function fetchCrmOverview(): Promise<CrmOverview> {
-  const db = createActionClient();
-  await requireAdmin(db);
+  const actor = await requireAdmin();
 
-  const [users, latestByUser, logUserIds, checkinIds] = await Promise.all([
-    listUsers(db),
-    latestResponsePerUser(db),
-    symptomLogUserIds(db),
-    checkinUserIdsByType(db),
-  ]);
+  return withUser({ id: actor.id, role: actor.role }, async (db) => {
+    const users = await listUsers(db);
+    const latestByUser = await latestResponsePerUser(db);
+    const logUserIds = await symptomLogUserIds(db);
+    const checkinIds = await checkinUserIdsByType(db);
 
-  const responseUserIds = new Set<string>();
-  latestByUser.forEach((_v, k) => responseUserIds.add(k));
+    const responseUserIds = new Set<string>();
+    latestByUser.forEach((_v, k) => responseUserIds.add(k));
 
-  const funnel = funnelStats(
-    users,
-    responseUserIds,
-    logUserIds,
-    checkinIds.sixWeek,
-  );
-  const byPersona = segmentByPersona(latestByUser);
-  const byBand = segmentByBand(latestByUser);
-  const byLanguage = segmentByLanguage(users);
+    const funnel = funnelStats(users, responseUserIds, logUserIds, checkinIds.sixWeek);
+    const byPersona = segmentByPersona(latestByUser);
+    const byBand = segmentByBand(latestByUser);
+    const byLanguage = segmentByLanguage(users);
 
-  // Cohort compliance — need per-user check-in rows for each user with a response
-  const userIdsWithResponses: string[] = [];
-  responseUserIds.forEach((id) => userIdsWithResponses.push(id));
-  const checkinRowsByUser = new Map<string, CheckinRow[]>();
-  if (userIdsWithResponses.length > 0) {
-    const { data } = await db
-      .from("checkins")
-      .select("*")
-      .in("user_id", userIdsWithResponses);
-    for (const row of (data ?? []) as CheckinRow[]) {
-      if (!row.user_id) continue;
-      const arr = checkinRowsByUser.get(row.user_id) ?? [];
-      arr.push(row);
-      checkinRowsByUser.set(row.user_id, arr);
+    const userIdsWithResponses: string[] = [];
+    responseUserIds.forEach((id) => userIdsWithResponses.push(id));
+    const checkinRowsByUser = new Map<string, CheckinRow[]>();
+    if (userIdsWithResponses.length > 0) {
+      const rows = await checkinsForUsers(db, userIdsWithResponses);
+      for (const row of rows) {
+        if (!row.user_id) continue;
+        const arr = checkinRowsByUser.get(row.user_id) ?? [];
+        arr.push(row);
+        checkinRowsByUser.set(row.user_id, arr);
+      }
     }
-  }
-  const compliance = aggregateCompliance(
-    userIdsWithResponses.map((id) => ({
-      latest: latestByUser.get(id) ?? null,
-      checkins: checkinRowsByUser.get(id) ?? [],
-    })),
-  );
+    const compliance = aggregateCompliance(
+      userIdsWithResponses.map((id) => ({
+        latest: latestByUser.get(id) ?? null,
+        checkins: checkinRowsByUser.get(id) ?? [],
+      })),
+    );
 
-  // Half B — engagement_events. If the table doesn't exist yet (no migration
-  // applied), each call returns empty; the dashboard renders a friendly
-  // empty state.
-  const topByEvent: Partial<
-    Record<EngagementEventType, { targetId: string; count: number }[]>
-  > = {};
-  await Promise.all(
-    (["doctor_book_click", "content_link_click", "event_rsvp_click"] as const).map(
-      async (eventType) => {
-        try {
-          const counts = await eventCountsByTarget(db, eventType, 30);
-          const arr: { targetId: string; count: number }[] = [];
-          counts.forEach((count, targetId) => arr.push({ targetId, count }));
-          topByEvent[eventType] = arr.sort((a, b) => b.count - a.count).slice(0, 10);
-        } catch {
-          /* table may not exist yet — leave undefined */
-        }
-      },
-    ),
-  );
+    const topByEvent: Partial<
+      Record<EngagementEventType, { targetId: string; count: number }[]>
+    > = {};
+    for (const eventType of [
+      "doctor_book_click",
+      "content_link_click",
+      "event_rsvp_click",
+    ] as const) {
+      const counts = await eventCountsByTarget(db, eventType, 30);
+      const arr: { targetId: string; count: number }[] = [];
+      counts.forEach((count, targetId) => arr.push({ targetId, count }));
+      topByEvent[eventType] = arr.sort((a, b) => b.count - a.count).slice(0, 10);
+    }
 
-  let funnelEvents: Record<string, { events: number; sessions: number }> = {};
-  try {
-    funnelEvents = await funnelCounts(db, 30);
-  } catch {
-    /* migration not applied yet — empty funnel */
-  }
+    const funnelEvents = await funnelCounts(db, 30);
 
-  return {
-    funnel,
-    byPersona,
-    byBand,
-    byLanguage,
-    compliance,
-    topByEvent,
-    funnelEvents,
-  };
+    return { funnel, byPersona, byBand, byLanguage, compliance, topByEvent, funnelEvents };
+  });
 }
 
 export interface UserTimeline {
@@ -163,47 +123,35 @@ export interface UserTimeline {
   }[];
 }
 
-/** Powers `/admin/users/[id]`.
- *
- *  Phase 13: every view is audited (POPIA paper trail — admins can read,
- *  but each read is logged). Email is masked for non-superadmin admins;
- *  superadmin sees full email plaintext.
- */
+/** Powers `/admin/users/[id]`. Every view is audited. */
 export async function fetchUserTimeline(userId: string): Promise<UserTimeline> {
-  const db = createActionClient();
-  const actor = await requireAdmin(db);
-  const status = await getAdminAuthStatus(db);
-  const isSuperadmin = status.role === "superadmin";
+  const actor = await requireAdmin();
+  const isSuperadmin = actor.role === "superadmin";
 
-  const [user, latestMap, checkins, logs, stories, events] = await Promise.all([
-    userById(db, userId),
-    latestResponsePerUser(db),
-    checkinsForUser(db, userId),
-    recentLogsForUser(db, userId, 30),
-    storiesForUser(db, userId),
-    recentEngagementForUser(db, userId, 20).catch(() => []), // table may not exist yet
-  ]);
-
-  // POPIA audit: who looked at whose profile, and when. Service-role
-  // insert (the only client allowed to write to admin_audit_log).
-  await insertAuditLog(createServiceClient(), {
-    action: "user_view",
-    actorId: actor.id,
-    actorEmail: actor.email ?? null,
-    targetId: userId,
-    meta: { isSuperadmin },
+  const data = await withUser({ id: actor.id, role: actor.role }, async (db) => {
+    const user = await userById(db, userId);
+    const latestMap = await latestResponsePerUser(db);
+    const checkins = await checkinsForUser(db, userId);
+    const logs = await recentLogsForUser(db, userId, 30);
+    const stories = await storiesForUser(db, userId);
+    const events = await recentEngagementForUser(db, userId, 20);
+    return { user, latest: latestMap.get(userId) ?? null, checkins, logs, stories, events };
   });
 
-  const safeUser = user && !isSuperadmin
-    ? { ...user, email: maskEmail(user.email) }
-    : user;
+  await withService((db) =>
+    insertAuditLog(db, {
+      action: "user_view",
+      actorId: actor.id,
+      actorEmail: actor.email,
+      targetId: userId,
+      meta: { isSuperadmin },
+    }),
+  );
 
-  return {
-    user: safeUser,
-    latest: latestMap.get(userId) ?? null,
-    checkins,
-    logs,
-    stories,
-    events,
-  };
+  const safeUser =
+    data.user && !isSuperadmin
+      ? { ...data.user, email: maskEmail(data.user.email) }
+      : data.user;
+
+  return { ...data, user: safeUser };
 }

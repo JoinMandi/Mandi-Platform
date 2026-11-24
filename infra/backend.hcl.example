@@ -1,0 +1,7 @@
+# Copy to backend.hcl and set the bucket from `terraform output -raw state_bucket`
+# in infra/bootstrap.
+bucket         = "mandi-terraform-state-179066830383"
+key            = "mandi/staging/terraform.tfstate"
+region         = "af-south-1"
+dynamodb_table = "mandi-terraform-locks"
+encrypt        = true
