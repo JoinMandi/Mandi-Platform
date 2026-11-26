@@ -14,11 +14,11 @@ export default function SiteFooter({
       <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-7 px-5 py-12 sm:px-10">
         <div className="flex items-center gap-4">
           <Image
-            src="/brand/mandi-v4-logo.png"
+            src="/brand/mandi-footer-logo.png"
             alt="Mandi"
             width={68}
             height={30}
-            className="h-auto w-[64px] brightness-0 invert"
+            className="h-auto w-[64px]"
           />
           <p className="text-sm font-semibold">
             Talk to Mandi · Khuluma noMandi · Thetha noMandi · Praat met Mandi
