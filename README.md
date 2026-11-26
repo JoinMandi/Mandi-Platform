@@ -26,8 +26,7 @@ missing.
 
 ## The live test URL
 
-> `https://staging.joinmandi.co.za` *(available once the Phase 0 staging
-> stack and DNS are live)*
+> `https://staging.joinmandi.co.za`
 
 Pick a strong password. The platform is POPIA-compliant; the test
 deployment uses the same security posture as production.

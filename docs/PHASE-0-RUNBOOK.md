@@ -95,6 +95,12 @@ Push to `main` (or run the workflow manually). It builds the app and migrator
 images, pushes them to ECR, runs provisioning + migrations + seed through SSM,
 starts Compose/Caddy, and hits `/api/health`.
 
+Images are tagged `<sha>-<run-id>-<attempt>`, so a re-run of the same commit
+does not collide with the immutable ECR repository. The migrator image sets
+`NODE_EXTRA_CA_CERTS=/app/certs/global-bundle.pem`; without it,
+`node-pg-migrate` rejects the RDS certificate (provisioning loads the bundle
+itself, so it succeeds first and hides the problem).
+
 ## 6. First staff accounts
 
 Once a deploy has produced an image (the `IMAGE=` line exists in
