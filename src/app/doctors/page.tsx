@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import DoctorApplicationForm from "@/components/site/DoctorApplicationForm";
+import DoctorVideo from "@/components/site/DoctorVideo";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteHeader from "@/components/site/SiteHeader";
 
@@ -248,39 +249,7 @@ export default function DoctorsPage() {
             </Link>
           </div>
 
-          <figure id="video" className="w-full min-w-0 xl:flex-[999_1_560px]">
-            <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-[20px] bg-[linear-gradient(160deg,#2C1810_0%,#673C33_70%,#8A4A35_100%)] shadow-[0_30px_60px_rgba(103,60,51,0.3)]">
-              <Image
-                src="/brand/mandi-v4-logo.png"
-                alt=""
-                width={72}
-                height={32}
-                className="absolute left-4 top-4 h-auto w-14 opacity-95 sm:left-[30px] sm:top-[26px] sm:w-[72px]"
-              />
-              <Link
-                href={process.env.NEXT_PUBLIC_DOCTOR_VIDEO_URL ?? "#join"}
-                aria-label="Play Mandi for doctors, 4 minutes 43 seconds"
-                className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-[#FFF5E6]/70 bg-[#FFF5E6]/10 sm:h-[88px] sm:w-[88px]"
-              >
-                <svg aria-hidden viewBox="0 0 24 24" fill="#FFF5E6" className="h-6 w-6 sm:h-[30px] sm:w-[30px]">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </Link>
-              <span className="absolute bottom-4 left-4 flex flex-col gap-1 text-[#FFF5E6] sm:bottom-[26px] sm:left-[30px]">
-                <span className="text-[9px] font-bold tracking-[0.18em] text-sun sm:text-[11px] sm:tracking-[0.22em]">
-                  AN INTRODUCTION FOR DOCTORS
-                </span>
-                <span className="text-lg font-bold sm:text-2xl">Mandi for doctors</span>
-              </span>
-              <span className="absolute bottom-4 right-4 text-sm font-semibold text-[#FFF5E6]/85 sm:bottom-[30px] sm:right-7">
-                4:43
-              </span>
-            </div>
-            <figcaption className="mt-4 text-sm leading-relaxed">
-              Five minutes on why menopause is hard to get right in South Africa,
-              what Mandi does before she reaches you, and who pays for what.
-            </figcaption>
-          </figure>
+          <DoctorVideo />
         </section>
       </div>
 
@@ -312,7 +281,7 @@ export default function DoctorsPage() {
             A real chance to change how women are cared for
           </h2>
         </div>
-        <div className="flex flex-col gap-[18px] border-l-2 border-flame pl-5 sm:text-[19px] sm:leading-[1.6] xl:flex-1 xl:pl-8">
+        <div className="flex flex-col gap-[18px] border-l-2 border-flame pl-5 sm:text-[22px] sm:leading-[1.6] xl:flex-1 xl:pl-8">
           <p className="text-lg leading-relaxed">
             Every woman goes through menopause, yet most go from doctor to doctor
             before anyone connects her symptoms to her hormones. The national

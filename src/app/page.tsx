@@ -1,14 +1,18 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import AnimatedBlanket from "@/components/site/AnimatedBlanket";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteHeader from "@/components/site/SiteHeader";
-import Quilt from "@/components/ui/Quilt";
-import { buildQuilt } from "@/lib/domain/quilt";
-import { questions } from "@/lib/domain/questions";
 
-const PATCHES = buildQuilt(questions);
+const GREETINGS = [
+  { lead: "Talk to", brand: "Mandi" },
+  { lead: "Khuluma", brand: "noMandi" },
+  { lead: "Thetha", brand: "noMandi" },
+  { lead: "Praat met", brand: "Mandi" },
+] as const;
 
 const STRIP_COLOURS = [
   "#FFD66B",
@@ -72,6 +76,18 @@ function StepIcon({ step }: { step: number }) {
 
 export default function HomePage() {
   const { t } = useTranslation("common");
+  const [greeting, setGreeting] = useState(0);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = window.setInterval(
+      () => setGreeting((current) => (current + 1) % GREETINGS.length),
+      2600,
+    );
+    return () => window.clearInterval(id);
+  }, []);
+
+  const phrase = GREETINGS[greeting];
 
   return (
     <div className="min-h-screen overflow-x-clip bg-cream font-sans text-brown">
@@ -87,17 +103,22 @@ export default function HomePage() {
 
         <SiteHeader />
 
-        <section className="relative mx-auto flex max-w-[1200px] flex-col gap-12 px-5 pb-28 pt-10 sm:px-10 sm:pb-32 sm:pt-12 xl:flex-row xl:items-center xl:gap-[72px]">
-          <div className="flex w-full min-w-0 flex-col gap-[22px] xl:flex-[999_1_540px]">
+        <section className="relative mx-auto flex max-w-[1200px] flex-col gap-12 px-5 pb-28 pt-10 sm:px-10 sm:pb-32 sm:pt-12 min-[1100px]:flex-row min-[1100px]:items-center min-[1100px]:gap-[72px]">
+          <div className="flex w-full min-w-0 flex-col gap-[22px] min-[1100px]:flex-[999_1_540px]">
             <span className="inline-flex items-center gap-2.5 self-start rounded-full bg-[#FFF5DA] py-2.5 pl-3 pr-4 text-[10px] font-bold tracking-[0.2em] sm:text-xs sm:tracking-[0.22em]">
               <span className="h-2.5 w-2.5 rounded-full bg-coral shadow-[0_0_0_4px_rgba(244,123,76,0.25)]" />
               {t("home.eyebrow")}
             </span>
 
-            <h1 className="font-display text-[44px] font-extrabold leading-[0.98] tracking-[-0.04em] sm:text-6xl lg:text-7xl xl:text-[86px]">
-              {t("home.titleLead")}{" "}
-              <span className="bg-[linear-gradient(180deg,transparent_62%,rgba(255,251,243,0.75)_62%)] px-1.5">
-                {t("home.titleBrand")}
+            <h1
+              aria-label={`${t("home.titleLead")} ${t("home.titleBrand")}`}
+              className="min-h-[1.05em] font-display text-[44px] font-extrabold leading-[0.98] tracking-[-0.04em] sm:text-6xl lg:text-7xl xl:text-[86px]"
+            >
+              <span key={greeting} aria-hidden className="inline-block animate-rise-in">
+                {phrase.lead}{" "}
+                <span className="bg-[linear-gradient(180deg,transparent_62%,rgba(255,251,243,0.75)_62%)] px-1.5">
+                  {phrase.brand}
+                </span>
               </span>
             </h1>
 
@@ -184,7 +205,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="flex w-full min-w-0 flex-col xl:max-w-[440px] xl:flex-[1_1_400px]">
+          <div className="flex w-full min-w-0 flex-col gap-[18px] min-[1100px]:max-w-[440px] min-[1100px]:flex-[1_1_400px]">
             <div className="animate-floaty flex flex-col gap-4 rounded-[26px] bg-cream p-5 shadow-[0_22px_48px_rgba(140,60,30,0.22)] motion-reduce:animate-none sm:p-[26px]">
               <div className="flex items-center gap-4">
                 <span
@@ -226,7 +247,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="animate-floaty ml-auto mt-4 flex items-center gap-3.5 rounded-[22px] bg-brown-warm px-5 py-4 text-[#FFF5E6] shadow-[0_16px_34px_rgba(103,60,51,0.35)] [animation-delay:1.2s] motion-reduce:animate-none">
+            <div className="animate-floaty ml-auto flex items-center gap-3.5 rounded-[22px] bg-brown-warm px-5 py-4 text-[#FFF5E6] shadow-[0_16px_34px_rgba(103,60,51,0.35)] [animation-delay:1.2s] motion-reduce:animate-none">
               <svg
                 aria-hidden
                 viewBox="0 0 24 24"
@@ -249,7 +270,7 @@ export default function HomePage() {
               </span>
             </div>
 
-            <p className="mt-1 text-right text-xs font-semibold opacity-80">
+            <p className="text-right text-xs font-semibold opacity-80">
               {t("home.exampleCaption")}
             </p>
           </div>
@@ -334,9 +355,7 @@ export default function HomePage() {
       <section className="bg-[linear-gradient(135deg,#FFF1CF_0%,#FFE3D1_100%)]">
         <div className="mx-auto flex max-w-[1200px] flex-wrap items-center gap-12 px-5 py-20 sm:px-10 sm:py-24">
           <div className="flex min-w-0 flex-1 basis-[320px] justify-center">
-            <div className="w-full max-w-[380px]">
-              <Quilt patches={PATCHES} answered={questions.length} variant="full" />
-            </div>
+            <AnimatedBlanket />
           </div>
           <div className="flex min-w-0 flex-[999_1_480px] flex-col gap-[18px]">
             <span className="text-[11px] font-bold tracking-[0.3em] text-terra sm:text-xs">
@@ -462,9 +481,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-brown-warm">
-        <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-8 px-5 py-14 sm:px-10 sm:py-16">
-          <div className="flex min-w-0 flex-[999_1_520px] flex-col gap-3.5">
+      <section className="mx-auto max-w-[1200px] px-5 pb-14 sm:px-10">
+        <div className="relative grid gap-8 overflow-hidden rounded-[32px] bg-[linear-gradient(135deg,#673C33_0%,#8A4A35_100%)] p-7 text-[#FFF5E6] sm:p-14 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-10">
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -right-[120px] -top-[200px] h-[440px] w-[440px] rounded-full bg-[radial-gradient(circle,rgba(255,214,107,0.35)_0%,rgba(255,214,107,0)_70%)]"
+          />
+          <div className="relative flex min-w-0 flex-col gap-4">
             <span className="text-[11px] font-bold tracking-[0.3em] text-sun sm:text-xs">
               {t("home.panelEyebrow")}
             </span>
@@ -477,20 +500,20 @@ export default function HomePage() {
           </div>
           <Link
             href="/doctors"
-            className="inline-flex items-center rounded-full bg-[linear-gradient(90deg,#FFD66B,#F2C14E)] px-7 py-4 text-sm font-extrabold text-brown no-underline shadow-[0_10px_24px_rgba(0,0,0,0.25)] transition-transform hover:-translate-y-0.5 sm:text-base"
+            className="relative inline-flex justify-self-start rounded-full bg-[linear-gradient(90deg,#FFD66B,#F2C14E)] px-7 py-[17px] text-sm font-extrabold text-brown no-underline shadow-[0_10px_24px_rgba(0,0,0,0.25)] transition-transform hover:-translate-y-0.5 sm:text-base lg:justify-self-end"
           >
             {t("home.panelCta")}
           </Link>
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1200px] px-5 pb-24 pt-12 sm:px-10 sm:pt-16">
-        <div className="relative flex flex-wrap items-center justify-between gap-7 overflow-hidden rounded-[32px] bg-mandi-hero p-7 sm:p-14">
+      <section className="mx-auto max-w-[1200px] px-5 pb-24 sm:px-10">
+        <div className="relative grid gap-7 overflow-hidden rounded-[32px] bg-mandi-hero p-7 sm:p-14 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
           <span
             aria-hidden
             className="pointer-events-none absolute -bottom-[200px] -left-20 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.5)_0%,rgba(255,255,255,0)_70%)]"
           />
-          <div className="relative flex min-w-0 flex-[999_1_460px] flex-col gap-2.5">
+          <div className="relative flex min-w-0 flex-col gap-2.5">
             <h2 className="font-display text-[30px] font-extrabold leading-[1.08] tracking-[-0.03em] sm:text-[42px] sm:tracking-[-1px]">
               {t("home.ctaTitle")}
             </h2>
@@ -499,7 +522,7 @@ export default function HomePage() {
             </p>
             <p className="text-xs sm:text-[13px]">{t("home.ctaNote")}</p>
           </div>
-          <span className="relative rounded-full border-2 border-dashed border-brown-warm bg-[#FFF0D2] px-7 py-3.5 text-sm font-extrabold sm:text-base">
+          <span className="relative justify-self-start rounded-full border-2 border-dashed border-brown-warm bg-[#FFF0D2] px-7 py-3.5 text-sm font-extrabold sm:text-base lg:justify-self-end">
             {t("home.ctaButton")}
           </span>
         </div>

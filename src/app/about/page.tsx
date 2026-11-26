@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteHeader from "@/components/site/SiteHeader";
 
@@ -6,6 +7,7 @@ const FOUNDERS = [
     name: "Hermi King",
     role: "FOUNDER AND CO-CEO",
     initials: "HK",
+    photo: "/team/hermi.jpg",
     bio: "Television producer, documentary filmmaker and qualified lawyer, with more than 22 years in South African production. Four years deep in the global menopause research and clinical community, and the maker of Meer as Warm Gloede.",
     linkedin: "https://www.linkedin.com/in/hermi-king-064a9623/",
     bar: "linear-gradient(90deg,#FFD66B,#FFAA4F)",
@@ -14,6 +16,7 @@ const FOUNDERS = [
     name: "Evelien Griffioen",
     role: "CO-FOUNDER AND CO-CEO",
     initials: "EG",
+    photo: "/team/evelien.jpg",
     bio: "Product strategist and designer with 15+ years of global experience, ex-head of Customer Insights and Experience at Yoco, ex-mentor at StartUpBootcamp Barcelona. Evelien has a BSc Industrial Design Engineering and a MSc Strategic Product Design (with distinction) from the Delft University of Technology in The Netherlands. She designs the journey a woman takes through Mandi, from the first question to her doctor's follow-up.",
     linkedin: "https://www.linkedin.com/in/eveliengriffioen/",
     bar: "linear-gradient(90deg,#FFAA4F,#F7894F)",
@@ -22,7 +25,8 @@ const FOUNDERS = [
     name: "Busi Ndlovu",
     role: "CO-FOUNDER AND CTO",
     initials: "BN",
-    bio: "Built the Mandi platform from the very beginning. BCom Honours in Information Systems at UCT, going on to a master's in FinTech, and a hackathon-winning developer across web and mobile.",
+    photo: "/team/busi.jpg",
+    bio: "Built the Mandi platform from the very beginning. UCT BSc Computer Science and Business Computing, BCom Honours in Information Systems at UCT, going on to an MPhil in Financial Technology at UCT. A hackathon-winning developer and avid builder across web, mobile and other domains.",
     linkedin: "https://www.linkedin.com/in/busisiwe-ndlovu-6a21b6258/",
     bar: "linear-gradient(90deg,#F7894F,#C9562F)",
   },
@@ -90,7 +94,28 @@ function LinkedInLink({ href, name }: { href: string; name: string }) {
   );
 }
 
-function Portrait({ name, initials }: { name: string; initials: string }) {
+function Portrait({
+  name,
+  initials,
+  photo,
+}: {
+  name: string;
+  initials: string;
+  photo?: string;
+}) {
+  if (photo) {
+    return (
+      <Image
+        src={photo}
+        alt={name}
+        width={800}
+        height={800}
+        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+        className="aspect-square w-full rounded-2xl object-cover"
+      />
+    );
+  }
+
   return (
     <div
       role="img"
@@ -160,7 +185,7 @@ export default function AboutPage() {
             HOW IT STARTED
           </span>
           <h2 className="font-display text-[30px] font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-[40px] sm:tracking-[-1px]">
-            It started with a documentary
+            It all started with a documentary
           </h2>
         </div>
 
@@ -214,7 +239,11 @@ export default function AboutPage() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {FOUNDERS.map((founder) => (
             <article key={founder.name} className="flex flex-col gap-3.5">
-              <Portrait name={founder.name} initials={founder.initials} />
+              <Portrait
+                name={founder.name}
+                initials={founder.initials}
+                photo={founder.photo}
+              />
               <span
                 aria-hidden
                 className="h-1 rounded-full"
