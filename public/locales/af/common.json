@@ -91,7 +91,11 @@
     "englishSub": "Engels",
     "zuluSub": "isiZulu",
     "xhosaSub": "isiXhosa",
-    "afrikaansSub": "Afrikaans"
+    "afrikaansSub": "Afrikaans",
+    "menu": {
+      "title": "Kies taal",
+      "switchTo": "Skakel oor na {{label}}"
+    }
   },
   "consent": {
     "title": "Gereed wanneer jy is.",
@@ -99,7 +103,8 @@
     "body2": "Jou antwoorde bly joune. Ons verkoop of deel nooit jou besonderhede nie, en jy kan enige tyd vra dat ons alles uitvee. Dit is jou reg in die wet (POPIA), en in elk geval ons belofte.",
     "control": "Jy het altyd beheer oor jou inligting.",
     "checkbox": "Ja, Mandi mag my antwoorde hou om my kombers te stik en my padkaart te bou.",
-    "cta": "Kom ons stik"
+    "cta": "Kom ons stik",
+    "age": "Ek is 18 of ouer."
   },
   "questionnaire": {
     "progress": "Vraag {{current}} van {{total}}",
@@ -411,7 +416,33 @@
       "4": "Wat jy voel is werklik, en dit maak saak."
     },
     "saveExit": "Stoor en verlaat",
-    "autosaveNote": "Jou antwoorde stoor outomaties op hierdie toestel. Jy kan enige tyd verlaat en later voortgaan."
+    "autosaveNote": "Jou antwoorde stoor outomaties op hierdie toestel. Jy kan enige tyd verlaat en later voortgaan.",
+    "welcome": {
+      "eyebrow": "Voordat ons begin",
+      "title": "Maak vir jou 'n koppie tee, en kom ons begin.",
+      "sub": "Daar is geen haas nie. Dit is jou tyd.",
+      "body": "Ons vra jou 56 vrae oor jou liggaam, jou slaap, jou bui, jou werk en jou verhoudings. Omtrent tien minute.",
+      "point1": "Geen regte of verkeerde antwoorde nie.",
+      "point2": "Antwoord vir hoe die afgelope maand was.",
+      "point3": "Wag wanneer jy wil.",
+      "point4": "Jou antwoorde wag vir jou op hierdie toestel.",
+      "point5": "Werk sonder sein.",
+      "point6": "Ons stoor wanneer jy weer aanlyn is.",
+      "point7": "Elke antwoord word 'n lappie in jou eie Mandi-kombers.",
+      "cta": "Ek is gereed"
+    },
+    "safety": {
+      "eyebrow": "'n Sagte pouse",
+      "title": "Wat jy gedeel het, verg moed.",
+      "body": "Jy is nie alleen hierin nie, en jy hoef dit nie alleen aan te pak nie. Reik asseblief uit.",
+      "sadagLabel": "Praat vandag met iemand by SADAG",
+      "sadagNote": "Gratis en vertroulik, 24 uur per dag.",
+      "emergency": "In 'n noodgeval, bel 112 van enige selfoon.",
+      "note": "Hierdie nommer verskyn ook op jou resultate en jou doktersopsomming, sodat jy dit weer kan vind.",
+      "cta": "Gaan voort na my resultate"
+    },
+    "saveLink": "Stoor en kom terug",
+    "saveLinkCopied": "Skakel gekopieer"
   },
   "units": {
     "cm": "cm",
@@ -539,7 +570,31 @@
       "submit": "Hou my kombers",
       "thanksTitle": "Jou kombers is veilig by Mandi.",
       "thanksBody": "Dankie dat jy by die Mandi-reis aansluit. Ons sal in verbinding tree, in jou taal."
-    }
+    },
+    "topEyebrow": "JOU RESULTATE",
+    "topTitle": "Waar dit die swaarste druk",
+    "doctorSummaryTitle": "Jou doktersopsomming",
+    "doctorSummaryBody": "Een bladsy om na enige dokter te neem.",
+    "guidanceTitle": "Leiding vir die gesprek",
+    "guidanceBody": "Wat om te vra, en wat jou dokter jou kan vra.",
+    "view": "Sien",
+    "nextTitle": "Wat wil jy volgende doen?",
+    "or": "of",
+    "joinEyebrow": "STAP DIT SAAM MET ONS",
+    "joinTitle": "Ontmoet ons Mandi-opgeleide dokters",
+    "joinBody": "'n Huisarts wat hormone verstaan, jou taal praat en jou storie lees voor jy praat.",
+    "joinCta": "Wys my wat aansluiting insluit",
+    "emailTitle": "E-pos my resultate gratis",
+    "emailBody": "Een PDF met jou kombers, jou doktersopsomming, leiding vir die gesprek, en meer oor jou drie moeilikste areas.",
+    "emailCta": "E-pos my resultate",
+    "pdfLanguage": "PDF-taal",
+    "download": "Laai dit ook hier af",
+    "downloadCta": "Laai jou PDF af",
+    "print": "Druk / stoor as PDF",
+    "summaryTitle": "My doktersopsomming",
+    "summaryNote": "Self gerapporteer met Mandi se 56-vraag-innamings. Nie 'n diagnose nie.",
+    "resultsDate": "Jou inname",
+    "moreAbout": "Meer oor {{area}}"
   },
   "nav": {
     "about": "Oor Mandi",
@@ -552,7 +607,9 @@
     "journey": "My Reis",
     "book": "Bespreek 'n konsultasie",
     "login": "Teken in",
-    "signup": "Registreer"
+    "signup": "Registreer",
+    "signOut": "Teken uit",
+    "admin": "Admin"
   },
   "auth": {
     "login": {
@@ -914,6 +971,41 @@
         "urogenital": "Siklus",
         "other": "Ander",
         "quality-of-life": "Lewe"
+      },
+      "scale": "0 = glad nie · 1 = 'n bietjie · 2 = nogal · 3 = baie",
+      "symptom": {
+        "hot-flushes": {
+          "label": "Warm gloede",
+          "hint": "Skielike warmte, dag of nag."
+        },
+        "sleep": {
+          "label": "Slaap",
+          "hint": "Aan die slaap raak, aan die slaap bly, uitgerus voel."
+        },
+        "mood": {
+          "label": "Bui",
+          "hint": "Prikkelbaarheid, trane, plat voel."
+        },
+        "brain-fog": {
+          "label": "Breinmis",
+          "hint": "Konsentrasie, geheue, woorde vind."
+        },
+        "vaginal-discomfort": {
+          "label": "Vaginale ongemak",
+          "hint": "Droogheid, jeuk, pyn tydens intimiteit."
+        },
+        "joint-pain": {
+          "label": "Gewrigspyn",
+          "hint": "Styfheid, pyne in heupe, knieë, hande."
+        },
+        "anxiety": {
+          "label": "Angs",
+          "hint": "Wedloopgedagtes, bekommernis, rusteloosheid."
+        },
+        "energy": {
+          "label": "Energie",
+          "hint": "Uithouvermoë deur die dag."
+        }
       }
     },
     "checkins": {
@@ -939,6 +1031,74 @@
       "nina": "Natuurlike Nina",
       "retha": "Spytende Retha",
       "colleen": "Komorbiede Colleen"
+    },
+    "quilt": {
+      "eyebrow": "Jou Mandi-kombers",
+      "title": "Vasgestik uit jou eie antwoorde.",
+      "caption": "Elke lappie is een van jou antwoorde. Niemand anders het 'n kombers heeltemal soos hierdie nie."
+    },
+    "summary": {
+      "eyebrow": "Waar jy nou is",
+      "menoScore": "Jou MenoScore",
+      "outOf": "uit 100",
+      "topAreasLabel": "Top simptoomareas",
+      "basedOn": "Gebaseer op wat jy op {{date}} gedeel het.",
+      "viewRoadmap": "Sien volledige padkaart",
+      "retake": "Doen die vraelys oor",
+      "emptyEyebrow": "Waar jy nou is",
+      "emptyTitle": "Jy het nog nie die vraelys gedoen nie.",
+      "emptyBody": "Spandeer tien minute met Mandi en kry 'n persoonlike padkaart, MenoScore, en 'n dokter-gereed opsomming vir jou.",
+      "emptyCta": "Doen die vraelys",
+      "band": {
+        "mild": "Sagte, vroeë seine",
+        "moderate": "Matige, aktiewe veranderinge",
+        "significant": "Beduidende, hoë impak"
+      },
+      "domain": {
+        "mind-cognition": "Verstand en fokus",
+        "mood": "Bui",
+        "nervous-system": "Senuweestelsel",
+        "body": "Liggaam",
+        "urogenital": "Siklus en intimiteit",
+        "other": "Ander",
+        "quality-of-life": "Lewenskwaliteit"
+      }
+    },
+    "pdf": {
+      "ctaEyebrow": "Vir jou dokter",
+      "ctaTitle": "Laai 'n opsomming af wat jy vir jou dokter kan gee.",
+      "ctaBody": "'n Een-dokument-oorsig van jou MenoScore, antwoorde, en hoe jy dopgehou het, gestoor as 'n PDF uit jou blaaier.",
+      "ctaButton": "Laai vir dokter af",
+      "barHint": "Jou blaaier se drukvenster sal in 'n oomblik oopmaak. Kies 'Save as PDF'.",
+      "printButton": "Druk / Stoor as PDF",
+      "backLink": "Terug na My Reis",
+      "headerEyebrow": "Mandi-gesondheidsopsomming",
+      "headerTitle": "Jou gesondheidsfoto",
+      "patientLabel": "Vir",
+      "completedLabel": "Vraelys voltooi",
+      "languageLabel": "Taal",
+      "generatedLabel": "Gegenereer",
+      "scoreHeading": "MenoScore & top areas",
+      "bandLabel": "Band",
+      "topAreasLabel": "Top simptoomareas",
+      "flagSelfHarm": "Geestesgesondheidsondersteuningsvlag",
+      "flagComorbid": "Spesialisverwysing aanbeveel",
+      "trackerHeading": "Onlangse simptoomdop (laaste 30 dae)",
+      "trackerBody": "Self-gerapporteerde tellings. Hoër is intenser.",
+      "trackerColSymptom": "Simptoom",
+      "trackerColAverage": "Gem. (0–3)",
+      "trackerColCount": "Dae aangeteken",
+      "answersHeading": "Vraelysantwoorde",
+      "answersBody": "Al 56 vrae, gegroepeer per area, met jou antwoorde.",
+      "answerLabel": "Antwoord",
+      "footerLine1": "Gegenereer deur JoinMandi. Hierdie opsomming is joune, gemaak uit jou eie antwoorde, afgelaai omdat jy gekies het.",
+      "footerLine2": "Mandi deel nooit hierdie dokument nie. Net jy besluit wie dit sien.",
+      "loading": "Berei jou opsomming voor…",
+      "signedOutTitle": "Teken in om jou opsomming af te laai.",
+      "signedOutCta": "Teken in",
+      "noResponseTitle": "Jy het nog nie die vraelys gedoen nie.",
+      "noResponseBody": "Daar is niks om vir jou dokter op te som voordat jy die vraelys voltooi het nie.",
+      "noResponseCta": "Doen die vraelys"
     }
   },
   "footer": {
@@ -1089,5 +1249,63 @@
       "bodyPhone": "Hou jou inboks dop. Mandi bou 'n tuiste vir vrouegesondheid in Suid-Afrika, menopouse verstaan, nie verduur nie; elke vrou in haar eie taal. Jou kombers is die eerste steek. Kom voltooi dit by joinmandi.com.",
       "fullCta": "Sluit aan by die Mandi-reis"
     }
+  },
+  "splash": {
+    "tagline": "Jou metgesel deur menopouse en hormoonsgesondheid"
+  },
+  "v4": {
+    "welcome": {
+      "tagline": "Jou metgesel deur menopouse en hormoonsgesondheid"
+    },
+    "language": {
+      "title": "Kies die taal waarin jy die tuiste voel",
+      "sub": "Jy kan dit enige tyd in die kieslys verander.",
+      "continue": "Gaan voort",
+      "continueAf": "Gaan voort"
+    },
+    "landing": {
+      "seen": "Soos gesien op kykNET",
+      "talk": "Praat met Mandi",
+      "sub": "Jy kan praat, en ons sal luister. Jy is nie alleen nie.",
+      "body": "Antwoord 56 vrae in omtrent tien minute en sien wat in jou liggaam gebeur.",
+      "freeTitle": "Wat jy kry, gratis",
+      "free1": "Jou MenoScore en waar dit die swaarste druk",
+      "free2": "Meer oor jou drie moeilikste areas",
+      "free3": "Jou eie Mandi-kombers, een lappie vir elke antwoord",
+      "free4": "'n Doktersopsomming en leiding om met jou dokter te praat",
+      "start": "Kom ons begin",
+      "member": "Alreeds 'n lid?",
+      "signIn": "Teken in"
+    },
+    "consent": {
+      "title": "Jou storie kan sorg vir vroue help verander",
+      "body": "Elke antwoord wat jy gee, sonder jou naam, help ons wys dokters en navorsers wat menopouse werklik aan vroue in Suid-Afrika doen. Hoe meer ons weet, hoe beter kan sorg word.",
+      "fact1": "Veilig bewaar in Suid-Afrika, op bedieners in Kaapstad.",
+      "fact2": "Gesien deur jou en 'n klein Mandi-span; deur 'n dokter net as jy kies.",
+      "fact3": "Slegs vir navorsing en vir jou gebruik. Geen gerigte advertensies ooit nie.",
+      "fact4": "Joune om enige tyd te verwyder.",
+      "privacy": "Lees die volledige privacykennisgewing",
+      "age": "Met 18 of ouer.",
+      "agree": "Ek het dit gelees en stem in dat Mandi my antwoorde so gebruik.",
+      "continue": "Gaan voort"
+    }
+  },
+  "book": {
+    "eyebrow": "VRA 'N KONSULTASIE AAN",
+    "title": "Kom ons vind die regte dokter vir jou.",
+    "subhead": "Vertel ons 'n bietjie oor wat jy nodig het. Mandi sal jou op WhatsApp kontak om 'n tyd te bevestig.",
+    "name": "Jou naam",
+    "email": "E-posadres",
+    "whatsapp": "WhatsApp-nommer (opsioneel)",
+    "language": "Taal",
+    "concern": "Waarmee wil jy gehelp word? (opsioneel)",
+    "consent": "Mandi mag my oor hierdie versoek kontak.",
+    "cta": "Vra 'n konsultasie aan",
+    "pending": "Stuur…",
+    "successTitle": "Dankie. Ons het jou versoek.",
+    "successBody": "Mandi sal jou binne een werksdag op WhatsApp kontak om 'n tyd te bevestig.",
+    "whatsappCta": "Stuur vir Mandi 'n boodskap op WhatsApp",
+    "emergency": "Mandi is nie 'n nooddiens nie. As jy in gevaar is, bel 112. SADAG: 0800 567 567.",
+    "error": "Iets het verkeerd geloop. Probeer asseblief weer."
   }
 }

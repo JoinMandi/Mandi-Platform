@@ -86,6 +86,10 @@ const config: Config = {
           "0%, 100%": { filter: "brightness(1)", transform: "scale(1)" },
           "50%":      { filter: "brightness(1.18)", transform: "scale(1.04)" },
         },
+        floaty: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%":      { transform: "translateY(-8px)" },
+        },
       },
       animation: {
         "pulse-warm": "pulseWarm 2s ease-in-out infinite",
@@ -96,6 +100,7 @@ const config: Config = {
         "fade-in":    "fadeIn 0.4s ease-out both",
         bloom:        "bloom 2.4s ease-out forwards",
         "patch-shimmer": "patchShimmer 2.4s ease-in-out infinite",
+        floaty:       "floaty 6s ease-in-out infinite",
       },
     },
   },

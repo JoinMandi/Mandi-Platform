@@ -91,7 +91,11 @@
     "englishSub": "IsiNgisi",
     "zuluSub": "IsiZulu",
     "xhosaSub": "IsiXhosa",
-    "afrikaansSub": "IsiBhunu"
+    "afrikaansSub": "IsiBhunu",
+    "menu": {
+      "title": "Khetha ulimi",
+      "switchTo": "Shintshela ku-{{label}}"
+    }
   },
   "consent": {
     "title": "Ngaphambi kokuba siqale, izinto ezimbalwa okufanele uzazi.",
@@ -99,7 +103,8 @@
     "body2": "Asithengisi ulwazi lwakho. Asiklabelani nakubani ngaphandle kwemvume yakho. Ungasusa idatha yakho nganoma inini. Le nkundla iyahambisana noMthetho Wokuvikelwa Kolwazi Lomuntu (POPIA).",
     "control": "Uhlale unamandla phezu kolwazi lwakho.",
     "checkbox": "Ngiyaqonda futhi ngiyavuma ukuqhubeka.",
-    "cta": "Ngisemuncu, asiqale"
+    "cta": "Ngisemuncu, asiqale",
+    "age": "Ngineminyaka engu-18 noma ngaphezulu."
   },
   "questionnaire": {
     "progress": "Umbuzo {{current}} ku {{total}}",
@@ -411,7 +416,33 @@
       "4": "Lokho okuzwayo kuyiqiniso, futhi kubalulekile."
     },
     "saveExit": "Gcina uphume",
-    "autosaveNote": "Izimpendulo zakho zigcinwa ngokuzenzakalela kule divayisi. Ungahamba futhi uqhubeke noma nini."
+    "autosaveNote": "Izimpendulo zakho zigcinwa ngokuzenzakalela kule divayisi. Ungahamba futhi uqhubeke noma nini.",
+    "welcome": {
+      "eyebrow": "Ngaphambi kokuba siqale",
+      "title": "Zenzele itiye, bese siqala.",
+      "sub": "Asikho isiphithiphithi. Lesi yisikhathi sakho.",
+      "body": "Sizokubuza imibuzo engu-56 mayelana nomzimba wakho, ubuthongo bakho, imizwa yakho, umsebenzi wakho nobudlelwano bakho. Cishe imizuzu eyishumi.",
+      "point1": "Azikho izimpendulo ezilungile nezimbi.",
+      "point2": "Phendula ngendlela inyanga edlule ibe ngayo.",
+      "point3": "Yeka noma nini lapho uthanda.",
+      "point4": "Izimpendulo zakho zikulindile kule divayisi.",
+      "point5": "Iyasebenza ngaphandle kwesiginali.",
+      "point6": "Sigcina uma usuxhunyiwe ku-inthanethi.",
+      "point7": "Yonke impendulo iba yisitebhe engutsheni yakho ye-Mandi.",
+      "cta": "Sengikulungele"
+    },
+    "safety": {
+      "eyebrow": "Ukuma kancane",
+      "title": "Lokho okwabelene nathi kudinga isibindi.",
+      "body": "Awuwedwa kulokhu, futhi akudingi ukubhekana nakho wedwa. Sicela uxhumane.",
+      "sadagLabel": "Khuluma nomuntu kwa-SADAG namuhla",
+      "sadagNote": "Kumahhala futhi kuyimfihlo, amahora angu-24 ngosuku.",
+      "emergency": "Esimeni esiphuthumayo, shayela u-112 noma yikuphi uchigo.",
+      "note": "Le nombolo izophinda ibonakale emiphumeleni yakho nasesifinyeziweni sakho sikadokotela, ukuze uyithole futhi.",
+      "cta": "Qhubeka emiphumeleni yami"
+    },
+    "saveLink": "Gcina futhi ubuya",
+    "saveLinkCopied": "Isixhumanisi sikhophiwe"
   },
   "units": {
     "cm": "cm",
@@ -539,7 +570,31 @@
       "submit": "Gcina ingubo yami",
       "thanksTitle": "Ingubo yakho iphephile kuMandi.",
       "thanksBody": "Siyabonga ngokujoyina uhambo lukaMandi. Sizoxhumana nawe, ngolimi lwakho."
-    }
+    },
+    "topEyebrow": "IMIPHUMELA YAKHO",
+    "topTitle": "Lapho kucindezela kakhulu",
+    "doctorSummaryTitle": "Isifinyezo sakho sikadokotela",
+    "doctorSummaryBody": "Ikhasi elilodwa ongalithatha kuwo wonke udokotela.",
+    "guidanceTitle": "Isiqondiso sengxoxo",
+    "guidanceBody": "Okufanele ukubuza, nokuthi udokotela wakho angakubuza ini.",
+    "view": "Buka",
+    "nextTitle": "Ungathanda ukwenzani ngokulandelayo?",
+    "or": "noma",
+    "joinEyebrow": "HAMBA NATHI KULOKHU",
+    "joinTitle": "Hlangana nodokotela bethu abafundiswe yi-Mandi",
+    "joinBody": "Udokotela womndeni oqonda amahomoni, okhuluma ulimi lwakho futhi ofunda indaba yakho ngaphambi kokuba nikhulume.",
+    "joinCta": "Ngibonise okuhlanganiswa ukujoyina",
+    "emailTitle": "Ngithumele imiphumela yami nge-imeyili mahhala",
+    "emailBody": "I-PDF eyodwa enengubo yakho, isifinyezo sakho sikadokotela, isiqondiso sengxoxo, nokuningi mayelana nezindawo zakho ezintathu ezinzima kakhulu.",
+    "emailCta": "Ngithumele imiphumela yami nge-imeyili",
+    "pdfLanguage": "Ulimi lwe-PDF",
+    "download": "Yilande lapha futhi",
+    "downloadCta": "Landa i-PDF yakho",
+    "print": "Printa / gcina njenge-PDF",
+    "summaryTitle": "Isifinyezo sami sikadokotela",
+    "summaryNote": "Kuzibikile ngokwakho ngomphenyo we-Mandi wemibuzo engu-56. Akusona isiqondiso sokuxilonga.",
+    "resultsDate": "Umphumela wakho",
+    "moreAbout": "Okuningi nge-{{area}}"
   },
   "nav": {
     "about": "Mayelana noMandi",
@@ -552,7 +607,9 @@
     "journey": "Uhambo Lwami",
     "book": "Bhuka ukubonana",
     "login": "Ngena",
-    "signup": "Bhalisa"
+    "signup": "Bhalisa",
+    "signOut": "Phuma",
+    "admin": "Umlawuli"
   },
   "auth": {
     "login": {
@@ -914,6 +971,41 @@
         "urogenital": "Umjikelo",
         "other": "Okunye",
         "quality-of-life": "Impilo"
+      },
+      "scale": "0 = nhlobo · 1 = kancane · 2 = impela · 3 = kakhulu",
+      "symptom": {
+        "hot-flushes": {
+          "label": "Ukushisa okungazelelwe",
+          "hint": "Ukushisa okungazelelwe, emini noma ebusuku."
+        },
+        "sleep": {
+          "label": "Ubuthongo",
+          "hint": "Ukuqala ukulala, ukuhlala ulele, ukuzizwa uphumule."
+        },
+        "mood": {
+          "label": "Imizwa",
+          "hint": "Ukucasuka, izinyembezi, ukuzizwa ufuthe."
+        },
+        "brain-fog": {
+          "label": "Inkungu yengqondo",
+          "hint": "Ukugxila, ukukhumbula, ukuthola amagama."
+        },
+        "vaginal-discomfort": {
+          "label": "Ukungaphatheki kahle esithweni sangasese",
+          "hint": "Ukomisa, ukulunywa, ubuhlungu ngesikhathi sokusondelana."
+        },
+        "joint-pain": {
+          "label": "Ubuhlungu bamalunga",
+          "hint": "Ukuqina, ubuhlungu ezinqeni, emadolweni, ezandleni."
+        },
+        "anxiety": {
+          "label": "Ukukhathazeka",
+          "hint": "Imicabango egijimayo, ukukhathazeka, ukungaphumuli."
+        },
+        "energy": {
+          "label": "Amandla",
+          "hint": "Amandla okusebenza usuku lonke."
+        }
       }
     },
     "checkins": {
@@ -939,6 +1031,74 @@
       "nina": "Natural Nina",
       "retha": "Regretting Retha",
       "colleen": "Comorbid Colleen"
+    },
+    "quilt": {
+      "eyebrow": "Ingubo yakho ye-Mandi",
+      "title": "Ithungwe ngezimpendulo zakho.",
+      "caption": "Isitebhe ngasinye ngesinye sezimpendulo zakho. Akekho omunye onengubo efana nayo."
+    },
+    "summary": {
+      "eyebrow": "Lapho ukhona manje",
+      "menoScore": "I-MenoScore yakho",
+      "outOf": "kwangu-100",
+      "topAreasLabel": "Izindawo eziphezulu zezimpawu",
+      "basedOn": "Kusekelwe kulokho okwabelene nathi ngo-{{date}}.",
+      "viewRoadmap": "Bona uhlelo olugcwele",
+      "retake": "Phinda umphenyo",
+      "emptyEyebrow": "Lapho ukhona manje",
+      "emptyTitle": "Awukakawuthathi umphenyo.",
+      "emptyBody": "Chitha imizuzu eyishumi noMandi bese uthola uhlelo lomuntu siqu, i-MenoScore, nesifinyezo esilungele udokotela esikwenzelwe wena.",
+      "emptyCta": "Thatha umphenyo",
+      "band": {
+        "mild": "Kancane, izimpawu zokuqala",
+        "moderate": "Kulingene, izinguquko ezisebenzayo",
+        "significant": "Kukhulu, umthelela ophezulu"
+      },
+      "domain": {
+        "mind-cognition": "Ingqondo nokugxila",
+        "mood": "Imizwa",
+        "nervous-system": "Isimiso sezinzwa",
+        "body": "Umzimba",
+        "urogenital": "Umjikelezo nokusondelana",
+        "other": "Okunye",
+        "quality-of-life": "Izinga lempilo"
+      }
+    },
+    "pdf": {
+      "ctaEyebrow": "Okukadokotela wakho",
+      "ctaTitle": "Landa isifinyezo ongasinikeza udokotela wakho.",
+      "ctaBody": "Umbono wedokhumenti eyodwa we-MenoScore yakho, izimpendulo zakho, nendlela obulandelela ngayo, egcinwe njenge-PDF kusiphequluli sakho.",
+      "ctaButton": "Landa okukadokotela",
+      "barHint": "Ikhwindi lokuphrinta lesiphequluli sakho lizovuleka ngemva kwesekhondi. Khetha 'Gcina njenge-PDF'.",
+      "printButton": "Printa / Gcina njenge-PDF",
+      "backLink": "Buyela kuMhambo Wami",
+      "headerEyebrow": "Isifinyezo Sempilo yakwa-Mandi",
+      "headerTitle": "Isithombe sakho sempilo",
+      "patientLabel": "Okuka",
+      "completedLabel": "Umphenyo uqediwe",
+      "languageLabel": "Ulimi",
+      "generatedLabel": "Kwenziwe",
+      "scoreHeading": "I-MenoScore nezindawo eziphezulu",
+      "bandLabel": "Izinga",
+      "topAreasLabel": "Izindawo eziphezulu zezimpawu",
+      "flagSelfHarm": "Isibonakaliso sosekelo lwempilo yengqondo",
+      "flagComorbid": "Kunconywa ukudluliselwa kuchwepheshe",
+      "trackerHeading": "Umlandeli wezimpawu wakamuva (izinsuku ezingama-30 ezedlule)",
+      "trackerBody": "Izilinganiso ezizibikile. Okuphezulu kukhulu.",
+      "trackerColSymptom": "Uphawu",
+      "trackerColAverage": "Isilinganiso (0–3)",
+      "trackerColCount": "Izinsuku ezirekhodiwe",
+      "answersHeading": "Izimpendulo zomphenyo",
+      "answersBody": "Yonke imibuzo engu-56, ihlelwe ngezindawo, nezimpendulo zakho.",
+      "answerLabel": "Impendulo",
+      "footerLine1": "Kwenziwe yi-JoinMandi. Lesi sifinyezo ngesakho, senziwe ngezimpendulo zakho, sithathwe ngoba ukhethile.",
+      "footerLine2": "I-Mandi ayikwabelani nalesi sikhathi nanini. Nguwe kuphela onquma ukuthi ubani asibona.",
+      "loading": "Silungiselela isifinyezo sakho…",
+      "signedOutTitle": "Ngena ukuze ulande isifinyezo sakho.",
+      "signedOutCta": "Ngena",
+      "noResponseTitle": "Awukakawuthathi umphenyo.",
+      "noResponseBody": "Akukho okufingqiweyo kudokotela wakho kuze kube uqeda umphenyo.",
+      "noResponseCta": "Thatha umphenyo"
     }
   },
   "footer": {
@@ -1089,5 +1249,63 @@
       "bodyPhone": "Bheka ibhokisi lakho le-imeyili. UMandi wakha ikhaya lempilo yabesifazane eNingizimu Afrika, i-menopause eqondwayo, hhayi ebekezelelwayo; wonke owesifazane ngolimi lwakhe. Ingubo yakho iwumthungo wokuqala. Woza uyiqedele ku-joinmandi.com.",
       "fullCta": "Joyina uhambo lukaMandi"
     }
+  },
+  "splash": {
+    "tagline": "Umngane wakho emenopouseni nempilweni yamahomoni"
+  },
+  "v4": {
+    "welcome": {
+      "tagline": "Umngane wakho emenopouseni nempilweni yamahomoni"
+    },
+    "language": {
+      "title": "Khetha ulimi ozizwa ukhululekile kulo",
+      "sub": "Ungashintsha lokhu noma nini kumenyu.",
+      "continue": "Qhubeka",
+      "continueAf": "Gaan voort"
+    },
+    "landing": {
+      "seen": "Njengoba kubonakele ku-kykNET",
+      "talk": "Khuluma noMandi",
+      "sub": "Ungakhuluma, futhi sizolalela. Awuwedwa.",
+      "body": "Phendula imibuzo engu-56 cishe emizuzwini eyishumi bese ubona okwenzeka emzimbeni wakho.",
+      "freeTitle": "Okutholayo, mahhala",
+      "free1": "I-MenoScore yakho nalapho icindezela khona kakhulu",
+      "free2": "Okuningi ngezindawo zakho ezintathu ezinzima kakhulu",
+      "free3": "Ingubo yakho ye-Mandi, isitebhe ngasinye sempendulo yakho",
+      "free4": "Isifinyezo sikadokotela nesiqondiso sokukhuluma nodokotela wakho",
+      "start": "Asiqale",
+      "member": "Usuyilungu kakade?",
+      "signIn": "Ngena"
+    },
+    "consent": {
+      "title": "Indaba yakho ingasiza ukushintsha ukunakekelwa kwabesifazane",
+      "body": "Yonke impendulo oyinikezayo, ngaphandle kwegama lakho, isisiza ukukhombisa odokotela nabacwaningi ukuthi i-menopause yenzani ngempela kwabesifazane eNingizimu Afrika. Uma sazi kakhulu, ukunakekelwa kungaba ngcono.",
+      "fact1": "Igcinwa ngokuphephile eNingizimu Afrika, kumaseva eKapa.",
+      "fact2": "Ibonwa nguwe neqembu elincane lakwa-Mandi; udokotela kuphela uma ukhetha.",
+      "fact3": "Isetshenziselwa ucwaningo nawe kuphela. Azikho izikhangiso eziqondiwe, nanini.",
+      "fact4": "Ngeyakho ukuyisusa, noma nini.",
+      "privacy": "Funda isaziso esigcwele semfihlo",
+      "age": "Ngineminyaka engu-18 noma ngaphezulu.",
+      "agree": "Ngikufundile futhi ngiyavuma ukuthi i-Mandi isebenzisa izimpendulo zami ngale ndlela.",
+      "continue": "Qhubeka"
+    }
+  },
+  "book": {
+    "eyebrow": "CELA UKUBONISANA NODOKOTELA",
+    "title": "Asitholele udokotela ofanele.",
+    "subhead": "Sitshele kancane ngalokho okudingayo. I-Mandi izokuthumelela i-WhatsApp ukuqinisekisa isikhathi.",
+    "name": "Igama lakho",
+    "email": "Ikheli le-imeyili",
+    "whatsapp": "Inombolo ye-WhatsApp (ngokuzithandela)",
+    "language": "Ulimi",
+    "concern": "Yini ongathanda ukusizwa ngayo? (ngokuzithandela)",
+    "consent": "I-Mandi ingaxhumana nami mayelana nalesi sicelo.",
+    "cta": "Cela ukubonisana",
+    "pending": "Kuyathunyelwa…",
+    "successTitle": "Ngiyabonga. Isicelo sakho sitholakele.",
+    "successBody": "I-Mandi izokuthumelela i-WhatsApp phakathi kosuku olulodwa lokusebenza ukuqinisekisa isikhathi.",
+    "whatsappCta": "Thumela umyalezo ku-Mandi nge-WhatsApp",
+    "emergency": "I-Mandi ayisiyona insizakalo yezimo eziphuthumayo. Uma usengozini, shayela u-112. I-SADAG: 0800 567 567.",
+    "error": "Kukhona okungahambanga kahle. Sicela uzame futhi."
   }
 }

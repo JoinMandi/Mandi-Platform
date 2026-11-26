@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
@@ -17,6 +17,21 @@ export default function V4Language() {
   const { t, i18n } = useTranslation("common");
   const [selected, setSelected] = useState<string>("en");
 
+  // Keep the highlighted language in step with the saved choice (the header
+  // language pills set it before this screen mounts).
+  useEffect(() => {
+    let saved: string | null = null;
+    try {
+      saved = localStorage.getItem("mandi-lang");
+    } catch {
+      /* private browsing */
+    }
+    const current = (saved || i18n.language || "en").slice(0, 2);
+    if (LANGUAGES.some((language) => language.code === current)) {
+      setSelected(current);
+    }
+  }, [i18n.language]);
+
   const choose = (code: string) => {
     setSelected(code);
     if (typeof window !== "undefined") {
@@ -28,7 +43,7 @@ export default function V4Language() {
   return (
     <main className="min-h-screen bg-cream">
       <div className="mx-auto flex min-h-screen w-full max-w-xl flex-col px-5 py-5 sm:px-8 sm:py-8">
-        <Image src="/brand/mandi-v4-logo.png" alt="Mandi" width={72} height={32} className="h-8 w-auto" />
+        <Image src="/brand/mandi-v4-logo.png" alt="Mandi" width={72} height={32} className="h-8 w-auto self-start" />
 
         <h1 className="mt-8 max-w-md font-display text-3xl font-bold leading-tight text-brown sm:text-4xl">
           {t("v4.language.title")}
