@@ -34,12 +34,6 @@ variable "db_instance_class" {
   default = "db.t4g.micro"
 }
 
-variable "github_repo" {
-  type        = string
-  description = "owner/repo allowed to assume the deploy role"
-  default     = "devbusi/Mandi-Platform"
-}
-
 variable "admin_cidrs" {
   type        = list(string)
   description = "Optional extra CIDRs allowed to reach the instance directly"

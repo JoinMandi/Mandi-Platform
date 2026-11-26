@@ -19,7 +19,10 @@ data "aws_iam_policy_document" "github_assume" {
     condition {
       test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:${var.github_repo}:ref:refs/heads/main"]
+      # GitHub scopes the subject to the environment and includes numeric
+      # org/repo IDs, because the deploy job declares `environment: staging`.
+      # This matches the live trust on mandi-staging-github-deploy exactly.
+      values = ["repo:JoinMandi@344157010/Mandi-Platform@1242331192:environment:${var.environment}"]
     }
   }
 }

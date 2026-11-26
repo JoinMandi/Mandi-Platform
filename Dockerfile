@@ -17,7 +17,8 @@ RUN npm run build
 # ── migrator (one-off ECS/SSM command) ───────────────────────
 FROM node:22-alpine AS migrator
 WORKDIR /app
-ENV NODE_ENV=production
+ENV NODE_ENV=production \
+    NODE_EXTRA_CA_CERTS=/app/certs/global-bundle.pem
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 COPY db ./db
