@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 
 const LANGUAGES = [
@@ -36,6 +37,7 @@ export default function SiteHeader({
   cta,
 }: SiteHeaderProps) {
   const { i18n } = useTranslation("common");
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const current = (i18n.language || "en").slice(0, 2);
 
@@ -47,6 +49,11 @@ export default function SiteHeader({
       /* private browsing */
     }
     setOpen(false);
+    // The marketing Home is English-only for now. Send a non-English choice
+    // into the translated language step instead of leaving the page unchanged.
+    if (variant === "home" && code !== "en") {
+      router.push("/v4/language");
+    }
   };
 
   const links = LINKS.map((link) => (
