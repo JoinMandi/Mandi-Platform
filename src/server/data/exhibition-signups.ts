@@ -3,7 +3,11 @@ import type { Db } from "@/server/db/pool";
 import { run } from "@/server/db/sql";
 import type { AgeBand, ScoreBand } from "@/lib/types/database";
 
-export type SignupSource = "exhibition" | "roadmap" | "booking";
+export type SignupSource =
+  | "exhibition"
+  | "roadmap"
+  | "booking"
+  | "doctor-application";
 
 export interface ExhibitionSignupInput {
   email: string;
