@@ -1241,5 +1241,42 @@
     "whatsappCta": "Message Mandi on WhatsApp",
     "emergency": "Mandi is not an emergency service. If you are in danger, call 112. SADAG: 0800 567 567.",
     "error": "Something went wrong. Please try again."
+  },
+  "v4": {
+    "welcome": {
+      "tagline": "Your companion through menopause and hormone health"
+    },
+    "language": {
+      "title": "Choose the language you feel most at home in",
+      "sub": "You can change this any time in the menu.",
+      "continue": "Continue",
+      "continueAf": "Gaan voort"
+    },
+    "landing": {
+      "seen": "As seen on kykNET",
+      "talk": "Talk to Mandi",
+      "sub": "You can talk, and we will listen. You are not alone.",
+      "body": "Answer 56 questions in about ten minutes and see what is happening in your body.",
+      "freeTitle": "What you get, free",
+      "free1": "Your MenoScore and where it presses hardest",
+      "free2": "More about your three hardest areas",
+      "free3": "Your own Mandi blanket, one patch for every answer",
+      "free4": "A doctor summary and guidance for talking to your doctor",
+      "start": "Let's start",
+      "member": "Already a member?",
+      "signIn": "Sign in"
+    },
+    "consent": {
+      "title": "Your story can help change care for women",
+      "body": "Every answer you give, without your name, helps us show doctors and researchers what menopause really does to women in South Africa. The more we know, the better care can become.",
+      "fact1": "Kept safe in South Africa, on servers in Cape Town.",
+      "fact2": "Seen by you and a small Mandi team; by a doctor only if you choose.",
+      "fact3": "Only used for research and for you. No targeted adverts, ever.",
+      "fact4": "Yours to delete, any time.",
+      "privacy": "Read the full privacy notice",
+      "age": "I am 18 or older.",
+      "agree": "I have read this and agree that Mandi uses my answers this way.",
+      "continue": "Continue"
+    }
   }
 }
