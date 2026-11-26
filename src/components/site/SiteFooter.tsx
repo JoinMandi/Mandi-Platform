@@ -49,7 +49,7 @@ export default function SiteFooter({
         <p className="w-full text-xs text-[#E9CDB4]">
           {variant === "home" && "Need to talk now? SADAG 0800 567 567 · "}
           JOINMANDI (PTY) LTD 2026/805791/07 ·{" "}
-          <Link href="/consent" className="underline">
+          <Link href="/privacy" className="underline">
             Privacy
           </Link>
         </p>

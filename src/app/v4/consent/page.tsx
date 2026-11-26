@@ -97,7 +97,7 @@ export default function V4Consent() {
               ))}
             </ul>
           </div>
-          <Link href="/about" className="text-sm font-semibold text-brown underline">
+          <Link href="/privacy" className="text-sm font-semibold text-brown underline">
             {t("v4.consent.privacy")}
           </Link>
         </div>

@@ -144,7 +144,7 @@ export default function DoctorApplicationForm() {
             this form to assess my application to the Mandi doctor panel, in line
             with the Protection of Personal Information Act (POPIA). I can ask
             for it to be corrected or deleted at any time.{" "}
-            <Link href="/consent" className="underline">
+            <Link href="/privacy" className="underline">
               Read our privacy notice
             </Link>
             .

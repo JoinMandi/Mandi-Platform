@@ -522,9 +522,12 @@ export default function HomePage() {
             </p>
             <p className="text-xs sm:text-[13px]">{t("home.ctaNote")}</p>
           </div>
-          <span className="relative justify-self-start rounded-full border-2 border-dashed border-brown-warm bg-[#FFF0D2] px-7 py-3.5 text-sm font-extrabold sm:text-base lg:justify-self-end">
+          <Link
+            href="/v4/language"
+            className="relative inline-flex justify-self-start rounded-full border-2 border-dashed border-brown-warm bg-[#FFF0D2] px-7 py-3.5 text-sm font-extrabold text-brown no-underline transition-transform hover:-translate-y-0.5 sm:text-base lg:justify-self-end"
+          >
             {t("home.ctaButton")}
-          </span>
+          </Link>
         </div>
       </section>
 
