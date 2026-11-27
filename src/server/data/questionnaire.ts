@@ -50,6 +50,22 @@ export async function latestResponseForUser(
   );
 }
 
+/** The most recent responses, newest first. Used by the check-in comparison. */
+export async function recentResponsesForUser(
+  db: Db,
+  userId: string,
+  limit = 2,
+): Promise<QuestionnaireResponseRow[]> {
+  return all<QuestionnaireResponseRow>(
+    db,
+    `select * from care.questionnaire_responses
+     where user_id = $1
+     order by completed_at desc
+     limit $2`,
+    [userId, limit],
+  );
+}
+
 export async function countResponses(db: Db): Promise<number> {
   return count(db, `select count(*)::int as n from care.questionnaire_responses`);
 }

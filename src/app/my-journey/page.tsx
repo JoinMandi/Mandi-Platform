@@ -150,6 +150,21 @@ export default function MyJourneyPage() {
                   : t("journey.greetingNoName")}
               </h1>
               <p className="text-brown/70 text-sm mt-2">{t("journey.intro")}</p>
+              <div className="flex flex-wrap gap-4 mt-4 text-sm">
+                <Link href="/my-journey/blanket" className="text-terra">My blanket</Link>
+                <Link href="/my-journey/diary" className="text-terra">Diary</Link>
+                <Link href="/my-journey/history" className="text-terra">History</Link>
+                <Link href="/my-journey/learn" className="text-terra">Menopause 101</Link>
+                <Link href="/my-journey/me" className="text-terra">Me and privacy</Link>
+              </div>
+              <div className="flex flex-wrap gap-4 mt-2 text-sm">
+                <Link href="/my-doctor" className="text-terra">My doctor</Link>
+                <Link href="/check-in" className="text-terra">Check-in</Link>
+                <Link href="/my-journey/reminders" className="text-terra">Reminders</Link>
+                <Link href="/see-sooner" className="text-terra">See doctor sooner</Link>
+                <Link href="/help" className="text-terra">Help</Link>
+                <Link href="/check-in/cancelled" className="text-terra">Cancel membership</Link>
+              </div>
             </Reveal>
           </div>
         </section>

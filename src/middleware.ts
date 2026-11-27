@@ -11,6 +11,15 @@ const SESSION_COOKIE = "mandi_session";
 export function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
 
+  // Staging serves the v4 flow only. The public landing stays on live
+  // (joinmandi.com). Any staging host gets / redirected to /v4.
+  const host = req.headers.get("host") ?? "";
+  if (host.includes("staging") && path === "/") {
+    const url = req.nextUrl.clone();
+    url.pathname = "/v4";
+    return NextResponse.redirect(url);
+  }
+
   // Request log for the app container's CloudWatch stream. Path only, never
   // the query string, because questionnaire URLs can carry answers.
   if (path.startsWith("/api/")) {
@@ -42,5 +51,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/my-journey/:path*", "/admin/:path*", "/auth/:path*", "/api/:path*"],
+  matcher: ["/", "/my-journey/:path*", "/admin/:path*", "/auth/:path*", "/api/:path*"],
 };

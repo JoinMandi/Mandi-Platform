@@ -298,3 +298,25 @@ export interface AdminAuditLogRow {
   target_id: string | null;
   meta: Record<string, unknown> | null;
 }
+
+/** DB-0005 / DB-0006: care.consultations */
+export interface ConsultationRow {
+  id: string;
+  user_id: string | null;
+  doctor_name: string | null;
+  appointment_at: string | null;
+  status: string;
+  recording_required: boolean;
+  recording_consent: boolean;
+  intake: unknown;
+  attended: string | null;
+  read_summary: string | null;
+  changed: string[] | null;
+  treatment: unknown;
+  referral: string | null;
+  follow_up_at: string | null;
+  fee_cents: number | null;
+  usefulness: number | null;
+  outcome_at: string | null;
+  created_at: string;
+}
