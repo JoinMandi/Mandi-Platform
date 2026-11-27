@@ -39,6 +39,32 @@ export default function DoctorVideo() {
             height={32}
             className="absolute left-4 top-4 h-auto w-14 opacity-95 sm:left-[30px] sm:top-[26px] sm:w-[72px]"
           />
+          <div
+            role="group"
+            aria-label="Video language"
+            className="absolute right-4 top-4 flex gap-0.5 rounded-full border border-[#FFF5E6]/30 bg-[#FFF5E6]/15 p-1 text-[10px] font-bold sm:right-[26px] sm:top-[24px] sm:text-[13px]"
+          >
+            {(
+              [
+                ["en", "English"],
+                ["af", "Afrikaans"],
+              ] as const
+            ).map(([code, label]) => (
+              <button
+                key={code}
+                type="button"
+                onClick={() => setLanguage(code)}
+                aria-pressed={language === code}
+                className={`rounded-full px-2.5 py-1.5 sm:px-3.5 sm:py-2 ${
+                  language === code
+                    ? "bg-sun text-brown"
+                    : "bg-transparent text-[#FFF5E6]"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
           <button
             type="button"
             onClick={() => setOpen(true)}

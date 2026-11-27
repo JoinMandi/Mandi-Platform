@@ -7,12 +7,7 @@ import AnimatedBlanket from "@/components/site/AnimatedBlanket";
 import SiteFooter from "@/components/site/SiteFooter";
 import SiteHeader from "@/components/site/SiteHeader";
 
-const GREETINGS = [
-  { lead: "Talk to", brand: "Mandi" },
-  { lead: "Khuluma", brand: "noMandi" },
-  { lead: "Thetha", brand: "noMandi" },
-  { lead: "Praat met", brand: "Mandi" },
-] as const;
+const GREETINGS = ["Talk to", "Khuluma no", "Thetha no", "Praat met"] as const;
 
 const STRIP_COLOURS = [
   "#FFD66B",
@@ -82,12 +77,10 @@ export default function HomePage() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const id = window.setInterval(
       () => setGreeting((current) => (current + 1) % GREETINGS.length),
-      2600,
+      2400,
     );
     return () => window.clearInterval(id);
   }, []);
-
-  const phrase = GREETINGS[greeting];
 
   return (
     <div className="min-h-screen overflow-x-clip bg-cream font-sans text-brown">
@@ -112,15 +105,38 @@ export default function HomePage() {
 
             <h1
               aria-label={`${t("home.titleLead")} ${t("home.titleBrand")}`}
-              className="min-h-[1.05em] font-display text-[44px] font-extrabold leading-[0.98] tracking-[-0.04em] sm:text-6xl lg:text-7xl xl:text-[86px]"
+              className="flex flex-col items-start font-display text-[44px] font-extrabold leading-none tracking-[-0.04em] sm:text-6xl lg:text-7xl xl:text-[80px] xl:tracking-[-2.5px]"
             >
-              <span key={greeting} aria-hidden className="inline-block animate-rise-in">
-                {phrase.lead}{" "}
-                <span className="bg-[linear-gradient(180deg,transparent_62%,rgba(255,251,243,0.75)_62%)] px-1.5">
-                  {phrase.brand}
-                </span>
+              <span
+                key={greeting}
+                aria-hidden
+                className="inline-block whitespace-nowrap animate-rise-in"
+              >
+                {GREETINGS[greeting]}
+              </span>
+              <span
+                aria-hidden
+                className="-ml-1.5 bg-[linear-gradient(180deg,transparent_62%,rgba(255,251,243,0.75)_62%)] px-1.5"
+              >
+                Mandi
               </span>
             </h1>
+
+            <div aria-hidden className="-mt-2 flex gap-1.5">
+              {GREETINGS.map((_, index) => (
+                <span
+                  key={index}
+                  className="h-1.5 rounded-full transition-all duration-300"
+                  style={{
+                    width: index === greeting ? 22 : 6,
+                    background:
+                      index === greeting
+                        ? "#2C1810"
+                        : "rgba(44,24,16,0.3)",
+                  }}
+                />
+              ))}
+            </div>
 
             <p className="max-w-[540px] text-lg font-semibold leading-snug sm:text-2xl sm:leading-[1.4]">
               {t("home.sub")}
@@ -517,6 +533,10 @@ export default function HomePage() {
             <h2 className="font-display text-[30px] font-extrabold leading-[1.08] tracking-[-0.03em] sm:text-[42px] sm:tracking-[-1px]">
               {t("home.ctaTitle")}
             </h2>
+            <p className="text-[15px] font-normal leading-relaxed sm:text-[17px] sm:leading-[1.55]">
+              {t("home.ctaLanguageLead")}{" "}
+              <b className="font-bold">{t("home.ctaLanguageStrong")}</b>
+            </p>
             <p className="text-[15px] font-semibold leading-relaxed sm:text-[17px] sm:leading-[1.55]">
               {t("home.ctaBody")}
             </p>

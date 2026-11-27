@@ -5,11 +5,31 @@ import Link from "next/link";
 export default function SiteFooter({
   variant = "home",
 }: {
-  variant?: "home" | "page";
+  variant?: "home" | "page" | "doctors";
 }) {
+  const links =
+    variant === "home"
+      ? [
+          { href: "/doctors", label: "For doctors" },
+          { href: "/about", label: "About" },
+        ]
+      : variant === "doctors"
+        ? [
+            { href: "/", label: "Home" },
+            { href: "/about", label: "About" },
+          ]
+        : [
+            { href: "/", label: "Home" },
+            { href: "/doctors", label: "For doctors" },
+          ];
+
   return (
     <footer
-      className={variant === "home" ? "bg-brown-warm text-peach" : "bg-brown text-[#FFF5E6]"}
+      className={
+        variant === "home"
+          ? "bg-brown-warm text-peach"
+          : "bg-brown text-[#E9CDB4]"
+      }
     >
       <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-7 px-5 py-12 sm:px-10">
         <div className="flex items-center gap-4">
@@ -26,18 +46,15 @@ export default function SiteFooter({
         </div>
 
         <nav aria-label="Footer" className="flex flex-wrap gap-5 text-sm">
-          <Link
-            href={variant === "home" ? "/doctors" : "/"}
-            className="text-[#FFF5E6] no-underline hover:underline"
-          >
-            {variant === "home" ? "For doctors" : "Home"}
-          </Link>
-          <Link
-            href={variant === "home" ? "/about" : "/doctors"}
-            className="text-[#FFF5E6] no-underline hover:underline"
-          >
-            {variant === "home" ? "About" : "For doctors"}
-          </Link>
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-[#FFF5E6] no-underline hover:underline"
+            >
+              {link.label}
+            </Link>
+          ))}
           <a
             href="mailto:hello@joinmandi.com"
             className="text-[#FFF5E6] no-underline hover:underline"

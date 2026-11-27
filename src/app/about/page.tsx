@@ -43,7 +43,7 @@ const ADVISERS = [
   {
     name: "Dr Chantal Hadfield",
     role: "STRATEGIC ADVISER",
-    bio: "Medical doctor and healthcare executive (Corvalia Health), with experience across telehealth, retail pharmacy and medical schemes.",
+    bio: "Medical doctor and healthcare executive with experience from start-up to corporate across medical schemes, digital health and analytics. She is passionate about value-based care and founded Corvalia Health to help others deliver it.",
     linkedin: "https://www.linkedin.com/in/chantal-lourenco-hadfield/",
     bar: "linear-gradient(90deg,#FFAA4F,#F7894F)",
   },

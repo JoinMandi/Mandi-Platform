@@ -722,7 +722,7 @@ export default function DoctorsPage() {
         </div>
       </section>
 
-      <SiteFooter variant="page" />
+      <SiteFooter variant="doctors" />
     </div>
   );
 }
