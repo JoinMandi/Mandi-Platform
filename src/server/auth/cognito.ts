@@ -1,4 +1,8 @@
 import { createHash, randomBytes } from "node:crypto";
+import {
+  AdminGetUserCommand,
+  CognitoIdentityProviderClient,
+} from "@aws-sdk/client-cognito-identity-provider";
 import { createRemoteJWKSet, jwtVerify, type JWTPayload } from "jose";
 import { requireEnv } from "@/server/env";
 import type { UserRole } from "@/lib/types/database";
@@ -112,6 +116,27 @@ export async function exchangeCode(
 }
 
 let jwks: ReturnType<typeof createRemoteJWKSet> | undefined;
+let cognitoAdmin: CognitoIdentityProviderClient | undefined;
+
+/**
+ * Cognito omits `amr` from ID tokens, so the token alone cannot prove AAL2.
+ * The pool requires MFA (`mfa_configuration = "ON"`), which means a user with
+ * an MFA method configured cannot have completed a sign-in without it.
+ * Fails closed when the lookup fails.
+ */
+export async function hasMfaConfigured(username: string): Promise<boolean> {
+  const { region, userPoolId } = cognitoConfig();
+  cognitoAdmin ??= new CognitoIdentityProviderClient({ region });
+  try {
+    const user = await cognitoAdmin.send(
+      new AdminGetUserCommand({ UserPoolId: userPoolId, Username: username }),
+    );
+    return (user.UserMFASettingList?.length ?? 0) > 0;
+  } catch (error) {
+    console.error("[auth] MFA lookup failed", error);
+    return false;
+  }
+}
 
 export async function verifyIdToken(
   idToken: string,
