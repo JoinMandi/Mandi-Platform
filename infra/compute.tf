@@ -64,6 +64,7 @@ data "aws_iam_policy_document" "instance" {
       "cognito-idp:AdminGetUser",
       "cognito-idp:AdminListUserGroups",
       "cognito-idp:AdminSetUserPassword",
+      "cognito-idp:DescribeUserPool",
       "cognito-idp:ListUsers",
     ]
     resources = [aws_cognito_user_pool.main.arn]
