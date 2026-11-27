@@ -429,7 +429,15 @@ export default function QuestionnairePage() {
   }
 
   if (phase === "final") {
-    return <TransitionScreen patches={patches} onDone={() => router.push("/roadmap")} />;
+    const isCheckin =
+      typeof window !== "undefined" &&
+      new URLSearchParams(window.location.search).has("checkin");
+    return (
+      <TransitionScreen
+        patches={patches}
+        onDone={() => router.push(isCheckin ? "/check-in/then-and-now" : "/roadmap")}
+      />
+    );
   }
 
   if (!current) return null;

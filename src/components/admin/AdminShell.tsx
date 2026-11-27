@@ -22,6 +22,11 @@ const NAV: NavItem[] = [
   { href: "/admin/content",  label: "Content" },
   { href: "/admin/clinics",  label: "Clinics" },
   { href: "/admin/doctors",  label: "Doctors" },
+  { href: "/admin/matching", label: "Matching" },
+  { href: "/admin/safety",   label: "Safety" },
+  { href: "/admin/checkins", label: "Check-ins" },
+  { href: "/admin/funnel",   label: "Funnel" },
+  { href: "/admin/alerts",   label: "Alerts" },
   { href: "/admin/users",    label: "Users" },
   { href: "/admin/audit",    label: "Audit log", requiresSuperadmin: true },
   // Phase 13: Security tab moved to the sidebar footer (MFA self-management
