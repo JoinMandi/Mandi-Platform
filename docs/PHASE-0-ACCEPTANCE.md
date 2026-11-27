@@ -19,12 +19,12 @@ Record the date, commit and result for each check. The charter's gate is
 |---|---|---|---|---|
 | 6 | Health | `curl -fsS https://staging.joinmandi.co.za/api/health` | 200, `{"status":"ok"}` | 2026-11-26, deploy 45889007281: pass |
 | 7 | Unauthenticated identity | `curl -i https://staging.joinmandi.co.za/api/auth/me` | 401 | 2026-11-26: pass |
-| 8 | Member role | sign in as member (TOTP) → `/api/auth/me` | 200, `role:"member"` | pending: needs staging test accounts |
-| 9 | Member admin gate | `/api/admin/access` as member | 403 | pending |
+| 8 | Member role | sign in as member (TOTP) → `/api/auth/me` | 200, `role:"member"` | 2026-11-27: PASS, `busi+phase0-member`, `role:"member"` (session reports `mfa:false` on the enrolment flow) |
+| 9 | Member admin gate | `/api/admin/access` as member | 403 | 2026-11-27: PASS, 403 |
 | 10 | Clinician admin gate | `/api/admin/access` as clinician | 403 | pending |
 | 11 | Admin gate | `/api/admin/access` as admin (TOTP) | 200 | pending |
 | 12 | Admin page | open `/admin` as admin | dashboard loads | pending |
-| 13 | Member admin page | open `/admin` as member | redirected away | unauth: 307 to `/auth/login`; member case pending |
+| 13 | Member admin page | open `/admin` as member | redirected away | 2026-11-27: PASS, redirect to `/?denied=admin` |
 | 14 | Cross-member read | member A requests member B's run through the app/DB | 0 rows / 403 | 2026-11-27: PASS at the database level on staging. Two runs inserted, one for the member and one for the clinician. As the member identity, the member saw 1 own run and 0 of the clinician's. |
 | 15 | Encryption | `aws rds describe-db-instances --db-instance-identifier mandi-staging` | `StorageEncrypted=true`, `BackupRetentionPeriod=14`, `PubliclyAccessible=false` | 2026-11-26: pass (also CA `rds-ca-rsa2048-g1`, AZ `af-south-1a`) |
 | 16 | Secrets | `aws secretsmanager get-secret-value --secret-id mandi/staging/app` with the Terraform identity | readable by ops only; not by the app instance beyond that secret | 2026-11-26: pass, instance role has `ReadAppSecret` scoped to this ARN only |

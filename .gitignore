@@ -38,6 +38,9 @@ crash.log
 !*.tfvars.example
 infra/backend.hcl
 
+# Claude local settings
+.claude/settings.local.json
+
 # AWS RDS CA bundle is committed on purpose
 !certs/global-bundle.pem
 
