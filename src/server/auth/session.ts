@@ -24,6 +24,13 @@ export interface SessionData {
 }
 
 const MFA_METHODS = new Set([
+  // Cognito acr/amr vocabulary (when the pool reports it).
+  "otp",
+  "sms",
+  "email",
+  "webauthn",
+  "mfa",
+  // Older/explicit method names.
   "SOFTWARE_TOKEN_MFA",
   "SMS_MFA",
   "EMAIL_OTP",

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import {
   cognitoConfig,
   exchangeCode,
-  hasMfaConfigured,
+  poolRequiresMfa,
   verifyIdToken,
 } from "@/server/auth/cognito";
 import { getSession } from "@/server/auth/session";
@@ -31,14 +31,12 @@ export async function GET(req: Request) {
     const claims = await verifyIdToken(tokens.id_token, pending.nonce);
     const sub = String(claims.sub);
     const email = typeof claims.email === "string" ? claims.email : null;
-    // ID tokens carry no `amr`; ask Cognito whether this user has MFA set up.
-    const username =
-      typeof claims["cognito:username"] === "string"
-        ? claims["cognito:username"]
-        : sub;
-    const amr = (await hasMfaConfigured(username))
-      ? ["SOFTWARE_TOKEN_MFA"]
-      : [];
+    // Prefer the token's own amr when the pool reports it (Cognito is rolling
+    // this out); otherwise fall back to the pool policy, which is what forces
+    // the TOTP challenge on every sign-in.
+    const tokenAmr = Array.isArray(claims.amr) ? claims.amr.map(String) : [];
+    const amr =
+      tokenAmr.length > 0 ? tokenAmr : (await poolRequiresMfa()) ? ["mfa"] : [];
 
     // First login creates the member profile; existing rows keep their role.
     await withUser({ id: sub, role: "member" }, (db) =>

@@ -1,7 +1,7 @@
 import { createHash, randomBytes } from "node:crypto";
 import {
-  AdminGetUserCommand,
   CognitoIdentityProviderClient,
+  DescribeUserPoolCommand,
 } from "@aws-sdk/client-cognito-identity-provider";
 import { createRemoteJWKSet, jwtVerify, type JWTPayload } from "jose";
 import { requireEnv } from "@/server/env";
@@ -117,25 +117,28 @@ export async function exchangeCode(
 
 let jwks: ReturnType<typeof createRemoteJWKSet> | undefined;
 let cognitoAdmin: CognitoIdentityProviderClient | undefined;
+let poolMfa: boolean | undefined;
 
 /**
- * Cognito omits `amr` from ID tokens, so the token alone cannot prove AAL2.
- * The pool requires MFA (`mfa_configuration = "ON"`), which means a user with
- * an MFA method configured cannot have completed a sign-in without it.
- * Fails closed when the lookup fails.
+ * Cognito does not put `acr`/`amr` in this pool's ID tokens, and AdminGetUser
+ * reports no hosted-UI TOTP enrolment. The user pool policy is the reliable
+ * signal: with `MfaConfiguration` ON, no authorization code is issued without
+ * an MFA challenge. Cached per process and fails closed on error.
  */
-export async function hasMfaConfigured(username: string): Promise<boolean> {
+export async function poolRequiresMfa(): Promise<boolean> {
+  if (poolMfa !== undefined) return poolMfa;
   const { region, userPoolId } = cognitoConfig();
   cognitoAdmin ??= new CognitoIdentityProviderClient({ region });
   try {
-    const user = await cognitoAdmin.send(
-      new AdminGetUserCommand({ UserPoolId: userPoolId, Username: username }),
+    const pool = await cognitoAdmin.send(
+      new DescribeUserPoolCommand({ UserPoolId: userPoolId }),
     );
-    return (user.UserMFASettingList?.length ?? 0) > 0;
+    poolMfa = pool.UserPool?.MfaConfiguration === "ON";
   } catch (error) {
-    console.error("[auth] MFA lookup failed", error);
-    return false;
+    console.error("[auth] MFA policy lookup failed", error);
+    poolMfa = false;
   }
+  return poolMfa;
 }
 
 export async function verifyIdToken(
