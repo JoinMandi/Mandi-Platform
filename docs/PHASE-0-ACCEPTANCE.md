@@ -25,11 +25,11 @@ Record the date, commit and result for each check. The charter's gate is
 | 11 | Admin gate | `/api/admin/access` as admin (TOTP) | 200 | pending |
 | 12 | Admin page | open `/admin` as admin | dashboard loads | pending |
 | 13 | Member admin page | open `/admin` as member | redirected away | unauth: 307 to `/auth/login`; member case pending |
-| 14 | Cross-member read | member A requests member B's run through the app/DB | 0 rows / 403 | pending |
+| 14 | Cross-member read | member A requests member B's run through the app/DB | 0 rows / 403 | 2026-11-27: PASS at the database level on staging. Two runs inserted, one for the member and one for the clinician. As the member identity, the member saw 1 own run and 0 of the clinician's. |
 | 15 | Encryption | `aws rds describe-db-instances --db-instance-identifier mandi-staging` | `StorageEncrypted=true`, `BackupRetentionPeriod=14`, `PubliclyAccessible=false` | 2026-11-26: pass (also CA `rds-ca-rsa2048-g1`, AZ `af-south-1a`) |
 | 16 | Secrets | `aws secretsmanager get-secret-value --secret-id mandi/staging/app` with the Terraform identity | readable by ops only; not by the app instance beyond that secret | 2026-11-26: pass, instance role has `ReadAppSecret` scoped to this ARN only |
 | 17 | PITR | restore drill in the runbook | scratch DB restores and has rows | 2026-11-27: PASS on re-run. `mandi-staging-restore-2` restored in about 14 minutes with 27 tables, 4 migrations, and seeded rows identical to the source: 4 events, 4 translations, 3 clinics, 2 doctors, 1 questionnaire version. The earlier empty restore is explained by a restore point that predated the first migrations. Both scratch instances deleted. |
-| 18 | Logs | CloudWatch `/mandi/staging/app` | request/app logs present | gap: group exists with 14-day retention but no entries; the app writes nothing and Caddy logs are not shipped. Fix in PR #13 logs API requests from middleware; re-check after it deploys. |
+| 18 | Logs | CloudWatch `/mandi/staging/app` | request/app logs present | 2026-11-27: PASS. After PR #13 deployed, `docker logs` shows `GET /api/health`, `/api/auth/me`, `/api/admin/access`, and the group has 7,776 stored bytes with 14-day retention. |
 | 19 | Alarms | CloudWatch alarms + SNS subscription confirmed | present | alarms present and target `mandi-staging-alerts`; subscription confirmation needs the console |
 | 20 | Budget | Billing → Budgets | `mandi-staging-monthly` with 25–100% alerts | 2026-11-26: pass |
 | 21 | CI | GitHub Actions on a PR | quality, database, infrastructure, container all green | 2026-11-26, PR #12: pass (7 checks) |
