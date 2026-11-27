@@ -68,3 +68,12 @@ docs/SESSION-NOTES*.md
 
 # terraform plan output
 *.tfplan
+
+# Local working folders and stray artefacts (not part of the app)
+/Mandi/
+/Claude outputs/
+/.impeccable/
+/supabase/
+/*.html
+*.tmp
+.~lock.*
