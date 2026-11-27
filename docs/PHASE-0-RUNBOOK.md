@@ -128,6 +128,14 @@ Follow `docs/PHASE-0-ACCEPTANCE.md`.
 
 ## 9. Restore drill
 
+Set a hard timeout before you start. Both the restore and the later backup step
+can sit for hours; if it is still `creating` or `backing-up` after 30 minutes,
+stop and report rather than waiting or retrying around it. The first drill
+(26 November) sat for about nine hours and then produced an empty database
+because the restore point predated the first migrations. Check
+`LatestRestorableTime` on the source before restoring, and give the scratch
+instance a new identifier each run.
+
 ```powershell
 aws rds restore-db-instance-to-point-in-time --profile mandi `
   --source-db-instance-identifier mandi-staging `
