@@ -54,6 +54,20 @@ data "aws_iam_policy_document" "instance" {
     actions   = ["ecr:BatchGetImage", "ecr:GetDownloadUrlForLayer", "ecr:BatchCheckLayerAvailability"]
     resources = [aws_ecr_repository.app.arn]
   }
+
+  # seed-staff runs on the instance; staging test accounts are synthetic.
+  statement {
+    sid = "StaffAccounts"
+    actions = [
+      "cognito-idp:AdminCreateUser",
+      "cognito-idp:AdminAddUserToGroup",
+      "cognito-idp:AdminGetUser",
+      "cognito-idp:AdminListUserGroups",
+      "cognito-idp:AdminSetUserPassword",
+      "cognito-idp:ListUsers",
+    ]
+    resources = [aws_cognito_user_pool.main.arn]
+  }
 }
 
 resource "aws_iam_role_policy" "instance" {

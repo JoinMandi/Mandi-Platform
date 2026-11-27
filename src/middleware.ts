@@ -10,6 +10,13 @@ const SESSION_COOKIE = "mandi_session";
  */
 export function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
+
+  // Request log for the app container's CloudWatch stream. Path only, never
+  // the query string, because questionnaire URLs can carry answers.
+  if (path.startsWith("/api/")) {
+    console.log(`${req.method} ${path}`);
+  }
+
   const signedIn = req.cookies.has(SESSION_COOKIE);
 
   const isProtected =
@@ -35,5 +42,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/my-journey/:path*", "/admin/:path*", "/auth/:path*"],
+  matcher: ["/my-journey/:path*", "/admin/:path*", "/auth/:path*", "/api/:path*"],
 };

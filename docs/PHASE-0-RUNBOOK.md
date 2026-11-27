@@ -95,6 +95,12 @@ Push to `main` (or run the workflow manually). It builds the app and migrator
 images, pushes them to ECR, runs provisioning + migrations + seed through SSM,
 starts Compose/Caddy, and hits `/api/health`.
 
+Images are tagged `<sha>-<run-id>-<attempt>`, so a re-run of the same commit
+does not collide with the immutable ECR repository. The migrator image sets
+`NODE_EXTRA_CA_CERTS=/app/certs/global-bundle.pem`; without it,
+`node-pg-migrate` rejects the RDS certificate (provisioning loads the bundle
+itself, so it succeeds first and hides the problem).
+
 ## 6. First staff accounts
 
 Once a deploy has produced an image (the `IMAGE=` line exists in
@@ -121,6 +127,14 @@ clinics and doctors are idempotent seeds. No manual step.
 Follow `docs/PHASE-0-ACCEPTANCE.md`.
 
 ## 9. Restore drill
+
+Set a hard timeout before you start. Both the restore and the later backup step
+can sit for hours; if it is still `creating` or `backing-up` after 30 minutes,
+stop and report rather than waiting or retrying around it. The first drill
+(26 November) sat for about nine hours and then produced an empty database
+because the restore point predated the first migrations. Check
+`LatestRestorableTime` on the source before restoring, and give the scratch
+instance a new identifier each run.
 
 ```powershell
 aws rds restore-db-instance-to-point-in-time --profile mandi `
