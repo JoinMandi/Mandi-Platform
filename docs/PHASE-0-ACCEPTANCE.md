@@ -21,9 +21,9 @@ Record the date, commit and result for each check. The charter's gate is
 | 7 | Unauthenticated identity | `curl -i https://staging.joinmandi.co.za/api/auth/me` | 401 | 2026-11-26: pass |
 | 8 | Member role | sign in as member (TOTP) → `/api/auth/me` | 200, `role:"member"` | 2026-11-27: PASS, `busi+phase0-member`, `role:"member"` (session reports `mfa:false` on the enrolment flow) |
 | 9 | Member admin gate | `/api/admin/access` as member | 403 | 2026-11-27: PASS, 403 |
-| 10 | Clinician admin gate | `/api/admin/access` as clinician | 403 | pending |
-| 11 | Admin gate | `/api/admin/access` as admin (TOTP) | 200 | pending |
-| 12 | Admin page | open `/admin` as admin | dashboard loads | pending |
+| 10 | Clinician admin gate | `/api/admin/access` as clinician | 403 | 2026-11-27: PASS, 403 |
+| 11 | Admin gate | `/api/admin/access` as admin (TOTP) | 200 | 2026-11-27: FAIL before the fix. Admin signed in through a real TOTP challenge, but Cognito omits `amr` so `mfa` was false and the gate returned 403. PR #14 asks Cognito `AdminGetUser` instead; re-test after it deploys. |
+| 12 | Admin page | open `/admin` as admin | dashboard loads | pending the PR #14 deploy |
 | 13 | Member admin page | open `/admin` as member | redirected away | 2026-11-27: PASS, redirect to `/?denied=admin` |
 | 14 | Cross-member read | member A requests member B's run through the app/DB | 0 rows / 403 | 2026-11-27: PASS at the database level on staging. Two runs inserted, one for the member and one for the clinician. As the member identity, the member saw 1 own run and 0 of the clinician's. |
 | 15 | Encryption | `aws rds describe-db-instances --db-instance-identifier mandi-staging` | `StorageEncrypted=true`, `BackupRetentionPeriod=14`, `PubliclyAccessible=false` | 2026-11-26: pass (also CA `rds-ca-rsa2048-g1`, AZ `af-south-1a`) |
@@ -39,6 +39,13 @@ Record the date, commit and result for each check. The charter's gate is
 ## Notes
 
 - Staging starts empty; only seeded public content and test accounts exist.
+- Auth acceptance found two defects. Cognito omits `amr` from ID tokens, so the
+  AAL2 check can never pass on the token alone; the callback now uses
+  `AdminGetUser` (PR #14). The callback also redirected to the internal
+  `0.0.0.0:3000` host after sign-in; it now uses `APP_URL` (same PR).
+- Test accounts: `busi+phase0-member@joinmandi.com`,
+  `busi+phase0-clinician@joinmandi.com`, `busi+phase0-admin@joinmandi.com`.
+  Synthetic staging only.
 - No Supabase or Netlify dependency remains in the running stack. The live
   Netlify site can stay up until the Phase 1 cutover; it is not part of staging.
 - The live Supabase project is frozen, not deleted, until staging passes.
